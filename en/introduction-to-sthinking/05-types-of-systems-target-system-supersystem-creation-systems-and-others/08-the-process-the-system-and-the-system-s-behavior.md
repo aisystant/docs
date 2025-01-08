@@ -1,0 +1,13 @@
+---
+title: Process, System, and System Behavior
+---
+
+**Creating Systems** should not be confused with the **process of creating** the system of interest. More specifically, one should not confuse a system with a process. We state that different systems participate in the creation process^[That is, the "participation relationship" in some activity (changes, processes, procedures) is merely a specialization of the "composition relationship".], which we call creating systems. Together, they form a creator system.
+
+Consequently, when we say "process"^[Outside the context of SHS, the word "process" can be used synonymously with the term "practice". However, we separate "process" from "practice"; these are different types.], we mean the interaction of different systems, resulting in **a certain work artifact**. If creating systems participate in this process, the result is a work artifact—the system of interest. If it is a thinking-by-writing process involving a thinker and a computer (exocortex), the result is a work artifact—a draft of a post on the computer.
+
+Sometimes it is easy to name the supersystem for all the systems involved in a certain process. For example, one can imagine the process of burning a fuel mixture, involving the piston, cylinder, crankshaft mechanism, crankshaft, cooling subsystem, etc. All these systems form an internal combustion engine (ICE). However, sometimes the horizon is insufficient, or there is no common cultural name for such a supersystem (like ICE). Nevertheless, **you should not confuse** **the names of the process** **and the system**, as in the example above.
+
+The systems involved in the process change their state or exhibit certain behavior. We describe **behavior** as the interaction of a system with its environment, that is, "external behavior" or "role behavior". For example, there are distinct types of behavior for all the aforementioned systems^[The piston behaves one way, the cylinder another.], involved in the combustion process^[Or, for example, inside a clock, there is a process of counting seconds involving gears, springs, and other clock subsystems.]. But the engine itself also has behavior^[Output of torque.], which, alongside the chassis and cabin, participates in another process—transporting goods and passengers. The work artifact of this latter process is the transported goods and passengers in space.
+
+Thus, we do not confuse the types of concepts—process, system, and role behavior.
