@@ -1,0 +1,19 @@
+---
+title: Stages of immersion in systems methodology using the example of a "hammer"
+---
+
+Let's consider the progress of learning systems thinking by continuing our example with the hammer, which was discussed in previous sections.
+
+In student culture, there are anecdotes about how university students think, with seniors knowing more about life than freshmen. Likewise, in our school, there is a similar dynamic with the teacher's question to the student: "**Provide an example of a physical object**." How you answer this question reflects the depth of your immersion in systems thinking.
+
+A student of the preparatory course "Systemic Self-Development" would answer the question about a physical object with --- "a hammer." This answer would be accepted. In the preparatory courses of AISYSTANT, the primary focus is on **distinguishing** the **physical world from the mental space**. This is important to separate concepts like "age," "freedom," "love," or "theory" from objects such as "hammer," "textbook," or "shorts."
+
+A student of the course "Rational Work" or a person with good **ontological mastery**^[It is not necessary to take the "Rational Work" course for this, but it is extremely useful for developing ontological thinking, without which systems thinking is not established.] cannot respond like a student of the preparatory program. They understand that the word "hammer" can denote an instance of the class "Carpentry Tools." Therefore, you cannot simply say --- "a hammer." It would be correct to answer: "this large hammer in your hand." In other words, it is necessary to clearly define the context, making it clear that we are talking about a specific physical object rather than an ideal abstract object (an instance of some class).
+
+A student studying systems thinking would go further --- they can already reason not only about a physical object but also about the **system** "hammer." That is, they understand that there is the word "hammer," but in different contexts, it can mean different things. For example, a class instance, a specific physical object, and a system. In the latter case, the system "hammer" can be this "stone in my hand."
+
+It turns out like in the famous phrase: "Reaps with a scythe a crooked scythe with a crooked scythe"^[In English, it may sound like "Will Will will Will will Will's will?" Here too, there are different types: agent, document, action.]. The word "hammer" is one, but it can mean completely **different types**, and one needs to consciously understand them. In everyday life, such non-distinction of types may go unnoticed, but in complex work projects, it is difficult to achieve success without such a skill.
+
+The demonstrated gradual **immersion into a complex methodology** using the hammer example is accepted in learning culture. Likewise, children first learn about numbers, then natural numbers, and further on about whole, rational, real numbers, and eventually, as students, they study complex numbers^[And some answers from early learning may need to be corrected as a result of deeper immersion into the methodology.]. We similarly build our trajectory of learning complex systems thinking.
+
+A person studying systems thinking masters general techniques of thinking about systems, understands different types of systems, and also understands the difference between **Systems Approach 3.0** and previous generations. In the following courses of the main program "Organizational Development," you will learn specific principles of working with different types of systems, such as a person, an enterprise, an IT system, or a car.

@@ -1,0 +1,11 @@
+---
+title: The Essence of Systems Thinking
+---
+
+By knowing all types of systems, you will be able to understand any complex activity faster than others. You can literally cut the world into pieces with your attention, highlighting specific systems. The world is complex, and all its elements are interconnected. It is difficult for the human brain to grasp all the connections, so **in systems thinking, principles are set on how to logically divide the world into parts.** It is much easier to understand each part individually. At the same time, we do not lose the connection of this part with everything else.
+
+![](11-the-essence-of-systems-thinking-13.png)
+
+For example, on the left in the diagram from the course “Systems Thinking”^[You will deal with this diagram more closely when you describe your activity, highlighting the relevant systems.] you can see the system levels in relation to the system of interest, which is marked with a red circle. At the top level is the supersystem (the large circle containing the red circle), within which is the system of interest (red circle) and at the same system level, two systems in the environment. At the system level inside the system of interest, we see three subsystems. Our example with a car fits well into this diagram. Try to match the car with its subsystems, the driver, and the passenger.
+
+Beyond the dashed line are numerous creating systems. Some of them create the supersystem, others are systems creating the system of interest, and the third participates in creating subsystems. This scheme can be used to discuss not only the car, the factory, but also the system that builds the factory. Of course, such complex schemes are not always needed, but it is important to understand that systems thinking helps to consider the most complex systems and complex activities. Try using this scheme to look at your company's activities. I will immediately say that it will be quite difficult. We consider the students' cases in more detail during training sessions with the instructor.

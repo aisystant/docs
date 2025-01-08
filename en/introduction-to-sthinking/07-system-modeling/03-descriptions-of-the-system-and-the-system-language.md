@@ -1,0 +1,19 @@
+---
+title: System Descriptions and Systems Language
+---
+
+In the diagram from the "System Thinking" textbook, most of the concepts of system thinking we've already discussed are shown. Fluency in system thinking, which allows you to apply it to work projects, means you can **easily see the connections between these concepts**. In this diagram—7 main concepts (alphas^[OMG Essence Standard (http://www.omg.org/spec/Essence/) offers a unique type of functional object for project state change control—an alpha (ALPHA or Abstract-Level Progress Health Attribute). An alpha is an object of focus, whose functional/role character is relevant to the field of interest "how the project works" (not the system of interest, but the project, i.e., creating systems). If we want to think coherently about how the project works, how the system of interest is created and then developed by its creators during their work, we need to keep our attention on alphas in the project, not on any arbitrary objects.]) are highlighted in color, while the other concepts and subalphas are not highlighted; however, you can see that all the concepts are interconnected. Most of the connections culminate in the realization of the system. This is our successful system, for which we study system thinking with all these system concepts.
+
+![](03-descriptions-of-the-system-and-the-system-language-15.png)
+
+You might think that such an approach is largely redundant. But imagine an analogy and create a conceptual network based on a car. Adults have fluency in the concept of "car" not in terms of a system approach but simply as a subject area. You probably quickly find such concepts as fuel, movement, weather, passenger, environment, luxury, winter tires, and many others that help explain the activity related to cars.
+
+You can easily draw a diagram where all these concepts are connected^[Fuel is poured into the car's gas tank. In this simple sentence, I described the physical world. For this, I used the concepts of "fuel" and "gas tank" and linked them with another concept-action "poured." The thing is, you are well acquainted with these concepts, and your brain easily connects them and quickly models the physical world. If suddenly the fuel starts leaking past the gas tank, you will take specific actions. And these actions can also be described by a specific model.]. For a 17th-century resident, many terms related to cars would be completely incomprehensible. But you operate these concepts calmly because you live among them. Similarly, it is recommended to **“live with” the concepts of system thinking** to create successful systems in personal life and work projects. Fluent operation of system concepts means you quickly find them in your project, such as the system of interest or a description method for the subject of interest "price" or "safety"^[Just as in everyday life you fluently operate with the concepts "mom" and "dad," and when, for instance, you visit your friend, you quickly figure out who is who.].
+
+The use of system concepts is necessary to **create** **(model)** **system definitions** required for successful system creation. It is necessary to make descriptions in all fields of interest of the suprasystem, system of interest, and the creator.
+
+In this section, we will focus on the following:
+
+- how to **describe any systems** **using the systems language**, including role descriptions, models, description method, etc.;
+- learn about four main system descriptions as a transparent box, which answer the **subjects of interest of the internal structure of any system**;
+- what documentation exists for **fields of interest** **of three types** **of systems**.
