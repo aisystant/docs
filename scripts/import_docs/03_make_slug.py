@@ -80,6 +80,7 @@ def add_slug_to_structure(structure):
                 model="gpt-4o"
             )
             element["slug"] = slugify(translated_title)
+            element["english_title"] = title
         else:
             element["slug"] = ""
         if "children" in element:

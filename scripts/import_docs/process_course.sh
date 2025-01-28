@@ -14,4 +14,4 @@ mkdir -p tmp/$name/$version
 python scripts/import_docs/01_get_course_structure.py "$versionId" > tmp/$name/$version/structure.json
 cat tmp/$name/$version/structure.json | python scripts/import_docs/02_get_sections.py > tmp/$name/$version/sections.json
 cat tmp/$name/$version/sections.json | python scripts/import_docs/03_make_slug.py > tmp/$name/$version/slug.json
-cat tmp/$name/$version/slug.json | python scripts/import_docs/write_structure.py docs/$name
+cat tmp/$name/$version/slug.json | python scripts/import_docs/write_structure.py docs/ru/$name
