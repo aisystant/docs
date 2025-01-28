@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-BASE_URL = 'https://api.aisystant.com/api'
+BASE_URL = os.environ.get('BASE_URL', 'https://api.aisystant.com/api')
 AISYSTANT_SESSION_TOKEN = os.getenv('AISYSTANT_SESSION_TOKEN')
 HEADERS = {'Session-Token': AISYSTANT_SESSION_TOKEN}
 
@@ -51,6 +51,7 @@ def download_and_replace_attachments(text, attachments, section_name, output_dir
     """
     Downloads attachments, saves them with new names, and replaces links in the text.
     """
+    logger.info(f"Downloading attachments for section {section_name}, attachments: {attachments}, output_dir: {output_dir}")
     for attachment_url in attachments:
         try:
             # Extract original filename and extension
