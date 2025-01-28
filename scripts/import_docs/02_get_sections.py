@@ -32,11 +32,11 @@ IMAGE_PATTERN = re.compile(
 
 def replace_footnotes(html):
     """
-    Replaces footnotes in the HTML text with the format {{begin_footnote}}...{{end_footnote}}.
+    Replaces footnotes in the HTML text with the format {{beginfootnote}}...{{endfootnote}}.
     """
     def footnote_replacer(match):
-        content = match.group(1).strip()
-        return f"{{{{begin_footnote}}}}{content}{{{{end_footnote}}}}"
+        content = match.group(1).strip().replace("[x] ", "")
+        return f"{{{{beginfootnote}}}}{content}{{{{endfootnote}}}}"
 
     return FOOTNOTE_PATTERN.sub(footnote_replacer, html)
 
