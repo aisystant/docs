@@ -50,10 +50,14 @@ def translate_text(text, lang="en", system_prompt_cid="", user_prompt_cid="", co
             json=payload
         )
         response.raise_for_status()
-        return response.json().get("message", "")
+        translated_text = response.json().get("message", "")
+        if not translated_text.strip():
+            logger.error("Translation service returned an empty result.")
+            sys.exit(1)
+        return translated_text
     except requests.RequestException as e:
         logger.error(f"Failed to translate text '{text}': {e}")
-        return ""
+        sys.exit(1)
 
 def add_slug_to_structure(structure):
     """
@@ -76,11 +80,8 @@ def add_slug_to_structure(structure):
                 model="gpt-4o"
             )
             element["slug"] = slugify(translated_title)
-            #print (title, "=>", translated_title)
         else:
             element["slug"] = ""
-            #print ("!!!!!!!!!!!!! NO TITLE !!!!!!!!!!")
-            #print(element)
         if "children" in element:
             add_slug_to_structure(element["children"])
 
@@ -93,7 +94,11 @@ if __name__ == "__main__":
         sys.exit(1)
 
     # Add slugs to the structure
-    add_slug_to_structure(structure)
+    try:
+        add_slug_to_structure(structure)
+    except Exception as e:
+        logger.error(f"An error occurred while processing the structure: {e}")
+        sys.exit(1)
 
     # Output the updated structure
     print(json.dumps(structure, indent=4, ensure_ascii=False))
