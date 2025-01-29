@@ -6,9 +6,26 @@ versionId=$3
 #authors=$3
 #changelog=$4
 
+# if no name then exit
+if [ -z "$name" ]; then
+    echo "No course name provided"
+    exit 1
+fi
+
+if [ -z "$version" ]; then
+    echo "No course version provided"
+    exit 1
+fi
+
+if [ -z "$versionId" ]; then
+    echo "No course versionId provided"
+    exit 1
+fi
+
 # For each course, run the import script
 #echo "Importing course: $name, version: $version, authors: $authors, changelog: $changelog"
 #python scripts/import_docs/import_course.py "$name" "$version"
+
 echo "Importing course: $name, version: $version, versionId: $versionId"
 mkdir -p tmp/$name/$version
 python scripts/import_docs/01_get_course_structure.py "$versionId" > tmp/$name/$version/structure.json
