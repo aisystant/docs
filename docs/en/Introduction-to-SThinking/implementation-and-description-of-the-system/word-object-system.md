@@ -1,0 +1,20 @@
+---
+order: 5
+title: Word, Object, System
+---
+
+Let's master another thinking technique and learn to differentiate between a "word," an "object"^[Here, we refer to a physical object, not abstract ones, which could also exist.] and a "system."
+
+Let's take the word "hammer" as an example. **In language, it can be quite challenging to separate the word "hammer" from the physical object "hammer,"** namely this specific hammer in my hand. In Russian, these concepts are tightly connected. However, if, for example, a Chinese person were to say the word "hammer" in Chinese, we would only hear a set of sounds and would not even think of the object "hammer." This shows that a word is merely a collection of sounds and symbols (letters) strung together. It is people who assign this word to a certain physical or abstract object.
+
+A word can denote a physical object that is culturally recognized by that word. Typically, before the "word" appears, there is some sort of system in place. The inventor gives it a name, or the name is later formed by the culture (as a class of certain physical objects). For example, there was once an expression "automatic self-moving carriage" or "horse-less carriage," but eventually, the term "automobile" was established for that system. Overall, this is a **cultural trend – to find a short name for a system**, although originally the inventor might have used a long phrase.
+
+A good **system name** **indicates that the main function is clear from the name.** Another example is an airplane, a system that flies on its own. Often, the names of systems, roles, and items come from other languages. For instance, the word "chauffeur" came from French and was associated with the function of "heater." You can read more about this in the post “Chauffeur and Driver” in the AISYSTANT club^[<https://systemsworld.club/t/shofer-i-voditel/8561>].
+
+Eventually, the system's name becomes tied to a specific object, or we use this invented word for certain objects. However, we must understand that the **system "hammer"** **is not equivalent** **to the typical physical object "hammer"** (like the one in my hand), which everyone in the culture can clearly envision. The word is the same, but the meanings differ, and in systems thinking, this distinction is crucial.
+
+In the first case, we focus on the fact that we **need a system to perform the function of driving nails.** Incidentally, this system might have been called a nail-driver or simply a tool for driving nails. Later, a shorter name for the system was established culturally – "hammer." But this role can be performed by physical objects such as a "stone" or "microscope." Of course, the best performer for this role is the typical physical object "hammer"^[This item was designed for this purpose and subsequently named. Now, the general public doesn’t need to understand what is meant in specific cases. However, a systems practitioner must master the technique of identifying words in context. By the way, specific roles, like a manager, will always attract competent and less competent performers.].
+
+Naming a specific type of objects that usually perform a particular function is undoubtedly convenient, and culture typically handles this well. This is why it can be so **difficult to separate** **the word, physical object, and system** related to “hammer.” However, a systems practitioner must easily understand this in any project context. While we may easily understand a hammer, more challenging projects may be complex. Hence, we start with the example of a "hammer," and then apply these same thinking techniques to workplace projects.
+
+Once you grasp this distinction, you’ll find it easier to understand what physical and functional objects are, what a system is, and other systems thinking concepts.

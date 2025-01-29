@@ -1,0 +1,18 @@
+---
+order: 0
+title: Physical World and Mental Space
+---
+
+To understand the concepts explored in this section, let's start by distinguishing **concepts** from **words** that describe the physical world and the mental space.
+
+Continuous progress in the number of interacting people and in the speed of adaptation to new conditions has been made possible because people learned to communicate using signs, words, drawings, etc. They invented letters, alphabets, numbers, and much more to describe the physical world.
+
+There is the word "лев" (in Russian) or "lion," and there is the living creature that roams the African savannas. The living creature is part of the physical world, while the words "лев" and "lion" are descriptions of this creature. All descriptions originate from the mental space. I am a person, whereas my description includes my name, height, and so on. My photograph also belongs to the category of descriptions.
+
+Thus, humans have invented another "world"—the **world of descriptions**, or **mental space**. This is essential for humans to change the physical world, to make it better^[An executor makes the world better by creating successful systems.]. Therefore, any systems executor in a project utilizes an important thinking mastery—asking themselves: "What changes in the physical world as a result of my activities?" If an action, project, or activity does not, at any stage, lead to changes in the physical world, then such an activity is pointless^[Impressions gained from an entertainment project can be considered a change in the world.]. Resources will be spent, but the world will not become better^[Hypothetically, one might do a lot of paperwork that nobody needs or dig a hole just to fill it back in.].
+
+![](/text/Introduction-to-SThinking/2024-11-23T2158/1300/2.png)
+
+**Humans have also invented theories that describe or model reality** (create descriptions)^[And, of course, with which they create systems. But here we focus specifically on descriptions.]. Worldviews or models of the world^[Note that the word "model" in this context is more about content, though it can refer to a specific object. For example, I have assembled a model airplane.]—these are descriptions of parts of the physical world that can be achieved through certain theories (like the once discovered ability to take photographs). However, there is no single description of the entire physical world. For instance, a geographic map is a model or description of a specific territory, not the entire universe. We understand that the territory exists in the real, physical world and can have many different descriptions (economic or political aspects, natural resources, etc.)^[As you might guess, each description addresses some subject of interest concerning the territory.].
+
+Descriptions of the real world can be divided into two categories: **scientific and non-scientific**. Scientific descriptions include theories, disciplines, transdisciplines. Non-scientific ones include stories, legends, superstitions, myths. The difference between them is that theories provide explanations of some part of reality that withstand the scrutiny of the scientific method, independent of who is scrutinizing it. Moreover, a theory can be recorded with the same symbols as formulas or concepts and convey the same substantive meaning across different languages. Non-scientific theories, in contrast, do not have such formal rigor, although they also describe the physical world. Moving forward, we will focus exclusively on scientific worldviews.

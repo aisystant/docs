@@ -1,0 +1,20 @@
+---
+order: 2
+title: Roles and Executors
+---
+
+**The Concept of "Role"**
+
+The concept of "role" was initially used to distinguish a person from their actions (role behavior). However, we now refer to **agents**^[Agents can be individuals or other entities with intentions, strategies, and plans for achieving their goals. For instance, an organization of people with their tools and computers, and even certain other entities that we have yet to identify. They can play different roles in various projects and interact with other agents.] with intentions, implying that it's not necessarily about a person but also **inanimate physical objects**. While there are many agents and objects, the number of roles is significantly smaller.
+
+Agents are associated with certain concepts, such as dissatisfaction, intentions, qualifications, etc., whereas roles they play involve other concepts, like methods, subjects of interest, preferences, and so forth. We can also say that the role of a "hammer" can be performed by a "stone." There are specific nuances: agents with particular intentions must decide to take on a role^[They might do this by interacting with another agent. Through leadership methods, another agent can place them in a role.], whereas a **stone "is placed" into a role only by some agent.** We will mainly focus on the more complex case where the role performer is an agent^[When discussing a physical inanimate object (non-agent), it typically falls within the scope of regular engineering.].
+
+Although all people and other agents are different, **most actions are similar**, allowing for description and formalization into methods. Furthermore, they can be improved, and most importantly, these actions can be taught to others. For instance, surgeons are trained uniformly. In some cases, artificial intelligence now performs the surgeon's role instead of a person.
+
+Ordinary individuals in a workplace rarely use the theatrical metaphor. They usually view their colleagues as performers, knowing them by their names and surnames. However, a systemic practitioner not only understands this but also recognizes the roles each team member plays. It's a crucial skill (technique) that should become second nature. Read the dialogue presented in the illustration^[It is extracted from the textbook "System Thinking."].
+
+**In a project, you need to see both the project roles and the names of the performers.** Often, several people may take on the same roles, and one individual can perform multiple roles. Although not common, the same person might play different roles in one project and others in another. In each role, the person operates according to a specific method.
+
+A person might not consciously realize they are following a method unless they have studied it intentionally at a university^[It's unlikely that a surgeon could work in their field without conscious training in theory and practice at a university, but many other roles and methods are not studied this intentionally.]. Within many teams, you will always find autodidacts^[Most actions in life are carried out without understanding the concept of a "method." For example, many people manage personal finances or swim without having received specific training. However, in professional activities, achieving expertise without the conscious study of modern methods is impossible. And without intelligence, navigating the numerous applied methods and mastering them faster than others is challenging.]. However, there are few good autodidacts, and many more talented or ordinary people who have been able to develop their abilities through the conscious study of methods and multidisciplinary intelligence stack.
+
+The qualification for executing a role is characterized by mastery in a specific skill. For instance, how proficient an individual is as a surgeon. This qualification depends, at the very least, on the modernity of the theory (discipline) learned and the number of practical hours spent in the role. Therefore, both contemporary theory and practical activities utilizing the best technologies (tools) are necessary.

@@ -1,0 +1,16 @@
+---
+order: 4
+title: What Does It Mean to "Apply Systems Thinking"?
+---
+
+### Application of Systems Thinking
+
+Applying systems thinking means skillfully handling **concepts from the transdisciplinary intellect stack** in your work. Mastering the conceptual basics involves not only knowing each concept but also connecting them and applying them to your projects. In the course, you study the concepts of systems thinking, linking them not only with each other but also with concepts from entrepreneurship, engineering, and management.
+
+When someone says they will apply a systems approach, it means they will use the conceptual basics of systems thinking in their work. If someone does not master these concepts, they may be logical, systematic, professional, and everything else, but not using systems approach.
+
+**A professional with an extensive track record does not necessarily possess systems thinking**. Although they may tackle any complex problem within their field of expertise, we consider a system actor someone who consciously studies and applies the concepts of modern systems methodology in work and personal projects^[This does not guarantee that all projects will be successful. However, all else being equal, the probability of success increases with systems thinking.].
+
+A system actor should also have a functioning **"type classifier/cognitive type machine"**—the ability to track the types of concepts being used. For instance, an average adult will catch a type mismatch in the following list: "I visited New York, London, and China." Here, the type "city" is used alongside the type "country," which is incorrect from a systems thinking perspective, and it's better not to confuse types. Similarly, a system actor would identify mismatches in statements like: "Attending the meeting were John Doe, Andrew Smith, and the contractor’s accountant" or "I perform roles as a marketer, financier, and department head." Here, the type "executor/performer (agent)" is used alongside the type "role," and in the second example, the type "role" is used alongside the type "position," which is incorrect, and it is best not to confuse these types in professional activities^[If these examples are unclear, take the "Rational Work" course.].
+
+The type classifier^[Like ontological mastery, which integrates into the brain and body. An error signal in types is noticed at the level of bodily sensations, hence the term ontological dissonance. Beyond dissonance, it is recommended to pay attention to other bodily sensations in intellectual work, such as cognitive resonance and creative click. For more, read the post in the club: <https://systemsworld.club/t/drebezg-rezonans-shhelchok/9272>] allows for the swift application of systems thinking, avoiding confusion in descriptions (modeling) and communication in complex projects. **Types of system concepts**, such as system, role, position, process, etc., should not be confused. The functioning of the type classifier is established in the "Rational Work" course, although some students have it set up during university and can quickly adapt it to a new conceptual framework.

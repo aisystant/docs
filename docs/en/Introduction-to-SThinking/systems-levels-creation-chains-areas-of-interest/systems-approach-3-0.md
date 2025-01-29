@@ -1,0 +1,23 @@
+---
+order: 7
+title: Systems Approach 3.0
+---
+
+**In the First Generation of Systems Thinking**, systems were considered "objective" rather than subjective, meaning they were analyzed without considering numerous stakeholders. For instance, a chair, a hammer, or an automobile are systems that are easy for everyone to understand; they have a clear purpose (role and function), and only that was considered. This clarity allowed for formal modeling in systems focused only on the most essential aspects^[Neglecting a significant number of other interests and interactions.], which is why textbooks from the first generation of systems thinking are full of formulas, numbers, and the like.
+
+At the end of the last century and in the 2010s, **the Second Generation of Systems Thinking** prevailed, differing from its predecessor by viewing systems as subjective rather than objective. Numerous stakeholders emerged, along with the understanding that systems do not exist on their own but come into existence when needed by someone. Recall how, in Section 2, we discussed the "hammer" system and its distinction from the physical object called "hammer." Furthermore, in the first generation, systems seemed to create themselves, while in the second, they were created by people.
+
+In the 2020s, a noticeable number of works that can be attributed to **the Third Generation of Systems Thinking** began to appear. Our intellect-stack also relies on and develops these modern trends. The main principles of the third generation include:
+
+* **Scalability**, meaning applying the same approach and reasoning to objects of vastly different scales, from small details to entire systems or from superstrings to the universe;
+* **De-anthropocentrism**, which means not emphasizing humans as something obligatory. Instead, we talk about agents who vary in consciousness, memory, and modeling capabilities, and who possess different computational powers for planning actions;
+* **Multi-level evolution**, referring not only to genes but also to memes, overcoming numerous problems and inconsistencies between system levels, and addressing ethics in decision-making;
+* **Continuous development**^[Particularly applicable in systems engineering and more thoroughly covered in the corresponding course. This principle includes advanced generative modeling, good documentation, configuration management, and system modularity. Development happens incrementally through small and rapid changes to adapt to constantly evolving conditions. The primary goal of continuous development is long-term success and retaining achieved results.], that is, system or product development never ends and continues constantly, taking into account environmental changes at different system levels and issues arising during development (including in the development organization).
+
+The third generation of systems approach considers a scalable world of systems rather than a "world of humans," with these systems continuously evolving and always in progress. In this development process (and sometimes destruction), **discrepancies (frustrations)** between system levels are engaged, causing conflicts between all levels (systems and creation chains).
+
+Systems at various system levels strive to maintain stability and develop, but this contradicts the desires for stability and development of systems at the same or different system levels. For example, countries may go to war with each other or collapse internally due to disagreements at the level of individual communities and interest groups. Also, meta-system transitions frequently occur during evolution, happening due to **inevitable discrepancies between system levels**. As a result, only certain system configurations survive, those that most accurately solve the problem of multi-level (rather than single-level!) optimization.
+
+It's worth noting that these third-generation systems approach principles can be discussed considering the concepts introduced in this section. For example, **it is impossible to consider only one system level**^[This can lead to fatal errors.]**,** and collaboration with other teams working on different system levels may be necessary. Successful systems are those where interest satisfaction (optimization of conflicts and discrepancies) happens across different levels, even those unknown to us. At the very least, it is always essential to try to learn about all discrepancies.
+
+You will study the third generation of systems thinking in more detail in the course "Systems Thinking."

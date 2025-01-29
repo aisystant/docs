@@ -1,0 +1,28 @@
+---
+order: 3
+title: Is Documentation a System? Is a Work Product a System?
+---
+
+Quite often, students pose the question: "If documentation exists in the physical world, does that make it a system? After all, menus, books, and passports need to be produced." This is a good question, and those who ask it are delving deep.
+
+Interestingly, the answer to this question is linked to focus. **Systems thinking relies on** attention management techniques. Often, people studying systems thinking jump quickly from one project to another and lose sight of the context they started discussing, as they finish in a different one. Therefore, it is recommended to base your approach on not overly complex activities, which will help you avoid "losing touch with reality" in your reasoning.
+
+When we discuss the system of "humans," we link the concepts of "realization, description, and system documentation" to it. In this context, a passport, driver's license, and everything else in this project will be part of the documentation for the "human-citizen" system. But if you now want to discuss the passport as a system, that is a different consideration and a different project, like a project focusing on producing the information carrier "passport." Notice how our focus has shifted.
+
+Not everyone immediately understands how the context changes in a conversation. In a passport creation project, the content, or the description of the "human-citizen" system, is not so important. The information in the passport is discussed in the first project, where the "human-citizen" system description is addressed. Consequently, how to describe a citizen is decided in the first project.
+
+In the second project, the emphasis is on the carrier itself, not the information it holds. In the previous section, we noted: "But when talking about the carriers of descriptions, we said nothing about the content of the description." The content of the passport is defined in the human-as-citizen project, whereas the characteristics of the passport system primarily deal with its protection against forgery or the number of pages.
+
+Here's another example. The system engineer, John Doe, is responsible for describing the automobile system. Meanwhile, the secretary, Jane Doe, is responsible for ensuring this content is transferred onto an information carrier. Jane carefully records John's words, then prints them on A4 paper, or John himself presents the automobile description on a computer to colleagues. Notice that the secretary is not concerned with the content, meaning the description of the "automobile" system.
+
+Jane (or John, now acting as a speaker) is interested in the information carrier. There are other projects where, for example, Jane might also take on the role of an engineer creating the information carrier system. This could be an A4 sheet or several bound sheets with the system description. In place of the A4 sheet or presentation, it could be a passport, book, website, digital twin (IT system), etc. All these carriers need to be produced, and for this work, specific engineering roles will be engaged. For example, a book is produced by a book printer and other roles in publishing.
+
+Therefore, one of the thinking techniques is the **conscious shifting of attention between different projects**[^1]. There's the content, and there's the information carrier holding that content. These concepts should not be confused. In one project, we discuss the automobile as the embodiment of the system, its descriptions in the form of various characteristics (subjects of interest), and documentation—on paper, in presentations, on computers, etc. In another project, other people (or the same, but in different roles) discuss how to create a beautiful brochure, website, or digital model. Of course, there's a connection between projects, and a systems thinker will clearly understand this due to the applied systems thinking techniques, allowing them to manage their attention as needed.
+
+So, you also need to see the realization, description, and documentation of the system in any of your projects. However, there may always be another project or activity where system documentation is created with a focus on its physical manifestation. The content or description of the system on this carrier is determined in your project. Don't get confused between different projects.
+
+**What is a "working product"?** A working product always exists in the physical world (4D). A system is also a working product created by a team. However, not every working product is a system. In addition to a system, a working product can be system documentation. For example, an automobile is a working product of an automotive corporation, but in the automotive corporation's design bureau, the team creates a working product—a 3D model of the automobile. This three-dimensional model is the documentation of the automobile system. In the car creation project, the 3D model (in the computer) is not viewed in isolation but as documentation of the automobile system. This documentation serves as a carrier for the crucial description of the automobile system.
+
+Let’s conclude by tying another trio of concepts in the following sentence: "A **working product** in the form of system **documentation** is created according to some **description method**." Try to understand this sentence and discuss it in your group or write a draft in the Aisystant club, providing examples from a working project.
+
+[^1]: We'll discuss terms like system levels and creation chains in Section 5. These concepts will assist in handling multiple projects.

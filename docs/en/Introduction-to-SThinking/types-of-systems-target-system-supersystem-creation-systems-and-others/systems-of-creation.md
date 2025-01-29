@@ -1,0 +1,16 @@
+---
+order: 6
+title: Systems of Creation
+---
+
+Any activity becomes significantly more productive when you understand its purpose. From a systems approach perspective, we can say that **the goal of any activity is to create a target system.** Accordingly, creation systems will be involved in bringing this target system into existence in the physical world. This creation activity is typically called a project, process, program, etc. It’s important not to confuse the types “project” and “enterprise” (or “extended enterprise”), as the former is an activity, while the latter is a system.
+
+For instance, the goal of creation systems' activity would be a target system like a Mercedes E-class vehicle. Factory operations are the process in which specific creation systems are involved, such as those responsible for assembly.
+
+**Creation systems are defined as** **those** **systems that support all stages of a system's development from conception to disposal.** In our example of the target system “automobile,” factory operations involve designers, component suppliers, and assembly lines. Additionally, creation systems include service stations and vehicle dismantlers, which do not necessarily belong to the automotive corporation. It is quite rare for all creation systems to be housed within a single enterprise; hence, we refer to an **extended enterprise**.
+
+An important note regarding creation systems is that no activity should be labeled as a target system. Firstly, activity itself is not a system (neither target, nor creator, nor any other type). Secondly, when you observe an activity, it is likely the activity of some creation systems that are establishing a specific system (either target or our own). It’s crucial to first understand: why is this activity being undertaken? Most probably, it aims at creating a system. That resultant system will likely be the target system, whereas the activities you’re engaged in—such as factory operations—are merely the activities of certain creation systems.
+
+It’s also not advisable to refer to a factory as a target system. The target system, more likely, is the factory’s product. Therefore, it’s essential to determine what the factory produces. An ironworks factory and an automotive factory are entirely different enterprises. The target system determines what the creation systems should be like. Thus, we first need to understand what the enterprise produces, as this will provide better insights into how it should be structured. Essentially, the factory design depends on the factory's products, which will be the target system.
+
+Only afterwards can you move on to another project, where the creation system becomes “our system.” Often, in project activities, you are focused on the target system “automobile,” but at the same time, you need to build the factory (hire and organize people) that will manufacture this automobile. In this scenario, it is necessary to manage attention by distinguishing between these two considerations.
