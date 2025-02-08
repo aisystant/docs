@@ -16,7 +16,7 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-BASE_URL = os.environ.get('BASE_URL', 'https://api.aisystant.com/api')
+AISYSTANT_BASE_URL = os.environ.get('AISYSTANT_BASE_URL', 'https://api.aisystant.com/api')
 AISYSTANT_SESSION_TOKEN = os.getenv('AISYSTANT_SESSION_TOKEN')
 HEADERS = {'Session-Token': AISYSTANT_SESSION_TOKEN}
 
@@ -61,7 +61,7 @@ def download_and_replace_attachments(text, attachments, section_name, output_dir
             local_path = os.path.join(output_dir, new_filename)
 
             # Correct the attachment URL to remove double slashes
-            attachment_url = f"{BASE_URL}/{attachment_url.lstrip('/')}"
+            attachment_url = f"{AISYSTANT_BASE_URL}/{attachment_url.lstrip('/')}"
             
             # Download the file
             response = requests.get(attachment_url, headers=HEADERS, stream=True)
