@@ -3,80 +3,157 @@ import path from 'path'
 import matter from 'gray-matter'
 
 /**
- * Recursively generates a sidebar structure based on markdown files in a given directory.
+ * Recursively generates sidebar items for a section directory.
  *
- * @param {string} dir - Absolute path to the directory to process.
- * @param {string} base - Base URL path for generated links.
- * @returns {Array} Array of sidebar item objects.
+ * @param {string} dir - Absolute path to the section directory.
+ * @param {string} base - Base URL for the section directory.
+ * @returns {Array} Array of sidebar items.
  */
-export function generateSidebar(dir, base = '') {
+function generateSectionSidebar(dir, base = '') {
   const entries = fs.readdirSync(dir, { withFileTypes: true })
   const items = []
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
       const subdir = path.join(dir, entry.name)
-      let subItems = generateSidebar(subdir, path.join(base, entry.name))
-
+      let subItems = generateSectionSidebar(subdir, path.join(base, entry.name))
       let title = entry.name
-      let groupOrder = undefined
-
-      // Check for an index.md file in the directory to use as the group header
       const indexPath = path.join(subdir, 'index.md')
       if (fs.existsSync(indexPath)) {
         try {
           const content = fs.readFileSync(indexPath, 'utf-8')
           const { data } = matter(content)
           title = data.title || title
-          groupOrder = data.order ?? 0
-          // Previously we generated a groupLink here.
-          // For toggle behavior only, do not assign a link property.
-          // const groupLink = '/' + path.join(base, entry.name, 'index').replace(/\\/g, '/')
         } catch (error) {
-          console.warn(`Error reading file ${indexPath}: ${error.message}`)
+          console.warn(`Error reading ${indexPath}: ${error.message}`)
         }
-        // If an index.md file was processed, remove it from subItems to avoid duplicate entries.
-        subItems = subItems.filter(item => !item.link.endsWith(`/${entry.name}/`)) // Adjust filtering as needed.
-      } else {
-        groupOrder = subItems.length > 0 ? (subItems[0].order || 0) : 0
       }
-
-      if (subItems.length) {
-        // Create the group item without a link property.
-        const groupItem = {
+      if (subItems.length > 0) {
+        items.push({
           text: title,
-          collapsed: true, // group is collapsed by default
-          order: groupOrder,
+          collapsed: true,
           items: subItems
-        }
-        items.push(groupItem)
+        })
+      } else {
+        const link = '/' + path.join(base, entry.name, 'index').replace(/\\/g, '/')
+        items.push({
+          text: title,
+          link: link
+        })
       }
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
+      // Skip index.md here to avoid duplicates (handled at the group level)
+      if (entry.name === 'index.md') continue
       const filePath = path.join(dir, entry.name)
       let fileContent, data
-
       try {
         fileContent = fs.readFileSync(filePath, 'utf-8')
         const parsed = matter(fileContent)
         data = parsed.data
       } catch (error) {
-        console.warn(`Error processing file ${filePath}: ${error.message}`)
+        console.warn(`Error reading file ${filePath}: ${error.message}`)
         continue
       }
-
       let link = path.join(base, entry.name.replace(/\.md$/, ''))
-      if (entry.name === 'index.md') {
-        link = base || '/'
-      }
-
       items.push({
         text: data.title || entry.name.replace(/\.md$/, ''),
-        link: '/' + link.replace(/\\/g, '/'),
-        order: data.order || 0
+        link: '/' + link.replace(/\\/g, '/')
+      })
+    }
+  }
+  return items
+}
+
+/**
+ * Generates a course sidebar with a single group header (course title)
+ * and collapsible items for each section, including course-level files.
+ *
+ * Files located directly in the course folder (except for index.md) are added
+ * as items alongside the sections.
+ *
+ * @param {string} courseDir - Absolute path to the course directory.
+ * @param {string} base - Base URL for the course directory.
+ * @returns {Array} Array containing a single sidebar group.
+ */
+export function generateCourseSidebar(courseDir, base = '') {
+  // Get course title from course folder's index.md
+  let courseTitle = path.basename(courseDir)
+  const courseIndex = path.join(courseDir, 'index.md')
+  if (fs.existsSync(courseIndex)) {
+    try {
+      const content = fs.readFileSync(courseIndex, 'utf-8')
+      const { data } = matter(content)
+      courseTitle = data.title || courseTitle
+    } catch (error) {
+      console.warn(`Error reading course index ${courseIndex}: ${error.message}`)
+    }
+  }
+
+  // Array to hold sidebar items for course-level files and sections
+  const courseItems = []
+
+  // Read all entries in the course directory
+  const entries = fs.readdirSync(courseDir, { withFileTypes: true })
+
+  // Process Markdown files in the course directory (excluding index.md)
+  for (const entry of entries) {
+    if (entry.isFile() && entry.name.endsWith('.md') && entry.name !== 'index.md') {
+      const filePath = path.join(courseDir, entry.name)
+      let fileContent, data
+      try {
+        fileContent = fs.readFileSync(filePath, 'utf-8')
+        const parsed = matter(fileContent)
+        data = parsed.data
+      } catch (error) {
+        console.warn(`Error reading file ${filePath}: ${error.message}`)
+        continue
+      }
+      let link = path.join(base, entry.name.replace(/\.md$/, ''))
+      courseItems.push({
+        text: data.title || entry.name.replace(/\.md$/, ''),
+        link: '/' + link.replace(/\\/g, '/')
       })
     }
   }
 
-  items.sort((a, b) => (a.order || 0) - (b.order || 0))
-  return items.map(({ order, ...rest }) => rest)
+  // Process subdirectories (sections) in the course directory
+  for (const entry of entries) {
+    if (entry.isDirectory()) {
+      const sectionDir = path.join(courseDir, entry.name)
+      let sectionTitle = entry.name
+      const sectionIndex = path.join(sectionDir, 'index.md')
+      if (fs.existsSync(sectionIndex)) {
+        try {
+          const content = fs.readFileSync(sectionIndex, 'utf-8')
+          const { data } = matter(content)
+          sectionTitle = data.title || sectionTitle
+        } catch (error) {
+          console.warn(`Error reading section index ${sectionIndex}: ${error.message}`)
+        }
+      }
+      // Generate sidebar items for this section recursively
+      const items = generateSectionSidebar(sectionDir, path.join(base, entry.name))
+      if (items.length > 0) {
+        courseItems.push({
+          text: sectionTitle,
+          collapsed: true,
+          items: items
+        })
+      } else {
+        const link = '/' + path.join(base, entry.name, 'index').replace(/\\/g, '/')
+        courseItems.push({
+          text: sectionTitle,
+          link: link
+        })
+      }
+    }
+  }
+
+  return [
+    {
+      text: courseTitle,
+      collapsed: false,
+      items: courseItems
+    }
+  ]
 }
