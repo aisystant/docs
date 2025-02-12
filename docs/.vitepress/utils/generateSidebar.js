@@ -15,17 +15,17 @@ export function generateSidebar(dir, base = '') {
   const items = []
 
   for (const entry of entries) {
-    // If the entry is a directory, process it recursively
+    // If the entry is a directory, process it recursively as a group (section)
     if (entry.isDirectory()) {
       const subdir = path.join(dir, entry.name)
       let subItems = generateSidebar(subdir, path.join(base, entry.name))
 
-      // Define defaults for the group header
+      // Defaults for the group header
       let title = entry.name
       let groupOrder = undefined
       let groupLink = undefined
 
-      // Check for an index.md file to use as the group header
+      // Check for an index.md file in the directory to use as the group header
       const indexPath = path.join(subdir, 'index.md')
       if (fs.existsSync(indexPath)) {
         try {
@@ -47,12 +47,12 @@ export function generateSidebar(dir, base = '') {
       if (subItems.length) {
         const groupItem = {
           text: title,
-          collapsed: true, // group is collapsed by default
+          collapsed: true, // Group is collapsed by default
           order: groupOrder,
-          items: subItems,
+          items: subItems
         }
 
-        // Optionally, add a link to the group header if an index.md was found
+        // Optionally add a link to the group header if index.md was found
         if (groupLink) {
           groupItem.link = groupLink
         }
@@ -60,7 +60,7 @@ export function generateSidebar(dir, base = '') {
         items.push(groupItem)
       }
     }
-    // If the entry is a Markdown file
+    // If the entry is a Markdown file, process it as a regular page
     else if (entry.isFile() && entry.name.endsWith('.md')) {
       const filePath = path.join(dir, entry.name)
       let fileContent, data
@@ -83,7 +83,7 @@ export function generateSidebar(dir, base = '') {
       items.push({
         text: data.title || entry.name.replace(/\.md$/, ''),
         link: '/' + link.replace(/\\/g, '/'),
-        order: data.order || 0,
+        order: data.order || 0
       })
     }
   }
