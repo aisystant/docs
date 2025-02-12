@@ -18,29 +18,46 @@ export function generateSidebar(dir, base = '') {
     // If the entry is a directory, process it recursively
     if (entry.isDirectory()) {
       const subdir = path.join(dir, entry.name)
-      const subItems = generateSidebar(subdir, path.join(base, entry.name))
+      let subItems = generateSidebar(subdir, path.join(base, entry.name))
+
+      // Define defaults for the group header
+      let title = entry.name
+      let groupOrder = undefined
+      let groupLink = undefined
+
+      // Check for an index.md file to use as the group header
+      const indexPath = path.join(subdir, 'index.md')
+      if (fs.existsSync(indexPath)) {
+        try {
+          const content = fs.readFileSync(indexPath, 'utf-8')
+          const { data } = matter(content)
+          title = data.title || title
+          groupOrder = data.order ?? 0
+          // Create a link for the group header based on the index.md file
+          groupLink = '/' + path.join(base, entry.name, 'index').replace(/\\/g, '/')
+        } catch (error) {
+          console.warn(`Error reading file ${indexPath}: ${error.message}`)
+        }
+        // Remove the index.md item from subItems to avoid duplicate entries
+        subItems = subItems.filter(item => item.link !== groupLink)
+      } else {
+        groupOrder = subItems.length > 0 ? (subItems[0].order || 0) : 0
+      }
 
       if (subItems.length) {
-        // Attempt to retrieve the section title from an index.md file if it exists
-        let title = entry.name
-        const indexPath = path.join(subdir, 'index.md')
-        if (fs.existsSync(indexPath)) {
-          try {
-            const content = fs.readFileSync(indexPath, 'utf-8')
-            const { data } = matter(content)
-            title = data.title || title
-          } catch (error) {
-            console.warn(`Error reading file ${indexPath}: ${error.message}`)
-          }
+        const groupItem = {
+          text: title,
+          collapsed: true, // group is collapsed by default
+          order: groupOrder,
+          items: subItems,
         }
 
-        // For directories, create a collapsible group that is closed by default.
-        items.push({
-          text: title,
-          items: subItems,
-          collapsed: true, // group is collapsed by default
-          order: subItems[0].order || 0 // Optionally set group order based on the first child
-        })
+        // Optionally, add a link to the group header if an index.md was found
+        if (groupLink) {
+          groupItem.link = groupLink
+        }
+
+        items.push(groupItem)
       }
     }
     // If the entry is a Markdown file
@@ -57,7 +74,7 @@ export function generateSidebar(dir, base = '') {
         continue
       }
 
-      // Create the link: use base path for index.md, otherwise remove .md extension
+      // Create the link: for index.md, use the base path; otherwise remove the .md extension
       let link = path.join(base, entry.name.replace(/\.md$/, ''))
       if (entry.name === 'index.md') {
         link = base || '/'
@@ -66,7 +83,7 @@ export function generateSidebar(dir, base = '') {
       items.push({
         text: data.title || entry.name.replace(/\.md$/, ''),
         link: '/' + link.replace(/\\/g, '/'),
-        order: data.order || 0
+        order: data.order || 0,
       })
     }
   }
