@@ -3,3 +3,4 @@ course-publish-tools/
 tmp/
 docs/node_modules/
 docs/.vitepress/cache/
+docs/.vitepress/dist/
