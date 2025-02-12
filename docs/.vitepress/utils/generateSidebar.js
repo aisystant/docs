@@ -19,7 +19,7 @@ export function generateSidebar(dir, base = '') {
     if (entry.isDirectory()) {
       const subdir = path.join(dir, entry.name)
       const subItems = generateSidebar(subdir, path.join(base, entry.name))
-      
+
       if (subItems.length) {
         // Attempt to retrieve the section title from an index.md file if it exists
         let title = entry.name
@@ -33,10 +33,12 @@ export function generateSidebar(dir, base = '') {
             console.warn(`Error reading file ${indexPath}: ${error.message}`)
           }
         }
-        
+
+        // For directories, create a collapsible group that is closed by default.
         items.push({
           text: title,
           items: subItems,
+          collapsed: true, // group is collapsed by default
           order: subItems[0].order || 0 // Optionally set group order based on the first child
         })
       }
