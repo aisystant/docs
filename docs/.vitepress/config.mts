@@ -23,9 +23,7 @@ export default defineConfig({
   themeConfig: {
     // Use dynamically generated navigation items for the courses
     nav: [
-      { text: 'Home', link: '/' },
       ...courseNav,
-      { text: 'Examples', link: '/markdown-examples' }
     ],
     // Map each course route to its generated sidebar
     sidebar,
