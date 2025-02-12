@@ -3,32 +3,53 @@ import path from 'path'
 import { generateSidebar } from './utils/generateSidebar.js'
 import { generateCourseNav } from './utils/generateNav.js'
 
-// Define the base directory for your courses (adjust as needed)
+// Define the base directory for the Russian content
 const ruDir = path.resolve(__dirname, '../ru')
 
-// Dynamically generate navigation items for each course in the /ru folder
-const courseNav = generateCourseNav(ruDir, '/ru')
+// Dynamically generate navigation items for courses in the /ru directory
+const ruCourseNav = generateCourseNav(ruDir, '/ru')
 
-// Dynamically generate a sidebar for each course by scanning its subdirectories
-const sidebar = {}
-courseNav.forEach(course => {
-  // Extract the course folder name from the course link (e.g. 'course1' from '/ru/course1/')
-  const courseName = course.link.replace(/^\/|\/$/g, '').split('/')[1]
-  sidebar[`/ru/${courseName}/`] = generateSidebar(path.join(ruDir, courseName), `ru/${courseName}`)
+// Dynamically generate a sidebar for each course in /ru
+const ruSidebar = {}
+ruCourseNav.forEach(course => {
+  // Extract the course folder name from course.link (e.g., "course1" from "/ru/course1/")
+  const parts = course.link.split('/').filter(Boolean) // remove empty strings
+  const courseName = parts[1]  // parts[0] is "ru", parts[1] is the course name
+  ruSidebar[`/ru/${courseName}/`] = generateSidebar(
+    path.join(ruDir, courseName),
+    `ru/${courseName}`
+  )
 })
 
 export default defineConfig({
   title: "Aisystant Docs",
   description: "Documentation for Aisystant",
-  themeConfig: {
-    // Use dynamically generated navigation items for the courses
-    nav: [
-      ...courseNav,
-    ],
-    // Map each course route to its generated sidebar
-    sidebar,
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
-  }
+  // Top-level locales configuration: keys are base paths for each locale.
+  locales: {
+    en: {
+      label: 'English',
+      lang: 'en-US',
+      link: '/en/',
+      themeConfig: {
+        // Currently empty for English; can be populated when English content is available.
+        nav: [],
+        sidebar: {},
+        socialLinks: [
+          { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+        ]
+      }
+    },
+    ru: {
+      label: 'Русский',
+      lang: 'ru-RU',
+      link: '/ru/',
+      themeConfig: {
+        nav: ruCourseNav,      // Dynamically generated navigation for Russian courses
+        sidebar: ruSidebar,      // Dynamically generated sidebar for Russian courses
+        socialLinks: [
+          { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+        ]
+      },
+    },
+  },
 })

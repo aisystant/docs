@@ -5,21 +5,11 @@ layout: home
 hero:
   name: "Aisystant Docs"
   text: " "
-  tagline: My great project tagline
-  actions:
-    - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+  tagline: " "
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - title: Introduction to System Thinking
+    details: "Author: Tseren Tserenov"
+    link: /en/Introduction-to-Sthinking
 ---
 
