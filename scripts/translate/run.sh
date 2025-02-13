@@ -8,7 +8,10 @@ commit1=$1
 commit2=$2
 
 # Then we need to get the files that were changed between the two commits
-files=$(git diff --name-only $commit1 $commit2)
+#files=$(git diff --name-only $commit1 $commit2)
+
+# lets translate all the files in docs/ru directory
+files=$(find docs/ru -type f)
 
 ## Let's check if all the files are in docs/ru directory
 #for file in $files
