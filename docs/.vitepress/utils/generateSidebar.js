@@ -3,7 +3,7 @@ import path from 'path'
 import matter from 'gray-matter'
 
 /**
- * Recursively generates sidebar items for a section directory.
+ * Recursively generates sidebar items for a section directory and sorts pages based on frontmatter order.
  *
  * @param {string} dir - Absolute path to the section directory.
  * @param {string} base - Base URL for the section directory.
@@ -16,14 +16,16 @@ function generateSectionSidebar(dir, base = '') {
   for (const entry of entries) {
     if (entry.isDirectory()) {
       const subdir = path.join(dir, entry.name)
-      let subItems = generateSectionSidebar(subdir, path.join(base, entry.name))
+      const subItems = generateSectionSidebar(subdir, path.join(base, entry.name))
       let title = entry.name
+      let order = 0
       const indexPath = path.join(subdir, 'index.md')
       if (fs.existsSync(indexPath)) {
         try {
           const content = fs.readFileSync(indexPath, 'utf-8')
           const { data } = matter(content)
           title = data.title || title
+          order = data.order || 0
         } catch (error) {
           console.warn(`Error reading ${indexPath}: ${error.message}`)
         }
@@ -32,44 +34,53 @@ function generateSectionSidebar(dir, base = '') {
         items.push({
           text: title,
           collapsed: true,
-          items: subItems
+          items: subItems,
+          order
         })
       } else {
         const link = '/' + path.join(base, entry.name, 'index').replace(/\\/g, '/')
         items.push({
           text: title,
-          link: link
+          link: link,
+          order
         })
       }
     } else if (entry.isFile() && entry.name.endsWith('.md')) {
-      // Skip index.md here to avoid duplicates (handled at the group level)
+      // Skip index.md to avoid duplicates (handled at the group level)
       if (entry.name === 'index.md') continue
       const filePath = path.join(dir, entry.name)
-      let fileContent, data
+      let fileContent, data, order = 0
       try {
         fileContent = fs.readFileSync(filePath, 'utf-8')
         const parsed = matter(fileContent)
         data = parsed.data
+        order = data.order || 0
       } catch (error) {
         console.warn(`Error reading file ${filePath}: ${error.message}`)
         continue
       }
-      let link = path.join(base, entry.name.replace(/\.md$/, ''))
+      const link = path.join(base, entry.name.replace(/\.md$/, ''))
       items.push({
         text: data.title || entry.name.replace(/\.md$/, ''),
-        link: '/' + link.replace(/\\/g, '/')
+        link: '/' + link.replace(/\\/g, '/'),
+        order
       })
     }
   }
-  return items
+
+  // Sort items by the 'order' property (and then alphabetically by text if orders are equal)
+  items.sort((a, b) => {
+    if (a.order !== b.order) return a.order - b.order
+    return a.text.localeCompare(b.text)
+  })
+
+  // Remove the temporary 'order' property before returning
+  return items.map(({ order, ...rest }) => rest)
 }
 
 /**
  * Generates a course sidebar with a single group header (course title)
  * and collapsible items for each section, including course-level files.
- *
- * Files located directly in the course folder (except for index.md) are added
- * as items alongside the sections.
  *
  * @param {string} courseDir - Absolute path to the course directory.
  * @param {string} base - Base URL for the course directory.
