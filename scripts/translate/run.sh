@@ -10,18 +10,19 @@ commit2=$2
 # Then we need to get the files that were changed between the two commits
 files=$(git diff --name-only $commit1 $commit2)
 
-# Let's check if all the files are in docs/ru directory
+## Let's check if all the files are in docs/ru directory
+#for file in $files
+#do
+#
+#done
+
+# Now let's translate all the files
 for file in $files
 do
     if [[ $file != docs/ru/* ]]
     then
         echo "Error: $file is not in docs/ru directory"
-        exit 1
+        continue
     fi
-done
-
-# Now let's translate all the files
-for file in $files
-do
     python scripts/translate/translate.py $file
 done
