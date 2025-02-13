@@ -1,0 +1,22 @@
+---
+order: 10
+title: Descriptions and Documentation of Different Subjects of Interest
+---
+
+At the end of the subsection "How to Think About Systems?", we were interested in approaches to **describing any system** as either a "black" or "transparent" box^[These approaches apply to both the target system and the supersystem, our system, or the system in creation], and we delved into this in the previous sections. In this subsection, we'll explore specific types of descriptions across various **areas of interest in project activities****.**
+
+In project activities (or within an enterprise), **you're surrounded by a myriad of documents describing various systems**^[At different systems levels or creation chains]. Meanwhile, multiple projects are running at the enterprise, and you might be involved in several of them. In your daily work tasks, you aren't necessarily or always describing the target system. For example, you might be describing clientele, creating certain subsystems for the production line of the target system, or simply filling out financial templates.
+
+Refer once again to Table 3x3 and pay attention to the enumeration of work products in each cell. Examine each cell and try to find your cell(s) and the work products with which you are involved or which you create.
+
+For instance, note that the target system as a "black box" in terms of its role behavior (cell 1.2 of Table 3x3) is described as a "concept of use." Although your specific enterprise might have a different exact name for it, meaning "concept of use" might be called something else^[The use concept documentation might be named differently at a specific enterprise: standards documents, use cases, technical specifications, files with scenario diagrams in various languages, database fragments with an informational model]. **The exact name of the work product in each cell** of **Table 3x3** depends on the subject area and chosen description method. If you're building a car, you will use one set of description methods for all the cells, and if it's an IT system, a different set.
+
+Systems thinking will help you communicate better with specialists, but you also need to consciously^[Awareness arises when you focus on your roles, best sota-methods, subjects of interest and preferences, work products, etc.] understand your **subject of interest**, including reaching into the physical world. This means knowing from which cell of Table 3x3 you view other project roles^[All other team members or external project roles] and with which work products you communicate with them.
+
+If you do not know your subject of interest and can't extend your thought to changes in the physical world (i.e., to specific work products), this is a direct path to failure. You will end up describing odd things, implementing random changes in the physical world, or not addressing the physical world at all with your ideas.
+
+In our course, we merely draw attention to the fact that there are different areas of interest and that in each of them, documentation is created using certain description methods. Every enterprise has **employees who specialize in particular subject areas** and use description methods to create this documentation.
+
+For example, a marketer (in cell 1.1 of Table 3x3) creates a description of the target audience. And from our course, you now understand what this documentation is, what role it plays, and for whom this work product is created. You should also understand that the clientele is a system in the real/physical world, and a computer CRM system is to this clientele much like a photograph of a person is to a person—a document with description and convenient means to view the document.
+
+However, you are unlikely to be able to create this "clientele" system or even the documentation describing it unless you are the appropriate specialist. The same goes for all other cells of Table 3x3. **In our course, you received a high-level understanding of all areas of interest and studied a universal** **approach to modeling** any system. But specific modeling and system creation are done by applied specialists. The good news is that now you know how to interact with them, meaning you understand their subjects of interest, methods, work products, and so on.
