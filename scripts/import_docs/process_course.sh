@@ -27,6 +27,7 @@ fi
 #python scripts/import_docs/import_course.py "$name" "$version"
 
 echo "Importing course: $name, version: $version, versionId: $versionId"
+rm -rf docs/ru/$name
 mkdir -p tmp/$name/$version
 python scripts/import_docs/01_get_course_structure.py "$versionId" > tmp/$name/$version/structure.json
 cat tmp/$name/$version/structure.json | python scripts/import_docs/02_get_sections.py > tmp/$name/$version/sections.json

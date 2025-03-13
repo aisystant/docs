@@ -6,6 +6,7 @@ import json
 import base64
 import re
 from markdownify import markdownify as md
+import llm
 
 # Configure logging
 log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
@@ -67,6 +68,7 @@ def fetch_text(section_id):
     html_with_replaced_footnotes = replace_footnotes(raw_html)
     attachments = extract_attachments(raw_html)
     markdown_text = md(html_with_replaced_footnotes)
+    #clean_markdown_text = llm.run('markdown-cleaner', {"markdown": markdown_text})
     return {
         "text": base64.b64encode(markdown_text.encode()).decode(),
         "attachments": attachments
