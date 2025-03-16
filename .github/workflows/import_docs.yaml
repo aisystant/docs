@@ -1,6 +1,9 @@
 name: Hourly Course Import
 
 on:
+  push:
+    branches:
+      - wf
   schedule:
     # Run every hour
     - cron: '0 * * * *'
