@@ -43,7 +43,7 @@ def get_courses_list():
             if not course_id or not version:
                 continue
             result.append(f"{course_id}:{version}:{versionId}:{authors}:{changelog}")
-        logger.info("Successfully fetched the courses list")
+        logger.info("Successfully fetched the courses list:", result)
         return result
     except Exception as e:
         logger.error(f"Failed to fetch courses list: {e}")
