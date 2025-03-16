@@ -30,4 +30,4 @@ jobs:
           pip install -r scripts/import_docs/requirements.txt
       
       - name: Run import script
-        run: python scripts/import_docs/get_all_cources.py
+        run: bash scripts/import_docs/run.sh
