@@ -30,4 +30,7 @@ jobs:
           pip install -r scripts/import_docs/requirements.txt
       
       - name: Run import script
+        env:
+          AISYSTANT_BASE_URL: ${{ vars.AISYSTANT_BASE_URL }}
+          AISYSTANT_SESSION_TOKEN: ${{ secrets.AISYSTANT_SESSION_TOKEN }}
         run: bash scripts/import_docs/run.sh
