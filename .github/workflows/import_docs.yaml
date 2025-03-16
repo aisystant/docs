@@ -12,7 +12,7 @@ on:
 jobs:
   import-courses:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'  # Only run on main branch
+    #if: github.ref == 'refs/heads/main'  # Only run on main branch
     
     steps:
       - name: Checkout repository
