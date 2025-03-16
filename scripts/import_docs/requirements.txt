@@ -1,2 +1,2 @@
 markdownify==0.14.1
-requests==2024.8.30
+requests==2.32.3
