@@ -1,12 +1,17 @@
-import requests
-import logging
 import os
 import sys
 import json
 import base64
+import logging
+import yaml
 from slugify import slugify
 
-# Configure logging
+# Import required libraries for LangSmith and OpenAI integration
+from langsmith import Client
+from openai import OpenAI
+from langchain_core.messages import convert_to_openai_messages
+
+# Setup logging configuration
 log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
 logging.basicConfig(
     level=log_level,
@@ -15,13 +20,42 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TRANSLATION_SERVICE_URL = "https://congenial-fishstick-4jqpgxv69h5r4w-5000.app.github.dev/api/translate"  # Translation service URL
-AISYSTANT_SESSION_TOKEN = os.getenv('AISYSTANT_SESSION_TOKEN')
-HEADERS = {'Session-Token': AISYSTANT_SESSION_TOKEN}
+# Initialize LangSmith and OpenAI clients
+client = Client()           # LangSmith client
+oai_client = OpenAI()       # OpenAI client
+
+# Pull the translation prompt from LangSmith (ensure that this prompt exists)
+prompt = client.pull_prompt("translate-title")
+
+# Path to the YAML file for caching translated titles
+TITLE_CACHE_FILE = "title.yaml"
+
+def load_title_cache():
+    """Load the translation cache from the YAML file."""
+    if os.path.exists(TITLE_CACHE_FILE):
+        try:
+            with open(TITLE_CACHE_FILE, "r", encoding="utf-8") as f:
+                cache = yaml.safe_load(f)
+                return cache if isinstance(cache, dict) else {}
+        except Exception as e:
+            logger.error(f"Failed to load cache from {TITLE_CACHE_FILE}: {e}")
+            return {}
+    return {}
+
+def save_title_cache(cache):
+    """Save the translation cache to the YAML file."""
+    try:
+        with open(TITLE_CACHE_FILE, "w", encoding="utf-8") as f:
+            yaml.dump(cache, f, allow_unicode=True)
+    except Exception as e:
+        logger.error(f"Failed to save cache to {TITLE_CACHE_FILE}: {e}")
+
+# Load the title cache at startup
+title_cache = load_title_cache()
 
 def decode_base64(encoded_text):
     """
-    Decodes a Base64-encoded string to plain text.
+    Decode a Base64-encoded string to plain text.
     """
     try:
         decoded_bytes = base64.b64decode(encoded_text)
@@ -30,57 +64,55 @@ def decode_base64(encoded_text):
         logger.error(f"Failed to decode Base64 text: {e}")
         return ""
 
-def translate_text(text, lang="en", system_prompt_cid="", user_prompt_cid="", context="", model="gpt-4o"):
+def translate_title(title, context=""):
     """
-    Sends a request to the translation service to translate text.
+    Translate the title to English using LangSmith for prompt retrieval and OpenAI for generation.
+    The result is cached and saved immediately after each new translation.
     """
-    payload = {
-        "text": text,
-        "lang": lang,
-        "system_prompt_cid": system_prompt_cid,
-        "user_prompt_cid": user_prompt_cid,
-        "context": context,
-        "model": model
-    }
-
+    if title in title_cache:
+        return title_cache[title]
     try:
-        response = requests.post(
-            TRANSLATION_SERVICE_URL,
-            headers={"Content-Type": "application/json"},
-            json=payload
+        # Prepare the data for the prompt
+        doc = {
+            "title": title,
+            "context": context
+        }
+        # Invoke the prompt to format the request
+        formatted_prompt = prompt.invoke(doc)
+        # Send the request to OpenAI by converting messages to the required format
+        response = oai_client.chat.completions.create(
+            model="gpt-4o",  # Change to "gpt-4" if needed
+            messages=convert_to_openai_messages(formatted_prompt.messages)
         )
-        response.raise_for_status()
-        translated_text = response.json().get("message", "")
-        if not translated_text.strip():
-            logger.error("Translation service returned an empty result.")
+        translated_title = response.choices[0].message.content.strip()
+        if not translated_title:
+            logger.error("Translation returned an empty result.")
             sys.exit(1)
-        return translated_text
-    except requests.RequestException as e:
-        logger.error(f"Failed to translate text '{text}': {e}")
+        # Cache the translation and immediately save the cache
+        title_cache[title] = translated_title
+        save_title_cache(title_cache)
+        return translated_title
+    except Exception as e:
+        logger.error(f"Error translating title '{title}': {e}")
         sys.exit(1)
 
 def add_slug_to_structure(structure):
     """
-    Recursively adds a slug to each element in the structure.
+    Recursively add a slug (based on the translated title) to each element in the structure.
     """
     for element in structure:
+        decoded_text = ""
         try:
             base64_text = element.get("text", "")
             decoded_text = decode_base64(base64_text)
         except Exception as e:
-            decoded_text = ""
+            logger.error(f"Error decoding text for element: {e}")
+
         title = element.get("title", "")
         if title:
-            translated_title = translate_text(
-                text=title,
-                lang="en",
-                system_prompt_cid="QmQNECrHspRRLxeq34uNWmxMmjDAtk5SGN11PApiP9idFk",
-                user_prompt_cid="Qmcu6Tn9bZorQGt7gRvZ8JymmCcTGRkfX4ermAyKWnkEyx",
-                context=decoded_text,
-                model="gpt-4o"
-            )
+            translated_title = translate_title(title, context=decoded_text)
             element["slug"] = slugify(translated_title)
-            element["english_title"] = title
+            element["english_title"] = translated_title
         else:
             element["slug"] = ""
         if "children" in element:
@@ -98,7 +130,7 @@ if __name__ == "__main__":
     try:
         add_slug_to_structure(structure)
     except Exception as e:
-        logger.error(f"An error occurred while processing the structure: {e}")
+        logger.error(f"Error processing the structure: {e}")
         sys.exit(1)
 
     # Output the updated structure
