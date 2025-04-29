@@ -1,6 +1,9 @@
 name: Hourly Course Import
 
 on:
+  push:
+    branches:
+      - wf
   schedule:
     # Run every hour
     - cron: '0 * * * *'
@@ -9,7 +12,7 @@ on:
 jobs:
   import-courses:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'  # Only run on main branch
+    #if: github.ref == 'refs/heads/main'  # Only run on main branch
     
     steps:
       - name: Checkout repository
@@ -27,4 +30,7 @@ jobs:
           pip install -r scripts/import_docs/requirements.txt
       
       - name: Run import script
-        run: python scripts/import_docs/get_all_cources.py
+        env:
+          AISYSTANT_BASE_URL: ${{ vars.AISYSTANT_BASE_URL }}
+          AISYSTANT_SESSION_TOKEN: ${{ secrets.AISYSTANT_SESSION_TOKEN }}
+        run: bash scripts/import_docs/run.sh
