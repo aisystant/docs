@@ -1,7 +1,7 @@
 # Get a list of cources from the api (run get_all_cources.sh, that return a list of cources)
 
 # python scripts/import_docs/get_all_cources.py | while read -r course; do
-python scripts/import_docs/get_all_cources.py | grep Introduction-to-SThinking | while read -r course; do
+python scripts/import_docs/get_all_cources.py | grep systems-thinking-introduction | while read -r course; do
     # course=name:version:authors:changelog
     echo "Course: $course"
     name=$(echo $course | cut -d: -f1)
