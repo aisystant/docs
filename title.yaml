@@ -1,0 +1,237 @@
+Виды систем: Types of Systems
+'Виды систем: целевая система, надсистема, системы создания и другие': 'Types of Systems:
+  Target System, Supersystem, Creation Systems, and Others'
+Воплощение и описание системы: Implementation and Description of the System
+Вопросы для повторения, обсуждения и мышления письмом: Questions for Review, Discussion,
+  and Thinking Through Writing
+Выводы раздела и основные понятия: Conclusions of the Section and Main Concepts
+Выполните моделирование 6.9. Описание системы как черного ящика: 'Perform Simulation
+  6.9: System Description as a Black Box'
+'Выполните моделирование: 1.1. Понятия': 'Perform Modeling: 1.1. Concepts'
+'Выполните моделирование: 1.2. Дисциплина (теория, модель)': 'Perform Modeling: 1.2.
+  Discipline (Theory, Model)'
+'Выполните моделирование: 1.3. Мастерство': 'Perform Modeling: 1.3. Mastery'
+'Выполните моделирование: 1.4. Характеристики системы': 'Perform Modeling: 1.4. System
+  Characteristics'
+'Выполните моделирование: 1.5. Функция системы': 'Perform Simulation: 1.5. Function
+  of the System'
+'Выполните моделирование: 1.6. Классические свойства системы': 'Perform Modeling:
+  1.6. Classical System Properties'
+'Выполните моделирование: 1.7. Форма и содержание': 'Perform Modeling: 1.7. Form and
+  Content'
+'Выполните моделирование: 1.8. Заземление абстрактных текстов': 'Perform Simulation:
+  1.8. Grounding Abstract Texts'
+'Выполните моделирование: 2.1. Понятия': 'Perform Modeling: 2.1. Concepts'
+'Выполните моделирование: 2.2. Физический мир и ментальное пространство': 'Perform
+  the Modeling: 2.2. Physical World and Mental Space'
+'Выполните моделирование: 2.3. Система и её описание': 'Perform Modeling: 2.3. The
+  System and Its Description'
+'Выполните моделирование: 2.4. Воплощение, описание и документация системы': 'Perform
+  Modeling: 2.4. Implementation, Description, and System Documentation'
+'Выполните моделирование: 2.5. Описание и метод описания (практика)': 'Perform Modeling:
+  2.5. Description and Method of Description (Practice)'
+'Выполните моделирование: 2.6. Функциональный объект, конструктивный объект': 'Perform
+  Modeling: 2.6. Functional Object, Constructive Object'
+'Выполните моделирование: 2.7. Сложные системы': 'Perform Modeling: 2.7. Complex Systems'
+'Выполните моделирование: 3.1. Понятия': 'Perform Modeling: 3.1. Concepts'
+'Выполните моделирование: 3.10. Кто был на последнем совещании': 'Perform the Modeling:
+  3.10. Who Attended the Last Meeting'
+'Выполните моделирование: 3.11. Внешние проектные роли и успешность системы': 'Perform
+  the Modeling: 3.11. External Project Roles and System Success'
+'Выполните моделирование: 3.2. Роль и исполнитель': 'Perform Modeling: 3.2. Role and
+  Executor'
+'Выполните моделирование: 3.3. Роль, исполнитель, звание и должность': 'Perform Modeling:
+  3.3. Role, Executor, Rank, and Position'
+'Выполните моделирование: 3.4. Внешние и внутренние роли в проекте': 'Perform Modeling:
+  3.4. External and Internal Roles in the Project'
+'Выполните моделирование: 3.5. Роли, исполняемые начальником': 'Perform Modeling:
+  3.5. Roles Executed by the Manager'
+'Выполните моделирование: 3.6. Предметы интересов к системе': 'Perform Modeling: 3.6.
+  Subjects of Interest to the System'
+'Выполните моделирование: 3.7. Намерение, предпочтение и предмет интереса': 'Perform
+  Simulation: 3.7. Intention, Preference, and Subject of Interest'
+'Выполните моделирование: 3.8. Выявление ролей и ролевых ожиданий': 'Perform Simulation:
+  3.8. Identification of Roles and Role Expectations'
+'Выполните моделирование: 3.9. Работа аналитика': 'Perform Modeling: 3.9. Analyst''s
+  Work'
+'Выполните моделирование: 4.1. Понятия': 'Perform Modeling: 4.1. Concepts'
+'Выполните моделирование: 4.2. Пять главных типов систем': 'Perform Modeling: 4.2.
+  Five Main Types of Systems'
+'Выполните моделирование: 4.3. Выявление типа целевой системы по описаниям': 'Perform
+  Modeling: 4.3. Identifying the Target System Type by Descriptions'
+'Выполните моделирование: 4.4. Целевая система и её надсистема': 'Perform Modeling:
+  4.4. Target System and Its Supersystem'
+'Выполните моделирование: 4.5. Целевая система и «наша система»': 'Perform Modeling:
+  4.5. Target System and "Our System"'
+'Выполните моделирование: 4.6. Сервисы': 'Perform Modeling: 4.6. Services'
+'Выполните моделирование: 5.1. Понятия': 'Execute Modeling: 5.1. Concepts'
+'Выполните моделирование: 5.2. Аннотирование типами с использованием нотации ::': 'Perform
+  Modeling: 5.2. Annotating with Types Using Notation ::'
+'Выполните моделирование: 5.3. Области интересов надсистемы': 'Execute Modeling: 5.3.
+  Areas of Interest of the Supersystem'
+'Выполните моделирование: 5.4. Выделите системные уровни': 'Perform the Modeling:
+  5.4. Identify Systems Levels'
+'Выполните моделирование: 5.5. Цепочки создания': 'Perform Modeling: 5.5. Creation
+  Chains'
+'Выполните моделирование: 5.6. Распределение времени на три области интересов': 'Perform
+  Modeling: 5.6. Time Allocation Across Three Areas of Interest'
+'Выполните моделирование: 5.7. Таблица 3х3': 'Perform Modeling: 5.7. 3x3 Table'
+'Выполните моделирование: 6.1. Понятия': 'Execute Modeling: 6.1. Concepts'
+'Выполните моделирование: 6.2. Роль, система, предмет интереса, метод описания и рабочий продукт': 'Perform
+  Simulation: 6.2. Role, System, Subject of Interest, Description Method, and Work
+  Product'
+'Выполните моделирование: 6.3. Документы проекта (предприятия)': 'Perform Modeling:
+  6.3. Project (Enterprise) Documents'
+'Выполните моделирование: 6.4. Мои роли и мои методы описания': 'Perform Modeling:
+  6.4. My Roles and My Methods of Description'
+'Выполните моделирование: 6.5. Модели, мета-модели, мульти-модели, мега-модели': 'Perform
+  Modeling: 6.5. Models, Meta-models, Multi-models, Mega-models'
+'Выполните моделирование: 6.6. Операционная модель, типы мета-модели, типы мета-мета-модели': 'Execute
+  the Modeling: 6.6. Operational Model, Types of Meta-Model, Types of Meta-Meta-Model'
+'Выполните моделирование: 6.7. Функциональное и конструктивное описания': 'Perform
+  Modeling: 6.7. Functional and Structural Descriptions'
+'Выполните моделирование: 7.1. Понятия': 'Perform Modeling: 7.1. Concepts'
+'Выполните моделирование: 7.10. Изменения на предприятии': 'Perform Modeling: 7.10.
+  Changes at the Enterprise'
+'Выполните моделирование: 7.11. Назначение оргзвеньев на оргроли, выполняющие методы': 'Perform
+  Modeling: 7.11. Assign Organizational Units to Organizational Roles Executing Methods'
+'Выполните моделирование: 7.12. Примеры кратких описаний проектов (резюме проекта)': 'Perform
+  Simulation: 7.12. Examples of Brief Project Descriptions (Project Summary)'
+'Выполните моделирование: 7.13. Мои роли, методы и приоритетные проекты': 'Perform
+  the Simulation: 7.13. My Roles, Methods, and Priority Projects'
+'Выполните моделирование: 7.14. Степень мыслительного мастерства': 'Conduct Modeling:
+  7.14. Level of Thinking Mastery'
+'Выполните моделирование: 7.15. Моя квалификация AISYSTANT': 'Complete the Modeling:
+  7.15. My AISYSTANT Qualification'
+'Выполните моделирование: 7.2. Метод: дисциплина и инструменты': 'Perform Modeling:
+  7.2. Method: Discipline and Tools'
+'Выполните моделирование: 7.3. Квалификация исполнителя': 'Perform Modeling: 7.3.
+  Executor''s Qualification'
+'Выполните моделирование: 7.4. Профессиональные сообщества по sota-методам': 'Perform
+  the Simulation: 7.4. Professional Communities on Sota-Methods'
+'Выполните моделирование: 7.5. Методы и системные уровни': 'Run the Modeling: 7.5.
+  Methods and Systems Levels'
+'Выполните моделирование: 7.6. Роль, метод и рабочий продукт': 'Perform Modeling:
+  7.6. Role, Method, and Work Product'
+'Выполните моделирование: 7.7. Стадии и методы': 'Perform Simulation: 7.7. Stages
+  and Methods'
+'Выполните моделирование: 7.8. Система и процесс': 'Perform Modeling: 7.8. System
+  and Process'
+'Выполните моделирование: 7.9. Формулировка работы': 'Perform Modeling: 7.9. Work
+  Formulation'
+Главные описания системы как “прозрачного ящика”: Main Descriptions of the System
+  as a "Transparent Box"
+Диаграмма цепочки создания: Chain Creation Diagram
+Документация системы: System Documentation
+Документация – это система? Рабочий продукт – это система?: Is Documentation a System?
+  Is a Work Product a System?
+Должность, успешная система и интеллект: Position, Successful System, and Intelligence
+Домашнее задание: Homework
+Зачем и как объяснять, что такое системное мышление: Why and How to Explain Systems
+  Thinking
+Зачем и чему учиться в современном мире: Why and What to Learn in the Modern World
+Инкремент и итерация: Increment and Iteration
+Интеллект-стек и стек саморазвития: Intellect Stack and Self-Development Stack
+'Исполнители роли: агент и его намерение, стратегия и планы': 'Role Executors: Agent
+  and Their Intention, Strategy, and Plans'
+Исполнитель роли, роль, функция и названия систем: Executor of a Role, Role, Function,
+  and System Names
+Как думать о системах?: How to Think About Systems?
+Как системное мышление помогает в рабочей деятельности: How Systems Thinking Helps
+  in Work Activities
+Классический системный подход 1.0: Classical Systems Approach 1.0
+Мета-моделирование и моделирование: Meta-Modeling and Modeling
+Мета-системный переход и эмерджентность: Meta-Systems Transition and Emergence
+Метод (Практика) – это дисциплина и инструменты: Method (Practice) – A Discipline
+  and Tools
+Метод описания: Method of Description
+Модели, мета-модели, мульти-модели, мега-модели: Models, Meta-Models, Multi-Models,
+  Mega-Models
+Надсистема, системные уровни и рекурсия: Supersystem, System Levels, and Recursion
+Наша система: Our System
+'О коммуникации: форма против содержания': 'On Communication: Form vs. Content'
+Области интересов: Areas of Interest
+Описание и воплощение системы: Description and Implementation of the System
+Описание системы как «черного ящика»: Description of the System as a "Black Box"
+Описания и документация разных областей интересов: Descriptions and Documentation
+  of Different Subjects of Interest
+Описания системы и системный язык: Descriptions of Systems and Systems Language
+Организация как система: Organization as a System
+Оргзвенья, сервисы: Organizational Units and Services
+Основные понятия системного мышления: Basic Concepts of Systems Thinking
+Отношение состава: Composition Relationship
+Подготовка к обучению: Preparation for Learning
+Предисловие: Foreword
+Предмет интереса, ролевой интерес или предпочтение: Subject of Interest, Role Interest,
+  or Preference
+Предметные области интересов предпринимателя, инженера и менеджера: Areas of Interest
+  of the Entrepreneur, Engineer, and Manager
+Пример описания области интересов надсистемы: Example Description of the Supersystem's
+  Area of Interest
+Пример описания связи интересов надсистемы и целевой системы: Example of Describing
+  the Connection Between the Interests of the Supersystem and the Target System
+Пример сервиса - “стрижка”: Example of Service - "Haircut"
+'Пример: как готовиться к путешествию с помощью системного подхода': 'Example: How
+  to Prepare for a Trip Using Systems Approach'
+'Пример: надсистема для мужчины и женщины': 'Example: Suprasystem for a Man and a
+  Woman'
+Примеры описаний системы как прозрачного ящика: Examples of Describing a System as
+  a Transparent Box
+Проектная деятельность и три главные деятельностные роли: Project Activities and the
+  Three Main Operational Roles
+Проектные роли, их методы и рабочие продукты: Project Roles, Their Methods, and Work
+  Products
+Процесс, система и поведение системы: Process, System, and System Behavior
+Работа и задача: Work and Task
+Ролевые описания и модели: Role Descriptions and Models
+Роли и исполнители: Roles and Executors
+Роли и успешная система: Roles and a Successful System
+Роли, стадии, методы: Roles, Stages, Methods
+Роль как модель мышления: Role as a Thinking Model
+Роль как часть системы или деятельности: Role as Part of a System or Activity
+Связь метода описания с предметом интереса, проектными ролями и системой: The Connection
+  Between Description Method, Subject of Interest, Project Roles, and System
+Система и ее ролевое поведение: System and Its Role Behavior
+Системная документация: System Documentation
+Системное моделирование: Systems Modeling
+Системное мышление как способ получения работ по созданию успешной системы: Systems
+  Thinking as a Way to Obtain Work for Creating a Successful System
+Системное разбиение: Systems Breakdown
+Системность и систематичность: Systemness and Systematicness
+Системные уровни, цепочки создания, области интересов: Systems Levels, Creation Chains,
+  Areas of Interest
+Системный подход 2.0: Systems Approach 2.0
+Системный подход 3.0: Systems Approach 3.0
+'Системы и функции: названия важны': 'Systems and Functions: Names Matter'
+Системы создания: Systems of Creation
+Слово, объект, система: Word, Object, System
+Сложность: Complexity
+Сложные системы: Complex Systems
+'Советы для молодого руководителя: главные объекты внимания': 'Tips for a Young Manager:
+  Key Areas of Focus'
+Создание и развитие: Creation and Development
+Стадии и этапы: Stages and Phases
+Суть системного мышления: The Essence of Systems Thinking
+Театральная метафора: Theatrical Metaphor
+Три системы: Three Systems
+Управление практиками: Management of Practices
+Управление работами: Operations Management
+Успешная система: Successful System
+Физические и функциональные объекты: Physical and Functional Objects
+Физический мир и ментальное пространство: The Physical World and Mental Space
+Функция и сервис: Function and Service
+Функция системы: System Function
+Характеристики системы, состояния системы, показатель характеристики: System Characteristics,
+  System States, Characteristic Indicator
+Целевая система и коллективное системное мышление: Target System and Collective Systems
+  Thinking
+Цепочка создания: Chain of Creation
+Что дальше?: What's Next?
+Что значит «применить системное мышление»?: What Does "Apply Systems Thinking" Mean?
+Что такое интерфейс системы?: What is a System Interface?
+Что такое системное мышление и зачем оно современному человеку?: What is Systems Thinking
+  and Why Does a Modern Person Need It?
+Что такое системное мышление?: What is Systems Thinking?
+Этапы погружения в системную методологию на примере «молотка»: Stages of Immersion
+  in Systems Methodology Using the Example of a "Hammer"
+“Роль” и “метод”: “Role” and “Method”
