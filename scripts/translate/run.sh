@@ -11,7 +11,7 @@ commit2=$2
 #files=$(git diff --name-only $commit1 $commit2)
 
 # lets translate all the files in docs/ru directory
-files=$(find docs/ru -type f)
+files=$(find docs/ru/systems-thinking-introduction -type f)
 
 ## Let's check if all the files are in docs/ru directory
 #for file in $files
