@@ -15,6 +15,7 @@ python scripts/import_docs/get_all_cources.py | grep systems-thinking-introducti
         exit 1
     fi
     bash scripts/import_docs/process_course.sh "$name" "$version" "$versionId"
-    bash scripts/import_docs/git-commit-and-push.sh "$name" "$version" "$authors" "$changelog"
+    echo "Run manually:"
+    echo bash scripts/import_docs/git-commit-and-push.sh "$name" "$version" "$authors" "$changelog"  # remove echo after debug
     break
 done
