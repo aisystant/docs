@@ -5,6 +5,9 @@ version=$2
 authors=$3
 changelog=$4
 
+branch="$name/$version"
+git checkout -b "$branch"
+
 # save old git username and email
 old_username=$(git config user.name)
 old_email=$(git config user.email)

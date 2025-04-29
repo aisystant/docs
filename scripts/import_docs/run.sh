@@ -9,7 +9,7 @@ python scripts/import_docs/get_all_cources.py | grep systems-thinking-introducti
     versionId=$(echo $course | cut -d: -f3)
     authors=$(echo $course | cut -d: -f4)
     changelog=$(echo $course | cut -d: -f5-)
-    bash scripts/import_docs/git-checkout.sh "$name" "$version"
+    bash scripts/import_docs/git-update.sh "$name" "$version"
     if [ $? -ne 0 ]; then
         echo "Error checking out branch"
         exit 1
