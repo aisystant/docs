@@ -61,10 +61,10 @@ def download_and_replace_attachments(text, attachments, section_name, output_dir
             local_path = os.path.join(output_dir, new_filename)
 
             # Correct the attachment URL to remove double slashes
-            attachment_url = f"{AISYSTANT_BASE_URL}/{attachment_url.lstrip('/')}"
+            full_attachment_url = f"{AISYSTANT_BASE_URL}/{attachment_url.lstrip('/')}"
             
             # Download the file
-            response = requests.get(attachment_url, headers=HEADERS, stream=True)
+            response = requests.get(full_attachment_url, headers=HEADERS, stream=True)
             response.raise_for_status()
             with open(local_path, "wb") as file:
                 for chunk in response.iter_content(chunk_size=8192):
@@ -74,7 +74,7 @@ def download_and_replace_attachments(text, attachments, section_name, output_dir
             text = text.replace(attachment_url, f"./{new_filename}")
             logger.info(f"Downloaded and saved attachment: {local_path}")
         except requests.RequestException as e:
-            logger.error(f"Failed to download attachment {attachment_url}: {e}")
+            logger.error(f"Failed to download attachment {full_attachment_url}: {e}")
 
     return text
 
