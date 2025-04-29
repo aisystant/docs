@@ -1,0 +1,20 @@
+---
+order: 2
+title: Roles and Executors
+---
+
+### The Concept of "Role" 
+
+The notion of a "role" was originally used to distinguish a person from their actions (role behavior). Nowadays, we discuss agents^[Agents may be people or other entities that have intentions, strategies, and plans to achieve their goals. Examples include an organization of people with their tools and computers, and even unknown entities. They can also play various roles in different projects and interact with other agents.] with intentions, meaning not necessarily a person, but also inanimate physical objects. There are many agents and objects, but far fewer roles.
+
+Agents are associated with concepts such as misalignments, intentions, qualifications, and so on. In contrast, roles played by agents are linked with method, subjects of interest, preferences, and others. For instance, the role of a "hammer" can be executed by a "stone." Certain distinct characteristics apply: agents have specific intentions, and therefore they must decide to undertake a role^[Or through interaction with another agent, meaning another agent can place them into a role via leadership methods.], while a stone "is placed" in a role by an agent. We will primarily consider the more complex scenario where the role performer is an agent^[When it involves a physical inanimate object (non-agent), it is traditional engineering.].
+
+Although all individuals and other agents are different, most actions are similar to each other. Therefore, they can be described and formalized as methods. Moreover, they can be improved upon and, most importantly, these actions can be taught to others. For instance, surgeons are all trained in the same way. Nowadays, the role of the surgeon is sometimes performed not by a human, but by artificial intelligence.
+
+An average person in a company rarely uses theatrical metaphors. Most people view their colleagues as performers, knowing them by first and last names. However, a system constructor, in addition to this, also understands the roles each team member plays. This is an important system skill that should become second nature to you. Read the dialogue depicted in the image^[Taken from the textbook “Systems Thinking.”].
+
+In a project, you should recognize both the project roles and the names of the performers. Often, the same roles may be filled by several people, and one person can perform multiple roles. While it's not common, the same individual might play certain roles in one project, and different ones in another. In each role, the individual acts according to a specific method.
+
+A person might not be aware they're using a particular method unless they've studied it consciously in higher education^[Unlikely a surgeon could work in their field without consciously learning the theory and practice at a university, but many other roles and methods are not studied consciously.]. Within many teams, you can always find autodidacts^[Most actions in life are done without understanding the concept of "method." For example, many manage personal finances or swim without formal training. However, in professional activities, it's impossible to become a professional without consciously studying modern methods. Without intelligence, one cannot navigate numerous applied methods and master them faster than others.]. Yet, there are few good autodidacts, more common are talented or ordinary individuals who have developed their abilities through conscious learning of methods and transdisciplines from the intellect stack.
+
+A role performer is characterized by qualifications in specific mastery. For example, how skilled a person is as a surgeon. This qualification depends at least on the modernity of the studied theory (discipline) and the number of practical hours working in the role. Thus, modern theory and practical activities using the best technologies (tools) are necessary.
