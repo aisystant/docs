@@ -3,6 +3,8 @@ order: 1
 title: Types of Systems
 ---
 
+# Types of Systems
+
 In various ways, surrounding systems interact with the system of interest. For example, for a vehicle, the surrounding systems include the driver, passenger, road, pedestrian, etc. There are systems in the immediate surroundings and those in the remote surroundings. The systems in the immediate surroundings, along with the system of interest, comprise the supersystem. In our example, in the trip, besides the vehicle, the driver and passenger are included. The systems in the remote surroundings are those that interact with the system of interest during its operation. For instance, these would be the road and pedestrian.
 
 Subsystems^[All three main systems have subsystems, but if not specified, it is assumed to refer to the system of interest.] are parts of the system of interest. For a vehicle, subsystems include the engine, interior, chassis, etc. These subsystems are physically part of the system of interest, which in turn serves as a subsystem for the supersystem.

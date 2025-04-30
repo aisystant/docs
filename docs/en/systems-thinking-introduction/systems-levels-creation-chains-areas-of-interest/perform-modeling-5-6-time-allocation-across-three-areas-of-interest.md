@@ -3,6 +3,8 @@ order: 17
 title: 'Perform Modeling: 5.6. Time Allocation Across Three Areas of Interest'
 ---
 
+# Perform Modeling: 5.6. Time Allocation Across Three Areas of Interest
+
 Evaluate how much time you spend working with different areas of interest in the system of interest/engineering, the supersystem/commercial, and the creation systems/organizational/managerial domains. The sum of these percentages in relation to your total time should equal 100 percent.
 
 In your notes, you may outline your plans for future time investment.

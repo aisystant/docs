@@ -3,6 +3,8 @@ order: 2
 title: "Method (Practice) \u2013 A Discipline and Tools"
 ---
 
+# Method (Practice) – A Discipline and Tools
+
 In systems thinking, a practice or method can be seen as a combination of discipline and tools that support that discipline. Accordingly, a practice established within an enterprise involves agents proficient in both theory and tools, performing specific roles. It’s important to note that individuals must study the discipline and train in using the tools.
 
 For instance, disciplines include accounting, the theory of hairdressing, marketing, and operational management (typically books are written on such disciplines). A discipline is studied or “placed” in the mind, while tools are additionally mastered or trained for use. Unlike disciplines, tools are represented in the physical world^[A discipline is an object of mental space, but it can be described on some physical medium.]. A tool is a device or object that helps create a work artifact. In the examples given, tools include scissors and the SAP software system (1C: Accounting). The tools are embedded with a specific discipline^[Therefore, if you're developing a technology, it's likely to be used by a role as a tool in accordance with a specific discipline. As the developer of this tool, you should be well-versed in the discipline that the role will utilize in using this tool.].

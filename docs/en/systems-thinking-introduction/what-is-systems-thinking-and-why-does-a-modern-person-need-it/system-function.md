@@ -3,6 +3,8 @@ order: 6
 title: System Function
 ---
 
+# System Function
+
 ### Separation of the Physical World and Mental Space
 
 Distinguishing between a system and its function becomes clearer when we separate the physical world from mental space. For example, a car is a physical object that exists in the real world. It is the embodiment of a system or a tangible physical object. Like any system, a car has a function—in this case, mobility. Mobility, just like any other system function, is abstract and cannot be touched. However, we can observe mobility; more accurately, we see the car in motion.

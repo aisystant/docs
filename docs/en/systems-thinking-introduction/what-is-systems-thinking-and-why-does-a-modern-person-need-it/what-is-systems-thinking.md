@@ -3,6 +3,8 @@ order: 3
 title: What is Systems Thinking?
 ---
 
+# What is Systems Thinking?
+
 There is no single precise definition of "systems thinking," just as it is impossible to give a complete definition of "mother." We might say that systems thinking is a thought process that involves using the concept of a system and other concepts from the intellect stack. Or that to think in a systems way is to think in the systems language. Alternatively, systems thinking might be described as a way to create successful products and services by considering numerous interests.
 
 There's nothing supernatural, mystical, or esoteric about systems thinking. We won't delve into the structure of thought at a neuro-level or discuss various psychological aspects. We believe any form of thinking develops through the study of specific theories (disciplines and transdisciplines) that are applied in real life. These are the concepts you'll study and apply in your professional and personal projects.

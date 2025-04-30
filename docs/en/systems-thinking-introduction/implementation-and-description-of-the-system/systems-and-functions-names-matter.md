@@ -3,6 +3,8 @@ order: 6
 title: 'Systems and Functions: Names Matter'
 ---
 
+# Systems and Functions: Names Matter
+
 One common issue with understanding systems thinking is that people often get confused with the naming of systems and over-rely on common sense and the objective naming of physical objects. For example, a student might be asked to provide the name of a system that generates energy for a house. The student describes: “This system will be called the Tesla Model X electric vehicle, which performs the main function—generating electrical energy for my house.” The student further explains that this is practically feasible. However, we were considering a study example, so we weren't concerned with the technology of connecting the Tesla to the home network.
 
 Note that the student's description contains a typical mistake: the words “Tesla Model X electric vehicle” were used as a physical object-module, whereas a system name (a functional name) based on the main function should have been provided. From a methodological point of view, it would be more accurate to say: “The Tesla Model X electric vehicle will serve as a generator that supplies electrical energy for the home.” Hence, the functional name of the system should be “generator,” with its main function being energy generation. Alternatively, one could speak of the Tesla Model X as a vehicle (also a functional name) which has the main function of movement or transportation (but not energy generation).

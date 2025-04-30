@@ -3,6 +3,8 @@ order: 7
 title: Meta-Modeling and Modeling
 ---
 
+# Meta-Modeling and Modeling
+
 # Meta-Meta-Models in Our Course
 
 In our course, we establish meta-meta-models. For example, the concept of a **system** is a meta-meta-model. Such abstract concepts are studied specifically in transdisciplines. You then delve into a subject area where there are meta-models. For example, in education, the system of interest is the concept of mastery, while in the transportation industry, it is a transport vehicle. To clarify, this can relate to thinking mastery (or accounting mastery) and a passenger vehicle.

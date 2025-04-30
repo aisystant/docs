@@ -3,6 +3,8 @@ order: 15
 title: 'Perform Modeling: 1.2. Discipline (Theory, Model)'
 ---
 
+# Perform Modeling: 1.2. Discipline (Theory, Model)
+
 ### Instructions for System Modeling Exercise
 
 1. **Review Examples**

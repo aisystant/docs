@@ -3,6 +3,8 @@ order: 7
 title: Systems Approach 3.0
 ---
 
+# Systems Approach 3.0
+
 In the first generation of systems thinking, systems were considered "objective," meaning they were viewed without accounting for numerous stakeholders. For instance, a chair, hammer, or car were understood as systems with a clear purpose (role and function), and only that was taken into account. This clarity allowed the formal modeling of systems to focus solely on the most essential elements,^[Neglecting the significant number of other interests and interactions.] and therefore, the textbooks of the first generation of systems thinking were filled with formulas, numbers, and so forth.
 
 In the late 20th century and the 2010s, the second generation of systems thinking prevailed, differing from its predecessor by considering systems not as objective but as subjective. Numerous stakeholders emerged, along with the understanding that systems do not exist on their own but arise when someone needs them. Recall how we previously discussed in Section 2 the system "hammer" and its distinction from the physical object we call a "hammer." Additionally, in the first generation, systems were thought to create themselves, whereas, in the second, they are made by people.

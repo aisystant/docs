@@ -3,6 +3,8 @@ order: 19
 title: 'Perform Modeling: 3.5. Roles Executed by the Manager'
 ---
 
+# Perform Modeling: 3.5. Roles Executed by the Manager
+
 **Instructions for Documenting Roles in Your Organization**
 
 1. **Documenting Roles for Your Superior:**

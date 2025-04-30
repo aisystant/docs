@@ -3,6 +3,8 @@ order: 1
 title: Organization as a System
 ---
 
+# Organization as a System
+
 **A Business System: Black and Transparent Boxes**
 
 A business system, like any system, can be viewed as a "black" box and a "transparent" box.

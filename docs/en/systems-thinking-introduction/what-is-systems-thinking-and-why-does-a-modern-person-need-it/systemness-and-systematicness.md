@@ -3,6 +3,8 @@ order: 2
 title: Systemness and Systematicness
 ---
 
+# Systemness and Systematicness
+
 Most people operate with a "colloquial" understanding of the concepts of "system" and "systems thinking." They interpret 'the use of a systems approach or systems thinking' as mere personal organization, diligence, and the desire to anticipate every possible detail. That is misguided!
 
 ![](./systemness-and-systematicness-0.png)

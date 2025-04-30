@@ -3,6 +3,8 @@ order: 2
 title: Roles and Executors
 ---
 
+# Roles and Executors
+
 ### The Concept of "Role" 
 
 The notion of a "role" was originally used to distinguish a person from their actions (role behavior). Nowadays, we discuss agents^[Agents may be people or other entities that have intentions, strategies, and plans to achieve their goals. Examples include an organization of people with their tools and computers, and even unknown entities. They can also play various roles in different projects and interact with other agents.] with intentions, meaning not necessarily a person, but also inanimate physical objects. There are many agents and objects, but far fewer roles.

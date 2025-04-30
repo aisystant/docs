@@ -3,6 +3,8 @@ order: 9
 title: System Characteristics, System States, Characteristic Indicator
 ---
 
+# System Characteristics, System States, Characteristic Indicator
+
 In continuation of these posts, I will reflect on the interconnected concepts of system characteristics (or subject of interest), system state, and characteristic indicators. While these are typically addressed in systems thinking courses, confusion often arises in practice.
 
 **System characteristic is a stable, long-term property that determines how the system functions as a whole.** For instance, load capacity, controllability, reliability, efficiency, and scalability are universal characteristics that describe the behavior of different systems—be it a vehicle, an organization, or a software product. Yet, each type of system also has unique characteristics. These characteristics do not change instantly and set the boundaries of possible system states or abilities to perform certain functions (play roles).

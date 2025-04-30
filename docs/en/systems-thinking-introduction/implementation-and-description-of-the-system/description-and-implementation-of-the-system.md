@@ -3,6 +3,8 @@ order: 1
 title: Description and Implementation of the System
 ---
 
+# Description and Implementation of the System
+
 At **Aisystant**, the course "Rational Work" teaches participants to distinguish between the physical world and the mental space, whether in speech or writing. This course also trains individuals to connect abstract reasoning to the physical world. People cannot function without mental concepts, as they facilitate communication. However, one must not lose sight of physical world objects when dealing with words and symbols. Particularly in project activities, "losing touch with reality" should be avoided; otherwise, creating successful systems becomes challenging.
 
 For example, an insolvency manager in a company's bankruptcy might mistakenly believe that their role's purpose is to enter data into the liquidation register. However, this entry is merely information confirming that all remaining company assets have been allocated to creditors. These assets exist in the physical world and represent the manager's true objective and system. The register entry merely describes this system. Thus, in any activity, one must not confuse the system itself and its description. This thinking approach (and skill) requires practice. Initially, it's crucial to thoroughly understand the concepts of "system embodiment" and "system description."

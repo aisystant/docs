@@ -3,6 +3,8 @@ order: 9
 title: Example of Service - "Haircut"
 ---
 
+# Example of Service - "Haircut"
+
 Let's consider an example with a hair salon. A hair salon belongs to the service sector. It does not produce systems-products in the way an automotive factory does. If you ask anyone what a hair salon does, they will answer that it cuts hair.
 
 ![](./example-of-service-haircut-12.png)

@@ -4,6 +4,8 @@ title: 'Execute the Modeling: 6.6. Operational Model, Types of Meta-Model, Types
   Meta-Meta-Model'
 ---
 
+# Execute the Modeling: 6.6. Operational Model, Types of Meta-Model, Types of Meta-Meta-Model
+
 **Example:**
 
 | Real Object | Type from Subject Area | Discipline Type from Intellect Stack |

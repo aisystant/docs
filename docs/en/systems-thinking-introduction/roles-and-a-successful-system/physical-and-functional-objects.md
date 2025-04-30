@@ -3,6 +3,8 @@ order: 9
 title: Physical and Functional Objects
 ---
 
+# Physical and Functional Objects
+
 ### Understanding the Distinction Between Roles and Project Roles
 
 A project role is always executed by a person or an agent—not a stone, which has no intention. The concept of "role" can be applied not only to agents. A role is a functional object, and its executor is a physical entity. This could be an agent or an inanimate object without intention.

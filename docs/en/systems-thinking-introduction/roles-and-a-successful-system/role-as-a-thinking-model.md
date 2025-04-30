@@ -3,6 +3,8 @@ order: 1
 title: Role as a Thinking Model
 ---
 
+# Role as a Thinking Model
+
 An ordinary person acts intuitively or based on experience, and their role behavior is determined by the theory previously instilled in them^[A person can subconsciously absorb theory from interactions with others. Often, people learn subconsciously, absorbing information from their surroundings or emulating someone they regard as an authority.]. We often say that a person acts according to their worldviews.
 
 A worldview can be shaped by scientific theory or a grandmother's superstition. Scientific theories and disciplines better describe role behavior, but unscientific worldviews are simpler and therefore more popular with most people. When we talk about an engineer's worldview, we primarily refer to the engineering methods they learned in university and further developed through their work in the field.

@@ -4,6 +4,8 @@ title: 'Perform Modeling: 7.11. Assign Organizational Units to Organizational Ro
   Executing Methods'
 ---
 
+# Perform Modeling: 7.11. Assign Organizational Units to Organizational Roles Executing Methods
+
 **Example:**
 
 - **Оргроль:** Маркетолог

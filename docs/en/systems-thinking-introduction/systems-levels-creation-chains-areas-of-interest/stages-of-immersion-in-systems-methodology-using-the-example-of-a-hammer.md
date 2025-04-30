@@ -3,6 +3,8 @@ order: 8
 title: Stages of Immersion in Systems Methodology Using the Example of a "Hammer"
 ---
 
+# Stages of Immersion in Systems Methodology Using the Example of a "Hammer"
+
 Let's explore the progress in learning systems thinking, continuing with our previous example of a hammer discussed in earlier sections.
 
 In student culture, there are jokes about how university students think, where seniors know more about life than freshmen. A similar dynamic is observed at Aisystant, with the instructor's question to a student: "Give an example of a physical object." Your answer to this question reflects the depth of your understanding of systems thinking.

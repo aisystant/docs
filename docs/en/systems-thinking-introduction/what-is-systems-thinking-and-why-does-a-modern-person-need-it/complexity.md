@@ -3,6 +3,8 @@ order: 9
 title: Complexity
 ---
 
+# Complexity
+
 **Systems Thinking and Complexity**
 
 Systems thinking deals with complexity—a concept with multiple meanings across different contexts and theories. We'll explore complexity in the following contexts:

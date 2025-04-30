@@ -3,6 +3,8 @@ order: 20
 title: 'Perform Modeling: 3.6. Subjects of Interest to the System'
 ---
 
+# Perform Modeling: 3.6. Subjects of Interest to the System
+
 The Example in the First Row of the Table
 
 Review the example in the first row of the table. If necessary, revisit the theoretical material. Fill in the empty cells in the rows following the example.
