@@ -3,6 +3,8 @@ order: 10
 title: Systems Approach 2.0
 ---
 
+# Systems Approach 2.0
+
 In the classical systems approach, systems were viewed as material objects possessing three properties: integrity (of a system), emergence, and nestedness^[Do not confuse "nestedness" with "hierarchy." The latter term may appear in descriptions of first-generation system properties, but it is incorrect. Hierarchy is a broader principle than nestedness. Nestedness is a specific case of hierarchy, meaning not all hierarchies imply nestedness. For example, a boss and subordinate represent a hierarchy, but not nestedness.]. However, these systems were considered ideal physical objects, not connected to human interests. The connection with human interests appeared in what is known as Systems Approach 2.0, which is based on entirely different systems methodologies compared to the first generation^[In both the first and second generation of systems approach, diverse systems methodologies exist. Each has its own set of concepts and thinking practices. However, their distinctive feature is the inclusion of terms such as "role," "stakeholder," or "interested parties" along with the concept of "system." One of the second-generation systems methodologies is the Theory of Inventive Problem Solving (TRIZ).].
 
 The Systems Approach 2.0 does not reject the classical properties of a system introduced in the first generation. It considers these as necessary conditions for its existence, but now they are insufficient. In modern interpretations, the concept of "system" acquires new additional properties derived from a subjective view of the system.

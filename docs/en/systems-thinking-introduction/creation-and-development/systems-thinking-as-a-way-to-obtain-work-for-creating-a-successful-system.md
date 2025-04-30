@@ -3,6 +3,8 @@ order: 10
 title: Systems Thinking as a Way to Obtain Work for Creating a Successful System
 ---
 
+# Systems Thinking as a Way to Obtain Work for Creating a Successful System
+
 ### Conclusion of the Section: Systems Thinking Concepts
 
 This subsection concludes the substantive examination of systems thinking concepts, bringing together insights from previous sections. A key focus is on how the team utilizes the 3x3 Table in project activities.

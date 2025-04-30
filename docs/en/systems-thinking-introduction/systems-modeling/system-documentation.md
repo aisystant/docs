@@ -3,6 +3,8 @@ order: 1
 title: System Documentation
 ---
 
+# System Documentation
+
 **Descriptions reflect all the most important aspects of a system, meaning everything that addresses the subjects of interest for the project roles that have been decided to satisfy during the system's creation. Crafting a consistent description increases the likelihood of realizing a successful system of interest in the physical world.**
 
 **Systems modeling** is conducted through **thinking through writing**, which involves specialized tools known as modelers. These modelers can include a pen and paper, Word, a wall with sticky notes and a marker, or more advanced modelers like Coda^[For high-level modeling that includes descriptions of all important systems and subsystems and their interactions.], CAD (computer-aided design)^[For more detailed (subject-specific, applied) design, including the creation of design and technological documentation.], and others.

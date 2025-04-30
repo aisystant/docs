@@ -3,6 +3,8 @@ order: 23
 title: 'Perform Modeling: 3.9. Analyst''s Work'
 ---
 
+# Perform Modeling: 3.9. Analyst's Work
+
 ### Distinguish Between Analysts and Engineers
 
 ### Time Allocation

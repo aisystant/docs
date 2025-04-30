@@ -3,6 +3,8 @@ order: 4
 title: What Does "Apply Systems Thinking" Mean?
 ---
 
+# What Does "Apply Systems Thinking" Mean?
+
 Applying systems thinking means skillfully operating with the concepts of transdisciplines from the intellect stack in your activities. Mastering the conceptual minimum entails not just knowing each concept but also being able to connect them and apply them to your projects. In this course, you study systems thinking concepts, linking them not only to each other but also to entrepreneurship, engineering, and management concepts.
 
 When someone says they will apply a systems approach, it means they will use the conceptual minimum of systems thinking in their activities. Without mastering these concepts, a person might be logical, systematic, professional, and many other things, but definitely not systems-oriented.

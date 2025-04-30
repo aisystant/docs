@@ -3,6 +3,8 @@ order: 8
 title: 'Role Executors: Agent and Their Intention, Strategy, and Plans'
 ---
 
+# Role Executors: Agent and Their Intention, Strategy, and Plans
+
 When dealing with roles, it's important not to overlook the executor of the role as an agent. An agent can be a person or another subject (such as an organization, teams, or soon AI) who intends to take actions to eliminate dissatisfaction. A person is a broad concept^[For example, when talking about a person, one could also consider the organism and its structure. However, we won't delve into that, so the concept of "agent" helps narrow down the broad concept of "person."]. We need to focus on the dissatisfactions and desires of a person, which drive their actions.
 
 When we talk about a person, there's a risk of veering into psychological terminology, which is less formal and not suitable for systems modeling. Therefore, to discuss the human-agent, the concept of "intention" is introduced^[Do not confuse: intention refers to the human-agent or executor, while preference relates to the role. So it is correct to say, "the person intends to take action," and "the person in the role has a role interest," or "the role has a role interest." From a systems thinking perspective, it is incorrect to say that 'a role has an intention' and that 'a person pursues a role interest.']. Intention allows us to discuss not the role, but its executor. Thus, "preference" relates to the role, while "intention" relates to the executor of the role.

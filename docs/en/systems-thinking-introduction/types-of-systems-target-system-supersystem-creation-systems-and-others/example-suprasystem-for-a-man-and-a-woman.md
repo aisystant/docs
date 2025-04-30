@@ -3,6 +3,8 @@ order: 5
 title: 'Example: Suprasystem for a Man and a Woman'
 ---
 
+# Example: Suprasystem for a Man and a Woman
+
 Let's consider a common example involving agents like a man and a woman. What supersystems might exist with their participation in specific roles? Yes, they interact in some way, possessing functionality within the supersystem. What is it?
 
 I hope you quickly realized that the supersystem here could be a family, where the woman and man exist in each other’s systems environment, fulfilling the roles of wife and husband. In other words, the family consists not of a woman and a man, but of a husband and wife.

@@ -3,6 +3,8 @@ order: 13
 title: Descriptions and Documentation of Different Subjects of Interest
 ---
 
+# Descriptions and Documentation of Different Subjects of Interest
+
 ### Approaches to System Descriptions
 
 At the end of the subsection "How to Think About Systems?", we explored approaches to describing any system as a "black" and "transparent" box.[^1] We covered this in previous sections. In this subsection, we will delve into specific types of descriptions across different areas of interest in project activities.

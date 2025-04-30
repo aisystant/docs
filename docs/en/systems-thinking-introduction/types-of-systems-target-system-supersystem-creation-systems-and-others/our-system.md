@@ -3,6 +3,8 @@ order: 3
 title: Our System
 ---
 
+# Our System
+
 The concept of "our system" enables an individual or team to identify their system or their place within a larger collective activity. This could involve the operations of your company or multiple companies. In the latter case, one can speak of an extended enterprise. For example, various companies participate in sending a person into space.
 
 Note that our system can be a subsystem of the system of interest or one of the creation systems. Thus, the activities of a large enterprise can be divided into multiple projects responsible for creating different "our systems." Any "our system" maintains a certain connection with the system of interest.

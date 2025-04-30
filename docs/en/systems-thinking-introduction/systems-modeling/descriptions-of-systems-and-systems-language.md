@@ -3,6 +3,8 @@ order: 2
 title: Descriptions of Systems and Systems Language
 ---
 
+# Descriptions of Systems and Systems Language
+
 In the textbook "Systems Thinking," a diagram showcases the majority of systems thinking concepts we've already discussed. Proficiency in systems thinking, enabling you to apply it to work projects, means being able to easily see the connections between these concepts. The diagram highlights seven main concepts, known as alphas^[The OMG Essence standard (http://www.omg.org/spec/Essence/) introduces a special type of functional object for tracking changes in the state of a project — alpha (ALPHA or Abstract-Level Progress Health Attribute). Alpha is an object of focus whose functional/role nature corresponds to the area of interest "how the project works" (not the system of interest, but the project, i.e., creation systems). To think coherently about how a project works, how the system of interest is created and then developed by the creators in the course of their work, attention must be focused in the project not on arbitrary objects, but on alphas.], which are colored, while other concepts and sub-alphas are not highlighted. Nevertheless, it is evident that all concepts are interconnected, with most connections leading to the embodiment of the system. This represents our successful system, which is why we study systems thinking with all these system concepts.
 
 ![Diagram](./descriptions-of-systems-and-systems-language-15.png)

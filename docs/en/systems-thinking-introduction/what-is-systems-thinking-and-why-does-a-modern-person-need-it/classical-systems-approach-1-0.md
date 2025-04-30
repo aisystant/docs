@@ -3,6 +3,8 @@ order: 5
 title: Classical Systems Approach 1.0
 ---
 
+# Classical Systems Approach 1.0
+
 At the core of the systems approach lies the concept of a "system." With this concept, a constructor thinks about the world of objects or things^[Do not confuse the physical world with the mental space. A person is an object of the physical world, while the concept of "age" is an abstract object.]. Here, an analogy can be drawn with physics, where the term "physical body" is introduced. This denotes a material object having mass, shape, and volume. Subsequently, in physics, all discussions and laws relate to this physical body, and when physical laws are applied practically, the "physical body" is replaced by the corresponding material object: a road, a chair, a rocket, or an engine piston.
 
 The same applies to the concept of a "system." Every professional works with their own systems. For some, a system could be a house, a computer program, or a trained artificial intelligence; for others, it might be a child ready for adult life or a cultivated tree or grove. Every person, consciously or unconsciously, creates systems. A system constructor does this consciously, relying on various systems methodologies.

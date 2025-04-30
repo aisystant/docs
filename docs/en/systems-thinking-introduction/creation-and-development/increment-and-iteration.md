@@ -3,6 +3,8 @@ order: 5
 title: Increment and Iteration
 ---
 
+# Increment and Iteration
+
 In a world of constant change and pursuit of perfection, the concepts of iteration and increment are key elements on the path to success. But what do they represent, and why are they so important? Let's explore.
 
 **Iteration** is the process of repeating certain actions to approach a desired result. It can occur at a specific stage or coincide with it. In the context of product development (or system creation), this means improving it through continuous hypothesis setting and testing (not necessarily in a predefined cycle). Testing hypotheses under the principle of "The more iterations, the more likely the success" underscores the importance of persistence and readiness for experimentation.

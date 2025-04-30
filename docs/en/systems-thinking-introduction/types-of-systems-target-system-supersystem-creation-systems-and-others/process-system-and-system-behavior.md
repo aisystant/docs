@@ -3,6 +3,8 @@ order: 7
 title: Process, System, and System Behavior
 ---
 
+# Process, System, and System Behavior
+
 Systems of creation should not be confused with the process of creating the system of interest. More specifically, one should not confuse a system with a process. We state that different systems participate in the creation process, which we refer to as the systems of creation. Collectively, they form the system-creator.
 
 Accordingly, when we use the term "process," we mean the interaction of different systems resulting in the creation of a work artifact. If systems of creation are involved in this process, the resulting work artifact is the system of interest. For instance, if it's a process of thinking through writing that involves a thinker and a computer (exocortex), the result is a work artifact in the form of a draft post on the computer.

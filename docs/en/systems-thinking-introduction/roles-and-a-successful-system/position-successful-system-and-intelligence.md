@@ -3,6 +3,8 @@ order: 11
 title: Position, Successful System, and Intelligence
 ---
 
+# Position, Successful System, and Intelligence
+
 In addition to the concept of a role, terms such as position, rank, and qualification are also used. These terms help describe human activities in a more precise manner.
 
 Qualification and rank are characteristics of a performer's role. Qualification indicates a person's level of skill in performing a particular role. This evaluation is provided by an organization, community, or state. Rank is granted by competent authorities and reflects the individual's position within a specific hierarchy established by these authorities, such as in science, the military, or computer games. At **Aisystant**, there are also specific qualifications and eight qualification levels.

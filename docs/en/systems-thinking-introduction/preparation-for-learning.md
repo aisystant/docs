@@ -3,6 +3,8 @@ order: 1
 title: Preparation for Learning
 ---
 
+# Preparation for Learning
+
 ### Starting Your Educational Journey
 
 Before you begin the course, set aside 30 minutes to organize your work for the first week. After testing, you can make adjustments for the second week and beyond.

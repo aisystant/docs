@@ -3,6 +3,8 @@ order: 14
 title: Example Description of the Supersystem's Area of Interest
 ---
 
+# Example Description of the Supersystem's Area of Interest
+
 Let's consider an example of a description from cell 1.1 of the 3x3 Table.
 
 In marketing, terms such as customer problems or misalignments (unaddressed needs) are often discussed. These are important concepts in entrepreneurial activities, but it's essential to understand how they are connected with systems concepts related to the areas of interest in the supersystem, such as opportunities, needs, and external project roles.

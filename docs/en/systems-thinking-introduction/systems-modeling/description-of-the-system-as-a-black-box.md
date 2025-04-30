@@ -3,6 +3,8 @@ order: 8
 title: Description of the System as a "Black Box"
 ---
 
+# Description of the System as a "Black Box"
+
 When we view a system as a black box, we focus on its interaction with the external world—what functions it performs, what interfaces it uses, what states it can exist in, and what characteristics affect its operation. The internal structure of the system remains outside the scope of analysis (which is considered when viewing the system as a transparent box).
 
 We can highlight the following descriptions of a system as a black box:

@@ -3,6 +3,8 @@ order: 1
 title: Areas of Interest
 ---
 
+# Areas of Interest
+
 ### Understanding Areas of Interest
 
 In Section 3, we were introduced to the concept of a **subject of interest**. Multiple related characteristics or subjects of interest can be grouped into an **area of concern**. These different areas of concern are focal points for specific roles within a project. Given the multitude of subjects of interest, organizing them into particular areas can be quite advantageous.

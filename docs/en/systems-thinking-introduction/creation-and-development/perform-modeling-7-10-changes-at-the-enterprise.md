@@ -3,6 +3,8 @@ order: 25
 title: 'Perform Modeling: 7.10. Changes at the Enterprise'
 ---
 
+# Perform Modeling: 7.10. Changes at the Enterprise
+
 **Review the Examples and Describe Changes at Your Company**
 
 Locate the corresponding assignment by number in your modeling workspace and complete all its tasks.

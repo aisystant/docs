@@ -3,6 +3,8 @@ order: 0
 title: How to Think About Systems?
 ---
 
+# How to Think About Systems?
+
 # Objectives of the Section
 
 The objective of this section is to understand how to think about systems and comprehend how systems modeling occurs.

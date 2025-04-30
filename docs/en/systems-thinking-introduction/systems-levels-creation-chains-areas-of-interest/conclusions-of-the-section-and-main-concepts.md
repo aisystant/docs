@@ -3,6 +3,8 @@ order: 9
 title: Conclusions of the Section and Main Concepts
 ---
 
+# Conclusions of the Section and Main Concepts
+
 **Areas of Interest**
 
 Areas of interest are a set of related characteristics or subjects of interest. These areas are the focal points for all roles in a project. Since there are quite a few subjects of interest, they can be grouped into specific areas for easier management. We identify areas of interest for the supersystem, the system of interest, and creation systems, as well as subject areas of interest for the roles of the entrepreneur, engineer, and manager.

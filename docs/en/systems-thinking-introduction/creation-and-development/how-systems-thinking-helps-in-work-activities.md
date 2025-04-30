@@ -3,6 +3,8 @@ order: 0
 title: How Systems Thinking Helps in Work Activities
 ---
 
+# How Systems Thinking Helps in Work Activities
+
 In previous sections, we explored the foundational ideas and techniques of using a systems approach. Now, let's provide a comprehensive explanation of how to view any collective activity through the lens of systems thinking. This involves breaking the world down into distinct parts and connecting them to ultimately create a successful system of interest without losing sight of the system-creator. This insight will assist not only in working within a team that is developing a system of interest or "our system," but also in interacting[^1] with other teams that are producing supersystems, surrounding systems, subsystems, or creation systems.
 
 We'll start with a brief overview of what you've already studied about using a systems approach. Pay special attention to the second part of the description, which discusses the system-creator. It's a continuation of the essence of using a systems approach, introduced in the subsection "Systematicity and The Use of a Systems Approach" in Section 1, and further clarified in the subsection "Areas of Interest" in Section 5.

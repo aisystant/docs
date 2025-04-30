@@ -3,6 +3,8 @@ order: 31
 title: What's Next?
 ---
 
+# What's Next?
+
 You have completed all sections of the course. I hope you've also completed all the assignments, including drafting templates and modeling.
 
 Throughout the course, you've begun to grasp systems techniques and concepts, attempting to apply them in your projects. At present, this is a patchwork application of systems thinking, and you are likely just starting to see how to view collective activities. To fully achieve this, you'll need to take the courses "Systems Thinking" and "Methodology" and maximize the use of systems thinking in your work activities.

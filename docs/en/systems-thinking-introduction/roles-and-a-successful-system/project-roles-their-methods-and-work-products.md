@@ -3,6 +3,8 @@ order: 4
 title: Project Roles, Their Methods, and Work Products
 ---
 
+# Project Roles, Their Methods, and Work Products
+
 The concept of "role" is more frequently utilized in professional activities than in personal life[^1^]. In the workplace, it predominantly refers to project activities, thus the term project role is used. A project role is the role that an agent (a person or any other agent with intentions) performs in a particular project[^2^]. Alternatively, it is executed by an agent that somehow influences or is connected with the system being created in the project. It can be said that project roles have specific concerns. They have a certain subject of interest in the system.
 
 In systems thinking, external and internal project roles are distinguished.

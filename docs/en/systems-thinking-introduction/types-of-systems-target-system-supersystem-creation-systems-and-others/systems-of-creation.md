@@ -3,6 +3,8 @@ order: 6
 title: Systems of Creation
 ---
 
+# Systems of Creation
+
 Any activity becomes significantly more productive when you understand its purpose. From a systems approach perspective, one can assert that the purpose of any activity is to create a system of interest. Consequently, creation systems will engage in activities to materialize this system of interest in the physical world. This constructive activity is typically termed a project, process, program, and so on. It's important not to confuse the types "project" and "enterprise" (or "expanded enterprise") because the former is an activity, while the latter is a system.
 
 ![](./systems-of-creation-11.png)

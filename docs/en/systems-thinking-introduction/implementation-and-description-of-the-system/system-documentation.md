@@ -3,6 +3,8 @@ order: 2
 title: System Documentation
 ---
 
+# System Documentation
+
 Let's delve deeper into the topic of documentation. You already know that **system documentation** is an explanation of the system recorded on some physical medium. This can include a parts catalog, a product brochure, a computer model of the system, or text on paper. Pay attention to the following: this list includes objects from the physical world—brochures, computer models, paper. However, when discussing media, we have not mentioned the content of the description itself. This content can be seen, read, heard, etc., and it characterizes the system according to various parameters.
 
 The concepts of "embodiment," "description," and "documentation" are essential to avoid confusion when discussing a system. These concepts guide attention and allow each aspect to be discussed separately rather than conflated. Let's consider an example. A system can be a person as a biological entity. This person is an object of the physical world and is present "in the flesh," meaning the "person" system is literally embodied in reality. It has numerous descriptions, such as height, weight, hair and skin color, etc. There's also a description in the form of a last name, first name, and middle name.
