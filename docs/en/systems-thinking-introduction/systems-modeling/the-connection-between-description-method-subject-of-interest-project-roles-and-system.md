@@ -4,6 +4,8 @@ title: The Connection Between Description Method, Subject of Interest, Project R
   and System
 ---
 
+# The Connection Between Description Method, Subject of Interest, Project Roles, and System
+
 In previous sections, it was mentioned that the subject of interest is connected to the system. A system can be characterized by different subjects of interest. These subjects of interest are linked to project roles, meaning that individuals in these roles are concerned with specific characteristics of the system.
 
 The team determines which project roles' interests will be addressed during the creation of the system. It's important to note that not all interests can be addressed due to limited resources (time and funds), but at the same time, the team must avoid fatal errors. A fatal error would be neglecting a particular interest, which could later result in significant and irreparable costs. This affects what work artifacts (documentation) will be necessary. Work artifacts are physical carriers that contain the system description pertaining to a specific subject of interest.

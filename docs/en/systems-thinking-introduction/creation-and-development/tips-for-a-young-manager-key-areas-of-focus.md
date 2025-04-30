@@ -3,6 +3,8 @@ order: 12
 title: 'Tips for a Young Manager: Key Areas of Focus'
 ---
 
+# Tips for a Young Manager: Key Areas of Focus
+
 **Introduction**
 
 Taking on the role of a manager is always a challenge, especially if you're new to managing people. You may be an excellent specialist—be it a marketer, engineer, or physician. However, being a manager requires not just expertise in your specific field, but knowledge of management as well. And it's preferable that this knowledge includes understanding of systems management^[This is why it is recommended to take part in our core program "Organizational Development."].

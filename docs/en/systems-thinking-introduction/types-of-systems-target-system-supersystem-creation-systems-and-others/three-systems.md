@@ -3,6 +3,8 @@ order: 0
 title: Three Systems
 ---
 
+# Three Systems
+
 ## Introduction to Systems in Project Activities
 
 In this section, you will learn about the types of systems that need to be identified and with which you will work in any project. Its goal is to introduce you to the system of interest, supersystem, and creation systems using simple examples, as well as to teach you to differentiate between product and service, and function and service.

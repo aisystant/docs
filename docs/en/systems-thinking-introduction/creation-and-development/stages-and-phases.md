@@ -3,6 +3,8 @@ order: 4
 title: Stages and Phases
 ---
 
+# Stages and Phases
+
 **Concepts of "Stage" and "Phase"**
 
 The terms "stage" and "phase" pertain to time, but stages are linked to methods (practices) and logical time, whereas phases relate to tasks and physical time.

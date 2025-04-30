@@ -3,6 +3,8 @@ order: 7
 title: Basic Concepts of Systems Thinking
 ---
 
+# Basic Concepts of Systems Thinking
+
 Often, people who change their country of residence and immerse themselves in another language are asked, "What language do you think in now?" To think in a particular language means to use it as a tool for organizing thoughts, planning, reasoning, and engaging in internal dialogue. Language and thought are closely linked, but this does not mean that thinking entirely depends on language.
 
 Language serves as an instrument that can shape and structure cognitive processes—a concept known as linguistic relativity or the Sapir-Whorf hypothesis. This theory suggests that the language we speak affects our perception of the world and our way of thinking.

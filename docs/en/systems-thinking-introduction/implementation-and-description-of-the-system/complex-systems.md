@@ -3,6 +3,8 @@ order: 9
 title: Complex Systems
 ---
 
+# Complex Systems
+
 We can discuss complex systems by considering the relationships within their composition. At the beginning of the section, the example with a cocktail was given. However, the embodiment of a system can be one consisting of spatially separated 4D objects. For example, a water rescue system, comprising lifeguards, lifeboats, life preservers, and the like. Unlike an airplane or engine, we will refer to such systems as complex systems.
 
 Complex systems are defined through the objects that are included in that particular complex system. We do not call complex systems processes; these are different types of concepts. They shouldn't be confused, just as you shouldn't mix types like "furniture chair" and "color red," "cities" and "countries," "roles" and "positions," and so on.

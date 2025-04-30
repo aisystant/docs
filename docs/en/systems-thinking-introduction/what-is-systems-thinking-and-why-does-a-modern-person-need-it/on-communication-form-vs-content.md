@@ -3,6 +3,8 @@ order: 8
 title: 'On Communication: Form vs. Content'
 ---
 
+# On Communication: Form vs. Content
+
 # Systems Thinking: The Importance of Substance in Communication
 
 **Systems Thinking** is extremely beneficial for large teams, especially when organizing the work of specialists from various fields. It is a method realized among people, aimed at facilitating their agreements with one another. Therefore, let's focus on communication.

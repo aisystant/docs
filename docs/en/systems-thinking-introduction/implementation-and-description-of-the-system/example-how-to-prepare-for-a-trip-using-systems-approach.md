@@ -3,6 +3,8 @@ order: 7
 title: 'Example: How to Prepare for a Trip Using Systems Approach'
 ---
 
+# Example: How to Prepare for a Trip Using Systems Approach
+
 # Preparing for a Trip: A Systems Approach
 
 I'm getting ready for another trip. I've decided to travel light, so I'm taking a small carry-on suitcase. There's no room for extra items, so I need to pack only the essentials. During this packing process, I've thought of a methodical example to help explain some concepts of systems thinking.

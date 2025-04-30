@@ -3,6 +3,8 @@ order: 12
 title: Conclusions of the Section and Main Concepts
 ---
 
+# Conclusions of the Section and Main Concepts
+
 Using the concept of a "role," humanity is better equipped to describe the physical world and model human activities. A "role" is linked to an action, and an agent is the executor of the role. Thereafter, one can separately discuss the skill and qualifications of the executor, as well as improve the role-specific actions necessary within a team.
 
 It can be said that a "role" is a thinking model that helps study and enhance an agent's behavior. Concepts like "role," "subject of interest," and "role interests" (preferences) help define a successful system.

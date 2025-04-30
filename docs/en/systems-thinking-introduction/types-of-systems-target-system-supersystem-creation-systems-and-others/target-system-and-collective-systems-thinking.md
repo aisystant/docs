@@ -3,6 +3,8 @@ order: 2
 title: Target System and Collective Systems Thinking
 ---
 
+# Target System and Collective Systems Thinking
+
 **The System of Interest – A Common Goal for the Collective or Extended Enterprise Members!**
 
 The system of interest serves to manage collective activities, and primarily, collective attention. This concept helps every team member recognize their involvement in a larger endeavor, where their individual work results are part of the entire collective's effort (creation systems collectives). However, each person in a role or an enterprise unit may have their own system that they are creating or developing, known as "our system."

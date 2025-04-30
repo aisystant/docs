@@ -3,6 +3,8 @@ order: 29
 title: 'Conduct Modeling: 7.14. Level of Thinking Mastery'
 ---
 
+# Conduct Modeling: 7.14. Level of Thinking Mastery
+
 Evaluate on a ten-point scale how much you have learned in thinking mastery at university, how much you added through self-education, and how much you gained from Aisystant. The total for each transdiscipline should not exceed 10 points (split across university, self-study, and Aisystant).
 
 It's okay if you're not very familiar with all the listed transdisciplines of the intellect stack: try to infer based on the brief description provided in our course.

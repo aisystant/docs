@@ -3,6 +3,8 @@ order: 13
 title: Conclusions of the Section and Main Concepts
 ---
 
+# Conclusions of the Section and Main Concepts
+
 Creating and developing systems is viewed in relation to different systems. In any project activity, multiple systems are created and developed across various system levels and creation chains. At a minimum, this involves the creation and development of the system of interest and creation systems.
 
 Using a systems approach defines important objects of focus for any activity. We begin with the interests of the supersystem, looking at the world we intend to change in some way. Next, we move to the system of interest and its structure. Finally, we discuss the system-creator, including methods of creation, roles, and resources.

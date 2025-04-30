@@ -3,6 +3,8 @@ order: 3
 title: Work and Task
 ---
 
+# Work and Task
+
 **Work** is a specific activity or behavior of an organizational unit carried out at a certain physical time. As a result of the work, a work artifact appears in the physical world. It can also be described as a process involving the organizational unit alongside resources. Within this process, the organizational unit performs a service using certain resources.
 
 For example, John, with a hammer, drives nails during the allocated time and receives payment for it. John, in the role of a carpenter with a hammer, constitutes the organizational unit. The service is driving nails.

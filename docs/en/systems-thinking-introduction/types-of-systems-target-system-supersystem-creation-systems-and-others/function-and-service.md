@@ -3,6 +3,8 @@ order: 8
 title: Function and Service
 ---
 
+# Function and Service
+
 The system of interest is conceived as a deliverable product (physical object). Such a system is typically built by a project team from materials procured by the team and then physically delivered to the consumer. At the consumer's end, this product performs the requested function, operating as part of a supersystem during its utilization.
 
 For example, if you are a watch manufacturer, the watches are your system of interest. Clients use your systems of interest in two ways:

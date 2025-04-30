@@ -3,6 +3,8 @@ order: 12
 title: Examples of Describing a System as a Transparent Box
 ---
 
+# Examples of Describing a System as a Transparent Box
+
 Let's consider three descriptions using the example of a watch^[Image created by A. Turkhanov.].
 
 **Functional Description** - This is an account of subsystems as role-based or functional objects. A functional description illustrates "how the system works internally." For example, a functional diagram demonstrates how a watch operates. Note that on this diagram, there are no modules, as the focus is on the watch's functional parts. These parts exhibit their functional or role-specific behavior.

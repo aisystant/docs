@@ -3,6 +3,8 @@ order: 4
 title: System and Its Role Behavior
 ---
 
+# System and Its Role Behavior
+
 We have previously explored the function of a system as a desired action or role behavior of that system. This desired action is assigned by people, meaning that things (systems) do not choose their own functions. People need not so much the thing itself (the material object), but rather its function. Stakeholders value a system for its function, although laypeople often fail to make this distinction.
 
 A **system skill** is the distinct examination and discussion of a function that someone requires and the structure best suited for performing that function. Further details about this distinction will be discussed in subsequent sections of the course.

@@ -3,6 +3,8 @@ order: 19
 title: 'Perform Modeling: 1.6. Classical System Properties'
 ---
 
+# Perform Modeling: 1.6. Classical System Properties
+
 ### Familiarize Yourself with the Examples in the First Rows of the Table
 
 If necessary, repeat the theoretical material. Note that the column "System" contains examples of ideal objects. Recall the difference between the classical systems approach and Systems Approach 2.0, particularly what objective and subjective consideration of a system means.

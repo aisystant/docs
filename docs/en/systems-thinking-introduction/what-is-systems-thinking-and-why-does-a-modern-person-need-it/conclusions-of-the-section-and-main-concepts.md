@@ -3,6 +3,8 @@ order: 11
 title: Conclusions of the Section and Main Concepts
 ---
 
+# Conclusions of the Section and Main Concepts
+
 Ordinary tasks are addressed using applied skills, but when the complexity of problems and challenges is overwhelming, intelligence or thinking mastery comes into play.
 
 Modern trends indicate that individuals increasingly face new problems and complex challenges that require considering a variety of interests. Therefore, the intelligence that demonstrates a systems-oriented approach can be aligned with the following aspirations:

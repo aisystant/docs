@@ -3,6 +3,8 @@ order: 4
 title: Meta-Systems Transition and Emergence
 ---
 
+# Meta-Systems Transition and Emergence
+
 # Multilevel Nature of System Breakdown
 
 The multilevel nature of system breakdowns is fundamental. At the very top level of any such breakdown, you potentially have the universe, while at the very bottom—superstrings^[or other known physical objects at the smallest scale.]. However, the vast majority of people operate at the middle level, while scientists predominantly work at the peripheral levels.

@@ -3,6 +3,8 @@ order: 10
 title: "\u201CRole\u201D and \u201CMethod\u201D"
 ---
 
+# “Role” and “Method”
+
 When we examine project roles, we inevitably connect them with practices (methods). We will continue to use the terms method and practice as synonyms. In systems thinking, the term "method" does not carry the same meaning as it does in everyday language^[For example, when discussing the contrast between theory and practice.]. We need this concept to formally describe the actions of project roles. Project roles operate according to a method (practice), and each role can execute multiple methods, through which work artifacts are created. For instance, a swimmer can swim using various styles (often the word "style" is a synonym for method and practice, and sometimes it's referred to as a technique)—freestyle, breaststroke, butterfly, etc.
 
 There are methods for surgeons, dentists, entrepreneurs, engineers, marketers, and so forth. People learn applied methods (practices) to more effectively create work artifacts. Be sure to list the methods you consciously use and then note the work artifacts you produce with their help.

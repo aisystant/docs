@@ -3,6 +3,8 @@ order: 7
 title: Organizational Units and Services
 ---
 
+# Organizational Units and Services
+
 Work is carried out by organizational units. An organizational unit consists of agents (people, organizations, AI) equipped with materials and equipment at their disposal. The smallest organizational unit is a single employee hired for a specific position and managing the corresponding resources.
 
 Typically, organizational units do not initiate activities on their own. In collaborative work, some organizational units have the authority to assign tasks to others, who are obliged to fulfill such requests. The entirety of organizational units with their mutual authorities forms an organization. A system of interest may be created by an expanded enterprise, which can include multiple organizations. Thus, legal or organizational-legal segmentation is just one possible description of a system-creator.

@@ -3,6 +3,8 @@ order: 11
 title: Main Descriptions of the System as a "Transparent Box"
 ---
 
+# Main Descriptions of the System as a "Transparent Box"
+
 # System Modeling: Introductory Concepts
 
 In system modeling, we always start by focusing on the interests of the supersystem. This involves identifying external project roles, their needs, and subjects of interest. Subsequently, we transition to understanding the structure of the system of interest, which we will discuss in this subsection. In the next section, you will learn about the features of modeling creation systems.
