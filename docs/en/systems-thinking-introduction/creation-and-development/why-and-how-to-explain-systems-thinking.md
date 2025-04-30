@@ -3,6 +3,8 @@ order: 11
 title: Why and How to Explain Systems Thinking
 ---
 
+# Why and How to Explain Systems Thinking
+
 You’ve likely heard the famous quote by Ernest Rutherford, the father of nuclear physics and a Nobel laureate: “If a scientist can’t explain their work to the cleaning lady at the lab, then they themselves don’t understand what they do.”
 
 This quote raises an important question: why be able to explain systems thinking to everyday people (colleagues, children, followers)? Isn’t it a waste of time and effort?

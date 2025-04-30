@@ -3,6 +3,8 @@ order: 5
 title: Word, Object, System
 ---
 
+# Word, Object, System
+
 Let's master another thinking technique and learn to differentiate between "word," "object,"^[Here, we are referring to a physical object, not all objects which might include abstract ones.] and "system."
 
 Let's take the word "hammer" as an example. In language, it's quite challenging to separate the word "hammer" from the physical object "hammer," meaning this specific hammer in my hand. In English, all these elements are tightly bound together for us. However, if a Chinese person were to say the word "hammer" in Chinese, we would hear only a collection of sounds and wouldn't associate it with the object "hammer." The word is simply sounds and signs (letters) assembled together. It is people who name some physical or abstract object with this word.

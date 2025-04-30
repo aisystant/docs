@@ -3,6 +3,8 @@ order: 4
 title: Method of Description
 ---
 
+# Method of Description
+
 You already know that a system description consists of role descriptions, which in turn consist of models. To create a role description, a description method (practice) is required. The description method is presented as a theory explaining how to create system descriptions and the necessary tools to obtain a work artifact (system documentation). This theory sets out metamodels that are filled with data, which then become models. Models can be on various media, such as paper or computers. When this occurs, we refer to it as documentation.
 
 It's easiest to consider that the description method, from a substantive point of view, is a set of conventions for multi-layered map-models describing a territory. The territory is the system, the map is the documentation with the system description, and there is a method for compiling the map^[For example, a photogrammetric method for creating topographic maps.], which includes metamodels, concepts, principles, etc. The theory of composing this description, along with the technology of map creation, is a description method.

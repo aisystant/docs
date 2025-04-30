@@ -3,6 +3,8 @@ order: 2
 title: Areas of Interest of the Entrepreneur, Engineer, and Manager
 ---
 
+# Areas of Interest of the Entrepreneur, Engineer, and Manager
+
 Let's delve deeper into three areas of interest and discuss the interests of three main roles—entrepreneur, engineer, and manager. These are what we call activity-based roles, which are culturally recognized (textbooks are written on them, and they are relatively easy to distinguish) and through which other roles can be explained (serving as a meta-model for other roles).
 
 For example, you may be well-versed in medicine and familiar with many roles within the "doctors" category. An adult typically possesses a decent professional understanding of medicine. However, if you aim to create successful systems and/or pursue career advancement, you also need to understand the roles and work artifacts of entrepreneurs, engineers, and managers. Similarly, the role of a doctor can also be explained through these three main roles. For instance, the role of a dentist is an engineering role in the project of treating teeth, while the chief physician is a position likely to include performing managerial duties among others.

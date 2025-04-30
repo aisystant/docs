@@ -3,6 +3,8 @@ order: 0
 title: Theatrical Metaphor
 ---
 
+# Theatrical Metaphor
+
 To understand what a "role" is, let's turn to the theater. Everyone knows the phrase, "All the world's a stage, and all the men and women merely players." This phrase not only carries philosophical weight but is also useful in systems thinking.
 
 The theatrical metaphor helps explain the difference between an action and the executor of that action, or between a role and the performer of that role. In the theater, we distinguish between the performer Vladimir Vysotsky and the role he plays. This distinction is understood even by young children. However, adults sometimes fail to realize that they themselves perform roles such as "manager" or "engineer."

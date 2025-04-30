@@ -3,6 +3,8 @@ order: 3
 title: Systems Breakdown
 ---
 
+# Systems Breakdown
+
 We have grasped the concept of areas of interest, so now let's discuss system breakdowns and system levels. It is important not to confuse "areas of interest" (of systems and roles) with "system levels."
 
 As you already know, systems can be viewed from different perspectives:

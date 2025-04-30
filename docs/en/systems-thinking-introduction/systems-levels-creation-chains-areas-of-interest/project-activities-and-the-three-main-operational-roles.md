@@ -3,6 +3,8 @@ order: 0
 title: Project Activities and the Three Main Operational Roles
 ---
 
+# Project Activities and the Three Main Operational Roles
+
 ### Previous Section Recap
 
 In the previous section, we focused on the system of interest, with other systems serving as supporting elements. However, this doesn't mean that in project activities we only create or develop the system of interest. In almost any activity or project, employees^[Here referring to individuals as agents or as role performers.] can be part of various subproject teams and be creators of a wide range of systems (our systems and creation systems). For example, Team #1 develops a car engine, while another Team #2 focuses on improving the mastery of Team #1's members. Team #3 works on the car assembly line, and Team #4 is involved in the creation and enhancement of this assembly line. In all four teams, employees of the automotive corporation may work, and the same person can be a member of several teams.

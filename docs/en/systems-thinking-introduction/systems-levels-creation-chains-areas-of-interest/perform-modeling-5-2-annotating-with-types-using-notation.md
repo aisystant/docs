@@ -3,6 +3,8 @@ order: 13
 title: 'Perform Modeling: 5.2. Annotating with Types Using Notation ::'
 ---
 
+# Perform Modeling: 5.2. Annotating with Types Using Notation ::
+
 **Familiarize Yourself with the Example in the First Row of the Table**
 
 Use the most convenient type markup option in the text—double colons "::". First, write the object's name, then its type from the meta-model (or additionally from the meta-meta-model). For example: "airplane::system" or "table::system::physical object". If necessary, review the theoretical material on notation :: in the course "Rational Work".

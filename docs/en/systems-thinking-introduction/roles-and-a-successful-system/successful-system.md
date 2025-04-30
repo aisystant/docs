@@ -3,6 +3,8 @@ order: 6
 title: Successful System
 ---
 
+# Successful System
+
 In modern systems thinking, the concept of a "successful system" is introduced through project roles, subjects of interest, and role interests.
 
 A system is considered successful if it accounts for the role interests of all external and internal project roles. The project team identifies all interested project roles and tries to determine all possible subjects of interests. They then consider the preferences of the identified roles in the corresponding subjects of interest. After that, the team decides which project roles’ interests will be addressed during the creation of the system^[The project simultaneously considers several systems, which adds complexity—it's important not to get lost in the subjects of interest.].

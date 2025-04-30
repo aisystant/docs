@@ -3,6 +3,8 @@ order: 6
 title: Models, Meta-Models, Multi-Models, Mega-Models
 ---
 
+# Models, Meta-Models, Multi-Models, Mega-Models
+
 You are already aware that modeling results in models which can exist on various physical media. A model helps make judgments about the object being modeled. The object being modeled is the system of interest and other types of systems. Models also pertain to the supersystem, creation systems, surrounding systems, or subsystems.
 
 Let's emphasize once more that models are created using a specific method of description. It is this method that indicates what is most important in the object being modeled and what needs to be considered in the models. This "most important" aspect for any given model is referred to as a meta-model.

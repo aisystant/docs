@@ -3,6 +3,8 @@ order: 10
 title: The Essence of Systems Thinking
 ---
 
+# The Essence of Systems Thinking
+
 By understanding all kinds of systems, you will be able to grasp any complex activity faster than others. You can figuratively dissect the world into parts with your attention, highlighting specific systems. The world is complex, and all its elements are connected. The human brain finds it challenging to grasp all the connections, which is why systems thinking establishes principles on how to logically divide the world into parts. It becomes much easier to comprehend individual parts, while still maintaining their connection to everything else.
 
 ![Systems Diagram](./the-essence-of-systems-thinking-13.png)

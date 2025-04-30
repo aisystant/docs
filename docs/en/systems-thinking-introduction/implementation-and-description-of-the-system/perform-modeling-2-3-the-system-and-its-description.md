@@ -3,6 +3,8 @@ order: 15
 title: 'Perform Modeling: 2.3. The System and Its Description'
 ---
 
+# Perform Modeling: 2.3. The System and Its Description
+
 ### Instructions
 
 **Familiarize yourself with the examples in the first rows of the table. Review the theoretical material if necessary. Complete the empty cells in the rows following the examples.**

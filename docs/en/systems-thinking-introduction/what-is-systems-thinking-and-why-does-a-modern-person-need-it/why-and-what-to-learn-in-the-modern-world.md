@@ -3,6 +3,8 @@ order: 0
 title: Why and What to Learn in the Modern World
 ---
 
+# Why and What to Learn in the Modern World
+
 # Lifelong Learning and Systems Thinking
 
 Everyone learns throughout life, yet not everyone is aware of it. Many do not realize what they gain from learning, what they should learn specifically, or what it means to take on the role of a student. Nonetheless, even unconscious knowledge and skills assist individuals in understanding the world: dealing with uncertainties, solving problems, and achieving goals. The purpose of understanding is one of the universal answers to "why should we learn?"

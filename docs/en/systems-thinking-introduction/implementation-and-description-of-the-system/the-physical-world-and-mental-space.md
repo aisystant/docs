@@ -3,6 +3,8 @@ order: 0
 title: The Physical World and Mental Space
 ---
 
+# The Physical World and Mental Space
+
 To understand the concepts studied in this section, let's start by differentiating between the concepts and words that denote the physical world and the mental space.
 
 The continuous progress in the number of interacting people and the speed of human adaptation to new conditions has been made possible because people have learned to communicate using signs, words, drawings, etc. They invented letters, the alphabet, numbers, and much more to describe the physical world.

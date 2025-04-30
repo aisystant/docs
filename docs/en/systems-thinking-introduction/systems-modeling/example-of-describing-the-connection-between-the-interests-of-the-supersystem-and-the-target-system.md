@@ -4,6 +4,8 @@ title: Example of Describing the Connection Between the Interests of the Supersy
   and the Target System
 ---
 
+# Example of Describing the Connection Between the Interests of the Supersystem and the Target System
+
 Let's examine the differences between the usage concept, system concept, and architectural documentation. The approach in systems thinking is to first consider the system as a "black box" or from the perspective of the usage concept. Initially, we observe the system’s external use (how it operates) and then, based on this usage concept, delve into its internal structure by creating the system concept and architectural documentation. 
 
 The usage concept and use cases involve describing everything beyond the system of interest, answering the question, "how does the system perform its function?" This represents the system as a "black box." Previously, systems requirements were developed, but now the focus is on developing the usage concept. For more on the obsolescence of requirement engineering, refer to the courses "Systems Thinking" and "Systems Engineering."

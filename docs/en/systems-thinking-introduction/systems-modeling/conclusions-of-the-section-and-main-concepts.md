@@ -3,6 +3,8 @@ order: 16
 title: Conclusions of the Section and Main Concepts
 ---
 
+# Conclusions of the Section and Main Concepts
+
 **Systems Modeling** is the process of creating system descriptions that help understand and explain complexity and structure within a system, as well as the system's interaction with its external surroundings. Modeling involves focusing only on the most critical aspects while omitting the less important details. Documenting models ensures that crucial elements remain in the team’s focus, while the less important aspects are kept only in discussions.
 
 Role descriptions, which collectively form the system description, are created through the description method. Most of you engage in modeling and creating documentation for various systems, so it is important to understand the methods of description you use. You need to improve these methods, which is applied mastery. However, using a systems approach, in particular, will help you pay attention to these methods and integrate them, if necessary, into the project activities of your department or the entire company.

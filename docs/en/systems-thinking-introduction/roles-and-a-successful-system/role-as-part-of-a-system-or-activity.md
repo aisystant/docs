@@ -3,6 +3,8 @@ order: 3
 title: Role as Part of a System or Activity
 ---
 
+# Role as Part of a System or Activity
+
 As you already know, the concept of "role" relates not only to people. A role can be performed not just by a human, but even by a "stone." Let's go further and say that roles are not inherently a part of a person, as is commonly thought. In systems thinking, a role is considered a part of a certain system or activity.
 
 A role is identified as a functional object. The concept of "functional object" pertains to the examination of a "system": when we say^[When we operate with word-concepts, we direct attention. Each concept "highlights" something specific. We cannot consider the world in its entirety, and even a system is difficult to fully examine as we lack the computational power. However, we can focus on something specific within the entire system. For example, the subject of interest—cost. At the same time, the very concept of 'subject of interest' is connected to the whole system, and by discussing one part, we do not lose connection with the whole.] that a system interests us as a functional object, it means we are interested not in its physical embodiment but in the role (or functional) behavior of the system.

@@ -3,6 +3,8 @@ order: 6
 title: Operations Management
 ---
 
+# Operations Management
+
 **Managing Work vs. Managing Practices**
 
 Managing practices involves focusing on the methods (practices) used to create all work artifacts, as outlined in Table 3x3. It requires understanding which practices are necessary, establishing them within the organization, and monitoring their relevance. In contrast, managing work is built upon established practice management.

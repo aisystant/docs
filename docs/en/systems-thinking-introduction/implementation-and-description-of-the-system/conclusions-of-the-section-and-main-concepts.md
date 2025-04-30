@@ -3,6 +3,8 @@ order: 10
 title: Conclusions of the Section and Main Concepts
 ---
 
+# Conclusions of the Section and Main Concepts
+
 In this section, we discussed the cognitive technique of distinguishing between the embodiment, description, documentation, and function of a system. It can be said that any description pertains to a system. A system description becomes accessible to people when it is documented.
 
 The main relationships in systems are the "part-whole" relationships, also known as composition/assembly relationships. Divisions are made solely through attention—nothing in the physical world is deliberately divided into parts!

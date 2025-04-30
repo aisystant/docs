@@ -3,6 +3,8 @@ order: 8
 title: Composition Relationship
 ---
 
+# Composition Relationship
+
 When we talk about embodiment, it is essential to consider the primary relationships within systems, known as the "part-whole" relationships, also referred to as composition or assembly relationships.
 
 ![](./composition-relationship-7.png)

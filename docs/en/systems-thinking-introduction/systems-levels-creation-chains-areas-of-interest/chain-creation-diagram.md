@@ -3,6 +3,8 @@ order: 6
 title: Chain Creation Diagram
 ---
 
+# Chain Creation Diagram
+
 Sometimes it's necessary to logically construct various interconnections to better understand the structure of complex human activities. The main task is to find the place of your system and your team in the creation chain.
 
 Various systems are linked through the stage of exploitation into long creation chains. The diagram shows the stages of three systems. The run-time stage is the stage of exploitation.

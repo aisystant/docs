@@ -3,6 +3,8 @@ order: 4
 title: Supersystem, System Levels, and Recursion
 ---
 
+# Supersystem, System Levels, and Recursion
+
 Below, you see a diagram that presents the same types of systems discussed earlier, but from a slightly different perspective. This diagram from the textbook "Systems Thinking" demonstrates how the delineation of different systems occurs in relation to a system of interest. If we speak of a supersystem, it implies the presence of a system of interest, and if there is a creation system, it corresponds with a system of interest.
 
 However, before identifying the system of interest, it is necessary to understand your roles, team, and enterprise. This understanding helps define your responsibilities and authorities, which determine the system level, boundaries of the system of interest, and our system. You may be granted the authority to create a piston, the entire engine, or the vehicle as a whole. Once you choose the system of interest, you can then structure all other systems, including defining "our system". Conversely, sometimes you have a clear understanding of "our system" and only then start searching for a system of interest.

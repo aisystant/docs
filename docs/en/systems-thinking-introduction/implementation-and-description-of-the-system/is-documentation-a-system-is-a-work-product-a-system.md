@@ -3,6 +3,8 @@ order: 3
 title: Is Documentation a System? Is a Work Product a System?
 ---
 
+# Is Documentation a System? Is a Work Product a System?
+
 Quite often, students ask the question: "Documentation exists in the physical world, so is it a system? After all, menus, books, and passports need to be created." This is a good question, and those who ask it are digging deep.
 
 Strangely enough, the answer to this question is tied to attention. Systems thinking relies on techniques for managing attention. Often, people studying systems thinking quickly jump from one project to another and lose sight of the fact that they start talking about one context and end up in another. Therefore, it is recommended to base these discussions on less complex activities that prevent "losing touch with reality" in reasoning.

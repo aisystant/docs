@@ -3,6 +3,8 @@ order: 14
 title: 'Perform the Modeling: 2.2. Physical World and Mental Space'
 ---
 
+# Perform the Modeling: 2.2. Physical World and Mental Space
+
 **Физический мир**
 
 1. Мой автомобиль

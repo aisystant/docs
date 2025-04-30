@@ -3,6 +3,8 @@ order: 22
 title: 'Perform Simulation: 3.8. Identification of Roles and Role Expectations'
 ---
 
+# Perform Simulation: 3.8. Identification of Roles and Role Expectations
+
 Here is the translation in English:
 
 Please review the example in the first row of the table. Notice that a well-crafted action statement suggests a role. Some roles are culturally conditioned, meaning they are widely used. Try to identify them by using resources such as ChatGPT or Google, or by discussing with familiar experts. Interview three of your colleagues and fill in the next three rows. Remember, systems thinking is not just desk work; you'll need to communicate with various people! Don't put this off for the future—start today. For instance, write, call, or have a chat with colleagues over a cup of coffee. It is not allowed to write down information about your colleagues that you already know!

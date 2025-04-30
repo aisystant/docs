@@ -3,6 +3,8 @@ order: 9
 title: Management of Practices
 ---
 
+# Management of Practices
+
 **Managing Work vs. Managing Practices**
 
 Managing work is a fully managerial practice, while managing practices is half-engineering and half-managerial. A practice manager should not be confused with a developer or the architect of the system itself, even though they also engage in engineering work. Their focus is on the methods and practices within the engineers' work on the system of interest, including what practices developers and architects employ.

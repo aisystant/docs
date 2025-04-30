@@ -3,6 +3,8 @@ order: 24
 title: 'Perform Modeling: 7.9. Work Formulation'
 ---
 
+# Perform Modeling: 7.9. Work Formulation
+
 **Task Completion for Work and Personal Projects**
 
 Please refer to the example in the first row of the table. Below, you'll find a completion of empty cells with examples from both work and personal projects: at least 5 for work and at least 3 for personal life. The work descriptions are formulated as: Who, By When, In What Role, By What Method, With What Resources, Should Complete Which Work Artifact.

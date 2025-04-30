@@ -3,6 +3,8 @@ order: 7
 title: Executor of a Role, Role, Function, and System Names
 ---
 
+# Executor of a Role, Role, Function, and System Names
+
 In the previous section, we briefly discussed the distinction between a physical object, a functional object, and functional (or role) behavior. For example, a physical object is a microscope^[When we mention "microscope," we primarily refer to the role "microscope." However, we also use it as a name for the physical item that, in everyday language, is called a microscope. Context helps us differentiate these meanings. It's great if you've grasped this duality, similar to the case with a hammer. A systems-oriented person understands this difference well. It's best to start with a stone.], or a stone. These objects can assume different roles and perform various functions assigned to them. In our example, the functional object or role is a "nail-driver." Culturally, this role is commonly called a "hammer." The function or the functional or role behavior is the act of driving nails.
 
 As we've mentioned earlier, each role is associated with culturally-conditioned behavior and a corresponding culturally established name^[Or conditioned by cultural norms and rules, i.e., accepted in culture, norms of behavior, usage, etc.]. Everyone understands what the role "hammer" entails and its function of driving nails. The physical item that can become a hammer^[That is, play the role of a hammer. Note that similar reasoning applies if we were discussing the role of a manager being played by John Doe or Jane Doe.], can vary.
