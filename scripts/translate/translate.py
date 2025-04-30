@@ -8,6 +8,10 @@ import yaml
 import json
 import base64
 from slugify import slugify
+from langsmith import Client
+from openai import OpenAI
+from langchain_core.messages import convert_to_openai_messages
+
 
 # Configure logging
 log_level = os.getenv('LOG_LEVEL', 'INFO').upper()
@@ -18,52 +22,71 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-TRANSLATION_SERVICE_URL = "https://congenial-fishstick-4jqpgxv69h5r4w-5000.app.github.dev/api/translate"  # Translation service URL
-AISYSTANT_SESSION_TOKEN = os.getenv('AISYSTANT_SESSION_TOKEN')
-HEADERS = {'Session-Token': AISYSTANT_SESSION_TOKEN}
+
+filename = sys.argv[1]
+logger.info(f"Translating file: {filename}")
+if not filename.endswith(".md"):
+    logger.error("Only markdown files are translatable.")
+    sys.exit(1)
+
 
 ORIG_LANG = "ru"
 DST_LANG = ["en"]
 
-TRANSLATE_TITLE_SYSTEM_PROMPT_CID = "QmQNECrHspRRLxeq34uNWmxMmjDAtk5SGN11PApiP9idFk"
-TRANSLATE_TITLE_USER_PROMPT_CID = "Qmcu6Tn9bZorQGt7gRvZ8JymmCcTGRkfX4ermAyKWnkEyx"
-TRANSLATE_BODY_SYSTEM_PROMPT_CID = "QmP6fwjoFK7uYrydDLnW4jieKULxrgkURrMLfLZeW22HNf"
-TRANSLATE_BODY_USER_PROMPT_CID = "QmbJii88F64APCu4PrPRWNNhh7zfERrsBM6UehuDHiNJ8Q"
+
+client = Client()           # LangSmith client
+oai_client = OpenAI()       # OpenAI client
+
+prompt = client.pull_prompt("translateprod")
+
+TITLE_CACHE_FILE = "title.yaml"
 
 
-def translate_text(text, lang="en", system_prompt_cid="", user_prompt_cid="", context="", model="gpt-4o"):
+def load_title_cache():
+    """Load the translation cache from the YAML file."""
+    if os.path.exists(TITLE_CACHE_FILE):
+        try:
+            with open(TITLE_CACHE_FILE, "r", encoding="utf-8") as f:
+                cache = yaml.safe_load(f)
+                return cache if isinstance(cache, dict) else {}
+        except Exception as e:
+            logger.error(f"Failed to load cache from {TITLE_CACHE_FILE}: {e}")
+            return {}
+    return {}
+
+
+title_cache = load_title_cache()
+
+
+def get_title_from_cache(title, lang):
     """
-    Sends a request to the translation service to translate text.
+    Retrieve the translated title from the cache.
     """
-    payload = {
-        "text": text,
-        "lang": lang,
-        "system_prompt_cid": system_prompt_cid,
-        "user_prompt_cid": user_prompt_cid,
-        "context": context,
-        "model": model,
-        "seed": 4
+    if lang != "en":
+        raise NotImplementedError("Only English translation is supported.")
+    return title_cache[title]
+
+def translate_text(text, lang):
+    """
+    Translate the given text using the OpenAI API.
+    """
+    logger.info(f"Translating text: {text[:100]}... to {lang}")
+    if lang != "en":
+        raise NotImplementedError("Only English translation is supported.")
+    doc = {
+        "body": text,
     }
-
-    try:
-        response = requests.post(
-            TRANSLATION_SERVICE_URL,
-            headers={"Content-Type": "application/json"},
-            json=payload
-        )
-        response.raise_for_status()
-        translated_text = response.json().get("message", "")
-        if not translated_text.strip():
-            logger.error("Translation service returned an empty result.")
-            sys.exit(1)
-        return translated_text
-    except requests.RequestException as e:
-        logger.error(f"Failed to translate text '{text}': {e}")
+    formatted_prompt = prompt.invoke(doc)
+    response = oai_client.chat.completions.create(
+        model="gpt-4o",  # Change to "gpt-4" if needed
+        messages=convert_to_openai_messages(formatted_prompt.messages)
+    )
+    translated_text = response.choices[0].message.content.strip()
+    logger.info(f"Translated text: {translated_text[:100]}...")
+    if not translated_text:
+        logger.error("Translation returned an empty result.")
         sys.exit(1)
-
-
-filename = sys.argv[1]
-logger.info(f"Translating file: {filename}")
+    return translated_text
 
 
 for lang in DST_LANG:
@@ -71,6 +94,10 @@ for lang in DST_LANG:
         content = f.read()
     out_filename = filename.replace(ORIG_LANG, lang)
     output_directory = os.path.dirname(out_filename)
+    # skip if file already exists
+    if os.path.exists(out_filename):
+        logger.info(f"File {out_filename} already exists. Skipping translation.")
+        continue
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
     # if markdown file
@@ -78,14 +105,14 @@ for lang in DST_LANG:
         frontmatter = content.split("---")[1]
         body = content.split("---")[2]
         info = yaml.safe_load(frontmatter)
-        title = translate_text(info["title"], lang, context=body, 
-                               system_prompt_cid=TRANSLATE_TITLE_SYSTEM_PROMPT_CID, 
-                               user_prompt_cid=TRANSLATE_TITLE_USER_PROMPT_CID)
+        logger.info(f"Frontmatter: {info}")
+        logger.info(f"Translating title: {info['title']}")
+        title = get_title_from_cache(info["title"], lang)
+        logger.info(f"Translated title: {title}")
         info["title"] = title
         frontmatter = yaml.dump(info, default_flow_style=False)
         if body.strip() != "":
-            body = translate_text(body, lang, system_prompt_cid=TRANSLATE_BODY_SYSTEM_PROMPT_CID, 
-                                  user_prompt_cid=TRANSLATE_BODY_USER_PROMPT_CID)
+            body = translate_text(body, lang)
         # content should be bytes
         content = "---\n" + frontmatter + "---\n\n" + body
         content = content.encode("utf-8")
