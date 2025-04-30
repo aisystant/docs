@@ -5,8 +5,6 @@ title: Foreword
 
 # Foreword
 
-# Course Introduction: "Introduction to Systems Thinking"
-
 The **"Introduction to Systems Thinking"** course will guide you in taking the first steps into the intriguing realm of systems thinking. In this course, you will be introduced to the main concepts of systems thinking and begin applying them to both work-related and personal projects.
 
 You have the option to undertake the **"Introduction to Systems Thinking"** course independently or as part of group learning with an instructor. If you enroll in the course with an instructor, you will receive feedback on all your questions and assessments of your homework. The instructor will point out numerous pitfalls, help you navigate complex aspects, and expedite your understanding of the challenging systems thinking.
