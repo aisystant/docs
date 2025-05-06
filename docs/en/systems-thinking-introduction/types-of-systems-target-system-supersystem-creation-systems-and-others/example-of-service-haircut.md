@@ -3,18 +3,22 @@ order: 9
 title: Example of Service - "Haircut"
 ---
 
-# Example of Service - "Haircut"
+# Example of a Service - "Haircut"
 
-Let's consider an example with a hair salon. A hair salon belongs to the service sector. It does not produce systems-products in the way an automotive factory does. If you ask anyone what a hair salon does, they will answer that it cuts hair.
+Let's consider the example of a hair salon. A hair salon belongs to the service sector. It does not produce system-products in the way that an automotive factory does. If you ask anyone what a hair salon does, they will answer that it cuts hair.
 
 ![](./example-of-service-haircut-12.png)
 
-Thus, a hair salon provides the service of haircuts. It offers an outwardly standardized set of actions: a Canadian cut, a model cut, and so on. When we talk about a hair salon, it's appropriate to speak in terms of "service" and "offering."
+Thus, a hair salon provides a service—haircuts. It offers a standardized set of actions "outwardly": a Canadian-style cut, a model-style cut, and so on. When we talk about a hair salon, it's appropriate to use terms like "service" or "offering."
 
-However, a hair salon is also a system-enterprise, which means it has a system of interest created by the salon as a creation system. This system of interest is the hairstyle. The supersystem for a hairstyle is a well-groomed head or a lady ready for a night at the theater. Further, surrounding systems include makeup, earrings, and a dress.
+However, a hair salon is a system-enterprise, which means it has a system of interest created by the hair salon as a creation system. Such a system of interest is the hairstyle. The supersystem for a hairstyle would be a well-groomed head or a lady ready to attend the theater. In turn, you can identify the surrounding systems—makeup, earrings, dress.
 
-Not the entire hair salon participates in the haircut service, so it's more accurate to name the parts of the enterprise directly involved in this procedure. This includes the hairdresser and all their tools (technologies) such as scissors^[In turn, scissors also provide a service—cutting.], clippers, combs, etc. Essentially, there is an internal process involving the hairdresser with scissors, and an external service delivered as a result of this internal process. A system constructor may discuss them separately, which is why there are different terms—process, service, systems.
+Not the entire hair salon participates in the haircut service, so it's more accurate to name the parts of the enterprise directly involved in this procedure. This includes the hairdresser with all their tools (technologies) such as scissors [ ^1 ], clippers, combs, and so on. Thus, there is an internal process involving the hairdresser with the scissors, and there is an external service provided as a result of this internal process. A system constructor can discuss them separately, which is why there are different concepts—process, service, systems.
 
-A system like scissors is created with a specific functional purpose. The creators of scissors must clearly understand the intended or requested function by the client^[The creators of scissors adhere to the principle: "the finger presses against the table, but the table does not press the finger," meaning scissors are the active object interacting with hair, which is considered passive. The interaction of hair with scissors is typically neglected in this functional (role-specific) consideration. An alternative view can also be taken. Attention cannot simultaneously capture all interactions and influences. More details about why systems thinking adheres to Aristotelian rather than Newtonian physics can be found in the section 'Aristotelian Physics in Systems Thinking' of the 'Systems Thinking' textbook.]. It's one thing if it's a hairdresser, another if it's a gardener. While the principle of operation remains the same, hairdressing scissors are made for the former, and pruning shears are made for the latter (garden shears).
+In turn, the scissors system is created for some specific functional purpose. The creators of scissors must understand the intended purpose or the client-requested function [ ^2 ]. It's one thing if it's for a hairdresser and another if it's for a gardener. Although the principle of operation is the same, hairdressing scissors are created for the former, while pruning shears (garden scissors) are made for the latter.
 
-If this example isn't clear to you, be sure to reflect on it using thinking through writing. Also, write down questions you can ask in the support chat for the "Systems Thinking" course. For those who understand this example, try to come up with a similar one.
+If this example is not sufficient for your understanding, be sure to reflect on it using thinking through writing. Write down any questions you might have for the support chat of the course "Systems Thinking." If you understand the example, try to provide a similar one.
+
+[ ^1 ]: In turn, scissors also provide a service—cutting.
+
+[ ^2 ]: The creators of scissors follow the principle that "the finger presses the table, but the table does not press the finger," meaning scissors are an active object that cuts hair, thus delivering a service. Hair is considered a passive object. The action of hair on scissors is neglected when considering the functional (role-based) behavior of scissors. However, the reverse consideration is also possible. It's all about focus. It's impossible to simultaneously consider all interactions and influences. For more details on why systems thinking uses the principle of Aristotelian rather than Newtonian physics, see the section "Aristotelian Physics in Systems Thinking" in the "Systems Thinking" coursebook.

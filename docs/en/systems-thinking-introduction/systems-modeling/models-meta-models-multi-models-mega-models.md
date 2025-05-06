@@ -3,22 +3,22 @@ order: 6
 title: Models, Meta-Models, Multi-Models, Mega-Models
 ---
 
-# Models, Meta-Models, Multi-Models, Mega-Models
+# Models, Meta-models, Multi-models, Mega-models
 
-You are already aware that modeling results in models which can exist on various physical media. A model helps make judgments about the object being modeled. The object being modeled is the system of interest and other types of systems. Models also pertain to the supersystem, creation systems, surrounding systems, or subsystems.
+You already know that a result of modeling is the models themselves, which can exist on different physical media. A model helps form a judgment about the object being modeled. The object being modeled is the system of interest, along with other types of systems. Models belong to the supersystem, creation systems, surrounding systems, or subsystems.
 
-Let's emphasize once more that models are created using a specific method of description. It is this method that indicates what is most important in the object being modeled and what needs to be considered in the models. This "most important" aspect for any given model is referred to as a meta-model.
+Let's emphasize again that models are created through a specific description method. This method indicates what is most important in the object being modeled and what needs to be considered in the models. This "most important" aspect for a particular model is referred to as the meta-model.
 
-![image](./models-meta-models-multi-models-mega-models-19.png)
+![](./models-meta-models-multi-models-mega-models-19.png)
 
-For example, consider the system—a city like Moscow. A map of the city serves as a model of Moscow. The map's legend acts as a meta-model. The map contains a minuscule portion of information about the city, but it is deemed the most critical information that someone decided to depict. One map might show city districts, another may display roads and industrial enterprises, while a third might represent water conservation zones, etc.
+For example, there is a system—the city of Moscow. And there is a map of the city. The map is a model of Moscow. The map's legend is the meta-model. The map contains a minute part of the city's information, but it is the most critical information someone decided to highlight. One map might present city districts, another roads and industrial enterprises, and a third water protection zones, etc.
 
-Each map's legend indicates what is significant on these territories and what must be displayed in these specific models. You will see the road on the map because it's important, but not its width, as it was not essential for the creator of that particular map.
+The legend of each such map indicates what is important in those areas and what should be displayed specifically in these models. For example, you will see the road on the map, as it is important, but not its width, because that was not important to the map's creator.
 
-A collection of interrelated models, created using different descriptive methods, is usually called a multi-model. It's akin to a collection of various maps of the same territory: flora, fauna, population density, terrain, road networks, etc.
+A collection of related models, made using different description methods, is typically called a multi-model. It's like a collection of multiple maps for the same territory: flora, fauna, population density, relief, road network, and so on.
 
-Besides the set of maps, we also need a set of legends for these maps. A multi-model along with its defining meta-models is referred to as a mega-model.
+Besides the set of maps, we also need to have a set of legends for these maps. A multi-model combined with its defining meta-models is termed a mega-model.
 
-For more detailed information on models, meta-models, multi-models, and mega-models, refer to the "Systems Thinking" textbook. It's beneficial for broadening your horizons. Moreover, it is necessary to apply these concepts in project activities.
+For more detailed information on models, meta-models, multi-models, and mega-models, refer to the textbook "Systems Thinking." It's beneficial for broadening one's horizons. Applying these concepts in project work is then essential.
 
-Errors in a system model should ideally be identified (and corrected) during system description and documentation, that is, before manufacturing—not afterward, and certainly not during the system's operation. As the saying goes, measure seven times, cut once!
+Errors in a system model should ideally be identified (and corrected) during the description and documentation of the system, that is, before its creation, not afterward, and certainly not during the system's operation. As the saying goes: describe seven times, build once!

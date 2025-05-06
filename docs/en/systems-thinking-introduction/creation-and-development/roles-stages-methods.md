@@ -5,8 +5,8 @@ title: Roles, Stages, Methods
 
 # Roles, Stages, Methods
 
-Now let's examine the connection between stages, methods, and roles. The image illustrates the stages—design, manufacturing, and operation. At each stage, different roles may use different methods.
+Next, we will examine the connection between stages, methods, and roles. The image shows stages—design, production, and operation. At each stage, different roles may use different methods.
 
-This allows us to see, from a functional perspective, how a company works when creating a system of interest. At each stage, different functional parts of the company or organizational roles apply different methods.
+This approach allows you to see, from a functional perspective, how an enterprise that creates the system of interest operates. At each stage, various functional parts of the enterprise or organizational roles apply different methods.
 
-| Roles/Stages | Design | Manufacturing | Operation |
+| Roles/Stages | Design | Production | Operation |

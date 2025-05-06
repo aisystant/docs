@@ -4,74 +4,8 @@ title: 'Perform Modeling: 7.11. Assign Organizational Units to Organizational Ro
   Executing Methods'
 ---
 
-# Perform Modeling: 7.11. Assign Organizational Units to Organizational Roles Executing Methods
+# Perform Modeling: 7.11. Assigning Organizational Units to Organizational Roles and Executing Methods
 
-**Example:**
+Refer to the example in the first row. Fill in the empty cells in the rows below the example. Keep in mind that the data presented may fit a variety of different situations, and you're only required to describe any variant. The key is not to make methodological errors. Which methods are executed by which organizational roles from which organizational units of your enterprise? Provide 10 examples.
 
-- **Оргроль:** Маркетолог
-- **Оргзвено:** Отдел маркетинга
-- **Методы:** Исследование рынка, разработка рекламных стратегий
-
-**1.**
-
-- **Оргроль:** Аналитик данных
-- **Оргзвено:** Отдел аналитики
-- **Методы:** Анализ данных, прогнозирование тенденций  
-
-**2.**
-
-- **Оргроль:** Менеджер по продажам
-- **Оргзвено:** Отдел продаж
-- **Методы:** Разработка стратегии продаж, управление отношениями с клиентами
-
-**3.**
-
-- **Оргроль:** Инженер-разработчик
-- **Оргзвено:** Технический отдел
-- **Методы:** Проектирование систем, тестирование прототипов
-
-**4.**
-
-- **Оргроль:** Руководитель проекта
-- **Оргзвено:** Управление проектами
-- **Методы:** Управление сроками, координация команды
-
-**5.**
-
-- **Оргроль:** Специалист по кадровым вопросам
-- **Оргзвено:** HR-отдел
-- **Методы:** Подбор персонала, оценка эффективности
-
-**6.**
-
-- **Оргроль:** Финансовый консультант
-- **Оргзвено:** Финансовый отдел
-- **Методы:** Бюджетирование, финансовый анализ
-
-**7.**
-
-- **Оргроль:** Контент-менеджер
-- **Оргзвено:** Отдел контента
-- **Методы:** Создание контента, управление редакторскими планами
-
-**8.**
-
-- **Оргроль:** Системный администратор
-- **Оргзвено:** IT-отдел
-- **Методы:** Установка и поддержка ПО, мониторинг систем
-
-**9.**
-
-- **Оргроль:** Специалист по логистике
-- **Оргзвено:** Логистический отдел
-- **Методы:** Организация цепочек поставок, оптимизация транспортных маршрутов
-
-**10.**
-
-- **Оргроль:** Консультант по изменениям
-- **Оргзвено:** Отдел изменений
-- **Методы:** Управление изменениями, разработка стратегий внедрения
-
----
-
-Find the corresponding task in your modeling workspace by its number and complete all its points.
+Locate the corresponding assignment by number in the modeling workspace and complete all its tasks.

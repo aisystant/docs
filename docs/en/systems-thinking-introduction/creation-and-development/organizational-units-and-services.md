@@ -5,10 +5,12 @@ title: Organizational Units and Services
 
 # Organizational Units and Services
 
-Work is carried out by organizational units. An organizational unit consists of agents (people, organizations, AI) equipped with materials and equipment at their disposal. The smallest organizational unit is a single employee hired for a specific position and managing the corresponding resources.
+Work is carried out by organizational units. An organizational unit consists of agents (people, organizations, AI) along with the materials and equipment available to these agents. The smallest organizational unit is a single employee hired for a specific position, utilizing the resources available to them.
 
-Typically, organizational units do not initiate activities on their own. In collaborative work, some organizational units have the authority to assign tasks to others, who are obliged to fulfill such requests. The entirety of organizational units with their mutual authorities forms an organization. A system of interest may be created by an expanded enterprise, which can include multiple organizations. Thus, legal or organizational-legal segmentation is just one possible description of a system-creator.
+Typically, organizational units do not initiate work on their own. In collaborative activities, some organizational units have the authority to assign tasks to others, which are obliged to fulfill these requests. The entire set of organizational units with reciprocal authorities constitutes an organization. An expanded enterprise, which may include multiple organizations, can create the system of interest. Thus, legal or organizational-legal separation is one possible description of the system-creator.
 
-Each organizational unit performs external behavior that we refer to as a service. For example, there is an organizational unit within an enterprise that calculates salaries and another that disburses them. These are the services of salary calculation and disbursement. There are also assembly services, such as the assembly of a passenger vehicle. Organizational units can provide services to other organizational units or to the system of interest^[For example, the service of assembling a passenger vehicle.].
+Each organizational unit performs external activities, which we refer to as service. For example, there is an organizational unit within an enterprise responsible for calculating salaries, and there is another for distributing them. These are the salary calculation and distribution services. There are also assembly services, such as automobile assembly. Organizational units can provide services to other organizational units or to the system of interest[^1].
 
-Work arises when an organizational unit is assigned a task and receives the necessary resources. After that, the organizational unit delivers the required service, resulting in a work artifact. If there is no assignment or resources, the service is not provided, and the work is not done.
+Work emerges when an organizational unit is given a task and receives the necessary resources. The organizational unit then delivers the required service, resulting in a work artifact. Until a task is assigned or resources are available, the service is not provided, and work is not completed.
+
+[^1]: For example, the automobile assembly service.

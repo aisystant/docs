@@ -5,26 +5,26 @@ title: Stages and Phases
 
 # Stages and Phases
 
-**Concepts of "Stage" and "Phase"**
+The concepts of "stage" and "phase" relate to time, but stages are connected with methods (practices) and logical time, whereas phases are linked with tasks and physical time.
 
-The terms "stage" and "phase" pertain to time, but stages are linked to methods (practices) and logical time, whereas phases relate to tasks and physical time.
+Methods (practices) can be arranged sequentially in logical time, and if necessary, they can form stages. For example, to create the system "painted wall," we can identify the following methods: puttying, sanding, painting, and drying.
 
-Methods (practices) can be arranged sequentially in logical time, with stages being identified if necessary. For instance, to create a system like a "painted wall," we can identify the following methods: filling, sanding, painting, drying.
+Based on this, incidentally, we can define the functional parts of an organization that will paint the wall. In this functional consideration, we do not yet discuss when this will be done and by which agents (executors). This will be discussed when focusing on tasks.
 
-Based on this, one can also define the functional parts of the organization that will paint the wall. In this functional consideration, we are not yet addressing when it will be done and by which agents (executors). These aspects will be discussed when we focus on tasks.
+It is not always possible to immediately identify all necessary methods, and it is not always convenient to work with a multitude of practices, so they can be grouped into specific stages. Initially, for example, the stage "cleaning" might include practices such as puttying and sanding, while the stage "painting" includes practices like painting, drying, and repainting.
 
-It is not always possible to immediately identify all necessary methods, and it is not always convenient to work with numerous practices, so they can be gathered into specific stages. For example, initially, one could outline a "cleaning" stage including practices like filling and sanding, as well as a "painting" stage, with practices such as painting, drying, and re-painting.
+In the creation of many systems, universal stages such as ideation, modeling, creation, and operation are often highlighted. Within each stage, unique practices or sub-practices for creating a specific system of interest are determined. Consequently, sub-stages may also be identified.
 
-When creating many systems, common stages such as ideation, modeling, creation, and operation are often identified. However, within each stage, unique practices or sub-practices are defined for developing a specific system of interest. Consequently, substages may also be identified.
+Practices in stages [ ^1 ] and sub-stages are arranged in a certain logical order; for instance, creation typically follows modeling. However, different practices and stages can be implemented simultaneously, unlike phases, which occur strictly one after another in physical time.
 
-Practices within stages^[And the stages themselves are structured logically, as evident from the list of universal stages.] and substages are organized in a certain logical order, meaning creation typically follows modeling. However, different practices and stages might be carried out simultaneously, unlike phases that occur sequentially in physical time.
+The list of practices and their logical order is defined by the concept and architecture of the system. Each practice should be "assigned" a task, just as each system function is assigned a design-module. Each task is carried out by an organizational unit, which plays a specific role within a practice at a certain time and with the use of some resource. As a result, the organizational unit obtains a work artifact.
 
-The list of practices and their logical order is determined by the system's concept and architecture. Each practice must have an assigned task, just as each system function is assigned to a module-structure. Each task is carried out by an organizational unit that plays a specific role for a particular practice at a certain time, using certain resources. Consequently, the organizational unit produces a work artifact.
+Each phase contains a specific list of tasks, and phases follow one another in physical time. Tasks within a phase are performed by different organizational units either sequentially or in parallel. Phases are determined by managers who aim to achieve specific work artifacts necessary to transition to subsequent phases.
 
-Each phase comprises a specific list of tasks, and phases follow one after another in physical time. Tasks within a phase are executed by different organizational units, either sequentially or in parallel. Phases are determined by managers, who are keen to obtain specific work artifacts necessary to move on to other phases.
+For example, a manager may define a phase as the sale of the system. For them, the checkpoint is the signed contract. However, during this phase, beyond marketing practices, the stages of ideation and system design, or possibly even system creation, can be completed—at least the first version of the system or MVP. Alternatively, it might be decided to avoid any creation tasks until the contract is signed. Therefore, the tasks included in a specific phase are determined by the managers.
 
-For example, a manager might designate a phase—system sales. The control point for this is a signed contract. However, during this phase, besides marketing practices, one can complete the stages of system ideation and design, or even system creation, at least for the first version or MVP. Conversely, it might be decided not to conduct any system creation work until a contract is signed. Therefore, which tasks are included in a specific phase is determined by managers.
+The determination of phases depends on the methods of task management, which will be discussed in the next subsection. Task phases can be pre-planned or opened as needed. Tasks can be assigned to all phases in advance. In this case, it would be methods of project or process task management. Or, they can be determined as circumstances arise, in which case it would be case management.
 
-The delineation of phases depends on task management methods, which will be covered in the next subsection. Work phases can be pre-planned or opened up as necessary. Tasks can be designated for all phases in advance, employing project management or process management methods. Alternatively, they can be defined as circumstances demand, thus employing case management.
+Meanwhile, tasks can be organized in such a way that methods logically following one another can be executed simultaneously. For example, one team cleans the second wall while another team simultaneously paints the already cleaned first wall. Such a division of methods and tasks, stages and phases, allows for a convenient way to discuss the activity of creation systems.
 
-Additionally, tasks may be organized such that methods that logically follow one another are executed concurrently. For example, one team preps the second wall while another simultaneously paints the already prepped first wall. This separation of methods and tasks, stages and phases, allows for convenient discussions about the activities of creation systems.
+[ ^1 ]: They themselves are arranged in logical order, as seen from the list of universal stages.

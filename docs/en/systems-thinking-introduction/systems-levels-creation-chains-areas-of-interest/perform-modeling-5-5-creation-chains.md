@@ -3,10 +3,10 @@ order: 16
 title: 'Perform Modeling: 5.5. Creation Chains'
 ---
 
-# Perform Modeling: 5.5. Creation Chains
+# Conduct Modeling: 5.5. Creation Chains
 
-**Review the example in the first line. Fill in the empty cells in the rows following the example. If you lack the knowledge to select the necessary words and labels (names), use ChatGPT or Google, or consult familiar experts.**
+Review the example in the first row. Fill in the empty cells in the rows following the example. If you lack sufficient knowledge to select the appropriate words and designations (names), use ChatGPT, Google, or consult with familiar experts.
 
-**Provide examples from work and personal projects.**
+Provide examples from both professional and personal projects.
 
-**In the modeling workspace, find the corresponding task by number and complete all its points.**
+Locate the corresponding task by number in the modeling workspace and complete all its sections.

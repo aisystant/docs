@@ -5,24 +5,25 @@ title: Role Descriptions and Models
 
 # Role Descriptions and Models
 
-# Introduction to System Descriptions and Interests
+In the first section of the course, it was mentioned that a system possesses certain classical properties and is influenced by design roles. We then discovered that there are numerous subjects of interest to the system and that each description is created for a particular subject of interest.
 
-In the first section of the course, it was discussed that a system possesses certain classic properties and depends on project roles. We later discovered that there are numerous **subjects of interest** related to the system, and each description is created for a specific subject of interest.
+In the adapted diagram from the ISO 42010 standard [ ^1 ], you can see how to contemplate interests in the system, design roles, role descriptions, models, and so on. This international standard provides guidelines on how to think about system descriptions.
 
-Through the adapted diagram from ISO 42010^[For more details on this standard, refer to the textbook "Systems Thinking."], you can see how to reason about interests in the system, project roles, role descriptions, models, and so forth. This international standard provides guidance on how to consider a system description.
+![](./role-descriptions-and-models-16.png)
 
-![Role Descriptions and Models](./role-descriptions-and-models-16.png)
+The standard itself addresses only architectural description, but its principles can be applied to any description of different systems. For example, apply this scheme not to the system of interest but to the creation system.
 
-The standard itself discusses only architectural descriptions, but its principles can certainly be applied to any descriptions of different systems. For example, you could apply this framework not to the **system of interest**, but to the **creation system**.
+In practice, everything usually begins with identifying a role-specific type of description, which stems from a particular interest. For instance, an enterprise has a subject of interest—taxes. There are specific design roles (each with its own methods and work artifacts) that hold this subject of interest. However, the preferences regarding this subject of interest may differ among the tax inspector, manager, and accountant.
 
-In practice, the process usually begins with identifying the type of role description, which stems from a specific interest. For instance, an enterprise may have a subject of interest—taxes. There are specific project roles (with their methods and work artifacts) that possess this subject of interest. However, the preferences of the tax officer, manager, and accountant in this subject of interest might not align.
+To address this subject of interest, a tax description is formulated, which must include all the preferences of the design roles. Each design role has its own demands, but to reach an agreement, a common description for all interested [ ^2 ] design roles must be established.
 
-To address this subject of interest, a tax description is formed, which must include all preferences of the project roles. Each project role desires its own focus, but to reach an agreement, it is necessary to create a common description for all involved project roles with the same subject of interest.
+It consists of specific models. Discussing tax issues is straightforward because many metamodels are regulated by the state in appropriate normative documents. These are documents such as the "Balance Sheet," "Profit and Loss Statement," and others. When these metamodels are populated with relevant reporting data, they become models—descriptions of a specific enterprise and its economic activities.
 
-This description consists of specific models. Discussing tax issues becomes simpler because many metamodels are established by the government in corresponding regulatory documents. These include documents like the "Balance Sheet," "Profit and Loss Statement," and others. When these metamodels are filled with corresponding report data, they become models—descriptions of a specific enterprise and its operational activities.
+As you may have guessed, there is a defined method of description used to compile this tax description. This is the method of accounting and tax reporting.
 
-As you may have guessed, there is a specific method of description used to compile this tax description. This method involves accounting and tax accounting practices.
+The state is concerned with taxes, thus promoting its subject of interest through the normative affirmation of description methods (metamodels) and meticulously reviewing the models presented by accountants. Take an example from tax inspectors in how much attention needs to be paid to modeling.
 
-The government is keen on taxes, hence it advances its subject of interest through normative affirmation of the description methods (metamodels) and meticulously reviews the models presented by accountants. Take a cue from the tax officials on how to focus on modeling.
+However, on the other hand, you must never forget that ultimately you need an implemented system, and the description given to us in the form of models, drawings, manufacturing instructions, etc., is necessary only because, without description, it is very challenging to bring a functioning system to life.
 
-Nevertheless, on the other hand, you must not forget even for a moment that eventually, you need the realization of the system. The description, provided in the form of models, drawings, manufacturing instructions, etc., is essential only because without it, it would be incredibly challenging to bring a functional system to life.
+[ ^1 ]: Refer to the textbook "Systems Thinking" for more details about this standard.  
+[ ^2 ]: That is, those who have the same subject of interest.
