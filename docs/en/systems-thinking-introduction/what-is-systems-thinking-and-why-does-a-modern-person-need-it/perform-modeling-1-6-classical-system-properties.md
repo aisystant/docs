@@ -3,20 +3,12 @@ order: 19
 title: 'Perform Modeling: 1.6. Classical System Properties'
 ---
 
-# Perform Modeling: 1.6. Classical System Properties
+# Perform Modeling: 1.6. Classic Properties of a System
 
-### Familiarize Yourself with the Examples in the First Rows of the Table
+Familiarize yourself with the examples in the first rows of the table. If necessary, revisit the theoretical material. Note that the "System" column provides examples of ideal objects. Recall what differentiates the classic systems approach from systems approach 2.0, particularly what objective and subjective consideration of a system means.
 
-If necessary, repeat the theoretical material. Note that the column "System" contains examples of ideal objects. Recall the difference between the classical systems approach and Systems Approach 2.0, particularly what objective and subjective consideration of a system means.
+Describe the properties of the systems listed in the table. You may also create your own examples. Highlight the classic properties of systems from both work and personal projects.
 
-### Describe the Properties of the Systems Listed in the Table
+Formulate notes for further development as needed. For instance, in the "Notes" column, record any reflections or questions that might later be asked in support chats.
 
-You can create your own examples if needed. Highlight the classical properties of systems from work and personal projects.
-
-### Form Notes for Further Elaboration as Needed
-
-For example, under the "Notes" column, write a reflection or a substantive question that you can later ask in support chats.
-
-### Find the Corresponding Task by Number in the Modeling Workspace
-
-Complete all its points.
+Find the corresponding task number in the modeling workspace and complete all its steps.

@@ -3,56 +3,10 @@ order: 14
 title: 'Perform the Modeling: 2.2. Physical World and Mental Space'
 ---
 
-# Perform the Modeling: 2.2. Physical World and Mental Space
+# Perform Modeling: 2.2. Physical World and Mental Space
 
-**Физический мир**
+Organize the following words into two columns labeled "Physical World" and "Mental Space" (it's not necessary to find relationships between adjacent words in the table): My car, Alps air, Imaginary scenarios, Memories, Mount Elbrus, Mountains, Tree in my garden, Desires, Animal, Star, Trump Tower building, Knowledge, Ideas, Design, Dream, This bridge, Thoughts, Music, Intentions, Pacific Ocean, Planet Earth, Profit, Process, Volga River, Profit growth, Book content, Theory, Beliefs, Function, Hair color, Company goals, Feelings. If necessary, explain your choice in the Notes, paying attention to specific physical objects and their categories (like these glasses of mine or the general category of glasses).
 
-1. Мой автомобиль
-2. Воздух Альп
-3. Гора Эльбрус
-4. Горы
-5. Дерево в моем саду
-6. Животное
-7. Звезда
-8. Здание «Трамп Тауэр»
-9. Вот этот мост
-10. Тихий океан
-11. Планета Земля
-12. Река Волга
-13. Цвет волос
+Provide examples from work and personal projects, and only then ask ChatGPT to name 10 words each that relate to the physical world and mental space.
 
-**Ментальное пространство**
-
-1. Воображаемые сценарии
-2. Воспоминания
-3. Желания
-4. Знания
-5. Идеи
-6. Конструкция
-7. Мечта
-8. Мысли
-9. Музыка
-10. Намерения
-11. Прибыль
-12. Процесс
-13. Рост прибыли
-14. Содержание книги
-15. Теория
-16. Убеждения
-17. Функция
-18. Цель компании
-19. Чувства
-
-**Заметки**
-
-- **Физический мир**: Этот столбец включает в себя конкретные, осязаемые объекты, которые существуют в реальности и могут быть восприняты органами чувств, например, воздух, горы, физические здания и природные объекты.
-  
-- **Ментальное пространство**: Этот столбец охватывает абстрактные понятия, личный и коллективный опыт, который существует в сознании и не обладает физическим присутствием, такие как мысли, знания, желания и воспоминания.
-
-Примеры из проектов:
-
-1. **Физический мир** в рабочем проекте: Участие в проекте, связанном с мониторингом состояния физических объектов, таких как корпоративные здания или транспортные средства.
-
-2. **Ментальное пространство** в личном проекте: Разработка стратегии для достижения личных целей, включающая осмысление и планирование.
-
-Теперь вы можете попросить ChatGPT назвать по 10 слов, относящиеся к физическому миру и ментальному пространству.
+Find the corresponding task number in the modeling workspace and complete all its points.

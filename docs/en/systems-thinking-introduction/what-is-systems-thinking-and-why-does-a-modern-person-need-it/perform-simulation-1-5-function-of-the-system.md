@@ -3,10 +3,10 @@ order: 18
 title: 'Perform Simulation: 1.5. Function of the System'
 ---
 
-# Perform Simulation: 1.5. Function of the System
+# Conduct Modeling: 1.5. System Function
 
-**Familiarize yourself with the examples in the first rows of the table. If necessary, review the theoretical material and use the AI bot Aisystant if needed. Complete the empty cells in the rows following the examples. If you lack the background to select the necessary words and designations (names), use ChatGPT or Google for assistance.**
+Review the examples in the first rows of the table. If necessary, review the theoretical material and use the AI bot Aisystant as needed. Fill in the empty cells in the rows below the examples. If your knowledge is insufficient to find the needed words and designations (names), utilize ChatGPT or Google for assistance.
 
-**Provide examples from work and personal projects by listing the main and other functions of the systems within your enterprise. Formulate notes if necessary.**
+Provide examples from professional and personal projects by listing the main and other system functions of your enterprise. Make notes if needed.
 
-**Find the corresponding task number in the modeling workspace and complete all its points.**
+Find the corresponding task in the modeling workspace by its number and complete all its items.

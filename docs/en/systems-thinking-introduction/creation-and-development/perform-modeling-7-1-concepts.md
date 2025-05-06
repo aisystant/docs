@@ -3,10 +3,8 @@ order: 14
 title: 'Perform Modeling: 7.1. Concepts'
 ---
 
-# Perform Modeling: 7.1. Concepts
+# Conduct Modeling: 7.1. Concepts
 
-**Write Down the Five or More Most Memorable Concepts from This Section, and Indicate the Concepts They Are Most Closely Connected With for You.** 
+List the five or more most memorable concepts from this section, and note alongside them the concepts they are most strongly connected to. The other concepts may come from your current worldview, meaning you aren't required to list only this section’s key concepts. Discuss these concepts with classmates, colleagues, or close friends. For instance, you could try to explain these concepts in simple terms, provide examples from your own experience, link different concepts together, or explain their significance.
 
-Other concepts may come from your current worldviews, so you don't need to mention only the main concepts from this section. Discuss these concepts with fellow students, colleagues, or friends. For example, try to explain these concepts in simple terms, provide examples from your own experience, connect different concepts with each other, or explain their importance.
-
-**Find the Corresponding Task by Number in the Modeling Workspace and Complete All its Points.**
+Find the corresponding task by number in the modeling workspace and complete all its points.
