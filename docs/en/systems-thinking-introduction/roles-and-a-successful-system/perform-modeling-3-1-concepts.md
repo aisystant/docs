@@ -5,6 +5,6 @@ title: 'Perform Modeling: 3.1. Concepts'
 
 # Perform Modeling: 3.1. Concepts
 
-List the five or more concepts from this section that stood out to you the most, and note next to them the concepts they are most connected with in your mind. These concepts can be from your current worldview, meaning you aren't limited to mentioning only the main concepts of this section. Discuss these concepts with coursemates, colleagues, or close ones. For instance, try to explain these concepts in simple terms, provide examples from your experience, link different concepts together, or explain their importance.
+List the five or more most memorable concepts from this section, and next to each, indicate the concepts they are most strongly connected with for you. Other concepts may come from your current worldviews, meaning it's not necessary to list only the main concepts from this section. Discuss these concepts with peers, colleagues, or close ones. For example, try to explain these concepts in simple language, provide examples from your own experience, relate different concepts to each other, or explain their importance.
 
-In the modeling workspace, locate the assignment by its number and complete all its components.
+Find the corresponding task in the modeling workspace by its number and complete all its points.

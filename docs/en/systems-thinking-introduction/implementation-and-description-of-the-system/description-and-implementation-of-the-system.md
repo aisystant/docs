@@ -3,28 +3,38 @@ order: 1
 title: Description and Implementation of the System
 ---
 
-# Description and Implementation of the System
+# System Description and Implementation
 
-At **Aisystant**, the course "Rational Work" teaches participants to distinguish between the physical world and the mental space, whether in speech or writing. This course also trains individuals to connect abstract reasoning to the physical world. People cannot function without mental concepts, as they facilitate communication. However, one must not lose sight of physical world objects when dealing with words and symbols. Particularly in project activities, "losing touch with reality" should be avoided; otherwise, creating successful systems becomes challenging.
+At Aisystant, the course "Rational Work" teaches how to distinguish between the physical world and mental spaces in speech or writing. This course also trains linking abstract reasoning to the physical world. People can't do without mental concepts; they help in communication. However, one should not lose sight of physical world objects due to words and symbols. "Losing touch with reality" is particularly discouraged in project activities, as it may become challenging to create successful systems.
 
-For example, an insolvency manager in a company's bankruptcy might mistakenly believe that their role's purpose is to enter data into the liquidation register. However, this entry is merely information confirming that all remaining company assets have been allocated to creditors. These assets exist in the physical world and represent the manager's true objective and system. The register entry merely describes this system. Thus, in any activity, one must not confuse the system itself and its description. This thinking approach (and skill) requires practice. Initially, it's crucial to thoroughly understand the concepts of "system embodiment" and "system description."
+For instance, a bankruptcy trustee might mistakenly think the goal of their activities is to record the liquidation data of a company in a registry. However, that entry is merely information certifying that all remaining assets of the company are distributed to creditors. These assets exist in the physical world; they are the trustee's goal and system. In contrast, the registry entry just describes this system. Therefore, in any activity, one must not confuse the system with its description. This approach (and skill) in thinking needs to be trained. But first, one must thoroughly understand the concepts of "system implementation" and "system description."
 
-In systems thinking, the concepts of "system embodiment" and "system description" pertain to different realms. "Embodiment" refers to material objects in the physical world, while "description" emphasizes that the discussion involves the mental space, not the physical essence of the system.
+In systems thinking, the concepts of "system implementation" and "system description" belong to different realms. "Implementation" refers to an object in the material and physical world, while "description" highlights that the discourse pertains to the mental space, meaning not the literal composition of the system.
 
-![Image of system description and implementation](./description-and-implementation-of-the-system-3.png)
+![](./description-and-implementation-of-the-system-3.png)
 
-Interestingly, the term "system embodiment" might seem tautological because when we say "system," we already imply a physical object that is realized in reality. However, the word "embodiment" is deliberately used with "system" to contrast it with "system description." Often, discussions about "system embodiment" occur alongside conversations about "system description."
+In this context, the term "system implementation" may seem tautological because when we say "system," we already imply a physical object tangible in reality. However, the word "implementation" is deliberately used with "system" to contrast it with "system description." Often, when discussing "system implementation," "system description" is also concurrently considered [ ^1 ].
 
-A system's embodiment can be a distinct system as a physical object. For instance, this "Blue Lagoon" cocktail in hand or this specific pencil. These objects are literally present in the physical world and exist in four dimensions (4D): length-width-height and time.
+The implementation of a system can be an individual system as a physical object. For example, the cocktail "Blue Lagoon" in your hand or this specific pencil. These objects literally exist in the physical world and are present in four dimensions (4D): length, width, height, and time [ ^2 ].
 
-When we describe a system, we use words or terms that define its characteristics, properties, actions, attributes, behavior, states, and so forth. Consider terms such as color, price, height, weight, desires, and so on. These words differ from terms like "car," "table," or "clock," which denote physical objects.
+When we describe a system, we use terminology that defines its characteristics, properties, actions, attributes, behavior, states, etc. Consider terms such as color, price, height, weight, desires, and so forth. These words differ from words like "car," "table," or "watch," which denote physical objects.
 
-Describing a system requires specific methods^[More on this concept in section 6.]. Each characteristic draws on its own worldviews, theories, and disciplines. For instance, to describe a car's price, you must understand pricing methods, whereas discussing a company for a shareholder necessitates comprehension of financial reporting like IFRS or US GAAP and specific technologies for preparing financial documents, such as SAP.
+To describe a system, one must employ certain descriptive methods [ ^3 ]. Each characteristic will have its own worldviews, theories, and disciplines. If you need to describe a car's price, you must know pricing practices (descriptive methods), and for a company regarding shareholders, an understanding of financial reporting under IFRS or US GAAP and a specific technology for creating the respective financial documents (e.g., SAP) is required.
 
-System descriptions are inherently abstract. This concept is needed to focus on the substantive aspect of the discussed system. Still, descriptions can be linked to the physical world by emphasizing form. To achieve this, one should consider the information carrier holding the system's description, leading to discussions about the system documentation.
+System descriptions are inherently abstract. This notion is necessary to focus on the substantive aspect of the discussed system. However, descriptions can be tied to the physical world, drawing attention to the form. To achieve this, one must look at the data carrier on which the system description will be contained. Then, it becomes a matter of system documentation [ ^4 ].
 
-Using the term "system documentation" implies focusing primarily on the physical medium containing the system description. For example, a menu is the documentation of the "cocktail" system. It contains a description of the cocktail: its ingredients, price, photo, etc.
+The use of the concept "system documentation" means focusing primarily on the physical medium containing the system description [ ^5 ]. For example, a menu is the documentation for the "cocktail" system. It contains a description of the cocktail: its ingredients, price, photo, etc.
 
-Documentation is often created using tools (technologies) that implement specific disciplines used for system descriptions. For instance, "US GAAP Financial Reporting" documentation is generated using the IT system SAP.
+Documentation is often created using tools (technologies) that implement a certain discipline used for system description. For example, the documentation "Financial Reporting under US GAAP" is generated using the SAP IT system.
 
-Therefore, understanding the difference between system embodiment, description, and documentation concepts, and identifying them in your life, is a crucial thinking skill. Without proficiently distinguishing these concepts, progressing further in studying systems thinking will be impossible.
+Thus, understanding the difference between the concepts of system implementation, description, and documentation, and being able to identify these concepts in your life, is an essential thinking skill. Without the ability to fluently distinguish these concepts, further study of systems thinking concepts would be impossible.
+
+[ ^1 ]: Therefore, you can simply use the term "system" without the word "implementation." But if you want to emphasize that you are separately considering the system and its description, you can use the terms "system implementation" and "system description."
+
+[ ^2 ]: Note that this is not an abstract chair or car, which lack ties to physical space and time.
+
+[ ^3 ]: More about this concept in section 6.
+
+[ ^4 ]: When we talk about the system description, we emphasize the importance of the content or essence, which characterizes a particular system. And when we talk about documentation, we focus on the fact that this content can be read, viewed, calculated, etc., on a specific medium. The more concepts, the more confusion. But if you study these concepts, orderliness and clarity will emerge.
+
+[ ^5 ]: When you hear or read the word "description," determine from the context what is meant: the description itself, or a "document with a description." Often, "description" can mean both.

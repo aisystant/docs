@@ -3,12 +3,16 @@ order: 5
 title: 'Example: Suprasystem for a Man and a Woman'
 ---
 
-# Example: Suprasystem for a Man and a Woman
+# Example: Supersystem for Men and Women
 
-Let's consider a common example involving agents like a man and a woman. What supersystems might exist with their participation in specific roles? Yes, they interact in some way, possessing functionality within the supersystem. What is it?
+Let's consider an everyday example with agents in the form of a man and a woman. What supersystems might exist that include them in specific roles? Indeed, they interact, and they have functionality within the supersystem. What is it?
 
-I hope you quickly realized that the supersystem here could be a family, where the woman and man exist in each other’s systems environment, fulfilling the roles of wife and husband. In other words, the family consists not of a woman and a man, but of a husband and wife.
+I hope you quickly realized that the supersystem here could be a family, and the woman and man are within each other's systems environment, playing the roles of husband and wife. That is, a family comprises not just a woman and a man, but a husband and wife.
 
-The puzzle of naming the supersystem can be solved by identifying a missing, unnamed, or unrecognized system within the system breakdown. This is a typical situation: supersystems are often poorly discernible, sometimes lacking established names^[Often in culture, there are no established names for some systems, unlike the concept of "family." In your work projects, you will frequently need to introduce new system names. Remember, the name should reflect the system’s primary function.].
+The puzzle of naming the supersystem can be solved by identifying a missing, unnamed, or undiscovered system within the system breakdowns. This is a typical situation: supersystems are often poorly distinguishable, and sometimes they lack established names [ ^1 ].
 
-These "missing" systems need to be identified, meaning their roles or functions must be described, and they must be named according to their role. Sometimes it will be necessary to choose the most precise words. For example, for a vehicle with a driver and passenger, identifying the supersystem has been challenging without a good alternative. Once you find an appropriate name for a system, many aspects become clearer and simpler. Learn to name systems correctly and to work with semantics^[Semantics is one of the 16 transdisciplines of the intellect stack.].
+These "missing" systems must be identified, meaning describing their roles or functions and naming them according to their role. Sometimes, you'll need to choose the most precise words. For instance, for a vehicle with a driver and passenger, there is a need to identify the supersystem, but a suitable option hasn't been found yet. Once you find an appropriate name for a system, everything becomes clearer and simpler. Learn to name systems correctly and work with semantics [ ^2 ].
+
+[ ^1 ]: Often, there are no established names for certain systems in culture, unlike the concept of 'family.' In your work projects, you will frequently need to introduce new system names. Keep in mind that the name should reflect the main function of the system.
+
+[ ^2 ]: Semantics is one of the 16 transdisciplines in the intellect stack.

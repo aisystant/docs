@@ -3,31 +3,34 @@ order: 11
 title: Why and How to Explain Systems Thinking
 ---
 
-# Why and How to Explain Systems Thinking
+# Why and How to Explain What Systems Thinking Is
 
-You’ve likely heard the famous quote by Ernest Rutherford, the father of nuclear physics and a Nobel laureate: “If a scientist can’t explain their work to the cleaning lady at the lab, then they themselves don’t understand what they do.”
+You might have heard the famous quote from Ernest Rutherford, the father of nuclear physics and Nobel laureate: “If a scientist cannot explain to a janitor cleaning the laboratory what the scientist's work means, then the scientist does not understand it themselves.”
 
-This quote raises an important question: why be able to explain systems thinking to everyday people (colleagues, children, followers)? Isn’t it a waste of time and effort?
+This quote raises an important question: Why should we be able to explain systems thinking to ordinary people (colleagues, children, followers)? Isn't it a waste of time and effort?
 
-The answers to these questions extend any subject's curriculum, and consequently, your self-development, meaning the development of your personality as a system. Regardless of what you study or engage in—be it physics, systems thinking, or AI—you initially focus more on theory before moving heavily towards practice. You might feel that you know many systems concepts, principles, and thinking techniques, yet with each revisit to theory, you approach the previously learned with a new neural network and notice something unusual, deepening your understanding.
+The answers to these questions are part of the continuation of an educational program on any subject, and hence a continuation of your self-development, meaning the development of your personality as a system. Regardless of what you are studying or engaged in, be it physics, systems thinking, or AI, you initially pay more attention to theory, and then focus more on practice. It might seem that you know many systems concepts, principles, and thinking techniques, but with each new theoretical revisit, you see what appears already learned with a new neural network and notice something unusual, deepening your understanding.
 
-When you explain complex topics to people, you revisit what you have studied and test your knowledge in explaining work or life situations^[You essentially test your neural network’s ability to explain the world, as systems thinking is also a worldview—the ability to see the world.]. By explaining systems thinking to others, you:
+When you explain complex ideas to people, you revisit what you’ve learned and test your knowledge in explaining various work or life situations [ ^1 ]. When you explain what systems thinking is to others, you:
 
-* continue layering your knowledge (like a second coat of paint) because, as the saying goes, “To understand better, explain it to another”;
-* gain better insights into your activities, enhancing your agency and understanding why you invest so much time in complex knowledge, maintaining constant grounding;
-* literally create like-minded individuals among your loved ones^[You’ll particularly feel that your loved ones share a similar worldview with you.] and colleagues (influencing them), allowing you to collaborate on work and personal projects in the future;
-* engage in enlightening others and making a positive impact if you post on social media, sharing your experiences, and popularizing systems thinking.
+* Continue to layer knowledge (like applying a second coat of paint), since it's often said: “If you want to understand better, explain it to someone else;”
+* Gain a better understanding of your activities, enhance your agency, and comprehend why you invest so much time in complex knowledge. In other words, you are constantly grounding yourself;
+* Literally start creating like-minded people among your close ones [ ^2 ] and colleagues (you enrich them), and in the future, you can realize work and personal projects with them;
+* Engage in enlightenment and change the world for the better by posting about your experiences on social media, further popularizing systems thinking.
 
-Here’s one explanation of systems thinking as a worldview that you can adopt.
+Here is one way to explain systems thinking as a worldview that you can use.
 
-When you enter an apartment, you quickly get your bearings. You’re familiar with certain terminology to see much yourself or ask the necessary questions. You know what a kitchen is, how a bath differs from a shower, what communal living is, etc. Therefore, you can make numerous decisions whether you’re a buyer or seller, tenant or guest, manager or plumber.
+When you enter an apartment, you quickly orient yourself to the setting. You have a certain vocabulary that lets you see many things by yourself or ask the necessary questions. You know what a kitchen is, how a bath differs from a shower, what communal housing is, etc. Therefore, you can make many decisions whether you are a buyer, seller, tenant, guest, manager, or plumber.
 
-Similarly, systems thinking helps quickly understand any human activity, discerning what is what and how everything connects. Consider, for instance, identifying the equivalent of ‘sellers’, ‘realtors,’ or ‘burglars’. Systems thinking is a "prism" through which you can view work projects, your enterprise, or your life. Not only view it but change the world as well.
+Similarly, systems thinking helps to quickly understand any human activity and comprehend what is what and how everything is interrelated. For example, it helps you recognize conditional “sellers,” “realtors,” or “burglars.” Systems thinking is like a “prism,” through which you can view work projects, your enterprise, or your life. And not only view but also change the world.
 
-This “prism” or worldview does not develop overnight. Our brains need to literally grow new connections. Still, if you study relevant courses and apply this knowledge in real life, systems thinking develops more swiftly compared to the time you subconsciously spent learning about the real estate market. While you might know a lot about this market, you probably know less than a professional. Many understand their work activities, but this doesn’t usually encompass a systems perspective.
+This “prism” or worldview doesn’t form over a couple of months. Our brain literally needs to grow new connections. However, if you study the appropriate courses and apply this knowledge to real life, systems thinking can be developed more quickly compared to the unintentional amount of time spent acquiring knowledge about the real estate market. And though you may know a lot about this market, you likely know less than a professional. After all, many know their job activities but rarely have a systems-oriented perspective.
 
-Fluent systems thinking operates just like any worldview. You could arrive at a new enterprise and understand everything there as if in an apartment. Yet knowing the ‘apartment issue’ doesn’t mean you can easily undertake a repair or install new windows. Similarly, systems thinking is not a panacea; you’ll also need applied methods. But you’ll already understand that for "new windows," you need one set of suppliers, and for "installing an extractor," another. Any enterprise’s activities will be as conceptually mapped for you as any apartment.
+Fluent systems thinking works just like any worldview. For instance, you enter a new enterprise and everything is clear to you, just like in an apartment. However, knowing about apartments doesn’t mean you can easily do renovations or install new windows. In the same way, systems thinking is not a panacea; applied methods will also be needed. But you will already know that to get "new windows," you call certain suppliers, and for “installing ventilation,” others. For you, any corporate activity is as conceptually mapped as any apartment is.
 
-Many adults likely understand how to renovate an apartment and where to start: what comes first and what follows. If needed, anyone could easily write three to five paragraphs on what to pay attention to in any apartment or how to repair it. Likewise, a systems-oriented person knows where to look first, and as they proceed through the main AISYSTANT program, they learn how to improve any system and activity. Thus, they become the Chief Transformation Officer of themselves, their family, or the team within the enterprise, and possibly further, for the community and society.
+Most adults probably understand how renovation work is done in an apartment and what needs to be done first: what is done in order, and what follows. If necessary, anyone could easily write three to five paragraphs about what to focus on in any apartment or how to carry out renovations. Similarly, a systems person understands where to look first, and as they progress through the core AISYSTANT program, they learn how to improve any system and activity for the better. This way, they become a Chief Transformation Officer for themselves, their family, or their team at work, and possibly further for a community or society.
 
-I hope you can better understand the brief description in the first subsection, "How Systems Thinking Aids in Work Activities." Based on this text and your experiences, you can compose your personal explanations of what systems thinking is. In doing so, you will continuously improve your mastery of systems thinking.
+I hope you can better understand the brief description in the first subsection “How Systems Thinking Helps in Work Activities.” Based on this text and your experience, you can develop your personal explanations of what systems thinking is. In this way, you will continually improve your thinking mastery.
+
+[ ^1 ]: You are essentially testing your neural network's ability to explain the world, as systems thinking is also a worldview, the ability to look at the world.
+[ ^2 ]: You will especially feel that your close ones share a similar worldview with you.

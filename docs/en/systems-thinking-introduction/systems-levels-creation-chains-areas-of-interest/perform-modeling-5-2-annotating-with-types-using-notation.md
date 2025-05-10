@@ -5,10 +5,8 @@ title: 'Perform Modeling: 5.2. Annotating with Types Using Notation ::'
 
 # Perform Modeling: 5.2. Annotating with Types Using Notation ::
 
-**Familiarize Yourself with the Example in the First Row of the Table**
+Review the example in the first row of the table. Use the most convenient method for marking types in the text—the double colon "::". First, write the name of the object, followed by its type from the meta-model (or also from the meta-meta-model if needed). For example: "an airplane::system" or "table::system::physical object". If necessary, revisit the theoretical material on :: notation in the "Rational Work" course.
 
-Use the most convenient type markup option in the text—double colons "::". First, write the object's name, then its type from the meta-model (or additionally from the meta-meta-model). For example: "airplane::system" or "table::system::physical object". If necessary, review the theoretical material on notation :: in the course "Rational Work".
+For the sentences from the table, create a duplicate by indicating the types of all objects and relationships, as shown in the first row. Fill in the empty cells and write a few examples from work and personal projects.
 
-**For sentences from the table, create a duplicate, specifying the types of all objects and relationships, as shown in the first row. Fill in the empty cells and provide several examples from work and personal projects.**
-
-Find the corresponding assignment number in the modeling workspace and complete all its points.
+In your modeling workspace, find the corresponding assignment by number and complete all its points.
