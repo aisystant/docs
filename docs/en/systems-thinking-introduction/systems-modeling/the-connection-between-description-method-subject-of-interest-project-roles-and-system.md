@@ -6,16 +6,26 @@ title: The Connection Between Description Method, Subject of Interest, Project R
 
 # The Connection Between Description Method, Subject of Interest, Project Roles, and System
 
-In previous sections, it was mentioned that the subject of interest is connected to the system. A system can be characterized by different subjects of interest. These subjects of interest are linked to project roles, meaning that individuals in these roles are concerned with specific characteristics of the system.
+In previous sections, we discussed that a subject of interest is connected to a system. A system can be characterized by various subjects of interest. These subjects of interest are associated with project roles, meaning that people in these roles are concerned with certain system characteristics.
 
-The team determines which project roles' interests will be addressed during the creation of the system. It's important to note that not all interests can be addressed due to limited resources (time and funds), but at the same time, the team must avoid fatal errors. A fatal error would be neglecting a particular interest, which could later result in significant and irreparable costs. This affects what work artifacts (documentation) will be necessary. Work artifacts are physical carriers that contain the system description pertaining to a specific subject of interest.
+The team determines which interests of the project roles [ ^1 ] will be addressed during the system's creation. This directly influences the work artifacts (documentation) needed. Work artifacts are physical carriers containing a system description that responds to a specific subject of interest.
 
-To create the documentation, one must be proficient in a certain practice or method of description. Through this method of description, a physical medium is used to create a system description that corresponds to the subject of interest in the system.
+In order to create the documentation, one must possess a certain practice [ ^2 ] or method of description. This method of description, applied to a physical carrier, produces a system description that answers the subject of interest concerning the system.
+
 
 ![](./the-connection-between-description-method-subject-of-interest-project-roles-and-system-18.png)
 
-For example, a racer's interest lies in the speed of the race car. Put differently, the external project role of "racer" has a subject of interest, "speed," in the system "race car." The developers decided to meet the racer's interests, meaning the team considered satisfying the interests of this project role. This implies that they will continue working with this subject of interest and produce documentation (a computer model) related to it.
 
-Next, the developers choose a description method to create the system description. They select one of the methods that allow them to build a computer model for calculating the car's speed. This computer model is a work artifact containing the system description regarding the subject of interest, "speed."
+For example, a racer's interest might be the speed of a race car. Alternatively put, the external project role "racer" has a subject of interest, "speed," in the system "race car." The developers decided to satisfy the racer's interests, meaning the team concluded that the interests of this project role should be addressed. This means that further work will continue with this subject of interest, within which documentation (a computer model) will be created.
 
-In fact, this model can consider not only this subject of interest but others as well. The total number of work artifacts (documentation) describing the system is proportional to the number of subjects of interest, and the number of subjects of interest is proportional to the number of project roles the team has decided to satisfy. While all project roles are considered, the team may choose to satisfy only selected ones. For each project role being addressed, a work artifact is created. The diagram shows only the external project role, but the same applies to internal project roles as well.
+Next, the developers choose a method of description to create the system description. They choose one of the description methods that allows building a computer model for calculating a vehicle's speed [ ^3 ]. This model within the computer is a work artifact that contains a description of the race car system in relation to the subject of interest, speed.
+
+Incidentally, this model may consider other subjects of interest as well. The total number of work artifacts (documentation) regarding system descriptions is proportional to the number of subjects of interest, and the number of subjects of interest is proportional to the number of project roles the team has decided to satisfy [ ^4 ].
+
+[ ^1 ]: From all considered project roles, the subjects of interest and/or preferences to be satisfied are selected. It is impossible to satisfy all interests due to limited resources (funds and time); however, the team must avoid making a fatal error. A fatal error may occur if a significant interest is overlooked, leading to substantial and irreparable costs.
+
+[ ^2 ]: As you remember, a project role creates a work artifact through practice.
+
+[ ^3 ]: Both the theoretical aspect of the calculations and the computer-based part of how these calculations can be performed are important here.
+
+[ ^4 ]: All project roles are taken into account, but the team may decide that only selected roles will be satisfied. For each of these, a work artifact is created to satisfy the project role. The diagram shows only the external project role, but the same applies to an internal project role.

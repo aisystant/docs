@@ -3,14 +3,10 @@ order: 17
 title: 'Perform Modeling: 1.4. System Characteristics'
 ---
 
-# Perform Modeling: 1.4. System Characteristics
+# Conduct the Modeling: 1.4. System Characteristics
 
-**Familiarize Yourself with the Example**
+Familiarize yourself with the example. Write down the subjects of interest (characteristics) for several proposed systems. If you lack the breadth of knowledge to find the right words and designations (names), use ChatGPT or Google for assistance.
 
-**Identify the Subjects of Interest (Characteristics) for Several Proposed Systems**
+Provide examples from work and personal projects. Create notes as needed.
 
-If you lack the perspective to select the appropriate words and designations (names), use ChatGPT or Google for assistance.
-
-**Provide Examples from Work and Personal Projects.** Form notes as necessary.
-
-**In the Modeling Workspace, Find the Corresponding Task by Number and Complete All Its Points.**
+Locate the corresponding task number in your modeling workspace and complete all its points.

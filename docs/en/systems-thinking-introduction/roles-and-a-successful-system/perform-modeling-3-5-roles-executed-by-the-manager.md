@@ -3,20 +3,10 @@ order: 19
 title: 'Perform Modeling: 3.5. Roles Executed by the Manager'
 ---
 
-# Perform Modeling: 3.5. Roles Executed by the Manager
+# Conduct the Modeling: 3.5. Roles Played by the Manager
 
-**Instructions for Documenting Roles in Your Organization**
+Review the example provided in the first row of the table. Record at least three roles that you are aware your manager has performed over the past few months (if possible, arrange them in order of when they were carried out). Don't forget roles such as "strategist," "leader," "organizer," and other managerial and entrepreneurial roles as organizational engineers' roles (unlike technical engineers, enterprise engineers often do not consider this work, but it indeed is—requiring mastery and considerable time and resource investment). If you lack the insight to choose the right words and labels (names), consider using ChatGPT or Google, or consult with acquaintances who are experts.
 
-1. **Documenting Roles for Your Superior:**
-   - Refer to the example in the first row of the table.
-   - List at least three roles that you know your superior has performed in the past few months. Whenever possible, organize them chronologically based on when they were executed.
-   - Consider including roles such as "strategist," "leader," "organizer," and other managerial and entrepreneurial roles. Remember, even organizational engineers—those focused on managerial tasks as opposed to technical engineers—often undervalue this work, but it indeed requires both skill and significant expenditures of time and resources.
-   - If you're struggling to find the right terms or designations (names), consult resources like ChatGPT, Google, or engage with knowledgeable experts you know for guidance.
+List the roles you perform in the position of a leader in a work or personal project. If you think you're not a leader anywhere, that is a mistake. If necessary, use thinking through writing to contemplate this question.
 
-2. **Reflecting on Your Own Roles:**
-   - Write down the roles you perform in your position as a leader in either work-related or personal projects.
-   - If you believe you have no leadership role anywhere, that is a misconception. Use thinking through writing if necessary to ponder this question.
-
-3. **Completing the Modeling Workspace Task:**
-   - Locate the relevant assignment in your modeling workspace by its number.
-   - Ensure you complete all of its components as required.
+Locate the corresponding task by number in your modeling workspace and complete all its steps.

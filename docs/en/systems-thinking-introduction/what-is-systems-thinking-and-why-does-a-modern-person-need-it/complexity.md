@@ -5,24 +5,26 @@ title: Complexity
 
 # Complexity
 
-**Systems Thinking and Complexity**
+Systems thinking deals with complexity. Complexity is a concept that has multiple meanings in various contexts and theories. We will discuss complexity in the following contexts:
 
-Systems thinking deals with complexity—a concept with multiple meanings across different contexts and theories. We'll explore complexity in the following contexts:
+* When encountering something new and unknown, it is inherently complex because we lack ready-made methods to handle it;
+* When a complexly structured system is created or exists, consisting of a large number of elements with numerous connections, such as the "Enterprise of 1000 people" system or the "Electric Vehicle" system;
+* When a system has a large number of stakeholders who either influence it or are influenced by it. Such a system is likely to be complexly structured, but we distinguish this third type of complexity separately to emphasize the many interests in the system that must be accounted for to create a successful system.
 
-- When we encounter something new and unknown, it is inherently complex because we lack pre-established methods to address it.
-- A complex system is created or already exists, one comprised of a large number of elements with extensive interconnections, such as an "Enterprise with 1,000 employees" or an "Electric Vehicle."
-- The system involves many stakeholders who are either impacted by or have an impact on it. Such a system will likely be complex, but we highlight this type of complexity to emphasize the multitude of interests that need to be considered to create a successful system.
+Systems thinking helps continuously increase the complexity you can manage throughout life. Besides the ability to work with complexity, a system constructor enhances the speed of work. But first, one needs to acquire fluency (speed) in applying systems thinking. This requires progressively complicating the systems examination across different kinds:
 
-Systems thinking equips you to continually increase the level of complexity you can manage throughout your life. Beyond mastering complexity, a system constructor can enhance the speed of work. However, fluency in applying systems thinking must be achieved first. To develop this fluency, you should gradually increase the complexity of your systems examination:
+1. Begin by considering simple systems like "scissors," "chair," or "hammer";
+2. Then discuss your own body and personal mastery;
+3. Next, move to IT systems (cyber-physical systems), where software equates to personality, and "mastery" is one of the applications/application programs in this software [ ^1 ];
+4. Afterward, shift to teams and enterprises;
+5. Ultimately, access high system levels—community, society, humanity...
 
-1. Begin with simple systems like "scissors," "chair," or "hammer."
-2. Then consider your own body and personal mastery.
-3. Move to IT systems (cyber-physical systems) where software represents personality, and "mastery" is one of the application programs within it.^[If you are not an IT specialist, this analogy will give you an understanding of IT. The human body can be seen as IT hardware, and particular mastery (as part of personality) is the software.]
-4. Next, focus on teams and enterprises.
-5. Finally, gain access to high system levels—community, society, humanity...
+We do not recommend immediately trying to apply systems thinking to your most complex project. Doing so might only confuse you more and waste time. Try tackling the simplest project first, and once you reach fluency, transition to a more complex system.
 
-We advise against immediately applying systems thinking to your most complex project. Doing so might lead to confusion and wasted time. Instead, start with a simple project and only move on to more complex systems once you've achieved fluency.
+In our course, we largely rely on simple systems, while in the courses “Systems Thinking,” “Methodology,” and “Systems Engineering,” you will consolidate this understanding and see similarities with other systems. Upon completing the “Personality Engineering” course, you'll be able to understand personality, and after successfully completing the “Systems Management” course, you can become a Chief Transformation Officer of an enterprise. Courses on higher systems levels are under development.
 
-In our course, we focus primarily on simple systems. In the courses on "Systems Thinking," "Methodology," and "Systems Engineering," you'll reinforce this understanding and see parallels with other systems. Upon completing the "Personal Engineering" course, you'll gain insights into personality, and after successfully finishing the "Systems Management" course, you could become a Chief Transformation Officer. Courses addressing higher system levels are in development.
+This phased approach trains the ability to consistently raise the threshold of complexity and speed. Of course, we all want everything at once, but that rarely happens in real life. Training systematicity alongside a systems approach will be your competitive advantage, ensuring life does not become boring. A systems thinker with agency [ ^2 ] will always have a motivated desire and the capacity to do something remarkable and necessary for people, elevating complexity to the level of humanity. This is the essence of infinite development and personal self-development.
 
-This phased approach trains your ability to continuously raise the threshold of complexity and speed. Although it may be tempting to tackle everything at once, real life rarely allows for this. You need to train systematicity alongside a systems-oriented approach—this will be your competitive advantage and ensure life remains engaging. A systems thinker with agency^[Agency is the ability to set goals and act to improve one's current state. An agent actively influences themselves and the surrounding world. Agency can be likened to "having a fire under one's butt."] will always have the motivated desire and capability to accomplish something extraordinary and valuable to people, elevating complexity to the level of humanity. This is the essence of endless development and personal self-development.
+[ ^1 ]: If you are not an IT specialist, the analogy with personality will help you understand a lot about IT. The human body can be seen as IT hardware, and specific mastery (as part of personality) is the software.
+
+[ ^2 ]: Agency is the ability to set goals and act to improve one's current state. To do this, an agent actively influences both themselves and the surrounding world. Agency can be compared to "having a fire under one's butt."

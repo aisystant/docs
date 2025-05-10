@@ -3,10 +3,10 @@ order: 18
 title: 'Perform Modeling: 7.3. Executor''s Qualification'
 ---
 
-# Perform Modeling: 7.3. Executor's Qualification
+# Perform Modeling: 7.3. Executor Qualification
 
-Recall your last three conversations with colleagues and fill out the table. Evaluate the qualification on a ten-point scale, where 0 means "absolutely does not master the method, cannot do anything," and 10 means "masters the method better than anyone in the world, capable of achieving consistently excellent results with this method."
+Recall the last three conversations you had with colleagues and fill out the table. Evaluate the qualification on a ten-point scale, where 0 means "completely lacking the method, has no skills," and 10 means "masters the method better than anyone in the world, capable of executing this method with consistently excellent results."
 
-As needed, create notes for further analysis.
+If necessary, make notes for further analysis.
 
-Locate the corresponding task by number in the workspace for modeling and complete all its points.
+Locate the corresponding assignment by number in the modeling workspace and complete all its components.

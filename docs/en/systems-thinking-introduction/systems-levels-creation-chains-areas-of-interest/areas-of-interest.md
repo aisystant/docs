@@ -3,41 +3,29 @@ order: 1
 title: Areas of Interest
 ---
 
-# Areas of Interest
+# Areas of Concern
 
-### Understanding Areas of Interest
+In Section 3, we already became familiar with the concept of a subject of interest. Several related characteristics or subjects of interest can be grouped into an area of concern. These different areas of concern become focal points for specific roles within a project. Since there are quite a few subjects of interest, it is convenient to assemble them into defined areas.
 
-In Section 3, we were introduced to the concept of a **subject of interest**. Multiple related characteristics or subjects of interest can be grouped into an **area of concern**. These different areas of concern are focal points for specific roles within a project. Given the multitude of subjects of interest, organizing them into particular areas can be quite advantageous.
+A systems thinker operates under the assumption that every role wants to know (or predict) how its preferences will be considered. Therefore, for the roles whose subjects of interest are chosen to be accommodated, it is necessary to provide answers regarding these concerns to assess the feasibility of those preferences.
 
-A systems-oriented thinker assumes that each role desires to know (or predict) how its preference will be accommodated. Therefore, roles with subjects of interest that have been decided to fulfill must receive responses about their concerns, which allows them to evaluate the feasibility of their preferences.
+The responses to each role's concerns are found in descriptions, which take the form of system documentation (models). However, models are created only for the subjects of interest and preferences that are planned to be satisfied. Not every preference will necessarily correspond to a single model. Typically, models are not built around preferences but rather around subjects or even areas of concern that the team has decided to address. For instance, to address the concerns of both a seller and a buyer, a "budget" model might be created.
 
-### Documentation as Responses
+Since multiple systems are considered simultaneously in a project—not just the system of interest—there will be numerous models in the project. All these models must be interconnected. Before creating these models, decisions must be made about which models to create. For example, in addition to an estimate for the system of interest, an expert evaluation or another description might be made, and a project budget for the team (payroll) will be needed as a description of the creation system.
 
-Responses to each role's concerns are provided as documentation (models). These models are developed solely for subjects of interest and preferences deemed worthy of satisfaction. Not every preference demands a separate model; usually, they are crafted based on subjects or even areas of interest that the team chooses to fulfill. For instance, to address the concerns of both a seller and a buyer, a "budget estimate" model might be developed.
+For convenience in planning, creating, coordinating, and modifying models, areas of concern are introduced into the project, relating to:
 
-### Multiple Systems and Interconnected Models
+* the three primary roles—entrepreneur, engineer, and manager. These are the columns of Table 3x3;
+* the three key systems—supersystem, system of interest, and creation system. These are the rows of Table 3x3.
 
-As multiple systems—not just the system of interest—are examined in a project, there will be many models. All these models need to be interconnected. Before creation, it's crucial to determine which specific models are necessary. For instance, besides a budget estimate for the system of interest, an expert evaluation or other descriptions might be created. Additionally, a budget outline for the team (salary fund) is needed as a part of the system-creator description.
+Each area of concern will have its own models, its own subjects of interest for roles and their preferences, as well as work artifacts. The 3x3 Table thus highlights specific subjects of interest for the main roles at the level of specific subsystems. It's a kind of checklist. Accordingly, in any project implementation, you can make a list of documents (descriptions, models) that cover specific cells of the table.
 
-### Introducing Areas of Interest for Planning
+The three areas of concern for the main roles emphasize the need for performers for all the roles indicated in Table 3x3, who possess the corresponding methods (practices) and create the necessary work artifacts.
 
-For planning, creating, agreeing upon, and modifying models in the project, areas of interest are established:
+The three areas of concern for the supersystem address the corresponding questions [ ^1 ] when using a systems approach:
 
-- **Three Main Roles**: Entrepreneur, Engineer, and Manager, represented by the columns in the 3x3 Table.
-- **Three Main Systems**: Supersystem, the System of Interest, and the Creator, depicted by the rows in the 3x3 Table.
+1. The area of concern for the supersystem: Why, for whom, and how should something be done, and how will their behavior change if something new is offered to them? Here, it's necessary to hypothesize which communities might improve their lives through the system you offer, enabling them to play new roles and/or use new methods (including technologies). For example, Henry Ford offered a passenger vehicle to all adults, turning people into drivers to solve their transportation problems. Note that not everything has to be new—the roles and discipline may remain unchanged while you offer just a new technology, such as "SAP" for accountants who previously used Excel. In this area of concern, the main focal points are groups or communities of people with their dissatisfactions, their roles and methods (including tools), and the role of the proposed system of interest.
+2. The area of concern for the system of interest: What is this new thing in terms of the product (system), what are its characteristics, and how is it structured? Once hypotheses are set regarding the supersystem's area of concern and the role of the system of interest is defined, you can proceed to define the system’s structure, including making architectural decisions. For example, watches for a space station, a person, and a tower will differ not only in materials but also in their fundamental operating principles. Here, it will be necessary to calculate the total cost of ownership of the system and estimate its price for the buyer.
+3. The area of concern for creation systems: Who and how will create the system, using what methods, and with what resources? Once the assumptions regarding the system's structure have been made, we proceed to its creation. This requires defining methods (practices) for its creation, identifying all creator roles, selecting executors (people, contracting organizations, tools, and AI), and acquiring other resources. Additionally, calculations regarding the profitability of the entire enterprise must be made.
 
-Each area of concern will have its models, role-specific subjects of interest, preferences, and work artifacts. The 3x3 Table highlights certain subjects of interest for key roles at the level of specific subsystems, acting as a checklist. During any project implementation, you can create a list of documents (descriptions, models) that address specific cells of the table.
-
-### Roles and Methods in the 3x3 Table
-
-The three areas of interest for key roles emphasize the need for executors of all roles designated in the 3x3 Table. These executors should possess the relevant methods (practices) and create the necessary work artifacts.
-
-### Addressing Supersystem Questions
-
-The three areas of interest concerning the supersystem respond to relevant questions during the application of a systems approach:
-
-1. **Supersystem's Area of Interest**: Why and for whom should something be done, and how will they change their behavior if offered something new? Hypothesize which segments of society could enhance their lives through the offered system allowing them to assume new roles and/or employ new methods (including technologies). For example, Henry Ford introduced the automobile to all adults, allowing them to become drivers to solve spatial movement issues. Not everything has to be new; roles and disciplines might remain unchanged, while only new technology is offered, like "SAP" for accountants previously using Excel. Key focuses in this area include groups or communities with their dissatisfactions, roles and methods (including tools), and the role of the proposed system of interest.
-
-2. **System of Interest's Area**: What is this new thing product-wise (system), its characteristics, and its construction method? Once hypotheses concerning the supersystem's area are established and the system of interest's role is defined, defining the system's structure and making architectural decisions can commence. Clocks for a space station, an individual, and a tower will differ not only in materials but in principal operation schemes. Comprehensive ownership cost and buyer price estimates will also be necessary here.
-
-3. **Creation Systems' Area of Interest**: Who and how will the system be developed, with which methods and resources? Following the acceptance of system design hypotheses, proceeding to direct system creation involves determining methods (practices) for its development. Identifying all creation roles, selecting executor-agents (people, contractor organizations, tools, and AI), and acquiring other resources will be crucial. Additionally, profitability calculations for the entire venture should be made.
+[ ^1 ]: These questions were previously discussed in the subsection "The use of a systems approach or systems thinking and systematicity."

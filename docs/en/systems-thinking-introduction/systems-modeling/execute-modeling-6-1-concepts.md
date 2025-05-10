@@ -3,10 +3,11 @@ order: 19
 title: 'Execute Modeling: 6.1. Concepts'
 ---
 
-# Execute Modeling: 6.1. Concepts
+# Perform Modeling: 6.1. Concepts
 
-Please list the five or more most memorable concepts from this section, and alongside them, write the concepts with which they are most closely related for you. These other concepts can be from your current worldview, meaning you don't necessarily have to include only the main concepts from this section. Discuss these concepts with classmates, colleagues, or those close to you. For example, you might try explaining these concepts in simple language, provide examples from your experience, connect different concepts together, or discuss their importance.
+List the five or more most memorable concepts from this section, and next to them, indicate the concepts with which they are most strongly connected in your mind. Other concepts may come from your current *worldviews*, so you don't need to include only the main concepts from this section. Discuss these concepts with fellow students, colleagues, or close ones. For example, try explaining these concepts in simple terms, giving examples from your experience, linking different concepts together, or explaining their importance.
 
-Locate the corresponding assignment by number in the modeling workspace and complete all its points.
+Find the corresponding task number in the modeling workspace and complete all its points.
 
 | № | Most Memorable Concepts of the Section | Other Concepts and My Thoughts. |
+|---|----------------------------------------|---------------------------------|
