@@ -3,10 +3,10 @@ order: 16
 title: 'Perform Modeling: 1.3. Mastery'
 ---
 
-# Conduct Modeling: 1.3. Mastery
+# Complete the Modeling Exercise: 1.3. Mastery
 
-Review the examples in the first row of the table. Repeat the theoretical material if necessary, and, if needed, use the AI-bot Aisystant. Fill in the empty cells in the rows following the examples. If your perspective is inadequate for selecting the correct words and labels (names), use ChatGPT or Google for assistance.
+Familiarize yourself with the examples in the first row of the table. If needed, revisit the theoretical material and use the AI bot Aisystant as necessary. Fill in the empty cells in the rows following the examples. If you lack the knowledge to find the appropriate words and designations (names), you can use ChatGPT or Google.
 
-Provide examples of your personal mastery in both work and leisure.
+Provide examples of your personal mastery in work and leisure.
 
-Locate the task in the modeling workspace by its number and complete all its points.
+Locate the corresponding assignment number in the modeling workspace and complete all its tasks.

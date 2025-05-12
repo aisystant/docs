@@ -3,10 +3,10 @@ order: 20
 title: 'Perform Modeling: 1.7. Form and Content'
 ---
 
-# Perform Modeling: 1.7. Form and Content
+# Complete the Modeling Exercise: 1.7. Form and Content
 
-Review the examples in the first row of the table. If necessary, revisit the theoretical material, and feel free to use the AI bot, Aisystant. Fill in the empty cells in the rows following the examples. If you lack the knowledge to choose the appropriate words and designations (names), consider using ChatGPT or Google for assistance.
+Familiarize yourself with the examples in the first row of the table. If necessary, review the theoretical material and utilize the AI-bot Aisystant as needed. Fill in the empty cells in the rows following the examples. If your experience is not broad enough to select the appropriate words and designations (names), use ChatGPT or Google for assistance.
 
-Provide examples from work and personal projects. As needed, compile notes for further elaboration. For instance, in the "Notes" column, record reflections or questions that can later be asked in support chats.
+Provide examples from work and personal projects. If necessary, create notes for further elaboration. For instance, in the "Notes" column, record reflections or questions that you can later ask in support chats.
 
-Locate the corresponding assignment in the modeling workspace by number and complete all of its sections.
+In the modeling workspace, find the corresponding task by number and complete all its points.

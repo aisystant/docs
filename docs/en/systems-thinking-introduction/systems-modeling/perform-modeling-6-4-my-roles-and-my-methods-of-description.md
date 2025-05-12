@@ -3,11 +3,10 @@ order: 22
 title: 'Perform Modeling: 6.4. My Roles and My Methods of Description'
 ---
 
-# Perform Modeling: 6.4. My Roles and My Description Methods
+# Complete the Modeling Exercise: 6.4. My Roles and My Description Methods
 
-Review the example in the first row of the table. Write down which description methods you master.
+Review the example in the first row of the table. List which description methods you are familiar with.
 
-Find the corresponding task by its number in the modeling workspace and complete all its points.
+Locate the corresponding assignment by number in the workspace for modeling and complete all its items.
 
-| № | My Project Role | My Description Method | System | Documentation | Subject of Interest | Project Role for Whom Documentation |
-|
+| No. | My Project Role | My Description Method | System | Documentation | Subject of Interest | Project Role for Whom the Documentation is Intended |

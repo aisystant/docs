@@ -3,8 +3,8 @@ order: 12
 title: 'Perform Modeling: 1.1. Concepts'
 ---
 
-# Perform Modeling: 1.1. Concepts
+# Complete the Modeling Exercise: 1.1. Concepts
 
-List five or more of the most memorable concepts from this section, and note the concepts with which they are most strongly connected for you. Other concepts may stem from your current worldviews, so you don't need to limit yourself to just the main concepts of this section. Discuss these concepts with fellow students, colleagues, or close acquaintances. For instance, you can try to explain these concepts in simple terms, give examples from your own experience, connect different concepts, or explain their importance.
+List the five or more most memorable concepts from this section, and next to each, write down the concepts with which they are most strongly connected in your understanding. These additional concepts may come from your current worldviews and are not limited to the main concepts of this section. Discuss these concepts with your classmates, colleagues, or close friends. For example, you can try to explain these concepts in simple terms, provide examples from your own experience, connect different concepts together, or explain their importance.
 
-Locate the corresponding task by its number in your modeling workspace and complete all its points.
+In your modeling workspace, locate the corresponding assignment by its number and complete all its points.

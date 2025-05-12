@@ -3,14 +3,14 @@ order: 16
 title: Conclusions of the Section and Main Concepts
 ---
 
-# Section Conclusions and Key Concepts
+# Conclusions of the Section and Key Concepts
 
-Systems modeling is the process of creating system descriptions that help to understand and explain the complexity and structure within a system, as well as the system's interaction with its external environment. Modeling involves highlighting only the most important aspects while disregarding the less important ones. Documenting models ensures that the important details remain the focus of the whole team, whereas the less important ones are left to be addressed in conversations.
+Systems modeling is the process of creating descriptions of a system that help to understand and explain the complexity and structure within the system, as well as the system's interaction with its external surroundings. Modeling involves describing only what is essential and omitting what is not. Documenting models allows the team to keep essential elements in focus, whereas non-essential elements remain only in conversations.
 
-Role descriptions, which together make up the system description, are created through a description method. Most of you are engaged in modeling and creating system documentation. Therefore, it is important to understand which description methods you use. Improving in them is essential. This is what applied mastery is all about. Systems thinking, in particular, will help you pay attention to these methods and integrate them into your project activities, whether it's for your organizational unit or the entire company.
+Role-based descriptions, which collectively form the system description, are created using descriptive methods. Most of you engage in modeling and creating documentation for various systems. Therefore, it is important to understand the descriptive methods you use. You need to improve in these areas. This constitutes applied mastery. Systems thinking, in particular, will help you pay attention to these methods and integrate them, if necessary, into the project activities of your department or the entire company.
 
-There can be numerous system descriptions, allowing one to describe a system as either a "black box" or a "transparent box." One of the important descriptions of external system behavior is the usage concept. When discussing the internal structure of a system, we identify four main descriptions—functional, modular, spatial (places), and financial (resource).
+There can be numerous system descriptions, and systems can be described as either "black boxes" or "transparent boxes." One of the important descriptions of the external behavior of a system is the usage concept. When discussing the internal structure of a system, we identify four main descriptions: functional, modular, spatial (placement), and financial (resource).
 
-High-level modeling in project activities includes identifying all significant systems and subsystems, as well as understanding their interconnections. In each cell of the 3x3 Table, specific documents with descriptions for different subjects of interest can be identified.
+High-level modeling within project activities includes identifying all important systems and subsystems and understanding their interconnections. In each cell of the 3x3 Table, specific documents with descriptions across different areas of interest can be highlighted.
 
-Key Concepts: system description; modeling, description method, subject of interest; model, metamodel, multimodel, mega-model; functional=role-based=analytical; modular=structural=synthetic; spatial=places=placement; cost=economic=resource; functional description, modular description, spatial description.
+Key concepts: system description; modeling, descriptive method, subject of interest; model, metamodel, multimodel, mega-model; functional=role-based=analytical; modular=structural=synthetic; spatial=place=placement; cost=economic=resource; functional description, modular description, spatial description.

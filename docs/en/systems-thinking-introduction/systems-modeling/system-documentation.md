@@ -5,38 +5,38 @@ title: System Documentation
 
 # System Documentation
 
-Descriptions capture everything crucial about a system, addressing the subjects of interest for project roles that are decided to be satisfied during the system's creation. Crafting a consistent description increases the likelihood of realizing a successful system of interest in the physical world.
+Descriptions reflect everything essential about a system, answering the subjects of interest for project roles decided to be satisfied during system creation. Creating a consistent description increases the likelihood of successfully implementing the system of interest in the physical world.
 
-Systems modeling is carried out through thinking through writing, employing special tools known as modelers. Examples of such modelers include a pen and paper, Word, a wall with sticky notes and markers, with more advanced modelers being tools like Coda [ ^1 ], CAD (computer-aided design) [ ^2 ], and so on.
+Systems modeling is undertaken through thinking through writing, employing specialized tools known as modelers. Examples of such modelers include pen and paper, Word, a wall with sticky notes and a marker, and more advanced modelers like Coda [ ^1 ], CAD (computer-aided design) [ ^2 ], etc.
 
-The work artifact of systems modeling using modelers is documentation. Ultimately, documentation becomes an external memory for the team (exocortex) [ ^3 ]. The format of documentation [ ^4 ] can be text, outlines, tables, computer models, etc.
+The work artifact of systems modeling using modelers is documentation. Ultimately, this documentation becomes external memory for the team (an exocortex) [ ^3 ]. The documentation format [ ^4 ] can be text, outlines, tables, computer models, and so on.
 
-Our course itself acts as a modeler in the form of tables or high-level models that interlink important systems thinking concepts. With the course serving as a simulator, you can practice thinking mastery required for such high-level modeling (not fully related to the subject area). High-level modeling includes designating [ ^5 ] all significant systems and subsystems and their interconnections. Additionally, understanding high-level models requires, at a minimum, recognizing the connection between description methods and subjects of interest, distinguishing between "black" and "transparent" boxes, and expanding your understanding of the titles and content of main documents across primary areas of interest [ ^6 ].
+Our course is also a modeler, appearing as tables or high-level models in which important systems thinking concepts are linked together. Using the course as a simulator, you can practice mastering the necessary concepts for such high-level modeling (not fully related to a specific subject area). High-level modeling involves designating [ ^5 ] all important systems and subsystems, as well as their interrelationships. Moreover, understanding high-level models requires at least comprehending the connection between method description and subjects of interest, distinguishing between “black” and “transparent” boxes, and expanding your horizon regarding the names and contents of key documents in major areas of interest [ ^6 ].
 
-In the future, you can utilize any spreadsheet editor (e.g., Coda) to describe your project and the systems involved at a high level. However, for subject-specific modeling and creating relevant documents for role interests, applied theories and instruments are necessary [ ^7 ]. Examples include CAD, 1C, PDM (Product Data Management) [ ^8 ], CRM (customer relationship management) [ ^9 ], and many others.
+In the future, you may use any spreadsheet editor (such as Coda) to describe your project and the systems involved at a high level. However, for detailed modeling and creating corresponding documents for role interests, you need to use applied theories and tools [ ^7 ]. For example, CAD, 1C, PDM (Product Data Management) [ ^8 ], CRM (customer relationship management) [ ^9 ], and many others.
 
-Within our course, you will learn about the types of documents that exist, the subjects of interest they address, how they are interrelated, and the description methods used to create them. However, within the course [ ^10 ], you will not be studying or creating specific documents with models and descriptions. For instance, while we will discuss documents that describe the target audience or project roles, the concept of usage, and architecture, developing concrete instances of these documents requires studying the corresponding applied practices (description methods).
+Within our course, you will learn what types of documents exist, which subjects of interest they address, how they are interconnected, and by what methods of description they are created. However, within the course [ ^10 ], you will not study or create specific documents with models and descriptions. For instance, we will discuss documents that describe a target audience or project roles, and also about usage concepts and architecture, but to develop specific instances of these documents, you will need to study the relevant applied practices (description methods).
 
-Typically, a project or enterprise team includes specialists in applied methods (marketers, architects, product owners, etc.) who are proficient in developing specific documents with descriptions of various subjects of interest. The goal of our course is to understand that all these documents can be viewed in a uniform manner [ ^11 ], identifying their interconnections, which requires mastering the systems language as a starting point. This means understanding the relevant concepts of systems modeling.
+Usually, a project or enterprise team includes specialists in applied methods (marketers, architects, product owners, etc.) who specialize in developing certain documents describing various subjects of interest. The objective of our course is to understand that all these documents can be viewed similarly [ ^11 ] and to see their interconnections, which requires first mastering the systems language. This involves knowing the corresponding concepts of systems modeling.
 
-[ ^1 ]: For high-level modeling where all critical systems and subsystems, as well as their interconnections, are described.
+[ ^1 ]: For high-level modeling, which describes all important systems and subsystems, as well as their interconnections.
 
-[ ^2 ]: For more detailed (subject-specific, applied) design, including the creation of design and technological documentation.
+[ ^2 ]: For more detailed (subject-specific, applied) design, including the creation of engineering and technological documentation.
 
-[ ^3 ]: On one hand, the modeler is also considered an exocortex, but the result of modeling is also seen as an exocortex. It's an analogy to the brain, which performs the thinking, and the result is also contained in the brain. However, we consider documentation as non-biological brain, meaning paper or computer models accessible to more than just their developer.
+[ ^3 ]: In one sense, a modeler is also an exocortex, but the result of modeling is also considered an exocortex. This is an analogy to the brain, which conducts thinking, and then the result appears, which is also contained within the brain. However, we consider documentation to be neither a biological brain nor merely paper or computer models accessible not only to their developer.
 
-[ ^4 ]: The content of documentation consists of descriptions defined by the subjects of interest of project roles in the system.
+[ ^4 ]: The content of documentation consists of descriptions defined by the subjects of interest for the project roles regarding the system.
 
-[ ^5 ]: Name and brief description (for example, function, structure, etc.).
+[ ^5 ]: Title and brief description (for example, function, structure, etc.).
 
-[ ^6 ]: For example, it’s necessary to know what distinguishes "Usage Concept" and "System Concept" documents from a "Balance Sheet" or "Target Audience Description."
+[ ^6 ]: For example, it is essential to know what the documents “Usage Concept” and “System Concept” are, as well as how they differ from a “Balance Sheet” or a “Target Audience Description.”
 
-[ ^7 ]: These need to be studied separately. For instance, creating a balance sheet document (as a response to subjects of interest like taxes) requires studying accounting theory and mastering a tool (e.g., 1C).
+[ ^7 ]: These need to be studied separately. For example, composing a balance sheet (as an answer to the subject of interest—taxes) requires studying accounting theory and mastering the tool (for example, 1C).
 
-[ ^8 ]: Product Data Management or product versioning system.
+[ ^8 ]: Product Data Management system or product versioning system.
 
-[ ^9 ]: CRM contains databases that describe the client base as a comprehensive system in the physical world, where the parts of the client base are individual clients.
+[ ^9 ]: CRM contains databases that describe the client base as a whole system in the physical world, with parts of the client base being individual clients.
 
-[ ^10 ]: And even within the systems thinking course.
+[ ^10 ]: And even within the context of systems thinking.
 
-[ ^11 ]: For example, identifying the roles that create them and understanding the methods they use. Or focusing on the project roles that the created documentation will address.
+[ ^11 ]: For example, seeing the roles that create them and understanding through what methods. Or paying attention to the project roles the created documentation will address.

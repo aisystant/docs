@@ -3,35 +3,35 @@ order: 0
 title: Theatrical Metaphor
 ---
 
-# Theater Metaphor
+# Theatrical Metaphor
 
-To understand what "role" means, let's turn to theater. We are all familiar with the phrase "All the world's a stage, and the people actors in it." This phrase not only holds philosophical recognition; it is also useful in systems thinking.
+To understand what a "role" is, let's turn to the theater. Everyone knows the phrase, "All the world's a stage, and all the men and women merely players." This phrase is not only a philosophical statement but also useful in systems thinking.
 
-The theater metaphor helps explain the difference between an action and the performer of the action or between a role and the executor of the role [ ^1 ]. In theater, there is a distinction between Vladimir Vysotsky [ ^2 ] as a performer and the role he plays. Even children understand this. Yet, adults sometimes fail to realize that they themselves play the roles of "manager" or "engineer."
+The theatrical metaphor helps explain the difference between action and the executor/performer of the action, or between the role and the role's executor/performer[ ^1 ]. In theater, we distinguish between the performer Vladimir Vysotsky [ ^2 ] and the role he plays. Even young children understand this. However, adults sometimes fail to recognize that they themselves play the roles of "manager" or "engineer."
 
-In theater, the same actor can play different roles, and any person’s actions can be viewed through the concept of "role." It's fair to say that everyone plays roles in their personal life or work projects. However, not everyone thinks about this consciously.
+In theater, the same actor can play different roles, and the actions of any person can be viewed through the lens of the "role" concept. One could say that everyone plays roles in their personal lives or work projects. Not everyone, however, reflects on this.
 
-We pay attention to our actions deliberately only when we want to improve our behavior. If there is no need to change our thinking or work practices, then a role-based approach is unnecessary. However, if it's crucial to change the working principle of an individual or an entire team, using the concept of "role" and other related concepts—such as "method (practice)" and "work artifact"—is the best way to achieve it today.
+We consciously pay attention to our actions only when we aim to improve our behavior. If we don't need to change our thinking or work practices, there's no reason for a role-based perspective. Yet, if it's important for us to change the principle of operation of an individual or an entire team, the best option today is to use the concept of "role" and other related concepts such as "method (practice)" and "work artifact."
 
-In theater, role actions are clearly defined by the script, and the performers can change regularly. Life is much the same: different people can play the role of a surgeon. However, any surgeon operates based on a specific medical practice they learned at university. The concept of "role" is inseparably linked with the concept of "method (practice)": as soon as we shift to a role-based perspective, we must also discuss role practices [ ^3 ].
+In theater, role actions are clearly defined by the script, while the performers can change regularly. Life is much the same: the role of a surgeon can be played by different people. However, any surgeon acts based on certain medical practices they studied at university. The concept of "role" is inherently linked to the concept of "method (practice)"; as soon as we shift to a role-based perspective, we must also discuss role practices[ ^3 ].
 
-Thus, a role [ ^4 ] is a culturally established designation: surgeon, football player, driver, hammer [ ^5 ] or car, etc. A certain agent, whom we call the executor of the role, performs the role. From the theater metaphor and the human actor, we move to a more fundamental consideration, where role executors can be not only people but also other agents (such as artificial intelligence, a team, or an entire enterprise) or any inanimate object (even a rock).
+Thus, a role[ ^4 ] is a culturally established name: surgeon, soccer player, driver, hammer[ ^5 ], or car, etc. A specific agent, which we call the role's performer, executes the role. From the theatrical metaphor and the human actor, we shift to a more fundamental perspective, where role performers can be not only humans but also, for example, other agents (like artificial intelligence, a team, or an entire enterprise) or any inanimate object (even a stone).
 
-The actions of an agent in a role are role behaviors conducted according to specific rules or using a particular method (practice). Executors of roles create work artifacts through practices. Let's examine this further:
+The actions of an agent by role constitute role behavior, carried out according to specific rules or with the aid of a particular method (practice). With practices, role performers create work artifacts. Let's further analyze the following:
 
-* The concept of a role isn't limited to people, even though we started understanding this concept through the theater metaphor;
-* Roles are not something a person has, but something a person participates in within an activity (process) or as part of a system;
-* The executor of a role isn't necessarily a person, hence we talk about an agent as the role executor or about an inanimate object;
+* The concept of role applies not only to humans, although we began understanding it through a theatrical metaphor;
+* Roles are not possessed by an individual; rather, an individual participates in some activity (process) or is part of a system through a role;
+* The role performer is not necessarily human, which is why we refer to an agent as the role performer or an inanimate object;
 * Agents can be both people and inanimate systems;
-* The success of the system depends on roles and their interests;
-* Roles execute the practice and create work artifacts.
+* The success of a system relies on roles and their interests;
+* Roles execute practices and create work artifacts.
 
-[ ^1 ]: In this context, I am not a collection of roles. I am rather the executor of a specific role in a particular situation or project. However, I also possess the mastery to play many different roles.
+[ ^1 ]: Do not think of "I" as a collection of roles. "I" am the performer of a specific role in a particular situation or project, but I also have the skill to play many different roles.
 
-[ ^2 ]: The role of Hamlet can be played by John Doe, whose performance might simply pale in comparison to V. Vysotsky's talent. However, both performers still play the role of Hamlet, even if they have different qualifications. Therefore, we will separately discuss roles and executors. The role remains the same, while executors may vary.
+[ ^2 ]: The role of Hamlet may be played by John Doe, whose performance pales next to the talent of V. Vysotsky. However, both performers still play the role of Hamlet, even though they have different qualifications. Therefore, we will speak separately about roles and performers. The role remains the same, yet the performers may differ.
 
-[ ^3 ]: As well as work artifacts, systems, and much more. Systems thinking introduces specific concepts and demonstrates how they are interconnected.
+[ ^3 ]: And also work artifacts, systems, and much more. Systems thinking introduces certain concepts and shows how they are interconnected.
 
-[ ^4 ]: The term "role" has synonyms such as role or functional object.
+[ ^4 ]: The concept of "role" has synonyms—role entity or functional object.
 
 [ ^5 ]: Recall the consideration of a "hammer" from the previous section.

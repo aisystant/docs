@@ -5,10 +5,10 @@ title: Conclusions of the Section and Main Concepts
 
 # Section Conclusions and Key Concepts
 
-The concept of a "role" helps humanity better describe the physical world and model human activities. A "role" is associated with action, while an agent is the performer of that role. Further discussions can be focused on the thinking mastery and qualifications of the performer, as well as on improving the role-based actions necessary for a team.
+The concept of "role" helps humanity better describe the physical world and model human activities. "Role" is associated with action, while the agent is the executor of the role. Subsequently, one can separately discuss the mastery and qualifications of the executor, as well as specifically address and enhance the role-related actions necessary in a team.
 
-We can say that a "role" is a thinking model that aids in studying and improving an agent's behavior. Terms like "role," "subject of interest," and "role interests" (preferences) help define a successful system.
+It can be said that "role" is a cognitive model that helps study and improve an agent's behavior. Through the concepts of "role," "subject of interest," and "roles’ interests" (preferences), a successful system is determined.
 
-Humanity accumulates knowledge about actions irrespective of who performs the role at a given time. This accumulated knowledge, along with tools, is what we call a method (practice). Using specific methods (practices), roles produce work artifacts.
+Humanity accumulates knowledge about actions regardless of who is currently fulfilling that role. This knowledge, along with tools, is what we call a method (practice). With specific methods (practices), roles create work artifacts.
 
-Key Concepts: role performer, agent, role=role object=functional object, project roles; method, practice, work artifact; successful system; subject of interest, role interest, architectural characteristics, preference; intention; physical object=performer, functional object=role, role behavior=functional behavior; black and transparent boxes; position, qualification, title; organization, organizational positions=roles, organizational unit.
+Key concepts: role executor, agent, role = role object = functional object, project roles; method, practice, work artifact; successful system; subject of interest, role interest, architectural characteristics, preference; intention; physical object = executor, functional object = role, role behavior = functional behavior; black and clear boxes; position, qualification, title; organization, organizational roles = positions, organizational unit.

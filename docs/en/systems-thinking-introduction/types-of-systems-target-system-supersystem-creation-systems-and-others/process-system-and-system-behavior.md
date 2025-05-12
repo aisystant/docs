@@ -3,20 +3,20 @@ order: 7
 title: Process, System, and System Behavior
 ---
 
-# The Process, System, and System Behavior
+# Process, System, and System Behavior
 
-Creation systems should not be confused with the process of creating a system of interest. More precisely, one should not confuse a system with a process. We state that in the process of creation, different systems participate [^1] that we call creation systems. Altogether, they form the system-creator.
+Creation systems should not be confused with the process of creating the system of interest. Specifically, do not confuse systems with processes. When we discuss the process of creation, we mean [ ^1 ] the involvement of different systems, which we call creation systems. Together, they form the system-creator.
 
-Consequently, when we say "process" [^2], we mean the interaction of various systems, resulting in some work artifact. If these creation systems participate in the process, the result is a work artifact—a system of interest. For example, if it is a process of thinking through writing involving a thinker and a computer (exocortex), the result is a work artifact—a draft of a post on the computer.
+Therefore, when we say "process" [ ^2 ], we refer to the interaction of different systems resulting in a work artifact. If creation systems participate in this process, the resulting work artifact is the system of interest. In the case of thinking through writing, involving a thinker and a computer (exocortex), the process results in a work artifact—a draft post in the computer.
 
-Sometimes, it's easy to identify the supersystem for all systems participating in a certain process. For example, one could imagine the combustion process of a fuel mixture involving a piston, cylinder, crank mechanism, crankshaft, cooling subsystem, etc. All these systems form an internal combustion engine (ICE). However, sometimes our perspective is limited, or there is no common name for such a supersystem in the culture (like ICE). Nevertheless, you should not confuse the names of a process and a system, as demonstrated in the example above.
+At times, it is easy to identify a supersystem for all the systems participating in a process. For example, consider the combustion process involving a piston, cylinder, connecting rod mechanism, crankshaft, cooling subsystem, and so on. All these systems form an internal combustion engine (ICE). However, sometimes, our perspective is limited, or there is no common cultural term for such a supersystem (like ICE). Nevertheless, you should not confuse the names of processes and systems, as illustrated in the example above.
 
-The systems participating in the process change their state or exhibit certain behavior. Behavior describes the interaction of the system with its environment, that is, its "external behavior" or "role-based behavior." For instance, there are specific types of behavior for each of the aforementioned systems [^3] involved in the combustion process of a fuel mixture [^4]. However, the engine itself also exhibits behavior [^5], which, along with the chassis and cabin, participates in another process: transporting goods and passengers. The work artifact of the latter process is the spatially relocated cargo and passengers.
+The systems participating in the process change their state or exhibit specific behavior. Behavior describes the system's interaction with its environment, known as "external behavior" or "role-based behavior." For instance, each of the aforementioned systems [ ^3 ] in the combustion process exhibits distinct behaviors [ ^4 ]. Similarly, inside a clock, there is also a process of counting seconds, involving gears, springs, and other clock subsystems. But the engine itself also displays behavior [ ^5 ] and, alongside the chassis and cabin, participates in another process—transportation operations. The work artifact of this process is the moved cargo and passengers.
 
-Thus, we do not confuse types of concepts—process, system, and role-based behavior.
+Thus, we must distinguish between different types of concepts—process, system, and role-based behavior.
 
-[^1]: Meaning "the participation relationship" in some activity (changes, processes, procedures) is simply a specialization of the "composition relationship."
-[^2]: Outside of Aisystant, the word "process" may be used synonymously with the term "practice." However, we differentiate between "process" and "practice."
-[^3]: A piston behaves in one way, while a cylinder behaves in another.
-[^4]: Or, for example, within a clock, there is its own process of counting seconds, involving gears, springs, and other subsystems of the clock.
-[^5]: Delivering torque.
+[ ^1 ]: This refers to the "relationship of involvement" in some activity (changes, processes, procedures)—a specialization of the "composition relationship."  
+[ ^2 ]: Outside of Aisystant, the word "process" can be used as a synonym for the concept of "practice." However, we differentiate between "process" and "practice"; they are distinct types.  
+[ ^3 ]: The piston behaves one way, the cylinder another.  
+[ ^4 ]: Or, for example, within a clock, there is a process of counting seconds, involving gears, springs, and other clock subsystems.  
+[ ^5 ]: Providing torque output.

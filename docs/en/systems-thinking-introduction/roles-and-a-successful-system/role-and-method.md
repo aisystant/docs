@@ -1,18 +1,20 @@
 ---
 order: 10
-title: "\u201CRole\u201D and \u201CMethod\u201D"
+title: '"Role" and "Method"'
 ---
 
 # "Role" and "Method"
 
-When we consider project roles, we necessarily connect them with practices (methods). We will further use the concepts of method and practice as synonyms. In systems thinking, the concept of "method" carries a different meaning than what we use in everyday language [ ^1 ]. We need this concept to discuss the formal description of the actions taken by project roles. Project roles operate according to a method (practice), with each role capable of executing many, through which work artifacts are created. For example, a swimmer can swim in various styles (often the word "style" is synonymous with method and practice, and it is also referred to as technique) — freestyle, breaststroke, butterfly, and so on.
+When considering project roles, we inevitably associate them with practices (methods). We will continue to use the terms "method" and "practice" interchangeably. In systems thinking, the concept of "method" does not carry the same meaning we use in everyday speech [^1]. Instead, we need this concept to discuss the formal description of the actions performed by project roles. Project roles operate according to a method (practice); each role can execute many, which in turn helps create work artifacts. For example, a swimmer can use different styles (often the word "style" is synonymous with method and practice, and sometimes it is called technique)—such as freestyle, breaststroke, butterfly, etc.
 
-There are methods for surgeons, dentists, entrepreneurs, engineers, marketers, etc. People study applied methods (practices) to create work artifacts more effectively. Be sure to write a list of the methods you consciously use, and then add the work artifacts you produce with their help.
+There are methods for surgeons, dentists, entrepreneurs, engineers, marketers, and so on. People learn applied methods (practices) to create work artifacts more effectively. Be sure to list the methods you consciously use, and then add the work artifacts you produce with their help.
 
-In your work, you apply various methods to create work artifacts. You might be engaged in either analytical or engineering work. In the first case, you create internal work artifacts, meaning something for yourself. For example, you plan your activities, analyze the work done, or gather data. In the second case, you create external work artifacts that you provide to others. In this case, unlike the first, your decisions change the surrounding world.
+In your work, you apply various methods to create work artifacts. You might engage in either analytical or engineering work. In the first case, you create internal work artifacts, that is, something for yourself. For example, you might draft your plans, analyze completed work, or gather data. In the second case, you create external work artifacts that you deliver to others. In this scenario, unlike the first, your decisions impact the surrounding world.
 
-Pay attention to how much time you spend as an analyst and how much as an engineer. Each evening, compile or recall a list of the external and internal work artifacts you created [ ^2 ].
+Pay attention to how much time you spend as an analyst and how much as an engineer. In the evening, list or recall the external and internal work artifacts you have created [^2].
 
-[ ^1 ]: For example, when discussing the opposition between theory and practice.
+---
 
-[ ^2 ]: You can learn more about how to increase personal effectiveness in the "Practices of Self-Development" course.
+[ ^1 ] Examples include when discussing the contrast between theory and practice.
+
+[ ^2 ] For more on how to improve personal efficiency, you can learn in the "Practices of Self-Development" course.

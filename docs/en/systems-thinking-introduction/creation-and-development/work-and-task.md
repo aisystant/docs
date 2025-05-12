@@ -3,27 +3,30 @@ order: 3
 title: Work and Task
 ---
 
-# Work and Task
+# Work and Tasks
 
-Work refers to a specific activity or behavior of an organizational unit carried out within a certain physical time frame. As a result of work, a work artifact emerges in the physical world. It's also described as a process in which the organizational unit engages along with resources. Alternatively, within this process, the organizational unit performs a service using certain resources.
+Work refers to a specific activity or behavior of an organizational unit that takes place at a defined physical time. As a result of work, a work artifact appears in the physical world. It can also be described as a process in which the organizational unit engages with resources. Within this framework, the organizational unit performs a service using certain resources.
 
-For example, John Doe uses a hammer to drive nails within the allocated time, and for this, he receives payment. John Doe in the role of a carpenter with a hammer represents the organizational unit. The service is nail-driving.
+For example, John Doe uses a hammer to drive nails within an allotted time and receives payment for it. John Doe, in the position of a carpenter with a hammer, is the organizational unit. The service is the act of driving nails.
 
-When discussing work, the main interest lies not so much in its content^[In other words, what methods (tools) are needed to perform the work.], but in how to assemble the necessary resources for this work and which organizational unit should perform these tasks to produce the required work artifact.
+When discussing work, the primary interest is not its content[^1]—that is, which methods (tools) are needed to perform the work—but rather how to gather the necessary resources for the work and which organizational unit should perform these tasks to produce the required work artifact.
 
-Managers often play the role of planners who, based on the planning method, assign tasks to performers. They are concerned with the following: who among the performers, within what timeframe, and with what resources should create a specific work artifact.
+Managers often act as planners, who, based on the planning method, assign tasks to executors. What interests them is: who among the executors, within what timeframe, and with what resources should create a specific work artifact.
 
-Each cell of the 3x3 Table can be viewed as a set of tasks that need to be completed^[Each cell of the 3x3 Table has its planner.]. Additionally, the description in the subsection "How Systems Thinking Assists in Work Activities" regarding the essence of systems thinking can be seen as high-level or typical tasks that need to be accomplished in any project. For example, it is necessary to draft a usage concept or secure investments.
+Each cell of the 3x3 Table can be seen as a collection of tasks that need to be completed[^2]. Furthermore, the description in the subsection "How systems thinking helps in work activities" about the essence of systems thinking can be considered as high-level or typical tasks that need to be carried out in any project. For instance, it is necessary to develop a usage concept or secure investments.
 
-Tasks arise from systems modeling and, to be executed, must be formulated as work activities. A task includes an action that must be performed within the project framework. Ideally, it should mention the method. A task becomes work when the following are known:
+Tasks arise from systems modeling, and to ensure they are completed, they need to be formulated as work. A task includes an action that must be performed within a project. Ideally, it should mention the method. A task becomes work when it is clear:
 
-1. Who or which executor (Full Name);
-2. By what deadline;
+1. Who or which executor (full name);
+2. Within what timeframe;
 3. In what role;
-4. By what method (practice);
-5. With which resources;
+4. Using which method (practice);
+5. With what resources;
 6. What work artifact will result.
 
-To properly formulate work, the planner must have accessible information on the availability of resources (time, funds, and components) and the executor's mastery.
+To properly formulate work, the planner must have accessible information about the availability of resources (time, funds, and components) and the skill level of the executors.
 
-The enterprise architect must delineate organizational units (departments) so that each can function as an autonomous team. Without this, it will be impossible to coordinate all the work that includes tasks for each cell of the 3x3 Table, while also considering the incremental development of the system of interest. Furthermore, note that the project may involve the development of numerous "our systems" for various teams, adding further complexity to work management. You will learn more about this in the third semester of the core program.
+The enterprise architect should design the organizational units (subdivisions) in such a way that each can operate as independently as possible. Without this, coordinating all the work involving tasks for each cell of the 3x3 Table, as well as considering the incremental development of the system of interest, becomes impossible. Additionally, note that projects may involve the development of numerous “our systems” for various teams, further complicating task management. You will learn more about this in the third semester of the main program.
+
+[^1]: That is, which methods (tools) are needed to perform the work.
+[^2]: For each cell of the 3x3 Table, there is its own planner.

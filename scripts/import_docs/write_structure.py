@@ -114,6 +114,7 @@ def write_structure_to_files(structure, base_dir):
             file.write(f"title: \"{title}\"\n")
             file.write(f"order: {order}\n")
             file.write("---\n\n")
+            file.write(f"# {title}\n\n")
             # Write the content
             file.write(decoded_text)
         logger.info(f"Created file: {file_path}")

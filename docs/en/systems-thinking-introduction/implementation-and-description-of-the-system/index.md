@@ -1,6 +1,6 @@
 ---
-order: 22
+order: 0
 title: Implementation and Description of the System
 ---
 
-# System Implementation and Description
+# Implementation and Description of the System

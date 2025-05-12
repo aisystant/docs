@@ -3,4 +3,4 @@ order: 12
 title: Homework
 ---
 
-# Homework Assignment
+# Homework
