@@ -1,5 +1,5 @@
 ---
-order: 20
+order: 6
 title: Systems Levels, Creation Chains, Areas of Interest
 ---
 
