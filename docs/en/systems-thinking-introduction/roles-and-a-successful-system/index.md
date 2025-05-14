@@ -1,5 +1,5 @@
 ---
-order: 20
+order: 4
 title: Roles and a Successful System
 ---
 

@@ -1,5 +1,5 @@
 ---
-order: 26
+order: 5
 title: 'Types of Systems: Target System, Supersystem, Creation Systems, and Others'
 ---
 

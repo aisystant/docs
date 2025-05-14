@@ -43,27 +43,28 @@ def remove_number_prefix(text):
 def build_hierarchical_structure(sections):
     result = []
     current_header = None
-    relative_order = 0
+    #relative_order = 0
 
     for section in sections:
         section_data = {
             "type": section["type"].lower(),
             "title": remove_number_prefix(section["title"]),
             "id": section["id"],
-            "order": relative_order  # Reset order relative to the current section
         }
 
         if section["type"] == "HEADER":
             current_header = section_data
             current_header["children"] = []
+            current_header["order"] = len(result)
             result.append(current_header)
-            relative_order = 0  # Reset relative order for the new section
         else:
             if current_header:
+                childrens = current_header["children"]
+                section_data["order"] = len(childrens)
                 current_header["children"].append(section_data)
             else:
+                section_data["order"] = len(result)
                 result.append(section_data)
-            relative_order += 1  # Increment order within the current section
 
     return result
 
