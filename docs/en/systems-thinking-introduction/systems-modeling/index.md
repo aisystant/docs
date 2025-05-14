@@ -1,5 +1,5 @@
 ---
-order: 19
+order: 7
 title: Systems Modeling
 ---
 
