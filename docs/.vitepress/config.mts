@@ -49,7 +49,7 @@ export default defineConfig({
         nav: enCourseNav,      // Dynamically generated navigation for English courses
         sidebar: enSidebar,    // Dynamically generated sidebar with collapsible section items
         socialLinks: [
-          { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+          { icon: 'github', link: 'https://github.com/aisystant/docs' }
         ]
       }
     },
@@ -61,7 +61,7 @@ export default defineConfig({
         nav: ruCourseNav,      // Dynamically generated navigation for Russian courses
         sidebar: ruSidebar,    // Dynamically generated sidebar with collapsible section items
         socialLinks: [
-          { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+          { icon: 'github', link: 'https://github.com/aisystant/docs' }
         ]
       }
     }
