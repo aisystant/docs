@@ -8,7 +8,7 @@ hero:
   tagline: " "
 
 features:
-  - title: Introduction to System Thinking
+  - title: Introduction to Systems Thinking
     details: "Author: Tseren Tserenov"
     link: /en/systems-thinking-introduction/foreword/
 ---
