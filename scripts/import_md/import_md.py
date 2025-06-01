@@ -7,9 +7,13 @@ import logging
 import requests
 
 
-def import_text_section(section_id, filename):
-    with open(filename, 'w') as f:
-        f.write(f"Not implemented: {section_id}\n")
+def import_text_section(section_id, filename, order):
+    make_md_file(
+        filename=filename,
+        title=f"Section {section_id}",
+        body=f"Content for section {section_id} goes here.",
+        order=order
+    )
 
 
 def import_image(url, filename):
@@ -17,18 +21,19 @@ def import_image(url, filename):
     Import an image from a URL and save it to a file.
     Use global HEADERS to include session token if needed.
     """
-    logger.info(f"Downloading image from {url} to {filename}")
+    logging.info(f"Downloading image from {url} to {filename}")
     response = requests.get(url, headers=HEADERS)
     response.raise_for_status()  # Raise an error for bad responses
     with open(filename, 'wb') as f:
         f.write(response.content)
 
 
-def import_item(path, item, order, t):
+def import_item(stack, item, order, t):
     if t == "HEADER":
         slug = item["slug"]
         title = item["title_ru"]
-        path = os.path.join(path, slug)
+        stack.append(slug)
+        path = build_path_for_md(stack)
         os.makedirs(path, exist_ok=True)
         make_md_file(
             filename=os.path.join(path, 'index.md'),
@@ -36,22 +41,23 @@ def import_item(path, item, order, t):
             order=order,
         )
         for i, child in enumerate(item.get("children", [])):
-            import_item(path, child, i, child["type"])
+            import_item(stack, child, i, child["type"])
     elif t == "TEXT":
+        path = build_path_for_md(stack)
         import_text_section(
             section_id=item["section_id"],
-            filename=os.path.join(path, f"{item['slug']}.md")
+            filename=os.path.join(path, f"{item['slug']}.md"),
+            order=order
         )
         if "images" in item:
             for i, item in enumerate(item["images"]):
-                import_item(path, item, i, "IMAGE")
+                import_item(stack, item, i, "IMAGE")
     elif t == "IMAGE":
         orig_path = item["orig_path"]
         filename = item["filename"]
         url = f"{BASE_URL}/{orig_path}"
-        parent_path = os.path.dirname(path)
-        # image path is public/{parent_path}/{filename}
-        image_path = os.path.join('public', parent_path, filename)
+        image_path = os.path.join(build_path_for_images(stack), filename)
+        logging.info(f"Importing image from {url} to {image_path}")
         os.makedirs(os.path.dirname(image_path), exist_ok=True)
         import_image(url, image_path)
 
@@ -70,9 +76,24 @@ def make_md_file(filename, title, body="", order=None):
         f.write(body)
 
 
-# Set up logging
-logger = logging.getLogger('import_md')
+def build_path_for_md(stack):
+    """
+    Build a path for the markdown file based on the stack.
+    """
+    return os.path.join('docs', 'ru', *stack)
 
+
+def build_path_for_images(stack):
+    """
+    Build a path for the images based on the stack.
+    """
+    return os.path.join('docs', 'public', 'ru', stack[0])
+
+
+# Set up logging
+logging.basicConfig(level=logging.INFO)
+
+logging.info('Starting import process')
 
 BASE_URL = os.environ.get('AISYSTANT_BASE_URL', 'https://api.aisystant.com/api')
 AISYSTANT_SESSION_TOKEN = os.getenv('AISYSTANT_SESSION_TOKEN')
@@ -82,22 +103,22 @@ name = sys.argv[1]
 yaml_file = f"metadata/yaml/{name}.yaml"
 
 if not os.path.exists(yaml_file):
-    logger.error(f"YAML file {yaml_file} does not exist.")
+    logging.error(f"YAML file {yaml_file} does not exist.")
     sys.exit(1)
 
 # Read the YAML file
 with open(yaml_file, 'r') as file:
     try:
         data = yaml.safe_load(file)
-        path = f'docs/ru/{name}'
-        os.makedirs(path, exist_ok=True)
+        stack = [name]
+        os.makedirs(build_path_for_md(stack), exist_ok=True)
         make_md_file(
-            filename=os.path.join(path, 'index.md'),
+            filename=os.path.join(build_path_for_md(stack), 'index.md'),
             title=data.get('course_name', 'Untitled'),
             body="",
         )
         for i, section in enumerate(data.get('sections', [])):
-            import_item(path, section, i, section["type"])
+            import_item(stack, section, i, section["type"])
     except yaml.YAMLError as e:
-        logger.error(f"Error parsing YAML file: {e}")
+        logging.error(f"Error parsing YAML file: {e}")
         sys.exit(1)

@@ -16,8 +16,9 @@ ls metadata/yaml | grep "sobr" | while read -r file; do
     echo "Importing $name"
     # remove old version if it exists
     rm -rf "docs/ru/$name"
+    rm -rf "docs/public/ru/$name"
     # import each yaml file using the import_md.py script
-    #python scripts/import_md/import_md.py "$name"
+    # python scripts/import_md/import_md.py "$name"
     if [ $? -ne 0 ]; then
         echo "Failed to import $file"
         exit 1
