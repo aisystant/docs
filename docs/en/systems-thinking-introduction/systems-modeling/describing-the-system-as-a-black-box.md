@@ -1,5 +1,5 @@
 ---
-title: "Describing the System as a "Black Box""
+title: "Describing the System as a \"Black Box\""
 order: 8
 ---
 

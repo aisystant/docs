@@ -1,5 +1,5 @@
 ---
-title: "Service Example - "Haircut""
+title: "Service Example - \"Haircut\""
 order: 9
 ---
 
