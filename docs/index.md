@@ -10,6 +10,6 @@ hero:
 features:
   - title: Introduction to Systems Thinking
     details: "Author: Tseren Tserenov"
-    link: /en/systems-thinking-introduction/foreword/
+    link: /en/systems-thinking-introduction/preface/
 ---
 
