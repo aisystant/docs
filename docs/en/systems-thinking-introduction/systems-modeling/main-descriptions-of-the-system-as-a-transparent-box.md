@@ -1,5 +1,5 @@
 ---
-title: "Main Descriptions of the System as a "Transparent Box""
+title: "Main Descriptions of the System as a \"Transparent Box\""
 order: 11
 ---
 

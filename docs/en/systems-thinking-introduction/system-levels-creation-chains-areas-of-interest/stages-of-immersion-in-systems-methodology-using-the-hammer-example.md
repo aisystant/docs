@@ -1,5 +1,5 @@
 ---
-title: "Stages of Immersion in Systems Methodology Using the "Hammer" Example"
+title: "Stages of Immersion in Systems Methodology Using the \"Hammer\" Example"
 order: 8
 ---
 

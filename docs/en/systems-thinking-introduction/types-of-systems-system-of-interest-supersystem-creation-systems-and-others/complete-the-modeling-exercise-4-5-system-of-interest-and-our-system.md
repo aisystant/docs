@@ -1,5 +1,5 @@
 ---
-title: "Complete the Modeling Exercise: 4.5. System of Interest and "Our System""
+title: "Complete the Modeling Exercise: 4.5. System of Interest and \"Our System\""
 order: 18
 ---
 
