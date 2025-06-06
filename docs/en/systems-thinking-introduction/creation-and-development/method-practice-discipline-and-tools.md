@@ -1,0 +1,22 @@
+---
+title: "Method (Practice) – Discipline and Tools"
+order: 2
+---
+
+# Method (Practice) – Discipline and Tools
+
+A practice or method in systems thinking can be represented as a combination of a discipline and the tools that support that discipline. Accordingly, a practice established within an enterprise consists of agents who are proficient in the theory and tools, and who perform specific roles. Note that people must study the discipline and train in the use of the tools.
+
+Disciplines include, for example, accounting or the theory of hairdressing, as well as marketing or operational management (textbooks are usually written for such disciplines). A discipline is studied or “placed” in one’s mind, while tools are additionally mastered or practiced for use. Unlike a discipline, tools exist in the physical world^[A discipline is an object of the mental space, but it can be described on some physical medium.]. A tool is a device or object that helps create a work artifact. In the examples given, tools include scissors and the SAP software system (1C-Accounting). Each tool “embeds” a specific discipline within it^[Therefore, if you are developing a technology, it will most likely be used by a certain role in accordance with a specific discipline as a tool. As the developer of this tool, you must have a solid understanding of the discipline that the role will be working with using this tool.].
+
+For example, to perform the role of an accountant, a person studies the theory of accounting and masters SAP as a tool for bookkeeping. When assigned a task, they step into the role of accountant and, using accounting practice, create a balance sheet and a profit and loss statement. These documents are the work artifacts, created according to the rules set out in accounting theory. The 1C program supports this theory and helps produce the work artifacts. The SAP (1C) development team must include not only programmers but also highly qualified accountants.
+
+By the way, instead of SAP, other tools such as Excel and Word could be used. In this case, the theory does not change—the tool does. Try reflecting on the discipline and tools involved in your own professional methods (practices).
+
+Any organization can be viewed as a combination or blend of numerous methods. Just as there are no identical people—since everyone has a unique combination of genes—there are no identical organizations. Every enterprise has its own mix of practices, and this unique set determines its competitiveness and, consequently, its survival. As organizations evolve, they may discover and formalize new ways of working, which are then replicated, much like genes. In other words, other enterprises adopt and implement the best practices, and this is literally how memes are transmitted.
+
+Each area of interest in the 3x3 Table applies its own organizational methods. This pertains to describing the target audience, attracting investors, defining the architecture, or outlining the creation systems. For the corresponding work artifacts in each cell of the 3x3 Table, appropriate methods are required. If you have excellent architectural practices but poor marketing ones (or vice versa), your enterprise is unlikely to be competitive. The 3x3 Table helps ensure you don’t overlook which practices are needed in your organization, and it also allows you to mark the cells where you have the best practices on the market, and which areas of interest are merely satisfactory.
+
+Competitiveness is achieved by being the best in some area, while performing satisfactorily relative to the market in all other areas of interest. However, if you have a failure in any area, even your best practices may become useless. Similarly, if all your areas are just average—what’s called “good enough”—you are unlikely to become a market leader.
+
+That’s why attention to organizational methods is a key part of the Chief Transformation Officer’s work, specifically in the role of organizational designer. This person develops the concept of the organization (as a system), defines functional roles and their interactions, and designs changes within the organization. Organizational designers may also be responsible for defining the authorities and responsibilities of organizational units, as well as preparing the organizational project.
