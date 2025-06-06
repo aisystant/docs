@@ -1,5 +1,5 @@
 ---
-title: ""Role" and "Method""
+title: "Role and Method"
 order: 10
 ---
 
