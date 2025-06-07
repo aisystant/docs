@@ -1,0 +1,2 @@
+langsmith==0.3.45
+openai==1.84.0
