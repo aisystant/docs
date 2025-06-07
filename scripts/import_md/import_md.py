@@ -64,6 +64,43 @@ def import_text_section(section, filename, order, stack):
     )
 
 
+def import_test_section(section, filename, order, stack):
+    """
+    Import test section
+    """
+    section_id = section.get("section_id")
+    title = section.get("title_ru")
+    url = f"{BASE_URL}/api/courses/test/{section_id}"
+    response = requests.get(url, headers=HEADERS)
+    response.raise_for_status()
+    data = response.json()
+
+    md_lines = []
+
+    def render_question(q):
+        return f"**Q{q['index'] + 1}.** {q['text']}\n"
+
+    for case in data.get("cases", []):
+        case_text = md(case.get("text", ""))
+        questions = [render_question(q) for q in case.get("questions", [])]
+        md_lines.extend([case_text, "", *questions, ""])
+
+    # fallback: questions не в cases
+    if not data.get("cases") and data.get("questions"):
+        for q in data["questions"]:
+            md_lines.append(render_question(q))
+            md_lines.append("")
+
+    markdown_text = "\n".join(md_lines)
+
+    make_md_file(
+        filename=filename,
+        title=title,
+        body=markdown_text,
+        order=order
+    )
+
+
 def import_image(url, filename):
     """
     Import an image from a URL and save it to a file.
@@ -100,6 +137,14 @@ def import_item(stack, item, order, t):
         if "images" in item:
             for i, item in enumerate(item["images"]):
                 import_item(stack, item, i, "IMAGE")
+    elif t == "TEST":
+        path = build_path_for_md(stack)
+        import_test_section(
+            section=item,
+            filename=os.path.join(path, f"{item['slug']}.md"),
+            order=order,
+            stack=stack
+        )
     elif t == "IMAGE":
         orig_path = item["orig_path"]
         filename = item["filename"]
