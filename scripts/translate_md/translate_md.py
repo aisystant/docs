@@ -49,6 +49,9 @@ def translate_text_section(section, order, stack):
     # if the destination file already exists and force is not set, skip translation
     if not force and os.path.exists(bak_filename):
         logging.info(f"Skipping translation for {dst_filename} as it already exists.")
+        # copy the existing file from the backup location
+        os.makedirs(os.path.dirname(dst_filename), exist_ok=True)
+        os.rename(bak_filename, dst_filename)
         return
 
     # read the source file
@@ -90,7 +93,7 @@ def import_item(stack, item, order, t):
         )
         for i, child in enumerate(item.get("children", [])):
             import_item(stack + [slug], child, i, child["type"])
-    elif t == "TEXT":
+    elif t == "TEXT" or t == "TEST":
         translate_text_section(
             section=item,
             order=order,
