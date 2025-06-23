@@ -10,7 +10,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # iterate over yaml files in the metadata directory
-ls metadata/yaml | grep "systems-think" | while read -r file; do
+ls metadata/yaml | grep "rational-" | while read -r file; do
     # get name
     name=$(echo "$file" | sed 's/\.yaml//')
     echo "Importing $name"
@@ -18,7 +18,7 @@ ls metadata/yaml | grep "systems-think" | while read -r file; do
     rm -rf "docs/ru/$name"
     rm -rf "docs/public/ru/$name"
     # import each yaml file using the import_md.py script
-    python scripts/import_md/import_md.py "$name"
+    python scripts/import_md/import_md.py "$name" "$1"
     if [ $? -ne 0 ]; then
         echo "Failed to import $file"
         exit 1
