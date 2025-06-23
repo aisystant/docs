@@ -70,6 +70,16 @@ def import_test_section(section, filename, order, stack):
     """
     section_id = section.get("section_id")
     title = section.get("title_ru")
+
+    if not publish_questions:
+        make_md_file(
+            filename=filename,
+            title=title,
+            body=f"Выполните {title} в рабочей тетради.",
+            order=order
+        )
+        return
+
     url = f"{BASE_URL}/api/courses/test/{section_id}"
     response = requests.get(url, headers=HEADERS)
     response.raise_for_status()
@@ -193,6 +203,7 @@ AISYSTANT_SESSION_TOKEN = os.getenv('AISYSTANT_SESSION_TOKEN')
 HEADERS = {'Session-Token': AISYSTANT_SESSION_TOKEN}
 
 name = sys.argv[1]
+publish_questions = sys.argv[2] == '-q'
 yaml_file = f"metadata/yaml/{name}.yaml"
 
 if not os.path.exists(yaml_file):
