@@ -10,7 +10,7 @@ if [ $? -ne 0 ]; then
 fi
 
 # iterate over yaml files in the metadata directory
-ls metadata/yaml | grep "rational-" | while read -r file; do
+ls metadata/yaml | while read -r file; do
     # get name
     name=$(echo "$file" | sed 's/\.yaml//')
     echo "Importing $name"
