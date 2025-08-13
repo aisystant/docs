@@ -31,7 +31,7 @@ order: 10
 
 Вот диаграмма – пространственно-временная карта (space-time map) из книги Chris Partridge «Business Objects: Re-Engineering for Re-Use», которая это иллюстрирует:
 
-![](/ru/rational-work/22.png)
+![](/text/ontologics-sobr/2025-06-19T2004/5550/22.png)
 
 Все три измерения пространства на этой диаграмме показывают на одной оси, а время на другой оси.
 
