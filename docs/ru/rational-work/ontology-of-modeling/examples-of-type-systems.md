@@ -45,7 +45,7 @@ rdfs:label - отношение “*является основным* *чело
 
 На самом верху - Thing - просто “Объект”, “Сущность”, под ней “Возможный индивид” и “Абстрактный объект”, и т.д.
 
-![](/ru/rational-work/20.png)
+![](/text/ontologics-sobr/2025-06-19T2004/5400/20.png)
 
 **3. BORO Business** **Objects****Reference****Ontology**
 
