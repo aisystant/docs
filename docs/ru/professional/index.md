@@ -20,5 +20,5 @@ title: Рабочее развитие
 6. Системный менеджмент (60 ч) — организационное развитие, лидерство, структура организаций и сообществ.
 
 ## Ссылка на сайте
-Лендинг: https://system-school.ru/programs/orgdev.
-Памятка: https://systemsworld.club/t/pamyatka-po-programme-rabochego-razvitiya-inzhenerov-menedzherov-mim/25895.
+1. Лендинг: https://system-school.ru/programs/orgdev.
+2. Памятка: https://systemsworld.club/t/pamyatka-po-programme-rabochego-razvitiya-inzhenerov-menedzherov-mim/25895.
