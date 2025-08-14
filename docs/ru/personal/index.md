@@ -18,5 +18,5 @@ title: Личное развитие
 5. При последовательном прохождении — около 40 недель, при параллельной работе — около 24 недель
 
 ## Ссылки
-Лендинг: https://system-school.ru/programs/intro
-Памятка: https://systemsworld.club/t/pamyatka-po-programme-lichnogo-razvitiya/25981
+1. Лендинг: https://system-school.ru/programs/intro.
+2. Памятка: https://systemsworld.club/t/pamyatka-po-programme-lichnogo-razvitiya/25981.
