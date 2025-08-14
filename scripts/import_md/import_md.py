@@ -50,10 +50,17 @@ def import_text_section(section, filename, order, stack):
     # Replace image URLs with correct local paths if images are present
     if "images" in section:
         course_name = stack[0] if stack else os.environ.get('COURSE_NAME', sys.argv[1])
+        category = get_course_category(course_name)
+        
         for img in section["images"]:
             orig_path = img["orig_path"]
             filename_img = img["filename"]
-            rel_img_path = f"/ru/{course_name}/{filename_img}"
+            
+            if category == 'uncategorized':
+                rel_img_path = f"/ru/{course_name}/{filename_img}"
+            else:
+                rel_img_path = f"/ru/{category}/{course_name}/{filename_img}"
+            
             markdown_text = markdown_text.replace(orig_path, rel_img_path)
 
     make_md_file(
@@ -179,18 +186,48 @@ def make_md_file(filename, title, body="", order=None):
         f.write(body)
 
 
+def get_course_category(course_name):
+    """
+    Get the category (personal/professional) for a course from main.yaml
+    """
+    try:
+        with open('metadata/main.yaml', 'r') as f:
+            data = yaml.safe_load(f)
+        
+        for category in data:
+            if course_name in category.get('items', []):
+                return category['slug']
+        
+        return 'uncategorized'
+    except Exception as e:
+        logging.warning(f"Could not determine category for {course_name}: {e}")
+        return 'uncategorized'
+
+
 def build_path_for_md(stack):
     """
     Build a path for the markdown file based on the stack.
     """
-    return os.path.join('docs', 'ru', *stack)
+    course_name = stack[0]
+    category = get_course_category(course_name)
+    
+    if category == 'uncategorized':
+        return os.path.join('docs', 'ru', *stack)
+    else:
+        return os.path.join('docs', 'ru', category, *stack)
 
 
 def build_path_for_images(stack):
     """
     Build a path for the images based on the stack.
     """
-    return os.path.join('docs', 'public', 'ru', stack[0])
+    course_name = stack[0]
+    category = get_course_category(course_name)
+    
+    if category == 'uncategorized':
+        return os.path.join('docs', 'public', 'ru', course_name)
+    else:
+        return os.path.join('docs', 'public', 'ru', category, course_name)
 
 
 # Set up logging
