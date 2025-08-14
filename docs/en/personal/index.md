@@ -13,5 +13,5 @@ title: "Personal Development"
 Одно тематическое руководство — интеллект‑стек фундаментальных методов мышления (переписан до 2023 года). Оно описывает уровни мышления: понятизация, внимательность, семантика, математика, физика, теория понятий, онтология, алгоритмика, логика, рациональность, исследования, эстетика, этика, риторика, методология и инженерия. Каждый уровень — это слой стека, обеспечивающий прочный фундамент для следующего.
 
 ## Ссылки
-Лендинг: https://system-school.ru/programs/research.
-Памятка: https://systemsworld.club/t/pamyatka-po-programme-issledovatelskogo-razvitiya-inzhenerov-menedzherov-mim/25978.
+1. Лендинг: https://system-school.ru/programs/research.
+2. Памятка: https://systemsworld.club/t/pamyatka-po-programme-issledovatelskogo-razvitiya-inzhenerov-menedzherov-mim/25978.
