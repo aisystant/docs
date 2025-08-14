@@ -7,10 +7,10 @@ order: 15
 
 **Обсуждения и поддержка:**
 
-* Содержательные вопросы обсуждайте в чате поддержки курса в Телеграм – <https://t.me/intro_systemsthinking>;
-* Публикации и обсуждения студентов в клубе Школы -- <https://systemsworld.club/c/novaya-gramotnost/15>;
-* По техническим вопросам и проблемам обращайтесь на почту – [support@system-school.ru](mailto:support@system-school.ru);
-* Почта ШСМ для предложений и замечаний – [info@system-school.ru](mailto:info@system-school.ru).
+* Содержательные вопросы обсуждайте в чате поддержки программы «Личное развитие» в Телеграм – <https://t.me/intro_systemsthinking>;
+* Публикации и обсуждения студентов в клубе Мастерской инженеров-менеджеров -- <https://systemsworld.club/c/novaya-gramotnost/15>;
+* По техническим вопросам и проблемам обращайтесь на почту – [support@system-school.ru](mailto:support@system-school.ru);
+* Почта МИМ для предложений и замечаний – [info@system-school.ru](mailto:info@system-school.ru).
 
 **Список****использованной****литературы:**
 
@@ -41,4 +41,4 @@ order: 15
 25. Annie Duke – Quit
 26. Юджин Джендлин – «Фокусирование»
 27. Константин Харский – «Большая перемена»
-28. Ниал Фергюсон – «Восхождение денег»
+28. Ниал Фергюсон – «Восхождение денег».
