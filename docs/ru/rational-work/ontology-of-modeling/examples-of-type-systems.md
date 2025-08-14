@@ -9,7 +9,7 @@ order: 7
 
 Кратко скажем о нескольких из них.
 
-1. **Язык** **OWL (Web Ontology Language)** <https://en.wikipedia.org/wiki/Web_Ontology_Language>
+1. **Язык** **OWL (Web Ontology Language)** https://en.wikipedia.org/wiki/Web\_Ontology\_Language
 
 OWL - это язык для формального описания онтологий. OWL является частью стека технологий Semantic Web, и вместе с RDF Schema (Resource Description Framework Schema) содержит несколько фиксированных типов (классов), используемых для описания всех прочих онтологий, то есть в рамках языка задаётся определённая онтология.
 
@@ -45,7 +45,7 @@ rdfs:label - отношение “*является основным* *чело
 
 На самом верху - Thing - просто “Объект”, “Сущность”, под ней “Возможный индивид” и “Абстрактный объект”, и т.д.
 
-![](/text/ontologics-sobr/2025-06-19T2004/5400/20.png)
+![](/ru/rational-work/20.png)
 
 **3. BORO Business** **Objects****Reference****Ontology**
 
