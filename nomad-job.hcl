@@ -31,7 +31,7 @@ job "docs" {
     
     network {
       port "http" {
-        static = 8080
+        static = 9002
       }
     }
   }
