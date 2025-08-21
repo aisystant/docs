@@ -13,6 +13,11 @@ RUN npm ci
 COPY ./docs .
 RUN npm run docs:build
 
+# Compress built files in place to save space
+RUN apk add --no-cache gzip && \
+    cd /app/.vitepress/dist && \
+    find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.svg" -o -name "*.txt" \) -exec gzip -9 -v {} \;
+
 # Production stage with nginx
 FROM nginx:1.25-alpine AS production
 
@@ -23,7 +28,7 @@ RUN apk upgrade --no-cache
 RUN addgroup -g 1001 -S nginx-user && \
     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx-user -g nginx-user nginx-user
 
-# Copy built site
+# Copy built site with compressed files
 COPY --from=builder --chown=nginx-user:nginx-user /app/.vitepress/dist /usr/share/nginx/html
 
 # Copy nginx configuration
