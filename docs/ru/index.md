@@ -14,5 +14,8 @@ features:
   - title: Рабочее развитие
     details: 
     link: /ru/professional
+  - title: Исследовательское развитие
+    details: 
+    link: /ru/research
 ---
 
