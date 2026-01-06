@@ -1,7 +1,7 @@
 ---
 id: "1.1.02.03"
 type: text
-title: Интеллект-стек
+title: "2.3. Интеллект-стек"
 order: 3
 
 images:

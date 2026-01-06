@@ -1,7 +1,7 @@
 ---
 id: "1.1.05.05"
 type: text
-title: Системный подход
+title: "6.5. Системный подход"
 order: 5
 
 images:

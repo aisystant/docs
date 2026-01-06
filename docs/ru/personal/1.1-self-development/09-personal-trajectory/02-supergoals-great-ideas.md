@@ -1,7 +1,7 @@
 ---
 id: "1.1.09.02"
 type: text
-title: Сверхцели и великие идеи
+title: "9.2. Сверхцели и великие идеи"
 order: 2
 reading_time: 12
 concepts:

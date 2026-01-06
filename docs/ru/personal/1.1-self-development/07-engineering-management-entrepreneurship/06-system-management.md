@@ -1,7 +1,7 @@
 ---
 id: "1.1.07.06"
 type: text
-title: Системный менеджмент
+title: "7.6. Системный менеджмент"
 order: 6
 
 reading_time: 7

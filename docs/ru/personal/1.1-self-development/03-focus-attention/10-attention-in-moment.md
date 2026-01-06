@@ -1,7 +1,7 @@
 ---
 id: "1.1.03.10"
 type: text
-title: Внимание в моменте
+title: "3.10. Внимание в моменте"
 order: 10
 
 concepts:

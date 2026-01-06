@@ -1,7 +1,7 @@
 ---
 id: "1.1.08.11"
 type: text
-title: Саммари раздела
+title: "8.11. Саммари раздела"
 order: 11
 reading_time: 5
 concepts:
