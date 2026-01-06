@@ -1,0 +1,598 @@
+# Структура курса "Системное саморазвитие"
+# Это единый источник истины для навигации и машинной обработки
+
+id: C.Guide.SelfDevelopment
+code: "1.1"
+title: Системное саморазвитие
+program: C.Program.PersonalDevelopment
+
+meta:
+  version: "3.1.3"
+  status: active
+  created: 2020-01-01
+  modified: 2025-09-12
+  estimated_hours: 45-90
+
+authors:
+  - Церен Церенов
+  - Анна Лубенченко
+
+prerequisites: []
+unlocks:
+  - "1.2-practices"
+
+# Структура разделов курса
+sections:
+  - id: "00"
+    path: 00-intro
+    title: Введение
+    description: О руководстве и подготовительные задания
+    estimated_hours: 1
+    items:
+      - id: "01"
+        file: 01-about.md
+        type: text
+        title: О руководстве
+      - id: "02"
+        file: 02-preparation.question.yaml
+        type: question
+        title: "Задания: подготовка к обучению"
+
+  - id: "01"
+    path: 01-physical-world
+    title: Физический мир и ментальное пространство
+    description: Введение в системное мировосприятие
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-mental-space.md
+        type: text
+        title: Ментальное пространство
+      - id: "02"
+        file: 02-theory-models.md
+        type: text
+        title: Теория, модели и мышление
+      - id: "03"
+        file: 03-technoevolution.md
+        type: text
+        title: Техноэволюция
+      - id: "04"
+        file: 04-creator.md
+        type: text
+        title: Создатель
+      - id: "05"
+        file: 05-human-body-personality.md
+        type: text
+        title: Тело и личность человека
+      - id: "06"
+        file: 06-social-environment.md
+        type: text
+        title: Социальная среда
+      - id: "07"
+        file: 07-progress-pros-cons.md
+        type: text
+        title: "Прогресс: плюсы и минусы"
+      - id: "08"
+        file: 08-life-mastery.md
+        type: text
+        title: Жизненное мастерство
+      - id: "09"
+        file: 09-thinking-intellect.md
+        type: text
+        title: Мышление и интеллект
+      - id: "10"
+        file: 10-problems-tasks.md
+        type: text
+        title: Проблемы и задачи
+      - id: "11"
+        file: 11-summary.md
+        type: text
+        title: Итоги раздела
+      - id: "12"
+        file: 12-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "13"
+        file: 13-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "14"
+        file: 14-homework.question.yaml
+        type: question
+        title: Домашнее задание
+
+  - id: "02"
+    path: 02-learning-time
+    title: Обучение и время
+    description: Модели обучения, управление временем и инвестирование в развитие
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-learning.md
+        type: text
+        title: Обучение
+      - id: "02"
+        file: 02-knowledge-worldview.md
+        type: text
+        title: Знания и мировоззрение человека
+      - id: "03"
+        file: 03-intellect-stack.md
+        type: text
+        title: Интеллект-стек
+      - id: "04"
+        file: 04-culture.md
+        type: text
+        title: Культура
+      - id: "05"
+        file: 05-three-skills.md
+        type: text
+        title: Умение учиться, умение думать, умение делать
+      - id: "06"
+        file: 06-career-orientation.md
+        type: text
+        title: Профориентация
+      - id: "07"
+        file: 07-learning-models.md
+        type: text
+        title: Модели обучения
+      - id: "08"
+        file: 08-time.md
+        type: text
+        title: Время
+      - id: "09"
+        file: 09-time-investment.md
+        type: text
+        title: Инвестирование времени
+      - id: "10"
+        file: 10-leisure-organization.md
+        type: text
+        title: Осознанное времяпрепровождение и организация досуга
+      - id: "11"
+        file: 11-longevity-aesthetics.md
+        type: text
+        title: Продление жизни и эстетика человека
+      - id: "12"
+        file: 12-summary.md
+        type: text
+        title: Саммари раздела
+      - id: "13"
+        file: 13-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "14"
+        file: 14-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "15"
+        file: 15-homework.question.yaml
+        type: question
+        title: Домашнее задание
+
+  - id: "03"
+    path: 03-focus-attention
+    title: Собранность и внимание
+    description: Управление вниманием, собранность как мастерство и трансдисциплина
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-what-is-focus.md
+        type: text
+        title: Что такое собранность
+      - id: "02"
+        file: 02-attention.md
+        type: text
+        title: Внимание
+      - id: "03"
+        file: 03-important-current-urgent.md
+        type: text
+        title: Важное, текущее и срочное
+      - id: "04"
+        file: 04-rational-work.md
+        type: text
+        title: Рациональная работа
+      - id: "05"
+        file: 05-time-scales-attention.md
+        type: text
+        title: Временные масштабы внимания
+      - id: "06"
+        file: 06-attention-loss.md
+        type: text
+        title: Потеря внимания
+      - id: "07"
+        file: 07-conceptual-attention.md
+        type: text
+        title: Понятийное наведение внимания
+      - id: "08"
+        file: 08-focus-in-learning.md
+        type: text
+        title: Собранность в обучении
+      - id: "09"
+        file: 09-exocortex-for-focus.md
+        type: text
+        title: Экзокортекс для собранности
+      - id: "10"
+        file: 10-attention-in-moment.md
+        type: text
+        title: Внимание в моменте
+      - id: "11"
+        file: 11-dark-side-focus.md
+        type: text
+        title: Темная сторона собранности
+      - id: "12"
+        file: 12-cyber-personality.md
+        type: text
+        title: Киберличность
+      - id: "13"
+        file: 13-summary.md
+        type: text
+        title: Саммари раздела
+      - id: "14"
+        file: 14-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "15"
+        file: 15-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "16"
+        file: 16-homework.question.yaml
+        type: question
+        title: Домашнее задание
+
+  - id: "04"
+    path: 04-system-psychology
+    title: Системный подход в психологии личности
+    description: Системные уровни, состояния и характеристики человека
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-psychology-system-approach.md
+        type: text
+        title: Системный подход в психологии
+      - id: "02"
+        file: 02-system-levels.md
+        type: text
+        title: Системные уровни
+      - id: "03"
+        file: 03-dissatisfaction.md
+        type: text
+        title: Неудовлетворённости
+      - id: "04"
+        file: 04-human-states.md
+        type: text
+        title: Состояния человека
+      - id: "05"
+        file: 05-human-characteristics.md
+        type: text
+        title: Характеристики человека
+      - id: "06"
+        file: 06-emotions-feelings.md
+        type: text
+        title: Эмоции и чувства
+      - id: "07"
+        file: 07-emotional-stability.md
+        type: text
+        title: Эмоциональная стабильность
+      - id: "08"
+        file: 08-motivation-intentions.md
+        type: text
+        title: Мотивация и намерения
+      - id: "09"
+        file: 09-memory-recollections.md
+        type: text
+        title: Память и воспоминания
+      - id: "10"
+        file: 10-brain-computing-power.md
+        type: text
+        title: Вычислительная мощность мозга
+      - id: "11"
+        file: 11-summary.md
+        type: text
+        title: Саммари раздела
+
+  - id: "05"
+    path: 05-role-mastery
+    title: Роль, ролевое мастерство и метод
+    description: Роли, интересы, метод и этапы саморазвития
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-what-is-role.md
+        type: text
+        title: Что такое роль
+      - id: "02"
+        file: 02-role-interests.md
+        type: text
+        title: Роль и интересы
+      - id: "03"
+        file: 03-satisfaction.md
+        type: text
+        title: Удовлетворённость
+      - id: "04"
+        file: 04-method.md
+        type: text
+        title: Метод
+      - id: "05"
+        file: 05-self-development-stages.md
+        type: text
+        title: Этапы саморазвития
+      - id: "06"
+        file: 06-role-mastery-intro.md
+        type: text
+        title: Введение в ролевое мастерство
+      - id: "07"
+        file: 07-role-mastery-methods.md
+        type: text
+        title: Методы ролевого мастерства
+      - id: "08"
+        file: 08-self-control.md
+        type: text
+        title: Самоконтроль
+      - id: "09"
+        file: 09-activity-horizons.md
+        type: text
+        title: Горизонты деятельности
+      - id: "10"
+        file: 10-position-role-career.md
+        type: text
+        title: Позиция, роль и карьера
+      - id: "11"
+        file: 11-consistency-mastery.md
+        type: text
+        title: Последовательность и мастерство
+      - id: "12"
+        file: 12-summary.md
+        type: text
+        title: Саммари раздела
+      - id: "13"
+        file: 13-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "14"
+        file: 14-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "15"
+        file: 15-homework.question.yaml
+        type: question
+        title: Домашнее задание
+
+  - id: "06"
+    path: 06-systems-thinking
+    title: Что такое системное мышление
+    description: Системное мировоззрение и понятия системного мышления
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-what-is-system-thinking.md
+        type: text
+        title: Что такое системное мышление
+      - id: "02"
+        file: 02-system-worldview.md
+        type: text
+        title: Системное мировоззрение
+      - id: "03"
+        file: 03-concepts-of-system-thinking.md
+        type: text
+        title: Понятия системного мышления
+      - id: "04"
+        file: 04-concept-system.md
+        type: text
+        title: Понятие системы
+      - id: "05"
+        file: 05-system-approach.md
+        type: text
+        title: Системный подход
+      - id: "06"
+        file: 06-embodiment-description.md
+        type: text
+        title: Воплощение и описание
+      - id: "07"
+        file: 07-types-of-systems.md
+        type: text
+        title: Виды систем
+      - id: "08"
+        file: 08-system-and-project.md
+        type: text
+        title: Система и проект
+      - id: "09"
+        file: 09-human-in-system-view.md
+        type: text
+        title: Человек в системном рассмотрении
+      - id: "10"
+        file: 10-system-skills.md
+        type: text
+        title: Системные мастерства
+      - id: "11"
+        file: 11-summary.md
+        type: text
+        title: Саммари раздела
+      - id: "12"
+        file: 12-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "13"
+        file: 13-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "14"
+        file: 14-homework.question.yaml
+        type: question
+        title: Домашнее задание
+
+  - id: "07"
+    path: 07-engineering-management-entrepreneurship
+    title: Инженерия, менеджмент, предпринимательство
+    description: Инженеры, предприниматели и корпоративная культура
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-what-is-engineering.md
+        type: text
+        title: Что такое инженерия
+      - id: "02"
+        file: 02-who-are-engineers.md
+        type: text
+        title: Кто такие инженеры
+      - id: "03"
+        file: 03-engineering-management-entrepreneurship-relations.md
+        type: text
+        title: Связь инженерии, менеджмента и предпринимательства
+      - id: "04"
+        file: 04-types-of-entrepreneurs.md
+        type: text
+        title: Типы предпринимателей
+      - id: "05"
+        file: 05-entrepreneurship-technoevolution.md
+        type: text
+        title: Предпринимательство и техноэволюция
+      - id: "06"
+        file: 06-system-management.md
+        type: text
+        title: Системный менеджмент
+      - id: "07"
+        file: 07-development-director.md
+        type: text
+        title: Директор по развитию
+      - id: "08"
+        file: 08-corporate-culture.md
+        type: text
+        title: Корпоративная культура
+      - id: "09"
+        file: 09-development-trajectory.md
+        type: text
+        title: Траектория развития
+      - id: "10"
+        file: 10-summary.md
+        type: text
+        title: Саммари раздела
+      - id: "11"
+        file: 11-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "12"
+        file: 12-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "13"
+        file: 13-homework.question.yaml
+        type: question
+        title: Домашнее задание
+
+  - id: "08"
+    path: 08-personality-ai
+    title: "Личность и агент: человек и ИИ"
+    description: Агенты, искусственный интеллект, этика, сострадание и ответственность
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-agents.md
+        type: text
+        title: Агенты
+      - id: "02"
+        file: 02-surprises-optimism.md
+        type: text
+        title: Неожиданности и принцип оптимизма
+      - id: "03"
+        file: 03-anxiety-burnout.md
+        type: text
+        title: Фундаментальная причина беспокойств, депрессии и выгорания
+      - id: "04"
+        file: 04-free-will.md
+        type: text
+        title: Свобода воли
+      - id: "05"
+        file: 05-two-keys-for-action.md
+        type: text
+        title: "«Два ключа» для действия человека"
+      - id: "06"
+        file: 06-artificial-intelligence.md
+        type: text
+        title: Искусственный интеллект
+      - id: "07"
+        file: 07-ethics-morality.md
+        type: text
+        title: Этика, мораль и неудовлетворённости
+      - id: "08"
+        file: 08-ethics-systems-thinking.md
+        type: text
+        title: Этика и системное мышление
+      - id: "09"
+        file: 09-compassion-leadership.md
+        type: text
+        title: Сострадание и системное лидерство
+      - id: "10"
+        file: 10-responsibility-fatal-error.md
+        type: text
+        title: Ответственность и фатальная ошибка
+      - id: "11"
+        file: 11-summary.md
+        type: text
+        title: Саммари раздела
+      - id: "12"
+        file: 12-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "13"
+        file: 13-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "14"
+        file: 14-homework.question.yaml
+        type: question
+        title: Домашнее задание
+
+  - id: "09"
+    path: 09-personal-trajectory
+    title: Личная траектория развития
+    description: Жизнь, сверхцели, культура МИМ, элита и траектория создателя
+    estimated_hours: 5-10
+    items:
+      - id: "01"
+        file: 01-human-life.md
+        type: text
+        title: Жизнь человека
+      - id: "02"
+        file: 02-supergoals-great-ideas.md
+        type: text
+        title: Сверхцели и великие идеи
+      - id: "03"
+        file: 03-self-development-project.md
+        type: text
+        title: Проект саморазвития личности
+      - id: "04"
+        file: 04-how-to-change.md
+        type: text
+        title: Как пропитать себя на изменения
+      - id: "05"
+        file: 05-mim-culture.md
+        type: text
+        title: Культура МИМ
+      - id: "06"
+        file: 06-elite.md
+        type: text
+        title: Элита
+      - id: "07"
+        file: 07-life-trajectory.md
+        type: text
+        title: Траектория жизни
+      - id: "08"
+        file: 08-summary.md
+        type: text
+        title: Саммари раздела
+      - id: "09"
+        file: 09-concepts.table.yaml
+        type: table
+        title: "Моделирование: понятия"
+      - id: "10"
+        file: 10-review.question.yaml
+        type: question
+        title: Вопросы для повторения
+      - id: "11"
+        file: 11-homework.question.yaml
+        type: question
+        title: Домашнее задание
+      - id: "12"
+        file: 12-whats-next.md
+        type: text
+        title: Что дальше?
