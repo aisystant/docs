@@ -2,6 +2,7 @@
 id: "1.1.02.07"
 type: text
 title: Модели обучения
+order: 7
 
 images:
   - fig-05-competence-quadrant.png
@@ -23,6 +24,7 @@ concepts:
   - привычка
   - модели обучения
 ---
+
 
 # 2.7. Модели обучения
 

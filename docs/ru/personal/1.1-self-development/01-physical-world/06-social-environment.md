@@ -2,6 +2,7 @@
 id: "1.1.01.06"
 type: text
 title: Социальная среда
+order: 6
 
 images:
   - fig-11-social-influence.png
@@ -12,6 +13,7 @@ concepts:
   - социальная среда
   - внимание
 ---
+
 
 # 1.6. Социальная среда
 

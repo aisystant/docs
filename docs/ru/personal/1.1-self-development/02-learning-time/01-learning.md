@@ -2,6 +2,7 @@
 id: "1.1.02.01"
 type: text
 title: Обучение
+order: 1
 
 images:
   - fig-01-learning-process.png
@@ -25,6 +26,7 @@ concepts:
   - форма обучения
   - содержание обучения
 ---
+
 
 # 2.1. Обучение
 
