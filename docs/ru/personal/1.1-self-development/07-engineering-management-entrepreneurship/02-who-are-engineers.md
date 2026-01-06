@@ -1,7 +1,7 @@
 ---
 id: "1.1.07.02"
 type: text
-title: Кто такие инженеры?
+title: "7.2. Кто такие инженеры?"
 order: 2
 
 reading_time: 7

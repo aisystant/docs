@@ -1,7 +1,7 @@
 ---
 id: "1.1.05.08"
 type: text
-title: Система и проект
+title: "6.8. Система и проект"
 order: 8
 
 concepts:

@@ -1,7 +1,7 @@
 ---
 id: "1.1.02.06"
 type: text
-title: Профориентация
+title: "2.6. Профориентация"
 order: 6
 
 concepts:

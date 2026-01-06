@@ -1,7 +1,7 @@
 ---
 id: "1.1.07.07"
 type: text
-title: Директор по развитию
+title: "7.7. Директор по развитию"
 order: 7
 
 reading_time: 6

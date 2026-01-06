@@ -1,7 +1,7 @@
 ---
 id: "1.1.01.06"
 type: text
-title: Социальная среда
+title: "1.6. Социальная среда"
 order: 6
 
 images:
