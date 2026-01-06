@@ -2,6 +2,7 @@
 id: "1.1.01.03"
 type: text
 title: Техноэволюция
+order: 3
 
 images:
   - fig-06-exocortex.png
@@ -17,6 +18,7 @@ concepts:
   - убеждения
   - свободное время
 ---
+
 
 # 1.3. Техноэволюция
 

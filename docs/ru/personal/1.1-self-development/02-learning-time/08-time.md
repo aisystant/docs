@@ -2,6 +2,7 @@
 id: "1.1.02.08"
 type: text
 title: Время
+order: 8
 
 images:
   - fig-09-time-movie.png
@@ -20,6 +21,7 @@ concepts:
   - деньги
   - неидеальные условия
 ---
+
 
 # 2.8. Время
 

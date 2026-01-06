@@ -2,6 +2,7 @@
 id: "1.1.01.09"
 type: text
 title: Мышление и интеллект
+order: 9
 
 images:
   - fig-17-brain-thinking.jpg
@@ -15,6 +16,7 @@ concepts:
   - экзокортекс
   - экзотело
 ---
+
 
 # 1.9. Мышление и интеллект
 
