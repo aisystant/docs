@@ -2,6 +2,7 @@
 id: "1.1.02.03"
 type: text
 title: Интеллект-стек
+order: 3
 
 images:
   - fig-04-intellect-stack.png
@@ -13,6 +14,7 @@ concepts:
   - дисциплина
   - экзокортекс
 ---
+
 
 # 2.3. Интеллект-стек
 

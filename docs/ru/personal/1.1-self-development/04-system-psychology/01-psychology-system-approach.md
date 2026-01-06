@@ -2,6 +2,7 @@
 id: "1.1.04.01"
 type: text
 title: Психология и системный подход
+order: 1
 
 images:
   - fig-01-psychology-system-thinking.png
@@ -10,6 +11,7 @@ concepts:
   - системный подход
   - системное мышление
 ---
+
 
 # 4.1. Психология и системный подход
 

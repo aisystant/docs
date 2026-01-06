@@ -2,6 +2,7 @@
 id: "1.1.05.01"
 type: text
 title: Что такое роль?
+order: 1
 
 images:
   - fig-01-theater-metaphor.png
@@ -14,6 +15,7 @@ concepts:
   - метод
   - деятельность
 ---
+
 
 # 5.1. Что такое роль?
 
