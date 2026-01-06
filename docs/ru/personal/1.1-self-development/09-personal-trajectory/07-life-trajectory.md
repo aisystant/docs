@@ -1,7 +1,7 @@
 ---
 id: "1.1.09.07"
 type: text
-title: Траектория жизни
+title: "9.7. Траектория жизни"
 order: 7
 reading_time: 12
 concepts:

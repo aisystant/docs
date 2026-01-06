@@ -1,7 +1,7 @@
 ---
 id: "1.1.03.02"
 type: text
-title: Внимание
+title: "3.2. Внимание"
 order: 2
 
 concepts:

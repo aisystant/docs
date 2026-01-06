@@ -1,7 +1,7 @@
 ---
 id: "1.1.09.04"
 type: text
-title: Как пропитать себя на изменения
+title: "9.4. Как пропитать себя на изменения"
 order: 4
 reading_time: 10
 concepts:

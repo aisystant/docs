@@ -1,7 +1,7 @@
 ---
 id: "1.1.04.06"
 type: text
-title: Эмоции и чувства
+title: "4.6. Эмоции и чувства"
 order: 6
 
 concepts:

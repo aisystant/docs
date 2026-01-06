@@ -1,7 +1,7 @@
 ---
 id: "1.1.08.08"
 type: text
-title: Этика и системное мышление
+title: "8.8. Этика и системное мышление"
 order: 8
 reading_time: 8
 concepts:

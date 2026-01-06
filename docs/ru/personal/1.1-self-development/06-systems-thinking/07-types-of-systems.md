@@ -1,7 +1,7 @@
 ---
 id: "1.1.05.07"
 type: text
-title: Виды систем
+title: "6.7. Виды систем"
 order: 7
 
 concepts:

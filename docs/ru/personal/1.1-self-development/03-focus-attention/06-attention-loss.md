@@ -1,7 +1,7 @@
 ---
 id: "1.1.03.06"
 type: text
-title: Потеря внимания
+title: "3.6. Потеря внимания"
 order: 6
 
 concepts:

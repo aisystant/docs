@@ -1,7 +1,7 @@
 ---
 id: "1.1.08.04"
 type: text
-title: Свобода воли
+title: "8.4. Свобода воли"
 order: 4
 
 concepts:

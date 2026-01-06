@@ -1,7 +1,7 @@
 ---
 id: "1.1.09.06"
 type: text
-title: Элита
+title: "9.6. Элита"
 order: 6
 reading_time: 10
 concepts:
