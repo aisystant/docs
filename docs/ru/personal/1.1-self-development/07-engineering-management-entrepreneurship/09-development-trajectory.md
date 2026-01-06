@@ -1,7 +1,7 @@
 ---
 id: "1.1.07.09"
 type: text
-title: Траектория развития
+title: "7.9. Траектория развития"
 order: 9
 
 reading_time: 10

@@ -1,7 +1,7 @@
 ---
 id: "1.1.09.01"
 type: text
-title: Жизнь человека
+title: "9.1. Жизнь человека"
 order: 1
 reading_time: 15
 concepts:

@@ -1,7 +1,7 @@
 ---
 id: "1.1.02.04"
 type: text
-title: Культура
+title: "2.4. Культура"
 order: 4
 
 concepts:

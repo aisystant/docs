@@ -1,7 +1,7 @@
 ---
 id: "1.1.09.03"
 type: text
-title: Проект саморазвития личности
+title: "9.3. Проект саморазвития личности"
 order: 3
 reading_time: 10
 concepts:

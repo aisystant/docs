@@ -1,7 +1,7 @@
 ---
 id: "1.1.02.07"
 type: text
-title: Модели обучения
+title: "2.7. Модели обучения"
 order: 7
 
 images:

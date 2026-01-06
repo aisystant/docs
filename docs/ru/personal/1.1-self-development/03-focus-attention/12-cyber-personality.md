@@ -1,7 +1,7 @@
 ---
 id: "1.1.03.12"
 type: text
-title: Киберличность
+title: "3.12. Киберличность"
 order: 12
 
 concepts:

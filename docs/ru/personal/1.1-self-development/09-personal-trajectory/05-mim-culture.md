@@ -1,7 +1,7 @@
 ---
 id: "1.1.09.05"
 type: text
-title: Культура МИМ
+title: "9.5. Культура МИМ"
 order: 5
 reading_time: 8
 concepts:

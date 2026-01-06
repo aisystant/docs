@@ -1,7 +1,7 @@
 ---
 id: "1.1.02.01"
 type: text
-title: Обучение
+title: "2.1. Обучение"
 order: 1
 
 images:
