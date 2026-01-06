@@ -2,6 +2,7 @@
 id: "1.1.05.05"
 type: text
 title: Системный подход
+order: 5
 
 images:
   - fig-06-system-approach-2.png
@@ -18,6 +19,7 @@ concepts:
   - неустроенности
   - безмасштабность
 ---
+
 
 # 6.5. Системный подход
 

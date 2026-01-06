@@ -2,6 +2,7 @@
 id: "1.1.01.02"
 type: text
 title: Теория, модели и описания реальности
+order: 2
 
 images:
   - fig-02-scientific-models.png
@@ -19,6 +20,7 @@ concepts:
   - SoTA
   - культура
 ---
+
 
 # 1.2. Теория, модели и описания реальности
 

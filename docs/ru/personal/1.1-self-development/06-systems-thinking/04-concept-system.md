@@ -2,6 +2,7 @@
 id: "1.1.05.04"
 type: text
 title: Понятие «система»
+order: 4
 
 images:
   - fig-03-system-levels-auto.png
@@ -19,6 +20,7 @@ concepts:
   - 4D
   - физичность системы
 ---
+
 
 # 6.4. Понятие «система»
 
