@@ -16,7 +16,7 @@ RUN npm run docs:build
 # Compress built files in place to save space
 RUN apk add --no-cache gzip && \
     cd /app/.vitepress/dist && \
-    find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.svg" -o -name "*.txt" \) -exec gzip -9 -v {} \;
+    find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.svg" -o -name "*.txt" \) -exec gzip -9 -k {} \;
 
 # Production stage with nginx
 FROM nginx:1.25-alpine AS production
