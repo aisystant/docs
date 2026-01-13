@@ -1,5 +1,4 @@
-name: Deploy to s3 
-
+name: Deploy to VK S3
 on:
   push:
     branches: [ test-branch-for-s3 ]
@@ -12,15 +11,14 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    # Deploy to VK Cloud S3 с правильными переменными окружения
-    - name: Deploy to VK S3
+    - name: Deploy to VK Cloud S3
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.VKCS_ACCESS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.VKCS_SECRET_KEY }}
-        AWS_DEFAULT_REGION: ru-central1
-        AWS_ENDPOINT_URL: https://ru-central1.objects.vkcloud.ru
+        AWS_DEFAULT_REGION: ru-msk
       run: |
         aws s3 sync . s3://docs-systemschool-bucket/ \
+          --endpoint-url https://hb.ru-msk.vkcloud-storage.ru \
           --delete \
           --acl public-read \
           --exclude ".git/*" \
