@@ -18,7 +18,7 @@ jobs:
         aws configure set aws_access_key_id ${{ secrets.VKCS_ACCESS_KEY }}
         aws configure set aws_secret_access_key ${{ secrets.VKCS_SECRET_KEY }}
         aws configure set region ru-central1
-        aws configure set s3.endpoint_url https://ru-central1.objects.vkcloud.ru
+        aws configure set s3.endpoint_url "https://ru-central1.objects.vkcloud.ru"  # ← КАВЫЧКИ!
         
     # Deploy files to S3
     - name: Deploy to S3
@@ -30,4 +30,4 @@ jobs:
           --exclude ".github/*" 
     
     - name: Done
-      run: echo "тестово тут: https://docs-systemschool-bucket.objects.vkcloud.ru-central-1.vkcs.cloud" 
+      run: echo "тестово тут: https://docs-systemschool-bucket.objects.vkcloud.ru-central-1.vkcs.cloud"
