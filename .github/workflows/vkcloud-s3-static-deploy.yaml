@@ -29,5 +29,4 @@ jobs:
           --exclude ".git/*" \
           --exclude ".github/*" 
     
-    - name: Done
-      run: echo "тестово тут: https://docs-systemschool-bucket.objects.vkcloud.ru-central-1.vkcs.cloud"
+    
