@@ -12,21 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    # Configure AWS CLI directly for VK Cloud
-    - name: Configure VK S3 Credentials
-      run: |
-        aws configure set aws_access_key_id ${{ secrets.VKCS_ACCESS_KEY }}
-        aws configure set aws_secret_access_key ${{ secrets.VKCS_SECRET_KEY }}
-        aws configure set region ru-central1
-        aws configure set s3.endpoint_url "https://ru-central1.objects.vkcloud.ru"  # ← КАВЫЧКИ!
-        
-    # Deploy files to S3
-    - name: Deploy to S3
+    # Deploy to VK Cloud S3 с правильными переменными окружения
+    - name: Deploy to VK S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.VKCS_ACCESS_KEY }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.VKCS_SECRET_KEY }}
+        AWS_DEFAULT_REGION: ru-central1
+        AWS_ENDPOINT_URL: https://ru-central1.objects.vkcloud.ru
       run: |
         aws s3 sync . s3://docs-systemschool-bucket/ \
           --delete \
           --acl public-read \
           --exclude ".git/*" \
-          --exclude ".github/*" 
-    
-    
+          --exclude ".github/*"
