@@ -10,7 +10,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./docs  
+        working-directory: ./docs
     
     steps:
     - uses: actions/checkout@v4
@@ -20,21 +20,19 @@ jobs:
       with:
         node-version: '20'
         cache: 'npm'
-        cache-dependency-path: docs/package-lock.json  
+        cache-dependency-path: docs/package-lock.json
     
     - name: Install deps
       run: npm ci
     
-    - name: Building vp
+    - name: Build vp
       run: npm run docs:build
     
-    - name: Deploy to s3 vk
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.VKCS_ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.VKCS_SECRET_KEY }}
-        AWS_DEFAULT_REGION: ru-msk
-      run: |
-        aws s3 sync docs/.vitepress/dist/ s3://docs-systemschool-bucket/ \
-          --endpoint-url https://hb.ru-msk.vkcloud-storage.ru \
-          --delete \
-          --acl public-read
+    - name: debug hochu glyanut gde vce sobraos 1
+      run: cat package.json | grep -A 10 '"docs:build"'
+    
+    - name: debug hochu glyanut gde vce sobraos 2
+      run: find . -type d -name "*dist*" -o -name "dist*" | head -10
+    
+    - name: debug hochu glyanut gde vce sobraos 3
+      run: ls -la
