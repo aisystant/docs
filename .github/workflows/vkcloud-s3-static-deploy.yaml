@@ -3,7 +3,7 @@ on:
   push:
     branches: [ test-branch-for-s3 ]
   workflow_dispatch:
-#test
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -11,13 +11,25 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     
-    - name: Deploy to VK Cloud S3
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+    
+    - name: Install deps for npm
+      run: npm ci
+    
+    - name: Buiding vp
+      run: npm run docs:build
+    
+    - name: Deploy vk static files
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.VKCS_ACCESS_KEY }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.VKCS_SECRET_KEY }}
         AWS_DEFAULT_REGION: ru-msk
       run: |
-        aws s3 sync . s3://docs-systemschool-bucket/ \
+        aws s3 sync .vitepress/dist/ s3://docs-systemschool-bucket/ \
           --endpoint-url https://hb.ru-msk.vkcloud-storage.ru \
           --delete \
           --acl public-read \
