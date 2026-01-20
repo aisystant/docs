@@ -1,0 +1,61 @@
+name: Publish to SurrealDB
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/ru/**'
+      - 'docs/en/**'
+      - 'scripts/publish_to_surreal/**'
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Force regenerate all embeddings'
+        required: false
+        default: false
+        type: boolean
+      clear:
+        description: 'Clear existing data before publishing'
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: scripts/publish_to_surreal/requirements.txt
+
+      - name: Install dependencies
+        run: |
+          cd scripts/publish_to_surreal
+          pip install -r requirements.txt
+
+      - name: Publish to SurrealDB
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          SURREAL_URL: ${{ vars.SURREAL_URL }}
+          SURREAL_NAMESPACE: ${{ vars.SURREAL_NAMESPACE }}
+          SURREAL_DATABASE: ${{ vars.SURREAL_DATABASE }}
+          SURREAL_USER: ${{ vars.SURREAL_USER }}
+          SURREAL_PASS: ${{ secrets.SURREAL_PASS }}
+          LOG_LEVEL: INFO
+        run: |
+          cd scripts/publish_to_surreal
+          ARGS=""
+          if [ "${{ inputs.force }}" == "true" ]; then
+            ARGS="$ARGS --force"
+          fi
+          if [ "${{ inputs.clear }}" == "true" ]; then
+            ARGS="$ARGS --clear"
+          fi
+          python main.py $ARGS

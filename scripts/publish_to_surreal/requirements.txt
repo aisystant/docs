@@ -1,0 +1,11 @@
+# SurrealDB client
+surrealdb>=0.3.0
+
+# OpenAI for embeddings
+openai>=1.0.0
+
+# YAML parsing for frontmatter
+pyyaml>=6.0
+
+# Load .env files
+python-dotenv>=1.0.0
