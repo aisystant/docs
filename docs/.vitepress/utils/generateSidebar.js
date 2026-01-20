@@ -15,6 +15,9 @@ function generateSectionSidebar(dir, base = '') {
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
+      // Skip assets and other non-content directories
+      if (entry.name === 'assets' || entry.name.startsWith('.')) continue
+
       const subdir = path.join(dir, entry.name)
       const subItems = generateSectionSidebar(subdir, path.join(base, entry.name))
       let title = entry.name
@@ -122,6 +125,9 @@ export function generateCourseSidebar(courseDir, base = '') {
 
   for (const entry of entries) {
     if (entry.isDirectory()) {
+      // Skip assets and other non-content directories
+      if (entry.name === 'assets' || entry.name.startsWith('.')) continue
+
       const sectionDir = path.join(courseDir, entry.name)
       let sectionTitle = entry.name
       let order = 0
