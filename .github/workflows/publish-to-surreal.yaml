@@ -1,4 +1,4 @@
-аname: Publish to SurrealDB
+name: Publish to SurrealDB
 
 on:
   push:
