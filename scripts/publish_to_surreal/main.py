@@ -129,16 +129,19 @@ async def publish_docs(args):
         Only changed sections will be reprocessed on the next run.
 
     Incremental Update Strategy:
-        1. For each guide, fetch existing sections from DB
-        2. Compare content hashes to detect changes
-        3. Delete orphaned sections (removed from source docs)
-        4. Skip unchanged sections (no embedding cost)
-        5. Process changed sections one by one
+        1. Collect all guides from files
+        2. Compare with existing guides in DB, delete orphaned guides
+        3. For each guide, fetch existing sections from DB
+        4. Compare content hashes to detect changes
+        5. Delete orphaned sections (removed from source docs)
+        6. Skip unchanged sections (no embedding cost)
+        7. Process changed sections one by one
 
     Flow:
         1. Connect to SurrealDB
         2. Initialize schema
-        3. For each guide:
+        3. Delete orphaned guides (in DB but not in files)
+        4. For each guide:
             a. Upsert guide
             b. Delete orphaned sections (in DB but not in files)
             c. For each section from files:
@@ -146,7 +149,7 @@ async def publish_docs(args):
                 - Upsert section
                 - Delete old chunks
                 - For each chunk: generate embedding → write to DB
-        4. Print statistics
+        5. Print statistics
     """
     logger = logging.getLogger(__name__)
 
@@ -163,8 +166,10 @@ async def publish_docs(args):
 
     # Statistics
     stats = {
-        "guides": 0,
-        "sections_total": 0,
+        "guides_new": 0,
+        "guides_updated": 0,
+        "guides_deleted": 0,
+        "sections_new": 0,
         "sections_changed": 0,
         "sections_unchanged": 0,
         "sections_deleted": 0,
@@ -172,37 +177,18 @@ async def publish_docs(args):
         "embeddings_generated": 0,
     }
 
-    if args.dry_run:
-        # Dry run - just parse and count
-        for lang in LANGUAGES:
-            logger.info(f"Processing language: {lang}")
-
-            for guide, sections, chunks in parse_docs(args.docs_root, lang=lang):
-                stats["guides"] += 1
-                stats["sections_total"] += len(sections)
-                stats["chunks"] += len(chunks)
-
-                logger.info(
-                    f"  {guide.title}: {len(sections)} sections, {len(chunks)} chunks"
-                )
-
-        logger.info(f"Dry run complete. Would publish:")
-        logger.info(f"  Guides: {stats['guides']}")
-        logger.info(f"  Sections: {stats['sections_total']}")
-        logger.info(f"  Chunks: {stats['chunks']}")
-        return
-
-    # Connect to database
+    # Connect to database (needed for both dry-run and real run to compare)
     async with DocsDatabase() as db:
         # Purge all tables if requested (DANGEROUS)
-        if args.purge:
+        if args.purge and not args.dry_run:
             await db.purge_database()
 
         # Initialize schema
-        await db.init_schema()
+        if not args.dry_run:
+            await db.init_schema()
 
         # Clear data if requested
-        if args.clear:
+        if args.clear and not args.dry_run:
             for lang in LANGUAGES:
                 await db.clear_data(lang)
 
@@ -210,88 +196,137 @@ async def publish_docs(args):
         for lang in LANGUAGES:
             logger.info(f"Processing language: {lang}")
 
+            # First pass: collect all guides from files
+            parsed_guides = {}  # guide_id -> (guide, sections)
             for guide, sections, _ in parse_docs(args.docs_root, lang=lang):
-                logger.info(f"Processing: {guide.title}")
+                parsed_guides[guide.id] = (guide, sections)
 
-                # Upsert guide first
-                await db.upsert_guide(guide)
-                stats["guides"] += 1
+            logger.info(f"  Found {len(parsed_guides)} guides in files")
 
-                # Get existing sections from DB (empty if --clear)
+            # Get existing guides from DB
+            existing_guide_ids = set()
+            if not args.clear:
+                existing_guide_ids = await db.get_existing_guides(lang)
+            logger.info(f"  Found {len(existing_guide_ids)} guides in database")
+
+            # Find and delete orphaned guides (in DB but not in files)
+            orphaned_guide_ids = existing_guide_ids - set(parsed_guides.keys())
+            if orphaned_guide_ids:
+                logger.info(f"  Orphaned guides to delete: {len(orphaned_guide_ids)}")
+                for orphan_guide_id in orphaned_guide_ids:
+                    logger.info(f"    - {orphan_guide_id}")
+                    if not args.dry_run:
+                        await db.delete_guide(orphan_guide_id)
+                    stats["guides_deleted"] += 1
+
+            # Identify new guides
+            new_guide_ids = set(parsed_guides.keys()) - existing_guide_ids
+
+            # Process each guide
+            for guide_id, (guide, sections) in parsed_guides.items():
+                is_new_guide = guide_id in new_guide_ids
+
+                if is_new_guide:
+                    stats["guides_new"] += 1
+                    logger.info(f"  [NEW] {guide.title}")
+                else:
+                    stats["guides_updated"] += 1
+                    logger.info(f"  Processing: {guide.title}")
+
+                # Upsert guide
+                if not args.dry_run:
+                    await db.upsert_guide(guide)
+
+                # Get existing sections from DB (empty if --clear or new guide)
                 existing_sections = {}
-                if not args.clear:
+                if not args.clear and not is_new_guide:
                     existing_sections = await db.get_existing_sections(guide.id)
 
                 # Build set of current section IDs (from parsed files)
                 current_section_ids = {section.id for section in sections}
 
                 # Find orphaned sections (in DB but not in files) and delete them
-                orphaned_ids = set(existing_sections.keys()) - current_section_ids
-                for orphan_id in orphaned_ids:
-                    await db.delete_section(orphan_id)
-                    stats["sections_deleted"] += 1
-
-                if orphaned_ids:
-                    logger.info(f"  Deleted {len(orphaned_ids)} orphaned sections")
+                orphaned_section_ids = set(existing_sections.keys()) - current_section_ids
+                if orphaned_section_ids:
+                    logger.info(f"    Orphaned sections: {len(orphaned_section_ids)}")
+                    for orphan_id in orphaned_section_ids:
+                        if not args.dry_run:
+                            await db.delete_section(orphan_id)
+                        stats["sections_deleted"] += 1
 
                 # Process each section individually
                 total_chunks = 0
                 for section in sections:
-                    stats["sections_total"] += 1
                     old_hash = existing_sections.get(section.id, "")
+                    is_new_section = section.id not in existing_sections
 
                     # Skip unchanged sections (unless --force)
                     if not args.force and old_hash == section.content_hash:
                         stats["sections_unchanged"] += 1
                         continue
 
-                    stats["sections_changed"] += 1
+                    if is_new_section:
+                        stats["sections_new"] += 1
+                    else:
+                        stats["sections_changed"] += 1
 
-                    # 1. Upsert section
-                    await db.upsert_section(section)
+                    if args.dry_run:
+                        # In dry-run, just count chunks
+                        section_chunks = create_chunks(section)
+                        total_chunks += len(section_chunks)
+                        status = "[NEW]" if is_new_section else "[CHANGED]"
+                        logger.info(f"    {status} {section.slug}: {len(section_chunks)} chunks")
+                    else:
+                        # 1. Upsert section
+                        await db.upsert_section(section)
 
-                    # 2. Delete old chunks for this section
-                    await db.delete_section_chunks(section.id)
+                        # 2. Delete old chunks for this section
+                        await db.delete_section_chunks(section.id)
 
-                    # 3. Create and process chunks one by one
-                    section_chunks = create_chunks(section)
+                        # 3. Create and process chunks one by one
+                        section_chunks = create_chunks(section)
 
-                    for chunk in section_chunks:
-                        if not args.skip_embeddings:
-                            # Generate embedding
-                            chunk = generate_single_embedding(chunk)
-                            stats["embeddings_generated"] += 1
+                        for chunk in section_chunks:
+                            if not args.skip_embeddings:
+                                # Generate embedding
+                                chunk = generate_single_embedding(chunk)
+                                stats["embeddings_generated"] += 1
 
-                        # Write to DB immediately
-                        await db.upsert_chunk(chunk)
-                        total_chunks += 1
+                            # Write to DB immediately
+                            await db.upsert_chunk(chunk)
+                            total_chunks += 1
 
-                    logger.info(f"    {section.slug}: {len(section_chunks)} chunks")
+                        logger.info(f"    {section.slug}: {len(section_chunks)} chunks")
 
                 stats["chunks"] += total_chunks
 
-                # Summary for this guide
-                changed = stats["sections_changed"]
-                unchanged = stats["sections_unchanged"]
-                if total_chunks > 0:
-                    logger.info(f"  Done: {changed} changed, {unchanged} unchanged, {total_chunks} chunks")
-
         # Print final statistics
-        db_stats = await db.get_stats()
         logger.info("=" * 50)
-        logger.info("Publishing complete!")
-        logger.info(f"Session statistics:")
-        logger.info(f"  Guides processed: {stats['guides']}")
-        logger.info(f"  Sections total: {stats['sections_total']}")
-        logger.info(f"  Sections changed: {stats['sections_changed']}")
-        logger.info(f"  Sections unchanged: {stats['sections_unchanged']}")
-        logger.info(f"  Sections deleted: {stats['sections_deleted']}")
-        logger.info(f"  Chunks created: {stats['chunks']}")
-        logger.info(f"  Embeddings generated: {stats['embeddings_generated']}")
-        logger.info(f"Database totals:")
-        logger.info(f"  Guides: {db_stats.get('guides', 0)}")
-        logger.info(f"  Sections: {db_stats.get('sections', 0)}")
-        logger.info(f"  Chunks: {db_stats.get('chunks', 0)}")
+        if args.dry_run:
+            logger.info("DRY RUN SUMMARY (no changes made):")
+        else:
+            logger.info("Publishing complete!")
+
+        logger.info(f"Guides:")
+        logger.info(f"  New: {stats['guides_new']}")
+        logger.info(f"  Updated: {stats['guides_updated']}")
+        logger.info(f"  Deleted: {stats['guides_deleted']}")
+        logger.info(f"Sections:")
+        logger.info(f"  New: {stats['sections_new']}")
+        logger.info(f"  Changed: {stats['sections_changed']}")
+        logger.info(f"  Unchanged: {stats['sections_unchanged']}")
+        logger.info(f"  Deleted: {stats['sections_deleted']}")
+        logger.info(f"Chunks to process: {stats['chunks']}")
+        if not args.dry_run:
+            logger.info(f"Embeddings generated: {stats['embeddings_generated']}")
+
+        # Show database totals
+        if not args.dry_run:
+            db_stats = await db.get_stats()
+            logger.info(f"Database totals:")
+            logger.info(f"  Guides: {db_stats.get('guides', 0)}")
+            logger.info(f"  Sections: {db_stats.get('sections', 0)}")
+            logger.info(f"  Chunks: {db_stats.get('chunks', 0)}")
 
 
 def main():

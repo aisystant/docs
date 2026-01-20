@@ -315,6 +315,63 @@ Your .env config:
 
         return result if isinstance(result, dict) else {}
 
+    async def get_existing_guides(self, lang: str) -> set[str]:
+        """
+        Get all existing guide IDs for a language.
+
+        Used to detect orphaned guides (deleted from source).
+
+        Args:
+            lang: Language code (e.g., "ru")
+
+        Returns:
+            Set of guide IDs (e.g., {"guides:ru_course-name", ...})
+        """
+        result = await self.db.query(
+            "SELECT id FROM guides WHERE lang = $lang",
+            {"lang": lang}
+        )
+
+        if not result or not isinstance(result, list):
+            return set()
+
+        guide_ids = set()
+        for row in result:
+            raw_id = row.get("id", "")
+            row_id = self._normalize_record_id(str(raw_id))
+            if row_id:
+                guide_ids.add(row_id)
+
+        logger.debug(f"Found {len(guide_ids)} existing guides for lang={lang}")
+        return guide_ids
+
+    async def delete_guide(self, guide_id: str):
+        """
+        Delete a guide and all its sections and chunks.
+
+        Used when a guide is removed from the source documentation.
+
+        Args:
+            guide_id: Guide identifier (e.g., "guides:ru_course-name")
+        """
+        # Delete all chunks for this guide
+        await self.db.query(
+            "DELETE chunks WHERE guide_id = $guide_id",
+            {"guide_id": guide_id}
+        )
+
+        # Delete all sections for this guide
+        await self.db.query(
+            "DELETE sections WHERE guide_id = $guide_id",
+            {"guide_id": guide_id}
+        )
+
+        # Delete the guide itself
+        table, rid = guide_id.split(":", 1)
+        await self.db.delete(RecordID(table, rid))
+
+        logger.info(f"Deleted orphaned guide: {guide_id} (with all sections and chunks)")
+
     async def get_existing_sections(self, guide_id: str) -> dict[str, str]:
         """
         Get all existing sections for a guide with their content hashes.
@@ -341,7 +398,11 @@ Your .env config:
         hashes = {}
         for row in result:
             # id might be RecordID object, convert to string
-            row_id = str(row.get("id", ""))
+            raw_id = row.get("id", "")
+            row_id = str(raw_id)
+            # DEBUG: print first row to see format
+            if not hashes:
+                logger.warning(f"DEBUG: raw_id type={type(raw_id).__name__}, raw_id={repr(raw_id)}, str={repr(row_id)}")
             # Normalize ID: remove SurrealDB escaping brackets ⟨...⟩
             row_id = self._normalize_record_id(row_id)
             content_hash = row.get("content_hash", "")
