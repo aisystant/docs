@@ -35,7 +35,7 @@ enCourseNav.forEach(course => {
 export default defineConfig({
   title: "Aisystant Docs",
   description: "Documentation for Aisystant",
-  cleanUrls: false,
+  cleanUrls: true,
   markdown: {
     config: (md) => {
       md.use(footnote) // Enable footnotes support
