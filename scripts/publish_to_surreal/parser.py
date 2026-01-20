@@ -352,7 +352,7 @@ def parse_docs(
                 section_order += 1
                 logger.debug(f"  Section: {section.title} ({len(chunks)} chunks)")
 
-            # Sort sections by order
-            sections.sort(key=lambda s: s.order)
+            # Sort sections by URL path (files are named with numeric prefixes)
+            sections.sort(key=lambda s: s.url)
 
             yield guide, sections, all_chunks
