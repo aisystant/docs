@@ -350,27 +350,82 @@ Your .env config:
         Delete a guide and all its sections and chunks.
 
         Used when a guide is removed from the source documentation.
+        Deletes in batches to avoid timeouts on large datasets.
 
         Args:
             guide_id: Guide identifier (e.g., "guides:ru_course-name")
         """
-        # Delete all chunks for this guide
-        await self.db.query(
-            "DELETE chunks WHERE guide_id = $guide_id",
-            {"guide_id": guide_id}
-        )
+        import time
 
-        # Delete all sections for this guide
-        await self.db.query(
-            "DELETE sections WHERE guide_id = $guide_id",
+        # First, count how many chunks/sections we need to delete
+        count_result = await self.db.query(
+            "SELECT count() as cnt FROM chunks WHERE guide_id = $guide_id GROUP ALL",
             {"guide_id": guide_id}
         )
+        chunk_count = count_result[0].get("cnt", 0) if count_result else 0
+        logger.info(f"    Guide has {chunk_count} chunks to delete")
+
+        count_result = await self.db.query(
+            "SELECT count() as cnt FROM sections WHERE guide_id = $guide_id GROUP ALL",
+            {"guide_id": guide_id}
+        )
+        section_count = count_result[0].get("cnt", 0) if count_result else 0
+        logger.info(f"    Guide has {section_count} sections to delete")
+
+        # Delete chunks in batches
+        batch_size = 50
+        total_chunks_deleted = 0
+
+        while True:
+            t0 = time.time()
+            ids_result = await self.db.query(
+                f"SELECT id FROM chunks WHERE guide_id = $guide_id LIMIT {batch_size}",
+                {"guide_id": guide_id}
+            )
+            t1 = time.time()
+
+            if not ids_result or not isinstance(ids_result, list) or len(ids_result) == 0:
+                break
+
+            logger.info(f"    SELECT took {t1-t0:.2f}s, got {len(ids_result)} ids")
+
+            # Delete each chunk by ID
+            t2 = time.time()
+            for row in ids_result:
+                chunk_id = self._normalize_record_id(str(row.get("id", "")))
+                if chunk_id:
+                    table, rid = chunk_id.split(":", 1)
+                    await self.db.delete(RecordID(table, rid))
+                    total_chunks_deleted += 1
+            t3 = time.time()
+
+            logger.info(f"    DELETE batch took {t3-t2:.2f}s, total deleted: {total_chunks_deleted}/{chunk_count}")
+
+        # Delete sections in batches
+        total_sections_deleted = 0
+        while True:
+            ids_result = await self.db.query(
+                f"SELECT id FROM sections WHERE guide_id = $guide_id LIMIT {batch_size}",
+                {"guide_id": guide_id}
+            )
+
+            if not ids_result or not isinstance(ids_result, list) or len(ids_result) == 0:
+                break
+
+            for row in ids_result:
+                section_id = self._normalize_record_id(str(row.get("id", "")))
+                if section_id:
+                    table, rid = section_id.split(":", 1)
+                    await self.db.delete(RecordID(table, rid))
+                    total_sections_deleted += 1
+
+            logger.info(f"    Sections deleted: {total_sections_deleted}/{section_count}")
 
         # Delete the guide itself
         table, rid = guide_id.split(":", 1)
         await self.db.delete(RecordID(table, rid))
 
-        logger.info(f"Deleted orphaned guide: {guide_id} (with all sections and chunks)")
+        logger.info(f"Deleted orphaned guide: {guide_id} ({total_sections_deleted} sections, {total_chunks_deleted} chunks)")
 
     async def get_existing_sections(self, guide_id: str) -> dict[str, str]:
         """
@@ -398,11 +453,7 @@ Your .env config:
         hashes = {}
         for row in result:
             # id might be RecordID object, convert to string
-            raw_id = row.get("id", "")
-            row_id = str(raw_id)
-            # DEBUG: print first row to see format
-            if not hashes:
-                logger.warning(f"DEBUG: raw_id type={type(raw_id).__name__}, raw_id={repr(raw_id)}, str={repr(row_id)}")
+            row_id = str(row.get("id", ""))
             # Normalize ID: remove SurrealDB escaping brackets ⟨...⟩
             row_id = self._normalize_record_id(row_id)
             content_hash = row.get("content_hash", "")
