@@ -1,0 +1,36 @@
+name: Deploy to s3 
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:  # ручной запуск пока  что
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+# Настройка VK s3(creds)
+    - name: Configure VK S3
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.VKCS_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.VKCS_SECRET_KEY }}
+        aws-region: ru-central-1
+
+    # Деплой  файлов в S3
+    - name: Deploy to S3
+      run: |
+        aws configure set s3 signature_version s3v4
+        aws s3 sync . s3://docs-systemschool-bucket/ \
+          --endpoint-url https://ru-central-1.objects.vkcloud.ru \
+          --delete \
+          --acl public-read \
+          --exclude ".git/*" \
+          --exclude ".github/*" 
+    
+    - name: Done
+      run: |
+        echo "Пока что напрямую без CDN. Сайт: https://docs-systemschool-bucket.objects.vkcloud.ru-central-1.vkcs.cloud"
