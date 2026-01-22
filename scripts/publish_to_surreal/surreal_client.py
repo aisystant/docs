@@ -446,6 +446,10 @@ Your .env config:
             {"guide_id": guide_id}
         )
 
+        logger.info(f"DEBUG: get_existing_sections query result type: {type(result)}, len: {len(result) if result else 0}")
+        if result and len(result) > 0:
+            logger.info(f"DEBUG: first row: {result[0]}")
+
         if not result or not isinstance(result, list):
             return {}
 
@@ -460,7 +464,10 @@ Your .env config:
             if row_id:
                 hashes[row_id] = content_hash
 
-        logger.debug(f"Found {len(hashes)} existing sections for {guide_id}")
+        logger.info(f"DEBUG: Found {len(hashes)} existing sections for {guide_id}")
+        if hashes:
+            first_key = next(iter(hashes))
+            logger.info(f"DEBUG: first section id: {first_key}, hash: {hashes[first_key]}")
         return hashes
 
     def _normalize_record_id(self, record_id: str) -> str:
