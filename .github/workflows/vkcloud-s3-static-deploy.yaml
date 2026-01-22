@@ -1,7 +1,7 @@
 name: Deploy Local Static Files to VK VM
 on:
   push:
-    branches: [ test-branch-for-s3 ]
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
