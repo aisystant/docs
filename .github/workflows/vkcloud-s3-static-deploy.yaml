@@ -1,4 +1,4 @@
-name: Deploy Local Static Files to vk vm
+name: Deploy Local Static Files to VK VM
 on:
   push:
     branches: [ test-branch-for-s3 ]
@@ -22,42 +22,69 @@ jobs:
         cache: 'npm'
         cache-dependency-path: docs/package-lock.json
     
-    - name: Install deps
+    - name: Install dependencies
       run: npm ci
     
-    - name: Building statics
+    - name: Build static files
       run: npm run docs:build
     
-    - name: Deploy statics to vm with rsync
+    - name: Install SSH tools
+      run: |
+        sudo apt-get update -qq
+        sudo apt-get install -y sshpass rsync
+    
+    - name: Prepare VM directory permissions
       env:
         SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
       run: |
-    
-        sudo apt-get update -qq
-        sudo apt-get install -y sshpass rsync
-        
-     
         mkdir -p /tmp/ssh_deploy
-        
-        # видимо ломает echo,  пробую делать принтф
         printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
         chmod 600 /tmp/ssh_deploy/id_rsa
         
-        # Тестируем подключение
-        sshpass -p '' ssh -o StrictHostKeyChecking=no \
-          -i /tmp/ssh_deploy/id_rsa -o IdentitiesOnly=yes \
-          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} 'echo "SSH OK"'
+     
+        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
+          -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
+          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
+           sudo chmod -R 755 /aisystant/app/static/ && \
+           echo ' Directory prepared'"
+    
+    - name: Deploy with rsync
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+      run: |
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
         
-        # RSYNC
+        #  RSYNC с флагами для обхода проблем с правами
         rsync -avz \
-          --delete --checksum --progress \
+          --checksum --progress --delete \
+          --no-owner --no-group --no-perms \
+          --temp-dir=.rsync.tmp \
           -e "sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
     
-    - name: Fix permissions and reload nginx
+    - name: Fix final permissions and reload nginx
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_PRIVATE_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+      run: |
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
+        
+        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
+          -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
+          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:www-data /aisystant/app/static/ && \
+           sudo chmod -R 755 /aisystant/app/static/ && \
+           sudo chown -R :nginx /aisystant/ && \
+           sudo nginx -t && \
+           sudo nginx -s reload && \
+           echo 'Deploy complete! Nginx reloaded'"
+
+    - name: test
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
       run: |
         printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
         chmod 600 /tmp/ssh_deploy/id_rsa
@@ -65,4 +92,5 @@ jobs:
         sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
           -o StrictHostKeyChecking=no \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
-          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && sudo nginx -s reload"
+          "ls -la /aisystant/app/static/ && \
+           curl -f http://localhost/ || echo '⚠️ Local curl failed, check nginx config'"
