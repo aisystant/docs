@@ -41,31 +41,30 @@ jobs:
         printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
         chmod 600 /tmp/ssh_deploy/id_rsa
         
-     
         sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
           -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
-          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
+          "sudo mkdir -p /aisystant/app/static/ && \
+           sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
            sudo chmod -R 755 /aisystant/app/static/ && \
-           echo ' Directory prepared'"
+           echo 'Directory prepared'"
     
-    - name: Deploy with rsync
+    - name: Deploy with rsync  ИСПРАВЛЕНО
       env:
         SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
       run: |
         printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
         chmod 600 /tmp/ssh_deploy/id_rsa
         
-        #  RSYNC с флагами для обхода проблем с правами
+   
         rsync -avz \
           --checksum --progress --delete \
           --no-owner --no-group --no-perms \
-          --temp-dir=.rsync.tmp \
           -e "sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
     
-    - name: Fix final permissions and reload nginx
+    - name: Fix final permissions & reload nginx
       env:
         SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
       run: |
@@ -77,11 +76,10 @@ jobs:
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
           "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:www-data /aisystant/app/static/ && \
            sudo chmod -R 755 /aisystant/app/static/ && \
-           sudo chown -R :nginx /aisystant/ && \
            sudo nginx -t && \
            sudo nginx -s reload && \
            echo 'Deploy complete! Nginx reloaded'"
-
+    
     - name: test
       env:
         SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
@@ -92,5 +90,5 @@ jobs:
         sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
           -o StrictHostKeyChecking=no \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
-          "ls -la /aisystant/app/static/ && \
-           curl -f http://localhost/ || echo '⚠️ Local curl failed, check nginx config'"
+          "ls -la /aisystant/app/static/ | head -5 && \
+           curl -f http://localhost/ && echo ' Website OK!' || echo ' Local curl failed'"
