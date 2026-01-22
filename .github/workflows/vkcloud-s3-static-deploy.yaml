@@ -32,19 +32,22 @@ jobs:
       run: |
         mkdir -p ~/.ssh
         
-        # key to file
-        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa_rsa
+       
+        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" | \
+        tee ~/.ssh/id_rsa_rsa > /dev/null
         
-        # converting ssh
-        ssh-keygen -p -m PKCS8 -f ~/.ssh/id_rsa_rsa -N "" -q
-        
+        # забыл права дать на ключ
         chmod 600 ~/.ssh/id_rsa_rsa
         
+     
+        ssh-keygen -p -m PKCS8 -f ~/.ssh/id_rsa_rsa -N "" -q
         
+       
+        chmod 600 ~/.ssh/id_rsa_rsa
+        
+        # RSYNC
         rsync -avz \
-          --delete \
-          --checksum \
-          --progress \
+          --delete --checksum --progress \
           -e "ssh -i ~/.ssh/id_rsa_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
