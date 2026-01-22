@@ -1,36 +1,96 @@
-name: Deploy to s3 
-
+name: Deploy Local Static Files to VK VM
 on:
   push:
-    branches: [ main ]
-  workflow_dispatch:  # ручной запуск пока  что
+    branches: [ test-branch-for-s3 ]
+  workflow_dispatch:
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     
+    defaults:
+      run:
+        working-directory: ./docs
+    
     steps:
     - uses: actions/checkout@v4
     
-# Настройка VK s3(creds)
-    - name: Configure VK S3
-      uses: aws-actions/configure-aws-credentials@v4
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
       with:
-        aws-access-key-id: ${{ secrets.VKCS_ACCESS_KEY }}
-        aws-secret-access-key: ${{ secrets.VKCS_SECRET_KEY }}
-        aws-region: ru-central-1
-
-    # Деплой  файлов в S3
-    - name: Deploy to S3
-      run: |
-        aws configure set s3 signature_version s3v4
-        aws s3 sync . s3://docs-systemschool-bucket/ \
-          --endpoint-url https://ru-central-1.objects.vkcloud.ru \
-          --delete \
-          --acl public-read \
-          --exclude ".git/*" \
-          --exclude ".github/*" 
+        node-version: '20'
+        cache: 'npm'
+        cache-dependency-path: docs/package-lock.json
     
-    - name: Done
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Build static files
+      run: npm run docs:build
+    
+    - name: Install SSH tools
       run: |
-        echo "Пока что напрямую без CDN. Сайт: https://docs-systemschool-bucket.objects.vkcloud.ru-central-1.vkcs.cloud"
+        sudo apt-get update -qq
+        sudo apt-get install -y sshpass rsync
+    
+    - name: Prepare VM directory permissions
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+      run: |
+        mkdir -p /tmp/ssh_deploy
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
+        
+        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
+          -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
+          "sudo mkdir -p /aisystant/app/static/ && \
+           sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
+           sudo chmod -R 755 /aisystant/app/static/ && \
+           echo 'Directory prepared'"
+    
+    - name: Deploy with rsync  ИСПРАВЛЕНО
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+      run: |
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
+        
+   
+        rsync -avz \
+          --checksum --progress --delete \
+          --no-owner --no-group --no-perms \
+          -e "sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
+          .vitepress/dist/ \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
+    
+    - name: Fix final permissions & reload nginx
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+      run: |
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
+        
+        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
+          -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
+          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
+           sudo chmod -R 755 /aisystant/app/static/ && \
+           sudo chown -R :nginx /aisystant/app/static/ && \
+           sudo nginx -t && \
+           sudo pkill -9 nginx && \
+           sudo nginx && \
+           echo 'Deploy complete! Nginx reloaded'"
+    
+    - name: test
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+      run: |
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
+        
+        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
+          -o StrictHostKeyChecking=no \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
+          "ls -la /aisystant/app/static/ | head -5 && \
+           curl -f http://localhost/ && echo ' Website OK!' || echo ' Local curl failed'"
