@@ -74,8 +74,9 @@ jobs:
         sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
           -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
-          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:www-data /aisystant/app/static/ && \
+          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
            sudo chmod -R 755 /aisystant/app/static/ && \
+           sudo chown -R :nginx /aisystant/app/static/ && \
            sudo nginx -t && \
            sudo nginx -s reload && \
            echo 'Deploy complete! Nginx reloaded'"
