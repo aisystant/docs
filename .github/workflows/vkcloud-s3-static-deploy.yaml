@@ -30,7 +30,7 @@ jobs:
     
     - name: Deploy statics to vm with rsync
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_PRIVATE_KEY }}
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
       run: |
     
         sudo apt-get update -qq
