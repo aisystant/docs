@@ -38,3 +38,12 @@ jobs:
           --endpoint-url https://hb.ru-msk.vkcloud-storage.ru \
           --delete \
           --acl public-read
+    
+    - name: Reload nginx on VKCS VM
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: ${{ secrets.VKCS_SSH_IP_DOCS_VM }}
+        username: root
+        key: ${{ secrets.VKCS_SSH_PUB }}
+        script: |
+          sudo nginx -s reload
