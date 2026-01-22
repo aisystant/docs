@@ -1,4 +1,4 @@
-name: Deploy to VK S3
+name: Deploy Local Static Files to vk vm
 on:
   push:
     branches: [ test-branch-for-s3 ]
@@ -22,28 +22,39 @@ jobs:
         cache: 'npm'
         cache-dependency-path: docs/package-lock.json
     
-    - name: install deps
+    - name: Install deps
       run: npm ci
     
     - name: Building statics
       run: npm run docs:build
     
-    - name: Deploy vk s3 static files vp
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.VKCS_ACCESS_KEY }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.VKCS_SECRET_KEY }}
-        AWS_DEFAULT_REGION: ru-msk
+ 
+    - name: Deploy statics to vm with rsync
       run: |
-        aws s3 sync .vitepress/dist/ s3://docs-systemschool-bucket/ \
-          --endpoint-url https://hb.ru-msk.vkcloud-storage.ru \
+        
+        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ssh_key.pem
+        chmod 600 ssh_key.pem
+        
+        # sync
+        rsync -avz \
           --delete \
-          --acl public-read
+          --checksum \
+          --progress \
+          -e "ssh -i ssh_key.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+          .vitepress/dist/ \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
+        
+        # delete key
+        rm ssh_key.pem
     
-    - name: Reload nginx on VKCS VM
-      uses: appleboy/ssh-action@v1.0.3
-      with:
-        host: ${{ secrets.VKCS_SSH_IP_DOCS_VM }}
-        username: root
-        key: ${{ secrets.VKCS_SSH_PUB }}
-        script: |
-          sudo nginx -s reload
+    #  nginx reload
+    - name: Fixing permissions andd reload nginx
+      run: |
+        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ssh_key.pem
+        chmod 600 ssh_key.pem
+        
+        ssh -i ssh_key.pem -o StrictHostKeyChecking=no \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
+          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && sudo nginx -s reload"
+        
+        rm ssh_key.pem
