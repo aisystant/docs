@@ -213,6 +213,7 @@ def iter_markdown_files(guide_path: Path) -> Generator[Path, None, None]:
 def parse_section(
     file_path: Path,
     guide: Guide,
+    guide_path: Path,
     docs_root: Path,
     section_order: int
 ) -> Section:
@@ -222,6 +223,7 @@ def parse_section(
     Args:
         file_path: Path to markdown file
         guide: Parent guide
+        guide_path: Path to guide directory (for calculating relative path)
         docs_root: Root docs directory (for URL calculation)
         section_order: Order within guide
 
@@ -231,11 +233,19 @@ def parse_section(
     content = file_path.read_text(encoding="utf-8")
     frontmatter, body = parse_frontmatter(content)
 
-    # Calculate slug from filename
-    slug = file_path.stem
-    if slug == "index":
-        # Use parent directory name for index files
-        slug = file_path.parent.name
+    # Calculate slug from full relative path within guide directory
+    # This ensures unique slugs for files in any nested subdirectories
+    # e.g., "01-physical-world/11-summary.md" -> "01-physical-world_11-summary"
+    # e.g., "a/b/c/file.md" -> "a_b_c_file"
+    relative_to_guide = file_path.relative_to(guide_path)
+
+    if file_path.stem == "index":
+        # For index files, use parent directory path
+        # e.g., "01-physical-world/index.md" -> "01-physical-world"
+        slug = str(relative_to_guide.parent).replace("/", "_").replace("\\", "_")
+    else:
+        # Use full path without extension, replacing / with _
+        slug = str(relative_to_guide.with_suffix("")).replace("/", "_").replace("\\", "_")
 
     # Calculate full URL path
     relative_path = file_path.relative_to(docs_root)
@@ -343,7 +353,7 @@ def parse_docs(
             section_order = 0
 
             for md_file in iter_markdown_files(guide_dir):
-                section = parse_section(md_file, guide, docs_root, section_order)
+                section = parse_section(md_file, guide, guide_dir, docs_root, section_order)
                 sections.append(section)
 
                 chunks = create_chunks(section)

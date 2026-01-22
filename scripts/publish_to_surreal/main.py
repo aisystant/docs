@@ -245,30 +245,51 @@ async def publish_docs(args):
                 # Build set of current section IDs (from parsed files)
                 current_section_ids = {section.id for section in sections}
 
+                # DEBUG: show sample of current vs existing IDs
+                logger.info(f"    DEBUG: {len(current_section_ids)} sections in files, {len(existing_sections)} in DB")
+                if current_section_ids:
+                    sample_current = list(current_section_ids)[:3]
+                    logger.info(f"    DEBUG: sample file IDs: {sample_current}")
+                if existing_sections:
+                    sample_existing = list(existing_sections.keys())[:3]
+                    logger.info(f"    DEBUG: sample DB IDs: {sample_existing}")
+
                 # Find orphaned sections (in DB but not in files) and delete them
                 orphaned_section_ids = set(existing_sections.keys()) - current_section_ids
                 if orphaned_section_ids:
-                    logger.info(f"    Orphaned sections: {len(orphaned_section_ids)}")
+                    logger.info(f"    Orphaned sections: {len(orphaned_section_ids)} (old format IDs not matching new format)")
                     for orphan_id in orphaned_section_ids:
+                        logger.debug(f"      Deleting orphan: {orphan_id}")
                         if not args.dry_run:
                             await db.delete_section(orphan_id)
                         stats["sections_deleted"] += 1
 
                 # Process each section individually
                 total_chunks = 0
+                debug_count = 0
                 for section in sections:
                     old_hash = existing_sections.get(section.id, "")
                     is_new_section = section.id not in existing_sections
 
+                    # DEBUG: log first section only per guide
+                    if debug_count == 0:
+                        logger.info(f"DEBUG: first section.id = {section.id}")
+                        logger.info(f"DEBUG: existing_sections has {len(existing_sections)} entries")
+                        logger.info(f"DEBUG: old_hash = '{old_hash}', new_hash = '{section.content_hash}'")
+                        debug_count += 1
+
                     # Skip unchanged sections (unless --force)
                     if not args.force and old_hash == section.content_hash:
                         stats["sections_unchanged"] += 1
+                        logger.debug(f"    [SKIP] {section.slug} (hash unchanged)")
                         continue
 
                     if is_new_section:
                         stats["sections_new"] += 1
+                        logger.info(f"    [NEW] {section.slug}")
                     else:
                         stats["sections_changed"] += 1
+                        logger.info(f"    [CHANGED] {section.slug} (hash: {old_hash} -> {section.content_hash})")
 
                     if args.dry_run:
                         # In dry-run, just count chunks
