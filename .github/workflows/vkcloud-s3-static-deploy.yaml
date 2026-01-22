@@ -28,33 +28,26 @@ jobs:
     - name: Building statics
       run: npm run docs:build
     
- 
     - name: Deploy statics to vm with rsync
       run: |
+       
+        mkdir -p ~/.ssh
+        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
         
-        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ssh_key.pem
-        chmod 600 ssh_key.pem
         
-        # sync
         rsync -avz \
           --delete \
           --checksum \
           --progress \
-          -e "ssh -i ssh_key.pem -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+          -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
-        
-        # delete key
-        rm ssh_key.pem
     
-    #  nginx reload
-    - name: Fixing permissions andd reload nginx
+    - name: Fix permissions and reload nginx
       run: |
-        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ssh_key.pem
-        chmod 600 ssh_key.pem
-        
-        ssh -i ssh_key.pem -o StrictHostKeyChecking=no \
+        ssh -i ~/.ssh/id_rsa \
+          -o StrictHostKeyChecking=no \
+          -o UserKnownHostsFile=/dev/null \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
           "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && sudo nginx -s reload"
-        
-        rm ssh_key.pem
