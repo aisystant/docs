@@ -29,33 +29,40 @@ jobs:
       run: npm run docs:build
     
     - name: Deploy statics to vm with rsync
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_PRIVATE_KEY }}
       run: |
-        mkdir -p ~/.ssh
-        
-       
-        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" | \
-        tee ~/.ssh/id_rsa_rsa > /dev/null
-        
-        # забыл права дать на ключ
-        chmod 600 ~/.ssh/id_rsa_rsa
+    
+        sudo apt-get update -qq
+        sudo apt-get install -y sshpass rsync
         
      
-        ssh-keygen -p -m PKCS8 -f ~/.ssh/id_rsa_rsa -N "" -q
+        mkdir -p /tmp/ssh_deploy
         
-       
-        chmod 600 ~/.ssh/id_rsa_rsa
+        # видимо ломает echo,  пробую делать принтф
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
+        
+        # Тестируем подключение
+        sshpass -p '' ssh -o StrictHostKeyChecking=no \
+          -i /tmp/ssh_deploy/id_rsa -o IdentitiesOnly=yes \
+          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} 'echo "SSH OK"'
         
         # RSYNC
         rsync -avz \
           --delete --checksum --progress \
-          -e "ssh -i ~/.ssh/id_rsa_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes" \
+          -e "sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
     
     - name: Fix permissions and reload nginx
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_PRIVATE_KEY }}
       run: |
-        ssh -i ~/.ssh/id_rsa_rsa \
+        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
+        chmod 600 /tmp/ssh_deploy/id_rsa
+        
+        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
           -o StrictHostKeyChecking=no \
-          -o UserKnownHostsFile=/dev/null \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
           "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && sudo nginx -s reload"
