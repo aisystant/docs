@@ -30,23 +30,28 @@ jobs:
     
     - name: Deploy statics to vm with rsync
       run: |
-       
         mkdir -p ~/.ssh
-        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
-        chmod 600 ~/.ssh/id_rsa
+        
+        # key to file
+        echo "${{ secrets.VKCS_SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa_rsa
+        
+        # converting ssh
+        ssh-keygen -p -m PKCS8 -f ~/.ssh/id_rsa_rsa -N "" -q
+        
+        chmod 600 ~/.ssh/id_rsa_rsa
         
         
         rsync -avz \
           --delete \
           --checksum \
           --progress \
-          -e "ssh -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes" \
+          -e "ssh -i ~/.ssh/id_rsa_rsa -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
     
     - name: Fix permissions and reload nginx
       run: |
-        ssh -i ~/.ssh/id_rsa \
+        ssh -i ~/.ssh/id_rsa_rsa \
           -o StrictHostKeyChecking=no \
           -o UserKnownHostsFile=/dev/null \
           ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
