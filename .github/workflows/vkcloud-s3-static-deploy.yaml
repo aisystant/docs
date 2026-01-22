@@ -78,7 +78,8 @@ jobs:
            sudo chmod -R 755 /aisystant/app/static/ && \
            sudo chown -R :nginx /aisystant/app/static/ && \
            sudo nginx -t && \
-           sudo nginx -s reload && \
+           sudo pkill -9 nginx && \
+           sudo nginx && \
            echo 'Deploy complete! Nginx reloaded'"
     
     - name: test
