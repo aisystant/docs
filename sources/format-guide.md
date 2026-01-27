@@ -244,7 +244,6 @@ order: 1
 
 ```markdown
 ---
----
 id: "1.1.01.02"
 type: multiple_choice
 title: "Задачи"
