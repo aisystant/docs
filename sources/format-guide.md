@@ -248,15 +248,26 @@ id: "1.1.01.02"
 type: multiple_choice
 title: "Задачи"
 order: 2
-question: "Текст вопроса?"
-options:
-  - text: "Вариант ответа 1"
-    correct: false
-  - text: "Вариант ответа 2"
-    correct: true
-  - text: "Вариант ответа 3"
-    correct: false
-explanation: "Пояснение к правильному ответу"
+cases:
+  - question_text: "Текст вопроса?"
+    options:
+      - text: "Вариант ответа 1"
+        correct: false
+        explanation: "Пояснение к ответу"
+      - text: "Вариант ответа 2"
+        correct: true
+        explanation: "Пояснение к ответу"
+      - text: "Вариант ответа 3"
+        correct: false
+        explanation: "Пояснение к ответу"
+  - question_text: "Текст вопроса2"
+    options:
+      - text: "Вариант ответа 1"
+        correct: false
+        explanation: "Пояснение к ответу"
+      - text: "Вариант ответа 2"
+        correct: true
+        explanation: "Пояснение к ответу"
 ---
 
 Задачи: Название теста
