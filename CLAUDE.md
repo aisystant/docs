@@ -22,7 +22,7 @@ npm run docs:preview  # Preview production build
 cd scripts/import_md
 ./run.sh [course_name]  # Imports all courses from metadata repo, or specific course if provided
 
-# Translate content from Russian to English  
+# Translate content from Russian to English
 cd scripts/translate_md
 ./run.sh [force]  # Translates systems-thinking courses, 'force' to overwrite existing
 ```
