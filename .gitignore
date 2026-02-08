@@ -1,6 +1,7 @@
 _/
 course-publish-tools/
 tmp/
+.DS_Store
 docs/node_modules/
 docs/.vitepress/cache/
 docs/.vitepress/dist/
