@@ -31,19 +31,125 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
 
 
+## Словарь перевода русских слов для slug-имён файлов/папок.
+# Ключ — русское слово (нижний регистр), значение — английский перевод.
+# Используется вместо транслитерации для читаемых имён.
+SLUG_TRANSLATIONS = {
+    # Предлоги и союзы (пропускаются в slug)
+    "и": "", "в": "", "на": "", "к": "", "о": "", "для": "", "из": "",
+    "по": "", "от": "", "с": "", "об": "", "за": "", "при": "",
+    "или": "", "не": "",
+    # Существительные
+    "мир": "world", "пространство": "space", "обучение": "learning",
+    "время": "time", "собранность": "focus", "внимание": "attention",
+    "подход": "approach", "психология": "psychology", "психологии": "psychology",
+    "личность": "personality", "личности": "personality",
+    "роль": "role", "мастерство": "mastery", "метод": "method",
+    "мышление": "thinking", "инженерия": "engineering",
+    "менеджмент": "management", "предпринимательство": "entrepreneurship",
+    "агент": "agent", "агенты": "agents", "человек": "human",
+    "интеллект": "intelligence", "траектория": "trajectory",
+    "развитие": "development", "развития": "development",
+    "введение": "introduction", "предисловие": "intro",
+    "задание": "homework", "задания": "tasks",
+    "вопросы": "questions", "повторение": "review", "повторения": "review",
+    "моделирование": "modeling", "понятия": "concepts",
+    "выводы": "summary", "раздел": "section", "раздела": "section",
+    "саморазвитие": "self-development",
+    "теория": "theory", "модели": "models",
+    "описания": "descriptions", "реальность": "reality", "реальности": "reality",
+    "техноэволюция": "technoevolution", "создатель": "creator",
+    "тело": "body", "среда": "environment", "среды": "environment",
+    "прогресс": "progress", "прогресса": "progress",
+    "неожиданности": "surprises", "оптимизм": "optimism", "оптимизма": "optimism",
+    "беспокойство": "anxiety", "выгорание": "burnout", "выгорания": "burnout",
+    "свобода": "freedom", "воля": "will", "воли": "will",
+    "этика": "ethics", "мораль": "morality",
+    "сострадание": "compassion", "лидерство": "leadership",
+    "ответственность": "responsibility", "ошибка": "error", "ошибки": "errors",
+    "сверхцели": "supergoals", "идеи": "ideas",
+    "счастье": "happiness", "успех": "success",
+    "проект": "project", "культура": "culture",
+    "элита": "elite", "жизнь": "life", "жизни": "life",
+    "материалы": "materials", "подготовка": "preparation",
+    "руководство": "about", "руководстве": "about",
+    "принцип": "principle", "причина": "cause", "причины": "causes",
+    "действие": "action", "действия": "action",
+    "ключ": "key", "ключа": "key", "ключи": "keys",
+    "человека": "human", "человеку": "human",
+    "беспокойств": "anxiety", "беспокойства": "anxiety",
+    "депрессия": "depression", "депрессии": "depression",
+    "неудовлетворенности": "dissatisfactions", "кругозор": "outlook",
+    "изучение": "study", "изучения": "study",
+    "обучению": "learning", "обучения": "learning",
+    "саммари": "summary", "homework": "homework",
+    "ии": "ai", "пропитать": "motivate", "измененія": "changes",
+    "интегральный": "integral",
+    # Прилагательные
+    "физический": "physical", "ментальное": "mental", "ментальный": "mental",
+    "системный": "system", "системное": "systems", "системного": "systems",
+    "ролевое": "role", "искусственный": "artificial",
+    "личная": "personal", "личной": "personal",
+    "домашнее": "", "социальная": "social", "социальной": "social",
+    "жизненное": "life", "великие": "great",
+    "непрерывное": "continuous", "бесконечное": "infinite",
+    "дополнительные": "additional", "рациональная": "rational",
+    "рациональной": "rational", "интегральный": "integral",
+    "фатальная": "fatal", "фатальной": "fatal",
+    "фундаментальная": "fundamental", "фундаментальной": "fundamental",
+    # Глаголы и наречия
+    "что": "what", "такое": "", "как": "how", "дальше": "next",
+    "дальнейшего": "", "меняющий": "changing",
+    "лучшему": "better",
+    # Числительные
+    "два": "two", "двух": "two",
+    # Слова-маркеры (пропускаются)
+    "плюсы": "pros", "минусы": "cons",
+}
+
+
 def slugify(text):
-    """Русский текст → kebab-case slug."""
+    """Русский текст → kebab-case slug с переводом на английский."""
     # Убрать номер раздела в начале (например "1. " или "1.2. ")
     text_clean = re.sub(r"^\d+(\.\d+)*\.?\s*", "", text)
-    try:
-        latin = translit(text_clean, "ru", reversed=True)
-    except Exception:
-        latin = text_clean
+
+    # Попробовать перевести пословно
+    words = re.findall(r"[\w]+", text_clean.lower())
+    translated = []
+    has_translation = False
+    for word in words:
+        if word in SLUG_TRANSLATIONS:
+            val = SLUG_TRANSLATIONS[word]
+            if val:  # Пропускать предлоги (пустые значения)
+                translated.append(val)
+            has_translation = True
+        else:
+            # Транслитерировать незнакомое слово
+            try:
+                translated.append(translit(word, "ru", reversed=True).lower())
+            except Exception:
+                translated.append(word)
+
+    if has_translation and translated:
+        # Убрать дубликаты подряд
+        deduped = [translated[0]]
+        for w in translated[1:]:
+            if w != deduped[-1]:
+                deduped.append(w)
+        slug = "-".join(deduped)
+    else:
+        # Fallback: транслитерация всего текста
+        try:
+            latin = translit(text_clean, "ru", reversed=True)
+        except Exception:
+            latin = text_clean
+        slug = latin
+
     # Оставить только буквы, цифры, пробелы и дефисы
-    latin = re.sub(r"[^\w\s-]", "", latin)
-    latin = re.sub(r"[\s_]+", "-", latin.strip())
-    latin = re.sub(r"-+", "-", latin)
-    return latin.lower().strip("-")[:60]
+    slug = re.sub(r"[^\w\s-]", "", slug)
+    slug = re.sub(r"[\s_]+", "-", slug.strip())
+    slug = re.sub(r"-+", "-", slug)
+    return slug.lower().strip("-")[:60]
 
 
 def run_pandoc(docx_path, work_dir):
@@ -69,6 +175,45 @@ def run_pandoc(docx_path, work_dir):
 def clean_pandoc_attrs(line):
     """Убрать pandoc-атрибуты {width=... height=...} из строк."""
     return re.sub(r"\{[^}]*width[^}]*\}", "", line)
+
+
+def clean_pandoc_markup(text):
+    """
+    Убрать артефакты Pandoc из текста:
+    - [текст]{.underline} → **текст**
+    - [текст]{.mark} → **текст**
+    - [[текст]{.underline}](url) → [текст](url)
+    - --- (тройной дефис) → — (em-dash)
+    - Пустые строки между элементами списков
+    - Двойной пробел после номера в нумерованных списках
+    """
+    # Вложенные: [[текст]{.underline}](url) → [текст](url)
+    text = re.sub(r"\[(\[[^\]]*\])\{\.underline\}\](\([^)]*\))", r"\1\2", text)
+
+    # [текст]{.underline} → **текст**
+    text = re.sub(r"\[([^\]]+)\]\{\.underline\}", r"**\1**", text)
+
+    # [текст]{.mark} → текст (просто убрать обёртку, оставив содержимое)
+    text = re.sub(r"\[([^\]]+)\]\{\.mark\}", r"\1", text)
+
+    # Другие Pandoc span-атрибуты {.class}
+    text = re.sub(r"\{\.[\w-]+\}", "", text)
+
+    # --- → — (em-dash), не трогая YAML front matter и горизонтальные линии
+    text = re.sub(r" --- ", " — ", text)
+    text = re.sub(r" ---$", " —", text, flags=re.MULTILINE)
+    text = re.sub(r"(\w)---(\w)", r"\1—\2", text)
+
+    # Пустые строки между элементами маркированных списков
+    text = re.sub(r"(^- .+)\n\n(?=- )", r"\1\n", text, flags=re.MULTILINE)
+
+    # Пустые строки между элементами нумерованных списков
+    text = re.sub(r"(^\d+\.\s+.+)\n\n(?=\d+\.\s)", r"\1\n", text, flags=re.MULTILINE)
+
+    # Двойной пробел после номера: "1.  текст" → "1. текст"
+    text = re.sub(r"^(\d+\.)\s{2,}", r"\1 ", text, flags=re.MULTILINE)
+
+    return text
 
 
 def extract_footnotes(lines):
@@ -329,9 +474,6 @@ def process_subsection_content(lines, images, assets_dir, media_base, section_fi
     # Убрать остатки pandoc-атрибутов
     content = re.sub(r"\{[^}]*width[^}]*\}", "", content)
 
-    # Убрать лишние пустые строки (больше 2 подряд)
-    content = re.sub(r"\n{4,}", "\n\n\n", content)
-
     # Добавить определения сносок, на которые есть ссылки в этом подразделе
     if footnotes:
         refs = set(re.findall(r"\[\^(\d+)\](?!:)", content))
@@ -342,6 +484,12 @@ def process_subsection_content(lines, images, assets_dir, media_base, section_fi
                     fn_block.append(footnotes[ref_id])
             if fn_block:
                 content = content.rstrip() + "\n\n" + "".join(fn_block)
+
+    # Убрать Pandoc-артефакты ПОСЛЕ добавления сносок (сноски тоже содержат артефакты)
+    content = clean_pandoc_markup(content)
+
+    # Убрать лишние пустые строки (больше 2 подряд)
+    content = re.sub(r"\n{4,}", "\n\n\n", content)
 
     return content, fig_counter
 
