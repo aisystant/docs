@@ -6,10 +6,10 @@ Word→Markdown конвертер.
 по правилам format-guide.md.
 
 Использование:
-    python3 convert.py <input.docx> <output_dir> [--course-slug NAME]
+    python3 convert.py <input.docx> <output_dir> --aisystant-code "КОД" [--course-title "Название"]
 
 Пример:
-    python3 convert.py sources/word-files/file.docx sources/converted/systems-thinking-introduction
+    python3 convert.py sources/word-files/file.docx sources/my-course --aisystant-code "SM2024-01"
 """
 
 import argparse
@@ -275,7 +275,7 @@ def copy_image(src_path, dest_dir, fig_number, media_base):
     return dest_name
 
 
-def write_md_file(filepath, title, content, order, doc_type="text"):
+def write_md_file(filepath, title, content, order, doc_type="text", aisystant_code=None):
     """Записать .md файл с YAML front matter."""
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, "w", encoding="utf-8") as f:
@@ -284,15 +284,17 @@ def write_md_file(filepath, title, content, order, doc_type="text"):
         f.write(f"order: {order}\n")
         if doc_type != "index":
             f.write(f"type: {doc_type}\n")
+        if aisystant_code:
+            f.write(f'aisystant_code: "{aisystant_code}"\n')
         f.write("---\n\n\n")
         f.write(f"# {title}\n\n")
         if content:
             f.write(content)
 
 
-def write_index_file(filepath, title, order):
+def write_index_file(filepath, title, order, aisystant_code=None):
     """Записать index.md для секции."""
-    write_md_file(filepath, title, "", order, doc_type="index")
+    write_md_file(filepath, title, "", order, doc_type="index", aisystant_code=aisystant_code)
 
 
 def process_subsection_content(lines, images, assets_dir, media_base, section_fig_counter, footnotes=None):
@@ -344,13 +346,13 @@ def process_subsection_content(lines, images, assets_dir, media_base, section_fi
     return content, fig_counter
 
 
-def build_output(sections, output_dir, media_base, course_title=None, footnotes=None):
+def build_output(sections, output_dir, media_base, course_title=None, footnotes=None, aisystant_code=None):
     """Создать структуру папок и файлов из разобранных секций."""
     os.makedirs(output_dir, exist_ok=True)
 
     # Course-level index.md
     title = course_title or (sections[0]["title"] if sections else "Курс")
-    write_index_file(os.path.join(output_dir, "index.md"), title, 0)
+    write_index_file(os.path.join(output_dir, "index.md"), title, 0, aisystant_code=aisystant_code)
 
     section_order = 0
     for section in sections:
@@ -394,6 +396,8 @@ def main():
     parser.add_argument("input", help="Путь к .docx файлу")
     parser.add_argument("output", help="Выходная директория (например sources/converted/course-name)")
     parser.add_argument("--course-title", help="Название курса (по умолчанию берётся из документа)")
+    parser.add_argument("--aisystant-code", required=True,
+                        help="Код интеграции с Aisystant (обязательный, запросите у автора курса)")
     args = parser.parse_args()
 
     if not os.path.exists(args.input):
@@ -426,7 +430,7 @@ def main():
             shutil.rmtree(output_dir)
 
         log.info("Создание структуры в %s ...", output_dir)
-        build_output(sections, output_dir, work_dir, args.course_title, footnotes)
+        build_output(sections, output_dir, work_dir, args.course_title, footnotes, args.aisystant_code)
 
     log.info("Конвертация завершена: %s", args.output)
 

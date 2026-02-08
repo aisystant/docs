@@ -3,11 +3,11 @@
 # Word→Markdown конвертер
 #
 # Использование:
-#   ./run.sh <input.docx> <output_dir> [--course-title "Название"]
+#   ./run.sh <input.docx> <output_dir> --aisystant-code "КОД" [--course-title "Название"]
 #
 # Примеры:
-#   ./run.sh sources/word-files/file.docx sources/converted/systems-thinking-introduction
-#   ./run.sh sources/word-files/file.docx sources/converted/my-course --course-title "Мой курс"
+#   ./run.sh sources/word-files/file.docx sources/my-course --aisystant-code "SM2024-01"
+#   ./run.sh sources/word-files/file.docx sources/my-course --aisystant-code "SM2024-01" --course-title "Мой курс"
 #
 # Зависимости:
 #   - pandoc (brew install pandoc)
@@ -20,17 +20,39 @@ REPO_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 
 # Проверка аргументов
 if [ $# -lt 2 ]; then
-    echo "Использование: $0 <input.docx> <output_dir> [--course-title \"Название\"]"
+    echo "Использование: $0 <input.docx> <output_dir> --aisystant-code \"КОД\" [--course-title \"Название\"]"
+    echo ""
+    echo "  --aisystant-code  Код интеграции с Aisystant (ОБЯЗАТЕЛЬНЫЙ, запросите у автора курса)"
+    echo "  --course-title    Название курса (опционально)"
     echo ""
     echo "Примеры:"
-    echo "  $0 sources/word-files/file.docx sources/converted/course-name"
-    echo "  $0 sources/word-files/file.docx sources/converted/course-name --course-title \"Мой курс\""
+    echo "  $0 sources/word-files/file.docx sources/my-course --aisystant-code \"SM2024-01\""
+    echo "  $0 sources/word-files/file.docx sources/my-course --aisystant-code \"SM2024-01\" --course-title \"Мой курс\""
     exit 1
 fi
 
 INPUT="$1"
 OUTPUT="$2"
 shift 2
+
+# Проверка наличия --aisystant-code в оставшихся аргументах
+HAS_CODE=false
+for arg in "$@"; do
+    if [ "$arg" = "--aisystant-code" ]; then
+        HAS_CODE=true
+        break
+    fi
+done
+
+if [ "$HAS_CODE" = false ]; then
+    echo "ОШИБКА: Не указан --aisystant-code"
+    echo ""
+    echo "Код интеграции с Aisystant обязателен для конвертации."
+    echo "Запросите код у автора курса и укажите:"
+    echo ""
+    echo "  $0 $INPUT $OUTPUT --aisystant-code \"ВАШ_КОД\""
+    exit 1
+fi
 
 # Проверка pandoc
 if ! command -v pandoc &> /dev/null; then
