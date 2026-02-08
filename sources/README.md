@@ -7,12 +7,14 @@
 ```
 sources/
 ├── word-files/                          ← сюда кладём .docx файлы
-├── 1-3-systems-thinking-introduction/   ← пример результата конвертации
-├── format-guide.md                      ← правила форматирования (справочник)
-└── README.md                            ← эта инструкция
+├── 1-1-self-development/               ← сконвертированный курс
+├── 1-2-self-development-methods/       ← сконвертированный курс
+├── 1-3-systems-thinking-introduction/  ← сконвертированный курс
+├── format-guide.md                     ← правила форматирования (справочник)
+└── README.md                           ← эта инструкция
 ```
 
-Каждый сконвертированный курс хранится в отдельной папке внутри `sources/` с именем курса (например, `1-3-systems-thinking-introduction`).
+Каждый сконвертированный курс хранится в отдельной папке внутри `sources/` с именем курса в kebab-case (например, `1-3-systems-thinking-introduction`).
 
 ## Предварительные условия
 
@@ -86,10 +88,13 @@ pip3 install -r scripts/convert_word/requirements.txt
 Скрипт автоматически:
 1. Конвертирует .docx → Markdown через pandoc
 2. Разобьёт на разделы и подразделы по заголовкам (H1 → папки, H2 → файлы)
-3. Извлечёт и переименует изображения (формат `fig-01`, `fig-02`...)
-4. Распределит сноски — каждый файл получит только те определения `[^N]:`, на которые есть ссылки в его тексте
-5. Сгенерирует YAML front matter для каждого файла
-6. Запустит валидацию по правилам format-guide.md
+3. Переведёт русские заголовки на английский (Google Translate) для имён папок и файлов
+4. Извлечёт и переименует изображения (формат `fig-01`, `fig-02`...)
+5. Распределит сноски — каждый файл получит только те определения `[^N]:`, на которые есть ссылки в его тексте
+6. Уберёт Pandoc-артефакты (тире `---`/`--` → `—`, span-атрибуты `{.underline}`, двойные пробелы и т.д.)
+7. Определит тип подраздела по заголовку (text, table, checklist, multiple_choice)
+8. Сгенерирует YAML front matter для каждого файла
+9. Запустит валидацию по правилам format-guide.md
 
 ### Шаг 5. Проверить результат
 
@@ -97,15 +102,15 @@ pip3 install -r scripts/convert_word/requirements.txt
 
 ```
 sources/имя-курса/
-├── index.md                    ← главная страница курса
+├── index.md                              ← главная страница курса
 ├── 00-intro/
 │   ├── index.md
-│   ├── 01-predislovie.md
-│   └── 02-zadanie.md
-├── 01-название-раздела/
+│   ├── 01-about-the-guide.md             ← имена на английском (Google Translate)
+│   └── 02-tasks-preparation-for-training.md
+├── 01-physical-world-and-mental-space/   ← папки тоже на английском
 │   ├── index.md
-│   ├── 01-подраздел.md
-│   ├── 02-подраздел.md
+│   ├── 01-what-is-mental-space.md
+│   ├── 02-theory-models-and-descriptions-of-reality.md
 │   └── assets/
 │       ├── fig-01.png
 │       └── fig-02.png
@@ -151,8 +156,17 @@ mv sources/имя-курса docs/ru/professional/имя-курса
 Pipeline из 3 этапов:
 
 1. **pandoc** — конвертирует .docx в один большой .md файл + извлекает все изображения
-2. **Python (convert.py)** — разбивает по заголовкам, создаёт структуру папок, распределяет сноски и изображения, генерирует front matter
+2. **Python (convert.py)** — разбивает по заголовкам, создаёт структуру папок, переводит имена на английский (Google Translate), распределяет сноски и изображения, убирает Pandoc-артефакты, определяет типы подразделов, генерирует front matter
 3. **Python (validate.py)** — проверяет результат по правилам format-guide.md
+
+### Очистка Pandoc-артефактов
+
+При конвертации из Word pandoc оставляет артефакты, которые скрипт автоматически убирает:
+- `[текст]{.underline}` → `**текст**`
+- `[текст]{.mark}` → `текст`
+- ` --- ` и ` -- ` → ` — ` (em-dash) — в заголовках и в тексте
+- Двойные пробелы после номеров списков (`1.  текст` → `1. текст`)
+- Атрибуты ширины изображений `{width=...}`
 
 ### Обработка сносок
 
@@ -167,4 +181,4 @@ Word-документы часто содержат сноски. Pandoc при 
 - **format-guide.md** — все правила форматирования (заголовки, изображения, сноски, front matter, типы подразделов)
 - **scripts/convert_word/convert.py** — скрипт конвертации
 - **scripts/convert_word/validate.py** — валидатор
-- **scripts/convert_word/requirements.txt** — Python-зависимости (transliterate)
+- **scripts/convert_word/requirements.txt** — Python-зависимости (transliterate, deep-translator)

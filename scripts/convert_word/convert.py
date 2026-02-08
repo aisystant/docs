@@ -311,10 +311,13 @@ def parse_sections(raw_md_path):
 
 
 def clean_title(title):
-    """Убрать markdown-артефакты из заголовка (**, *, {.underline} и т.д.)."""
+    """Убрать markdown-артефакты из заголовка (**, *, {.underline}, тире и т.д.)."""
     title = re.sub(r"\*\*([^*]+)\*\*", r"\1", title)  # **жирный** → жирный
     title = re.sub(r"\*([^*]+)\*", r"\1", title)  # *курсив* → курсив
     title = re.sub(r"\[([^\]]+)\]\{[^}]+\}", r"\1", title)  # [текст]{.class} → текст
+    # Pandoc-тире: --- → —, -- → — (порядок важен: сначала ---, потом --)
+    title = title.replace(" --- ", " — ")
+    title = title.replace(" -- ", " — ")
     return title.strip()
 
 
