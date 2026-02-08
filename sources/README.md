@@ -6,11 +6,13 @@
 
 ```
 sources/
-├── word-files/          ← сюда кладём .docx файлы
-├── converted/           ← сюда скрипт сохраняет результат
-├── format-guide.md      ← правила форматирования (справочник)
-└── README.md            ← эта инструкция
+├── word-files/                          ← сюда кладём .docx файлы
+├── 1-3-systems-thinking-introduction/   ← пример результата конвертации
+├── format-guide.md                      ← правила форматирования (справочник)
+└── README.md                            ← эта инструкция
 ```
+
+Каждый сконвертированный курс хранится в отдельной папке внутри `sources/` с именем курса (например, `1-3-systems-thinking-introduction`).
 
 ## Пошаговая инструкция
 
@@ -43,15 +45,15 @@ pip3 install -r scripts/convert_word/requirements.txt
 Из корня репозитория `docs/`:
 
 ```bash
-./scripts/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/converted/имя-курса
+./scripts/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/имя-курса
 ```
 
-Где `имя-курса` — slug курса в kebab-case (например, `systems-thinking-introduction`).
+Где `имя-курса` — slug курса в kebab-case (например, `1-3-systems-thinking-introduction`).
 
 Можно указать название курса:
 
 ```bash
-./scripts/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/converted/имя-курса \
+./scripts/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/1-3-systems-thinking-introduction \
   --course-title "Введение в системное мышление"
 ```
 
@@ -64,10 +66,10 @@ pip3 install -r scripts/convert_word/requirements.txt
 
 ### Шаг 4. Проверить результат
 
-Результат конвертации появится в `sources/converted/имя-курса/`:
+Результат конвертации появится в `sources/имя-курса/`:
 
 ```
-sources/converted/имя-курса/
+sources/имя-курса/
 ├── index.md                    ← главная страница курса
 ├── 00-intro/
 │   ├── index.md
@@ -91,7 +93,7 @@ sources/converted/имя-курса/
 Можно запустить валидацию отдельно:
 
 ```bash
-python3 scripts/convert_word/validate.py sources/converted/имя-курса/
+python3 scripts/convert_word/validate.py sources/имя-курса/
 ```
 
 ### Шаг 5. Перенести в docs/ru/
@@ -100,21 +102,19 @@ python3 scripts/convert_word/validate.py sources/converted/имя-курса/
 
 ```bash
 # Для курсов категории "personal"
-mv sources/converted/имя-курса docs/ru/personal/имя-курса
+mv sources/имя-курса docs/ru/personal/имя-курса
 
 # Для курсов категории "professional"
-mv sources/converted/имя-курса docs/ru/professional/имя-курса
+mv sources/имя-курса docs/ru/professional/имя-курса
 ```
-
-После переноса удалите папку из `sources/converted/` (она уже не нужна).
 
 ## Повторная конвертация
 
 Если нужно переконвертировать файл (например, обновлённая версия курса):
 
 ```bash
-# Скрипт автоматически удалит старый результат в converted/
-./scripts/convert_word/run.sh "sources/word-files/новая-версия.docx" sources/converted/имя-курса
+# Скрипт автоматически удалит старый результат и создаст заново
+./scripts/convert_word/run.sh "sources/word-files/новая-версия.docx" sources/имя-курса
 ```
 
 ## Справочные файлы
