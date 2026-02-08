@@ -1,1 +1,2 @@
 transliterate>=1.10
+deep-translator>=1.11

@@ -27,129 +27,70 @@ except ImportError:
     print("Установите зависимости: pip3 install -r requirements.txt")
     sys.exit(1)
 
+# Google Translate для перевода заголовков → английские slug-имена
+try:
+    from deep_translator import GoogleTranslator
+    _translator = GoogleTranslator(source="ru", target="en")
+    _has_translator = True
+except ImportError:
+    _has_translator = False
+
 logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 log = logging.getLogger(__name__)
 
+if not _has_translator:
+    log.warning("deep-translator не установлен — slug-имена будут транслитерацией. "
+                "Для перевода: pip3 install deep-translator")
 
-## Словарь перевода русских слов для slug-имён файлов/папок.
-# Ключ — русское слово (нижний регистр), значение — английский перевод.
-# Используется вместо транслитерации для читаемых имён.
-SLUG_TRANSLATIONS = {
-    # Предлоги и союзы (пропускаются в slug)
-    "и": "", "в": "", "на": "", "к": "", "о": "", "для": "", "из": "",
-    "по": "", "от": "", "с": "", "об": "", "за": "", "при": "",
-    "или": "", "не": "",
-    # Существительные
-    "мир": "world", "пространство": "space", "обучение": "learning",
-    "время": "time", "собранность": "focus", "внимание": "attention",
-    "подход": "approach", "психология": "psychology", "психологии": "psychology",
-    "личность": "personality", "личности": "personality",
-    "роль": "role", "мастерство": "mastery", "метод": "method",
-    "мышление": "thinking", "инженерия": "engineering",
-    "менеджмент": "management", "предпринимательство": "entrepreneurship",
-    "агент": "agent", "агенты": "agents", "человек": "human",
-    "интеллект": "intelligence", "траектория": "trajectory",
-    "развитие": "development", "развития": "development",
-    "введение": "introduction", "предисловие": "intro",
-    "задание": "homework", "задания": "tasks",
-    "вопросы": "questions", "повторение": "review", "повторения": "review",
-    "моделирование": "modeling", "понятия": "concepts",
-    "выводы": "summary", "раздел": "section", "раздела": "section",
-    "саморазвитие": "self-development",
-    "теория": "theory", "модели": "models",
-    "описания": "descriptions", "реальность": "reality", "реальности": "reality",
-    "техноэволюция": "technoevolution", "создатель": "creator",
-    "тело": "body", "среда": "environment", "среды": "environment",
-    "прогресс": "progress", "прогресса": "progress",
-    "неожиданности": "surprises", "оптимизм": "optimism", "оптимизма": "optimism",
-    "беспокойство": "anxiety", "выгорание": "burnout", "выгорания": "burnout",
-    "свобода": "freedom", "воля": "will", "воли": "will",
-    "этика": "ethics", "мораль": "morality",
-    "сострадание": "compassion", "лидерство": "leadership",
-    "ответственность": "responsibility", "ошибка": "error", "ошибки": "errors",
-    "сверхцели": "supergoals", "идеи": "ideas",
-    "счастье": "happiness", "успех": "success",
-    "проект": "project", "культура": "culture",
-    "элита": "elite", "жизнь": "life", "жизни": "life",
-    "материалы": "materials", "подготовка": "preparation",
-    "руководство": "about", "руководстве": "about",
-    "принцип": "principle", "причина": "cause", "причины": "causes",
-    "действие": "action", "действия": "action",
-    "ключ": "key", "ключа": "key", "ключи": "keys",
-    "человека": "human", "человеку": "human",
-    "беспокойств": "anxiety", "беспокойства": "anxiety",
-    "депрессия": "depression", "депрессии": "depression",
-    "неудовлетворенности": "dissatisfactions", "кругозор": "outlook",
-    "изучение": "study", "изучения": "study",
-    "обучению": "learning", "обучения": "learning",
-    "саммари": "summary", "homework": "homework",
-    "ии": "ai", "пропитать": "motivate", "измененія": "changes",
-    "интегральный": "integral",
-    # Прилагательные
-    "физический": "physical", "ментальное": "mental", "ментальный": "mental",
-    "системный": "system", "системное": "systems", "системного": "systems",
-    "ролевое": "role", "искусственный": "artificial",
-    "личная": "personal", "личной": "personal",
-    "домашнее": "", "социальная": "social", "социальной": "social",
-    "жизненное": "life", "великие": "great",
-    "непрерывное": "continuous", "бесконечное": "infinite",
-    "дополнительные": "additional", "рациональная": "rational",
-    "рациональной": "rational", "интегральный": "integral",
-    "фатальная": "fatal", "фатальной": "fatal",
-    "фундаментальная": "fundamental", "фундаментальной": "fundamental",
-    # Глаголы и наречия
-    "что": "what", "такое": "", "как": "how", "дальше": "next",
-    "дальнейшего": "", "меняющий": "changing",
-    "лучшему": "better",
-    # Числительные
-    "два": "two", "двух": "two",
-    # Слова-маркеры (пропускаются)
-    "плюсы": "pros", "минусы": "cons",
-}
+# Кэш переводов в рамках одного запуска
+_translation_cache = {}
+
+
+def _translate_to_english(text):
+    """Перевести русский текст на английский через Google Translate."""
+    if not _has_translator:
+        return None
+    if text in _translation_cache:
+        return _translation_cache[text]
+    try:
+        result = _translator.translate(text)
+        _translation_cache[text] = result
+        return result
+    except Exception as e:
+        log.warning("Перевод не удался: '%s' → %s", text[:50], e)
+        return None
+
+
+def _has_cyrillic(text):
+    """Проверить, содержит ли текст кириллицу."""
+    return bool(re.search(r"[а-яА-ЯёЁ]", text))
 
 
 def slugify(text):
-    """Русский текст → kebab-case slug с переводом на английский."""
+    """Текст заголовка → kebab-case slug (перевод через Google Translate)."""
     # Убрать номер раздела в начале (например "1. " или "1.2. ")
-    text_clean = re.sub(r"^\d+(\.\d+)*\.?\s*", "", text)
+    text_clean = re.sub(r"^\d+(\.\d+)*\.?\s*", "", text).strip()
+    if not text_clean:
+        return "untitled"
 
-    # Попробовать перевести пословно
-    words = re.findall(r"[\w]+", text_clean.lower())
-    translated = []
-    has_translation = False
-    for word in words:
-        if word in SLUG_TRANSLATIONS:
-            val = SLUG_TRANSLATIONS[word]
-            if val:  # Пропускать предлоги (пустые значения)
-                translated.append(val)
-            has_translation = True
+    # Если текст содержит кириллицу — перевести на английский
+    if _has_cyrillic(text_clean):
+        english = _translate_to_english(text_clean)
+        if english:
+            text_clean = english
         else:
-            # Транслитерировать незнакомое слово
+            # Fallback: транслитерация
             try:
-                translated.append(translit(word, "ru", reversed=True).lower())
+                text_clean = translit(text_clean, "ru", reversed=True)
             except Exception:
-                translated.append(word)
+                pass
 
-    if has_translation and translated:
-        # Убрать дубликаты подряд
-        deduped = [translated[0]]
-        for w in translated[1:]:
-            if w != deduped[-1]:
-                deduped.append(w)
-        slug = "-".join(deduped)
-    else:
-        # Fallback: транслитерация всего текста
-        try:
-            latin = translit(text_clean, "ru", reversed=True)
-        except Exception:
-            latin = text_clean
-        slug = latin
-
-    # Оставить только буквы, цифры, пробелы и дефисы
+    # Slugify
+    slug = text_clean.lower()
     slug = re.sub(r"[^\w\s-]", "", slug)
     slug = re.sub(r"[\s_]+", "-", slug.strip())
     slug = re.sub(r"-+", "-", slug)
-    return slug.lower().strip("-")[:60]
+    return slug.strip("-")[:80]
 
 
 def run_pandoc(docx_path, work_dir):
@@ -203,6 +144,11 @@ def clean_pandoc_markup(text):
     text = re.sub(r" --- ", " — ", text)
     text = re.sub(r" ---$", " —", text, flags=re.MULTILINE)
     text = re.sub(r"(\w)---(\w)", r"\1—\2", text)
+
+    # -- → — (en-dash в Pandoc, но в русском контексте это em-dash)
+    text = re.sub(r" -- ", " — ", text)
+    text = re.sub(r" --$", " —", text, flags=re.MULTILINE)
+    text = re.sub(r"(\w)--(\w)", r"\1—\2", text)
 
     # Пустые строки между элементами маркированных списков
     text = re.sub(r"(^- .+)\n\n(?=- )", r"\1\n", text, flags=re.MULTILINE)
@@ -287,7 +233,7 @@ def parse_sections(raw_md_path):
             if current_section:
                 sections.append(current_section)
 
-            title = h1_match.group(1).strip()
+            title = clean_title(h1_match.group(1).strip())
             current_section = {
                 "title": title,
                 "level": "section",
@@ -311,7 +257,7 @@ def parse_sections(raw_md_path):
                         })
                     sections[0]["subsections"].append(current_subsection)
 
-            title = h2_match.group(1).strip()
+            title = clean_title(h2_match.group(1).strip())
             current_subsection = {
                 "title": title,
                 "lines": [],
@@ -364,6 +310,14 @@ def parse_sections(raw_md_path):
     return sections, footnotes
 
 
+def clean_title(title):
+    """Убрать markdown-артефакты из заголовка (**, *, {.underline} и т.д.)."""
+    title = re.sub(r"\*\*([^*]+)\*\*", r"\1", title)  # **жирный** → жирный
+    title = re.sub(r"\*([^*]+)\*", r"\1", title)  # *курсив* → курсив
+    title = re.sub(r"\[([^\]]+)\]\{[^}]+\}", r"\1", title)  # [текст]{.class} → текст
+    return title.strip()
+
+
 def determine_subsection_type(title):
     """Определить тип подраздела по заголовку."""
     title_lower = title.lower()
@@ -375,9 +329,12 @@ def determine_subsection_type(title):
         return "checklist", "review"
     if "домашнее задание" in title_lower:
         return "checklist", "homework"
-    if "задач" in title_lower:
+    if title_lower.startswith("задания"):
+        return "checklist", "tasks"
+    # "задач" только в начале: "Задачи:", "Задачи по теме" — НЕ "Мир задач"
+    if re.match(r"задач[иа][\s:]", title_lower):
         return "multiple_choice", "problems"
-    if "выводы раздела" in title_lower:
+    if "выводы раздела" in title_lower or "саммари раздела" in title_lower:
         return "text", "summary"
     return "text", None
 
