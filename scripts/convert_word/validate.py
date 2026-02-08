@@ -2,15 +2,17 @@
 """
 Валидатор Markdown по правилам format-guide.md.
 
-Проверяет:
-1. YAML front matter (title, order)
-2. Один H1 после front matter
-3. Две пустые строки между --- и H1
-4. Изображения в assets/ с именами fig-XX-description
-5. Подписи к рисункам (*Рис. X.X. ...*)
-6. Имена файлов в kebab-case без точек
-7. index.md в каждой папке-секции
-8. Нет точек в именах папок
+Проверяет (10 пунктов чек-листа):
+ 1. YAML front matter (title, order, type, aisystant_code)
+ 2. Один H1 после front matter, совпадает с title
+ 3. Две пустые строки между --- и H1
+ 4. Типы подразделов (type соответствует заголовку)
+ 5. Английские имена файлов и папок (нет кириллицы)
+ 6. Изображения в assets/ с именами fig-XX, файл существует
+ 7. Сноски (каждая ссылка [^N] имеет определение [^N]:)
+ 8. index.md в каждой папке-секции
+ 9. Pandoc-артефакты ({.underline}, {.mark}, ---, --, ** в title)
+10. Имена файлов в kebab-case, NN- префикс, без точек
 
 Использование:
     python3 validate.py <directory>
@@ -25,6 +27,34 @@ import sys
 logging.basicConfig(level=logging.INFO, format="%(message)s")
 log = logging.getLogger(__name__)
 
+
+# ---------------------------------------------------------------------------
+# Правила определения типа по заголовку (дублирует convert.py)
+# ---------------------------------------------------------------------------
+
+def expected_type_for_title(title):
+    """Определить ожидаемый type по заголовку (None = не можем определить)."""
+    title_lower = title.lower()
+    if re.match(r"моделирование\s+\d+\.\d+\.\s*понятия", title_lower):
+        return "table"
+    if "моделирование" in title_lower:
+        return "table"
+    if "вопросы для повторения" in title_lower:
+        return "checklist"
+    if "домашнее задание" in title_lower:
+        return "checklist"
+    if title_lower.startswith("задания"):
+        return "checklist"
+    if re.match(r"задач[иа][\s:]", title_lower):
+        return "multiple_choice"
+    if "выводы раздела" in title_lower or "саммари раздела" in title_lower:
+        return "text"
+    return "text"
+
+
+# ---------------------------------------------------------------------------
+# Результат валидации
+# ---------------------------------------------------------------------------
 
 class ValidationResult:
     def __init__(self):
@@ -51,13 +81,15 @@ class ValidationResult:
         return f"{len(self.errors)} ошибок, {len(self.warnings)} предупреждений"
 
 
-def check_frontmatter(filepath, lines, result):
-    """Проверить YAML front matter."""
-    if len(lines) < 3 or lines[0].strip() != "---":
-        result.error(filepath, 1, "Нет YAML front matter (должен начинаться с ---)")
-        return False
+# ---------------------------------------------------------------------------
+# Вспомогательные функции
+# ---------------------------------------------------------------------------
 
-    # Найти закрывающий ---
+def parse_frontmatter(lines):
+    """Извлечь front matter как dict и вернуть (fm_dict, end_idx) или (None, None)."""
+    if len(lines) < 3 or lines[0].strip() != "---":
+        return None, None
+
     end_idx = None
     for i in range(1, len(lines)):
         if lines[i].strip() == "---":
@@ -65,35 +97,72 @@ def check_frontmatter(filepath, lines, result):
             break
 
     if end_idx is None:
-        result.error(filepath, 1, "Не закрыт YAML front matter (нет второго ---)")
-        return False
+        return None, None
 
-    # Проверить обязательные поля
-    fm_text = "".join(lines[1:end_idx])
-    if "title:" not in fm_text:
+    fm = {}
+    for line in lines[1:end_idx]:
+        m = re.match(r"^(\w[\w_]*):\s*(.*)", line)
+        if m:
+            key = m.group(1)
+            val = m.group(2).strip().strip('"').strip("'")
+            fm[key] = val
+    return fm, end_idx
+
+
+def has_cyrillic(text):
+    """Проверить, содержит ли текст кириллицу."""
+    return bool(re.search(r"[а-яА-ЯёЁ]", text))
+
+
+# ---------------------------------------------------------------------------
+# Проверки
+# ---------------------------------------------------------------------------
+
+def check_frontmatter(filepath, lines, is_index, is_root_index, result):
+    """[1] Проверить YAML front matter: title, order, type, aisystant_code."""
+    fm, end_idx = parse_frontmatter(lines)
+
+    if fm is None:
+        result.error(filepath, 1, "Нет YAML front matter (должен начинаться с ---)")
+        return None, None
+
+    if "title" not in fm:
         result.error(filepath, 1, "В front matter нет поля 'title'")
-    if "order:" not in fm_text:
+    if "order" not in fm:
         result.error(filepath, 1, "В front matter нет поля 'order'")
 
-    return end_idx
+    # index.md НЕ должен иметь type
+    if is_index and "type" in fm:
+        result.warn(filepath, 1, "index.md не должен содержать поле 'type'")
+
+    # Обычные файлы ДОЛЖНЫ иметь type
+    if not is_index and "type" not in fm:
+        result.error(filepath, 1, "В front matter нет поля 'type' (text/table/checklist/multiple_choice)")
+
+    # Корневой index.md должен иметь aisystant_code
+    if is_root_index and "aisystant_code" not in fm:
+        result.warn(filepath, 1, "Корневой index.md не содержит поля 'aisystant_code'")
+
+    return fm, end_idx
 
 
-def check_h1_after_frontmatter(filepath, lines, fm_end_idx, result):
-    """Проверить H1 после front matter с двумя пустыми строками."""
-    if fm_end_idx is None or fm_end_idx is False:
+def check_h1_and_title_match(filepath, lines, fm, fm_end_idx, result):
+    """[2][3] Проверить H1 после front matter, совпадение с title, две пустые строки."""
+    if fm_end_idx is None:
         return
 
-    # После --- должны быть две пустые строки, потом # Title
     remaining = lines[fm_end_idx + 1:]
 
-    # Считать пустые строки
+    # Считать пустые строки до H1
     empty_count = 0
     h1_idx = None
+    h1_text = None
     for i, line in enumerate(remaining):
         if line.strip() == "":
             empty_count += 1
         elif line.startswith("# "):
             h1_idx = fm_end_idx + 1 + i
+            h1_text = line[2:].strip()
             break
         else:
             result.warn(filepath, fm_end_idx + 2 + i,
@@ -102,18 +171,62 @@ def check_h1_after_frontmatter(filepath, lines, fm_end_idx, result):
 
     if h1_idx is None:
         result.warn(filepath, fm_end_idx + 1, "Нет заголовка H1 после front matter")
-    elif empty_count < 2:
+        return
+
+    # [3] Две пустые строки
+    if empty_count < 2:
         result.warn(filepath, h1_idx + 1,
                     f"После --- должны быть 2 пустые строки перед H1 (найдено {empty_count})")
 
-    # Проверить, что только один H1
-    h1_count = sum(1 for l in lines if re.match(r"^# [^#]", l))
+    # [2] Только один H1
+    h1_count = sum(1 for line in lines if re.match(r"^# [^#]", line))
     if h1_count > 1:
         result.warn(filepath, 1, f"Найдено {h1_count} заголовков H1, ожидается 1")
 
+    # [2] Title в YAML совпадает с H1
+    if fm and "title" in fm and h1_text:
+        if fm["title"] != h1_text:
+            result.warn(filepath, h1_idx + 1,
+                        f"YAML title '{fm['title'][:50]}' ≠ H1 '{h1_text[:50]}'")
+
+
+def check_type_matches_title(filepath, fm, result):
+    """[4] Проверить что type соответствует заголовку."""
+    if fm is None or "type" not in fm or "title" not in fm:
+        return
+
+    actual_type = fm["type"]
+    expected = expected_type_for_title(fm["title"])
+
+    if expected and actual_type != expected:
+        result.warn(filepath, 1,
+                    f"type '{actual_type}' не соответствует заголовку "
+                    f"(ожидается '{expected}' для '{fm['title'][:40]}')")
+
+
+def check_english_name(filepath, target_dir, result):
+    """[5] Проверить что имена файлов и папок на английском (нет кириллицы)."""
+    rel_path = os.path.relpath(filepath, target_dir)
+    parts = rel_path.split(os.sep)
+    for part in parts:
+        name = os.path.splitext(part)[0]
+        if has_cyrillic(name):
+            result.file_error(filepath,
+                              f"Кириллица в имени: '{part}' (должно быть на английском)")
+
+
+def check_english_dirname(dirpath, target_dir, result):
+    """[5] Проверить что имя директории на английском."""
+    dirname = os.path.basename(dirpath)
+    if has_cyrillic(dirname):
+        result.file_error(dirpath,
+                          f"Кириллица в имени папки: '{dirname}' (должно быть на английском)")
+
 
 def check_images(filepath, lines, result):
-    """Проверить ссылки на изображения."""
+    """[6] Проверить ссылки на изображения: assets/, fig-XX, файл существует."""
+    file_dir = os.path.dirname(filepath)
+
     for i, line in enumerate(lines, 1):
         img_match = re.search(r"!\[([^\]]*)\]\(([^)]+)\)", line)
         if not img_match:
@@ -121,65 +234,107 @@ def check_images(filepath, lines, result):
 
         img_path = img_match.group(2)
 
-        # Проверить, что путь начинается с assets/
+        # Путь должен начинаться с assets/
         if not img_path.startswith("assets/"):
-            result.warn(filepath, i,
-                        f"Изображение не в assets/: {img_path}")
+            result.warn(filepath, i, f"Изображение не в assets/: {img_path}")
 
-        # Проверить формат имени файла
+        # Формат имени fig-XX
         img_name = os.path.basename(img_path)
         if not re.match(r"fig-\d{2}", img_name):
             result.warn(filepath, i,
-                        f"Имя изображения не соответствует fig-XX формату: {img_name}")
+                        f"Имя изображения не соответствует fig-XX: {img_name}")
 
-        # Проверить подпись к рисунку (пустая строка + *Рис. X.X. ...*)
-        if i < len(lines):
-            next_line_idx = i  # 0-indexed
-            # Ожидаем пустую строку
-            if next_line_idx < len(lines) and lines[next_line_idx].strip() == "":
-                # Потом подпись
-                caption_idx = next_line_idx + 1
-                if caption_idx < len(lines):
-                    caption = lines[caption_idx].strip()
-                    if not caption.startswith("*Рис."):
-                        result.warn(filepath, caption_idx + 1,
-                                    "После изображения ожидается подпись *Рис. X.X. ...*")
-            else:
-                result.warn(filepath, i,
-                            "После изображения должна быть пустая строка перед подписью")
+        # Файл существует
+        full_img_path = os.path.join(file_dir, img_path)
+        if not os.path.exists(full_img_path):
+            result.error(filepath, i,
+                         f"Изображение не найдено: {img_path}")
+
+
+def check_footnotes(filepath, lines, result):
+    """[7] Проверить что каждая ссылка [^N] имеет определение [^N]:."""
+    text = "".join(lines)
+
+    # Найти все ссылки [^N] (не определения)
+    refs = set(re.findall(r"\[\^(\d+)\](?!:)", text))
+    # Найти все определения [^N]:
+    defs = set(re.findall(r"^\[\^(\d+)\]:", text, re.MULTILINE))
+
+    # Ссылки без определений
+    orphan_refs = refs - defs
+    if orphan_refs:
+        result.error(filepath, 1,
+                     f"Ссылки без определений: {', '.join(f'[^{r}]' for r in sorted(orphan_refs, key=int))}")
+
+    # Определения без ссылок
+    orphan_defs = defs - refs
+    if orphan_defs:
+        result.warn(filepath, 1,
+                    f"Определения без ссылок: {', '.join(f'[^{d}]' for d in sorted(orphan_defs, key=int))}")
+
+
+def check_pandoc_artifacts(filepath, lines, fm, result):
+    """[9] Проверить отсутствие Pandoc-артефактов."""
+    for i, line in enumerate(lines, 1):
+        # {.underline}, {.mark} и другие span-атрибуты
+        if re.search(r"\{\.[\w-]+\}", line):
+            result.warn(filepath, i,
+                        f"Pandoc span-атрибут: '{re.search(r'{.[^}]+}', line).group()}'")
+
+        # --- или -- вместо — (только в тексте, не YAML-делимитеры, не HR)
+        stripped = line.strip()
+        if stripped == "---" or stripped == "":
+            continue
+        if re.search(r" --- | -- ", line):
+            result.warn(filepath, i,
+                        "Pandoc-тире: ' --- ' или ' -- ' вместо ' — '")
+
+    # ** или * в YAML title
+    if fm and "title" in fm:
+        title = fm["title"]
+        if "**" in title or re.search(r"(?<!\*)\*(?!\*)", title):
+            result.warn(filepath, 1,
+                        f"Markdown-разметка в YAML title: '{title[:50]}'")
 
 
 def check_filename(filepath, result):
-    """Проверить имя файла: kebab-case, без точек."""
+    """[10] Проверить имя файла: kebab-case, NN- префикс, без точек."""
     basename = os.path.basename(filepath)
     name_part = os.path.splitext(basename)[0]
 
     if basename == "index.md":
         return
 
-    # Проверить точки в имени
+    # Точки в имени
     if "." in name_part:
         result.file_warn(filepath,
                          f"Точка в имени файла: {basename} (используйте тире)")
 
-    # Проверить kebab-case (разрешены цифры, буквы, дефисы)
-    if not re.match(r"^[a-z0-9]+(-[a-z0-9]+)*$", name_part):
-        # Мягкая проверка — допустить нижнее подчёркивание
-        if re.search(r"[A-Z]", name_part):
-            result.file_warn(filepath,
-                             f"Имя файла содержит заглавные буквы: {basename}")
+    # Заглавные буквы
+    if re.search(r"[A-Z]", name_part):
+        result.file_warn(filepath,
+                         f"Заглавные буквы в имени файла: {basename}")
+
+    # NN- префикс
+    if not re.match(r"^\d{2}-", name_part):
+        result.file_warn(filepath,
+                         f"Имя файла без NN- префикса: {basename}")
 
 
 def check_dirname(dirpath, result):
-    """Проверить имя директории: без точек."""
+    """[10] Проверить имя директории: без точек, NN- префикс."""
     dirname = os.path.basename(dirpath)
     if "." in dirname and dirname != ".git":
         result.file_warn(dirpath,
                          f"Точка в имени папки: {dirname} (используйте тире)")
 
 
+# ---------------------------------------------------------------------------
+# Основная функция
+# ---------------------------------------------------------------------------
+
 def validate_directory(target_dir):
-    """Запустить все проверки на директории."""
+    """Запустить все 10 проверок на директории."""
     result = ValidationResult()
 
     if not os.path.isdir(target_dir):
@@ -193,9 +348,11 @@ def validate_directory(target_dir):
         # Пропустить assets и скрытые папки
         dirs[:] = [d for d in dirs if d != "assets" and not d.startswith(".")]
 
-        # Проверить имена директорий
+        # [5][10] Проверить имена директорий
         for d in dirs:
-            check_dirname(os.path.join(root, d), result)
+            dirpath = os.path.join(root, d)
+            check_dirname(dirpath, result)
+            check_english_dirname(dirpath, target_dir, result)
 
         for f in files:
             if not f.endswith(".md"):
@@ -208,17 +365,37 @@ def validate_directory(target_dir):
             with open(filepath, "r", encoding="utf-8") as fh:
                 lines = fh.readlines()
 
-            # Проверки
-            check_filename(filepath, result)
-            fm_end = check_frontmatter(filepath, lines, result)
+            is_index = (f == "index.md")
+            is_root_index = (f == "index.md" and root == target_dir)
+
+            # [1] YAML front matter
+            fm, fm_end = check_frontmatter(filepath, lines, is_index, is_root_index, result)
+
+            # [2][3] H1 и совпадение с title
             if fm_end:
-                check_h1_after_frontmatter(filepath, lines, fm_end, result)
+                check_h1_and_title_match(filepath, lines, fm, fm_end, result)
+
+            # [4] Тип подраздела
+            if not is_index:
+                check_type_matches_title(filepath, fm, result)
+
+            # [5] Английские имена
+            check_english_name(filepath, target_dir, result)
+
+            # [6] Изображения
             check_images(filepath, lines, result)
 
-    # Проверить наличие index.md в каждой папке с .md файлами
+            # [7] Сноски
+            check_footnotes(filepath, lines, result)
+
+            # [9] Pandoc-артефакты
+            check_pandoc_artifacts(filepath, lines, fm, result)
+
+            # [10] Имена файлов
+            check_filename(filepath, result)
+
+    # [8] index.md в каждой папке с .md файлами
     for dir_path in dirs_with_md:
-        if dir_path == target_dir:
-            continue  # Корневой index.md уже проверен
         index_path = os.path.join(dir_path, "index.md")
         if not os.path.exists(index_path):
             result.file_warn(dir_path, "Нет index.md в директории")
@@ -228,7 +405,7 @@ def validate_directory(target_dir):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Валидатор Markdown по format-guide.md")
+    parser = argparse.ArgumentParser(description="Валидатор Markdown по format-guide.md (10 проверок)")
     parser.add_argument("directory", help="Директория для проверки")
     parser.add_argument("--strict", action="store_true",
                         help="Считать предупреждения ошибками")

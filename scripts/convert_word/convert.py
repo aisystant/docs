@@ -380,12 +380,21 @@ def copy_image(src_path, dest_dir, fig_number, media_base):
     return dest_name
 
 
+def yaml_quote(text):
+    """Обернуть текст в YAML-безопасные кавычки."""
+    if '"' in text:
+        # В YAML single-quoted строках одинарная кавычка экранируется удвоением
+        escaped = text.replace("'", "''")
+        return f"'{escaped}'"
+    return f'"{text}"'
+
+
 def write_md_file(filepath, title, content, order, doc_type="text", aisystant_code=None):
     """Записать .md файл с YAML front matter."""
     os.makedirs(os.path.dirname(filepath), exist_ok=True)
     with open(filepath, "w", encoding="utf-8") as f:
         f.write("---\n")
-        f.write(f'title: "{title}"\n')
+        f.write(f"title: {yaml_quote(title)}\n")
         f.write(f"order: {order}\n")
         if doc_type != "index":
             f.write(f"type: {doc_type}\n")
