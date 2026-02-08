@@ -1,0 +1,1 @@
+transliterate>=1.10

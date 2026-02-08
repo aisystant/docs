@@ -7,3 +7,4 @@ docs/.vitepress/dist/
 docs/.vitepress/.temp/
 .env
 venv/
+sources/converted/
