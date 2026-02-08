@@ -71,25 +71,48 @@ def clean_pandoc_attrs(line):
     return re.sub(r"\{[^}]*width[^}]*\}", "", line)
 
 
+def extract_footnotes(lines):
+    """
+    Извлечь определения сносок из списка строк.
+
+    Pandoc помещает все определения сносок в конец файла.
+    Возвращает (lines_without_footnotes, footnotes_dict).
+    footnotes_dict: {"1": "[^1]: текст сноски\n", ...}
+    """
+    footnotes = {}
+    content_lines = []
+    i = 0
+    while i < len(lines):
+        fn_match = re.match(r"^\[\^(\d+)\]:\s*(.*)", lines[i])
+        if fn_match:
+            fn_id = fn_match.group(1)
+            fn_lines = [lines[i]]
+            i += 1
+            # Многострочные сноски: продолжение с отступом
+            while i < len(lines) and (lines[i].startswith("    ") or lines[i].strip() == ""):
+                fn_lines.append(lines[i])
+                i += 1
+                if lines[i - 1].strip() == "" and i < len(lines) and not lines[i].startswith("    "):
+                    break
+            footnotes[fn_id] = "".join(fn_lines)
+        else:
+            content_lines.append(lines[i])
+            i += 1
+    return content_lines, footnotes
+
+
 def parse_sections(raw_md_path):
     """
     Разбить raw.md на секции по H1 и подразделы по H2.
 
-    Возвращает структуру:
-    [
-        {
-            "title": "Предисловие",
-            "level": "pre",  # или "section"
-            "subsections": [
-                {"title": "...", "lines": [...], "images": [...]},
-                ...
-            ]
-        },
-        ...
-    ]
+    Возвращает (sections, footnotes_dict).
     """
     with open(raw_md_path, "r", encoding="utf-8") as f:
-        lines = f.readlines()
+        all_lines = f.readlines()
+
+    # Сначала извлечь все определения сносок
+    lines, footnotes = extract_footnotes(all_lines)
+    log.info("Извлечено %d определений сносок", len(footnotes))
 
     sections = []
     current_section = None
@@ -193,7 +216,7 @@ def parse_sections(raw_md_path):
             "images": [],
         })
 
-    return sections
+    return sections, footnotes
 
 
 def determine_subsection_type(title):
@@ -272,12 +295,12 @@ def write_index_file(filepath, title, order):
     write_md_file(filepath, title, "", order, doc_type="index")
 
 
-def process_subsection_content(lines, images, assets_dir, media_base, section_fig_counter):
+def process_subsection_content(lines, images, assets_dir, media_base, section_fig_counter, footnotes=None):
     """
     Обработать контент подраздела:
     - Скопировать и переименовать изображения
     - Обновить ссылки на изображения
-    - Добавить подписи к рисункам
+    - Добавить определения сносок, на которые есть ссылки
 
     Возвращает обработанный текст и обновлённый счётчик рисунков.
     """
@@ -307,10 +330,21 @@ def process_subsection_content(lines, images, assets_dir, media_base, section_fi
     # Убрать лишние пустые строки (больше 2 подряд)
     content = re.sub(r"\n{4,}", "\n\n\n", content)
 
+    # Добавить определения сносок, на которые есть ссылки в этом подразделе
+    if footnotes:
+        refs = set(re.findall(r"\[\^(\d+)\](?!:)", content))
+        if refs:
+            fn_block = []
+            for ref_id in sorted(refs, key=int):
+                if ref_id in footnotes:
+                    fn_block.append(footnotes[ref_id])
+            if fn_block:
+                content = content.rstrip() + "\n\n" + "".join(fn_block)
+
     return content, fig_counter
 
 
-def build_output(sections, output_dir, media_base, course_title=None):
+def build_output(sections, output_dir, media_base, course_title=None, footnotes=None):
     """Создать структуру папок и файлов из разобранных секций."""
     os.makedirs(output_dir, exist_ok=True)
 
@@ -345,7 +379,7 @@ def build_output(sections, output_dir, media_base, course_title=None):
             filepath = os.path.join(section_dir, filename)
 
             content, fig_counter = process_subsection_content(
-                sub["lines"], sub["images"], assets_dir, media_base, fig_counter
+                sub["lines"], sub["images"], assets_dir, media_base, fig_counter, footnotes
             )
 
             write_md_file(filepath, sub["title"], content, sub_order + 1, doc_type)
@@ -379,7 +413,7 @@ def main():
 
         # Этап 2: Парсинг
         log.info("Разбор структуры документа...")
-        sections = parse_sections(raw_md)
+        sections, footnotes = parse_sections(raw_md)
         log.info("Найдено %d разделов", len(sections))
         for s in sections:
             log.info("  [%s] %s (%d подразделов)",
@@ -392,7 +426,7 @@ def main():
             shutil.rmtree(output_dir)
 
         log.info("Создание структуры в %s ...", output_dir)
-        build_output(sections, output_dir, work_dir, args.course_title)
+        build_output(sections, output_dir, work_dir, args.course_title, footnotes)
 
     log.info("Конвертация завершена: %s", args.output)
 
