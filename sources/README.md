@@ -35,7 +35,7 @@ sources/word-files/мой-курс.docx
 brew install pandoc
 
 # Python-пакет для транслитерации
-pip3 install -r sources/convert_word/requirements.txt
+pip3 install -r scripts/convert_word/requirements.txt
 ```
 
 ### Шаг 3. Запустить конвертацию
@@ -43,7 +43,7 @@ pip3 install -r sources/convert_word/requirements.txt
 Из корня репозитория `docs/`:
 
 ```bash
-./sources/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/converted/имя-курса
+./scripts/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/converted/имя-курса
 ```
 
 Где `имя-курса` — slug курса в kebab-case (например, `systems-thinking-introduction`).
@@ -51,7 +51,7 @@ pip3 install -r sources/convert_word/requirements.txt
 Можно указать название курса:
 
 ```bash
-./sources/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/converted/имя-курса \
+./scripts/convert_word/run.sh "sources/word-files/мой-курс.docx" sources/converted/имя-курса \
   --course-title "Введение в системное мышление"
 ```
 
@@ -91,7 +91,7 @@ sources/converted/имя-курса/
 Можно запустить валидацию отдельно:
 
 ```bash
-python3 sources/convert_word/validate.py sources/converted/имя-курса/
+python3 scripts/convert_word/validate.py sources/converted/имя-курса/
 ```
 
 ### Шаг 5. Перенести в docs/ru/
@@ -114,11 +114,11 @@ mv sources/converted/имя-курса docs/ru/professional/имя-курса
 
 ```bash
 # Скрипт автоматически удалит старый результат в converted/
-./sources/convert_word/run.sh "sources/word-files/новая-версия.docx" sources/converted/имя-курса
+./scripts/convert_word/run.sh "sources/word-files/новая-версия.docx" sources/converted/имя-курса
 ```
 
 ## Справочные файлы
 
 - **format-guide.md** — все правила форматирования (заголовки, изображения, front matter, типы подразделов)
-- **convert_word/convert.py** — скрипт конвертации
-- **convert_word/validate.py** — валидатор
+- **scripts/convert_word/convert.py** — скрипт конвертации
+- **scripts/convert_word/validate.py** — валидатор
