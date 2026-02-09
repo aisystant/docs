@@ -21,6 +21,8 @@ import subprocess
 import sys
 import tempfile
 
+from fix_grid_tables import convert_grid_tables
+
 try:
     from transliterate import translit
 except ImportError:
@@ -456,6 +458,9 @@ def process_subsection_content(lines, images, assets_dir, media_base, section_fi
 
     # Убрать Pandoc-артефакты ПОСЛЕ добавления сносок (сноски тоже содержат артефакты)
     content = clean_pandoc_markup(content)
+
+    # Конвертировать grid-таблицы Pandoc в стандартные pipe-таблицы
+    content = convert_grid_tables(content)
 
     # Убрать лишние пустые строки (больше 2 подряд)
     content = re.sub(r"\n{4,}", "\n\n\n", content)
