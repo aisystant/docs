@@ -2,7 +2,7 @@
 """
 Валидатор Markdown по правилам format-guide.md.
 
-Проверяет (10 пунктов чек-листа):
+Проверяет (11 пунктов чек-листа):
  1. YAML front matter (title, order, type, aisystant_code)
  2. Один H1 после front matter, совпадает с title
  3. Две пустые строки между --- и H1
@@ -13,6 +13,7 @@
  8. index.md в каждой папке-секции
  9. Pandoc-артефакты ({.underline}, {.mark}, ---, --, ** в title)
 10. Имена файлов в kebab-case, NN- префикс, без точек
+11. Таблицы в pipe-формате (нет grid-таблиц Pandoc: +---+---+)
 
 Использование:
     python3 validate.py <directory>
@@ -297,6 +298,16 @@ def check_pandoc_artifacts(filepath, lines, fm, result):
                         f"Markdown-разметка в YAML title: '{title[:50]}'")
 
 
+def check_grid_tables(filepath, lines, result):
+    """[11] Проверить отсутствие grid-таблиц Pandoc (+---+---+)."""
+    for i, line in enumerate(lines, 1):
+        if re.match(r'^\+[-=+]+\+\s*$', line.strip()):
+            result.error(filepath, i,
+                         "Grid-таблица Pandoc (нужен pipe-формат). "
+                         "Исправить: python3 fix_grid_tables.py <файл>")
+            return  # Одной ошибки достаточно для файла
+
+
 def check_filename(filepath, result):
     """[10] Проверить имя файла: kebab-case, NN- префикс, без точек."""
     basename = os.path.basename(filepath)
@@ -393,6 +404,9 @@ def validate_directory(target_dir):
 
             # [10] Имена файлов
             check_filename(filepath, result)
+
+            # [11] Grid-таблицы
+            check_grid_tables(filepath, lines, result)
 
     # [8] index.md в каждой папке с .md файлами
     for dir_path in dirs_with_md:
