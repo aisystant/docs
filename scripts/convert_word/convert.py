@@ -22,6 +22,7 @@ import sys
 import tempfile
 
 from fix_grid_tables import convert_grid_tables
+from fix_simple_tables import convert_simple_tables
 
 try:
     from transliterate import translit
@@ -461,6 +462,9 @@ def process_subsection_content(lines, images, assets_dir, media_base, section_fi
 
     # Конвертировать grid-таблицы Pandoc в стандартные pipe-таблицы
     content = convert_grid_tables(content)
+
+    # Конвертировать simple-таблицы Pandoc в стандартные pipe-таблицы
+    content = convert_simple_tables(content)
 
     # Убрать лишние пустые строки (больше 2 подряд)
     content = re.sub(r"\n{4,}", "\n\n\n", content)

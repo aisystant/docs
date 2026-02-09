@@ -2,7 +2,7 @@
 """
 Валидатор Markdown по правилам format-guide.md.
 
-Проверяет (11 пунктов чек-листа):
+Проверяет (12 пунктов чек-листа):
  1. YAML front matter (title, order, type, aisystant_code)
  2. Один H1 после front matter, совпадает с title
  3. Две пустые строки между --- и H1
@@ -14,6 +14,7 @@
  9. Pandoc-артефакты ({.underline}, {.mark}, ---, --, ** в title)
 10. Имена файлов в kebab-case, NN- префикс, без точек
 11. Таблицы в pipe-формате (нет grid-таблиц Pandoc: +---+---+)
+12. Нет simple-таблиц Pandoc (строки из тире с пробелами)
 
 Использование:
     python3 validate.py <directory>
@@ -308,6 +309,22 @@ def check_grid_tables(filepath, lines, result):
             return  # Одной ошибки достаточно для файла
 
 
+def check_simple_tables(filepath, lines, result):
+    """[12] Проверить отсутствие simple-таблиц Pandoc (строки из тире с пробелами)."""
+    for i, line in enumerate(lines, 1):
+        stripped = line.strip()
+        # Skip YAML delimiters and horizontal rules
+        if stripped == '---' or stripped == '':
+            continue
+        # Simple table separator: groups of dashes separated by spaces, 10+ dashes total
+        if re.match(r'^[-\s]+$', stripped) and stripped.count('-') >= 10:
+            if re.search(r'-{3,}', stripped):
+                result.error(filepath, i,
+                             "Simple-таблица Pandoc (нужен pipe-формат). "
+                             "Исправить: python3 fix_simple_tables.py <файл>")
+                return  # Одной ошибки достаточно для файла
+
+
 def check_filename(filepath, result):
     """[10] Проверить имя файла: kebab-case, NN- префикс, без точек."""
     basename = os.path.basename(filepath)
@@ -345,7 +362,7 @@ def check_dirname(dirpath, result):
 # ---------------------------------------------------------------------------
 
 def validate_directory(target_dir):
-    """Запустить все 10 проверок на директории."""
+    """Запустить все 12 проверок на директории."""
     result = ValidationResult()
 
     if not os.path.isdir(target_dir):
@@ -408,6 +425,9 @@ def validate_directory(target_dir):
             # [11] Grid-таблицы
             check_grid_tables(filepath, lines, result)
 
+            # [12] Simple-таблицы
+            check_simple_tables(filepath, lines, result)
+
     # [8] index.md в каждой папке с .md файлами
     for dir_path in dirs_with_md:
         index_path = os.path.join(dir_path, "index.md")
@@ -419,7 +439,7 @@ def validate_directory(target_dir):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Валидатор Markdown по format-guide.md (10 проверок)")
+    parser = argparse.ArgumentParser(description="Валидатор Markdown по format-guide.md (12 проверок)")
     parser.add_argument("directory", help="Директория для проверки")
     parser.add_argument("--strict", action="store_true",
                         help="Считать предупреждения ошибками")
