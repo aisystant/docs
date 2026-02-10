@@ -298,6 +298,18 @@ def check_pandoc_artifacts(filepath, lines, fm, result):
             result.warn(filepath, 1,
                         f"Markdown-разметка в YAML title: '{title[:50]}'")
 
+    # Bold-артефакты вокруг точки: word**.** или standalone **\**
+    for i, line in enumerate(lines, 1):
+        stripped = line.strip()
+        if stripped in ("**\\**", "****"):
+            result.warn(filepath, i, "Standalone bold-артефакт: **\\**")
+        elif re.search(r"[^*]\*\*\.\*\*", line):
+            result.warn(filepath, i,
+                        "Bold-артефакт вокруг точки: X**.**")
+        elif re.search(r"\*\*\*\*\.\*\*", line):
+            result.warn(filepath, i,
+                        "Bold-артефакт: ****.**")
+
 
 def check_grid_tables(filepath, lines, result):
     """[11] Проверить отсутствие grid-таблиц Pandoc (+---+---+)."""
