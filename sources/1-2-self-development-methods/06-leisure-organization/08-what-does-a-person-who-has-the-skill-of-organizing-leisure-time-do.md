@@ -24,8 +24,6 @@ type: text
 
 ![fig-01](assets/fig-01.jpeg)
 
-**\**
-
 [^205]: Соблюдает режим дня и вовремя ложится спать, отдыхает между помидорками, регулярно занимается спортом.
 
 [^206]: Смотрите посты в клубе о сне и качестве жизни: <https://systemsworld.club/t/zametka-pro-son-i-kachestvo-zhizni/17966> и https://systemsworld.club/t/son-kak-integralnyj-pokazatel-kachestva-zhizni/5907
