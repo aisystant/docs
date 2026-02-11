@@ -15,6 +15,7 @@
 10. Имена файлов в kebab-case, NN- префикс, без точек
 11. Таблицы в pipe-формате (нет grid-таблиц Pandoc: +---+---+)
 12. Нет simple-таблиц Pandoc (строки из тире с пробелами)
+13. Нумерация X.Y. в title подразделов (кроме index.md и 00-intro)
 
 Использование:
     python3 validate.py <directory>
@@ -236,8 +237,8 @@ def check_images(filepath, lines, result):
 
         img_path = img_match.group(2)
 
-        # Путь должен начинаться с assets/
-        if not img_path.startswith("assets/"):
+        # Путь должен начинаться с assets/ или ./assets/
+        if not (img_path.startswith("assets/") or img_path.startswith("./assets/")):
             result.warn(filepath, i, f"Изображение не в assets/: {img_path}")
 
         # Формат имени fig-XX
@@ -337,6 +338,26 @@ def check_simple_tables(filepath, lines, result):
                 return  # Одной ошибки достаточно для файла
 
 
+def check_subsection_numbering(filepath, fm, result):
+    """[13] Проверить нумерацию X.Y. в title подразделов (не index.md, не 00-intro)."""
+    if fm is None or "title" not in fm:
+        return
+
+    # Пропустить index.md
+    if os.path.basename(filepath) == "index.md":
+        return
+
+    # Пропустить 00-intro (предисловие не нумеруется)
+    if "00-intro" in filepath:
+        return
+
+    title = fm["title"]
+    if not re.match(r"^\d+\.\d+\.\s", title):
+        result.warn(filepath, 1,
+                    f"Нет нумерации X.Y. в title: '{title[:50]}' "
+                    f"(ожидается формат '1.1. Заголовок')")
+
+
 def check_filename(filepath, result):
     """[10] Проверить имя файла: kebab-case, NN- префикс, без точек."""
     basename = os.path.basename(filepath)
@@ -433,6 +454,10 @@ def validate_directory(target_dir):
 
             # [10] Имена файлов
             check_filename(filepath, result)
+
+            # [13] Нумерация X.Y. в title подразделов
+            if not is_index:
+                check_subsection_numbering(filepath, fm, result)
 
             # [11] Grid-таблицы
             check_grid_tables(filepath, lines, result)
