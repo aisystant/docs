@@ -1,9 +1,11 @@
 ---
-title: "Предисловие"
-order: 0
+id: C.Guide.SelfDevelopmentMethods
+title: "2. Практики саморазвития"
+order: 2
+description: Руководство по практикам саморазвития для повседневной жизни
 aisystant_code: "selfdev"
 ---
 
 
-# Предисловие
+# 2. Практики саморазвития
 
