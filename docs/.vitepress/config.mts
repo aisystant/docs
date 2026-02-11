@@ -36,6 +36,7 @@ export default defineConfig({
   title: "Aisystant Docs",
   description: "Documentation for Aisystant",
   cleanUrls: true,
+  srcExclude: ['**/Archive/**'],
   markdown: {
     config: (md) => {
       md.use(footnote) // Enable footnotes support
