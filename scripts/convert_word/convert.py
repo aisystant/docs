@@ -509,11 +509,14 @@ def build_output(sections, output_dir, media_base, course_title=None, footnotes=
     write_index_file(os.path.join(output_dir, "index.md"), title, 0, aisystant_code=aisystant_code)
 
     section_order = 0
+    # Номер секции для нумерации X.Y. (pre/intro не нумеруется)
+    section_num = 0
     for section in sections:
         # Определить номер папки
         if section["level"] == "pre":
             folder_name = f"{section_order:02d}-intro"
         else:
+            section_num += 1
             folder_name = f"{section_order:02d}-{slugify(section['title'])}"
         section_order += 1
 
@@ -521,10 +524,15 @@ def build_output(sections, output_dir, media_base, course_title=None, footnotes=
         os.makedirs(section_dir, exist_ok=True)
         assets_dir = os.path.join(section_dir, "assets")
 
-        # Section index.md
+        # Section index.md — добавить номер к заголовку (кроме intro)
+        section_title = section["title"]
+        if section["level"] != "pre":
+            # Убрать существующий номер, если есть, и добавить правильный
+            clean = re.sub(r"^\d+(\.\d+)*\.?\s*", "", section_title).strip()
+            section_title = f"{section_num}. {clean}"
         write_index_file(
             os.path.join(section_dir, "index.md"),
-            section["title"],
+            section_title,
             section_order - 1,
         )
 
@@ -538,7 +546,13 @@ def build_output(sections, output_dir, media_base, course_title=None, footnotes=
                 sub["lines"], sub["images"], assets_dir, media_base, fig_counter, footnotes
             )
 
-            write_md_file(filepath, sub["title"], content, sub_order + 1, doc_type)
+            # Добавить нумерацию X.Y. к заголовку подраздела (кроме intro)
+            sub_title = sub["title"]
+            if section["level"] != "pre":
+                clean = re.sub(r"^\d+(\.\d+)*\.?\s*", "", sub_title).strip()
+                sub_title = f"{section_num}.{sub_order + 1}. {clean}"
+
+            write_md_file(filepath, sub_title, content, sub_order + 1, doc_type)
             log.info("  → %s", os.path.relpath(filepath, output_dir))
 
         log.info("Раздел '%s': %d подразделов, %d изображений",
@@ -549,7 +563,8 @@ def main():
     parser = argparse.ArgumentParser(description="Word→Markdown конвертер")
     parser.add_argument("input", help="Путь к .docx файлу")
     parser.add_argument("output", help="Выходная директория (например sources/converted/course-name)")
-    parser.add_argument("--course-title", help="Название курса (по умолчанию берётся из документа)")
+    parser.add_argument("--course-title", required=True,
+                        help="Название курса (например '1. Системное саморазвитие')")
     parser.add_argument("--aisystant-code", required=True,
                         help="Код интеграции с Aisystant (обязательный, запросите у автора курса)")
     args = parser.parse_args()
