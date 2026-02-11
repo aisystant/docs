@@ -8,8 +8,8 @@
 
 ## Upstream dependencies
 
-- [aisystant/spf-personal-pack](https://github.com/aisystant/spf-personal-pack) — знания о созидателе
-- [TserenTserenov/spf-ecosystem-pack](https://github.com/TserenTserenov/spf-ecosystem-pack) — знания об экосистеме
+- [aisystant/PACK-personal](https://github.com/aisystant/PACK-personal) — знания о созидателе
+- [TserenTserenov/PACK-ecosystem](https://github.com/TserenTserenov/PACK-ecosystem) — знания об экосистеме
 
 ## Downstream outputs
 

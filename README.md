@@ -12,4 +12,4 @@ VitePress-сайт документации для курсов системно
 
 ## Upstream
 
-- [spf-personal-pack](https://github.com/aisystant/spf-personal-pack) — source-of-truth для контента
+- [PACK-personal](https://github.com/aisystant/PACK-personal) — source-of-truth для контента
