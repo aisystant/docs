@@ -284,9 +284,12 @@ def check_pandoc_artifacts(filepath, lines, fm, result):
             result.warn(filepath, i,
                         f"Pandoc span-атрибут: '{re.search(r'{.[^}]+}', line).group()}'")
 
-        # --- или -- вместо — (только в тексте, не YAML-делимитеры, не HR)
+        # --- или -- вместо — (только в тексте, не YAML-делимитеры, не HR, не pipe-table separators)
         stripped = line.strip()
         if stripped == "---" or stripped == "":
+            continue
+        # Пропустить pipe-table separator строки: | --- | --- |
+        if re.match(r'^\|[\s\-|]+\|$', stripped):
             continue
         if re.search(r" --- | -- ", line):
             result.warn(filepath, i,
