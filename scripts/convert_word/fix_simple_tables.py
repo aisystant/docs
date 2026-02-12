@@ -260,9 +260,14 @@ def convert_simple_tables(text):
                     block.append(line)
                     sep_count += 1
                     i += 1
+                    # Determine if this separator has column gaps (= column separator)
+                    # or is full-width (= top/bottom separator)
+                    cols = get_column_boundaries(line)
+                    is_column_sep = len(cols) >= 2
+                    # After a column separator, continue to collect data + closing sep
+                    if is_column_sep and sep_count == 2:
+                        continue
                     # Check if this is the closing separator
-                    # A simple table ends when we see a separator and the next line
-                    # is not indented content or another separator
                     if i < len(lines):
                         next_stripped = lines[i].strip()
                         if (next_stripped == '' or
@@ -291,9 +296,13 @@ def convert_simple_tables(text):
                     block.append(line)
                     i += 1
                 else:
-                    # Content line — include if it looks like table content
-                    block.append(line)
-                    i += 1
+                    # Content line — include only if it looks like table content
+                    if _looks_like_table_content(line, block):
+                        block.append(line)
+                        i += 1
+                    else:
+                        # Non-table content (paragraph text) — stop collecting
+                        break
 
             # Need at least 2 separators for a valid simple table
             actual_seps = sum(1 for l in block if is_simple_table_separator(l))
