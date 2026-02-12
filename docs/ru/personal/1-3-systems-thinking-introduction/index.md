@@ -1,6 +1,6 @@
 ---
 title: "3. Введение в системное мышление"
-order: 0
+order: 3
 aisystant_code: "systems-thinking-intro-2022"
 ---
 
