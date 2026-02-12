@@ -190,6 +190,21 @@ def clean_pandoc_markup(text):
     # Standalone **\** или **** → удалить строку
     text = re.sub(r"^\*\*\\?\*\*\s*\n", "", text, flags=re.MULTILINE)
 
+    # Dashes-in-cells: table cells containing only dashes (Word empty cell placeholders)
+    # Clean pipe table cells that contain only dashes (5+ dashes)
+    def _clean_dash_cells(line):
+        if not re.match(r'^\|', line.strip()):
+            return line
+        parts = line.split('|')
+        cleaned = []
+        for part in parts:
+            if re.match(r'^\s*-{5,}\s*$', part):
+                cleaned.append(' ')
+            else:
+                cleaned.append(part)
+        return '|'.join(cleaned)
+    text = '\n'.join(_clean_dash_cells(l) for l in text.split('\n'))
+
     return text
 
 
