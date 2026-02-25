@@ -1,6 +1,6 @@
 # Тип репозитория
 
-**Тип**: `Downstream/surface`
+**Тип**: `DS/surface`
 **Система (SoI)**: Экосистема
 **Содержание**: text-publication
 **Для кого**: public
