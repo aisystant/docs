@@ -46,8 +46,9 @@ jobs:
             PRERELEASE="--prerelease"
             TAG="preview-${TAG}"
           fi
+          FILES=$(find dist -name '*.md' -o -name '*.epub' | sort)
           gh release create "$TAG" \
             --title "Course releases $(date +%Y-%m-%d)" \
             --notes "Auto-generated course releases in markdown and epub formats." \
             $PRERELEASE \
-            dist/**/*.md dist/**/*.epub
+            $FILES
