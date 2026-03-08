@@ -5,10 +5,12 @@ on:
   push:
     branches:
       - main
+      - feature/build-releases  # temporary: remove after testing
     paths:
       - 'docs/ru/**'
       - 'docs/en/**'
       - 'scripts/build_releases/**'
+      - '.github/workflows/build-releases.yaml'  # temporary: remove after testing
 
 jobs:
   build:
@@ -39,8 +41,13 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TAG="release-$(date +%Y%m%d-%H%M%S)"
+          PRERELEASE=""
+          if [ "${{ github.ref_name }}" != "main" ]; then
+            PRERELEASE="--prerelease"
+            TAG="preview-${TAG}"
+          fi
           gh release create "$TAG" \
             --title "Course releases $(date +%Y-%m-%d)" \
             --notes "Auto-generated course releases in markdown and epub formats." \
-            --latest \
+            $PRERELEASE \
             dist/**/*.md dist/**/*.epub
