@@ -1,0 +1,47 @@
+name: Build Releases
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/ru/**'
+      - 'docs/en/**'
+      - 'scripts/build_releases/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # full history for git log dates
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq pandoc
+          pip install -r scripts/build_releases/requirements.txt
+
+      - name: Build releases
+        run: python scripts/build_releases/build.py -o dist
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG="release-$(date +%Y%m%d-%H%M%S)"
+          FILES=$(find dist -name '*.md' -o -name '*.epub' | sort)
+          gh release create "$TAG" \
+            --title "Course releases $(date +%Y-%m-%d)" \
+            --notes "Auto-generated course releases in markdown and epub formats." \
+            --latest \
+            $FILES
