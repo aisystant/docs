@@ -41,7 +41,7 @@ jobs:
           TAG="release-$(date +%Y%m%d-%H%M%S)"
           FILES=$(find dist -name '*.md' -o -name '*.epub' | sort)
           gh release create "$TAG" \
-            --title "Course releases $(date +%Y-%m-%d)" \
-            --notes "Auto-generated course releases in markdown and epub formats." \
+            --title "Guides $(date +%Y-%m-%d)" \
+            --notes "Auto-generated guides in markdown and epub formats." \
             --latest \
             $FILES
