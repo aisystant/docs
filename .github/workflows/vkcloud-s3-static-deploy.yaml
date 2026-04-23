@@ -1,12 +1,17 @@
-name: Deploy Local Static Files to VK VM
+name: Deploy Static Docs to VK VM
 on:
   push:
     branches: [ main ]
   workflow_dispatch:
 
+concurrency:
+  group: vkcloud-static-deploy-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
     
     defaults:
       run:
@@ -31,66 +36,46 @@ jobs:
     - name: Install SSH tools
       run: |
         sudo apt-get update -qq
-        sudo apt-get install -y sshpass rsync
-    
-    - name: Prepare VM directory permissions
+        sudo apt-get install -y rsync openssh-client
+
+    - name: Configure SSH key
       env:
         SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+        TARGET_HOST: ${{ secrets.VKCS_SSH_IP_DOCS_VM }}
       run: |
-        mkdir -p /tmp/ssh_deploy
-        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
-        chmod 600 /tmp/ssh_deploy/id_rsa
-        
-        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
-          -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
-          "sudo mkdir -p /aisystant/app/static/ && \
-           sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }}:${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
-           sudo chmod -R 755 /aisystant/app/static/ && \
-           echo 'Directory prepared'"
+        mkdir -p ~/.ssh
+        printf '%s' "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh-keyscan -H "$TARGET_HOST" >> ~/.ssh/known_hosts
     
-    - name: Deploy with rsync  ИСПРАВЛЕНО
+    - name: Prepare VM directory
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+        TARGET_USER: ${{ secrets.VKCS_USER_DOCS_VM }}
+        TARGET_HOST: ${{ secrets.VKCS_SSH_IP_DOCS_VM }}
       run: |
-        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
-        chmod 600 /tmp/ssh_deploy/id_rsa
-        
-   
+        ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes \
+          "$TARGET_USER@$TARGET_HOST" \
+          "sudo install -d -m 755 /aisystant/app/static"
+    
+    - name: Deploy with rsync
+      env:
+        TARGET_USER: ${{ secrets.VKCS_USER_DOCS_VM }}
+        TARGET_HOST: ${{ secrets.VKCS_SSH_IP_DOCS_VM }}
+      run: |
         rsync -avz \
-          --checksum --progress --delete \
-          --no-owner --no-group --no-perms \
-          -e "sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa -o StrictHostKeyChecking=no -o IdentitiesOnly=yes" \
+          --delete \
+          --checksum \
+          --rsync-path="sudo rsync" \
+          -e "ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
-          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }}:/aisystant/app/static/
+          "$TARGET_USER@$TARGET_HOST:/aisystant/app/static/"
     
-    - name: Fix final permissions & reload nginx
+    - name: Verify and reload nginx
       env:
-        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
+        TARGET_USER: ${{ secrets.VKCS_USER_DOCS_VM }}
+        TARGET_HOST: ${{ secrets.VKCS_SSH_IP_DOCS_VM }}
       run: |
-        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
-        chmod 600 /tmp/ssh_deploy/id_rsa
-        
-        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
-          -o StrictHostKeyChecking=no -o IdentitiesOnly=yes \
-          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
-          "sudo chown -R ${{ secrets.VKCS_USER_DOCS_VM }} /aisystant/app/static/ && \
-           sudo chmod -R 755 /aisystant/app/static/ && \
-           sudo chown -R :nginx /aisystant/app/static/ && \
-           sudo nginx -t && \
-           sudo pkill -9 nginx && \
-           sudo nginx && \
-           echo 'Deploy complete! Nginx reloaded'"
-    
-    - name: test
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.VKCS_SSH_KEY_DOCS_VM }}
-      run: |
-        printf '%s' "$SSH_PRIVATE_KEY" > /tmp/ssh_deploy/id_rsa
-        chmod 600 /tmp/ssh_deploy/id_rsa
-        
-        sshpass -p '' ssh -i /tmp/ssh_deploy/id_rsa \
-          -o StrictHostKeyChecking=no \
-          ${{ secrets.VKCS_USER_DOCS_VM }}@${{ secrets.VKCS_SSH_IP_DOCS_VM }} \
-          "ls -la /aisystant/app/static/ | head -5 && \
-           curl -f http://localhost/ && echo ' Website OK!' || echo ' Local curl failed'"
+        ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes \
+          "$TARGET_USER@$TARGET_HOST" \
+          "sudo nginx -t && sudo systemctl reload nginx && \
+           ls -la /aisystant/app/static/ | head -5"
