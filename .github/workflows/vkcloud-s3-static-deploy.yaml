@@ -1,4 +1,4 @@
-name: Deploy Static Docs to VK VM
+name: Deploy Static Docs to VK VM!
 on:
   push:
     branches: [ main ]
