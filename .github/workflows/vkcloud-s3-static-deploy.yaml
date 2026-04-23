@@ -80,10 +80,9 @@ jobs:
           "if command -v semanage >/dev/null 2>&1; then \
              sudo semanage fcontext -a -t httpd_sys_content_t '/aisystant/app/static(/.*)?' || \
              sudo semanage fcontext -m -t httpd_sys_content_t '/aisystant/app/static(/.*)?'; \
-           fi; \
-           sudo chcon -R -t httpd_sys_content_t /aisystant/app/static; \
-           if command -v restorecon >/dev/null 2>&1; then \
              sudo restorecon -RF /aisystant/app/static; \
+           else \
+             sudo chcon -R -t httpd_sys_content_t /aisystant/app/static; \
            fi"
     
     - name: Verify and reload nginx
