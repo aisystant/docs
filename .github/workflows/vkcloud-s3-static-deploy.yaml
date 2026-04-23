@@ -69,6 +69,22 @@ jobs:
           -e "ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes" \
           .vitepress/dist/ \
           "$TARGET_USER@$TARGET_HOST:/aisystant/app/static/"
+
+    - name: Fix SELinux context for static files
+      env:
+        TARGET_USER: ${{ secrets.VKCS_USER_DOCS_VM }}
+        TARGET_HOST: ${{ secrets.VKCS_SSH_IP_DOCS_VM }}
+      run: |
+        ssh -i ~/.ssh/id_rsa -o IdentitiesOnly=yes \
+          "$TARGET_USER@$TARGET_HOST" \
+          "if command -v semanage >/dev/null 2>&1; then \
+             sudo semanage fcontext -a -t httpd_sys_content_t '/aisystant/app/static(/.*)?' || \
+             sudo semanage fcontext -m -t httpd_sys_content_t '/aisystant/app/static(/.*)?'; \
+           fi; \
+           sudo chcon -R -t httpd_sys_content_t /aisystant/app/static; \
+           if command -v restorecon >/dev/null 2>&1; then \
+             sudo restorecon -RF /aisystant/app/static; \
+           fi"
     
     - name: Verify and reload nginx
       env:
