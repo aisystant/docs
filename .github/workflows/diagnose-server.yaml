@@ -1,9 +1,9 @@
-name: Diagnose Server State
+name: Patch Caddy iwe route
 on:
   workflow_dispatch:
 
 jobs:
-  diagnose:
+  patch:
     runs-on: ubuntu-latest
     steps:
     - name: Setup SSH
@@ -13,30 +13,64 @@ jobs:
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/nomad_key
         chmod 600 ~/.ssh/nomad_key
-    - name: Check server state
+    - name: Patch Caddy config to route /iwe to docs nginx
       run: |
-        ssh -i ~/.ssh/nomad_key -o StrictHostKeyChecking=no root@45.153.191.91 "
-          echo '=== Docker containers ==='
-          docker ps --format 'table {{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'
-          echo ''
-          echo '=== iwe.html.gz in running container ==='
-          CONTAINER_ID=\$(docker ps -q --filter 'publish=9002' | head -1)
-          if [ -n \"\$CONTAINER_ID\" ]; then
-            docker exec \$CONTAINER_ID ls -la /usr/share/nginx/html/iwe.html* 2>/dev/null || echo 'No iwe.html files found'
-            docker exec \$CONTAINER_ID head -c 100 /usr/share/nginx/html/iwe.html 2>/dev/null || \
-            docker exec \$CONTAINER_ID zcat /usr/share/nginx/html/iwe.html.gz 2>/dev/null | head -c 100 || echo 'Cannot read content'
+        ssh -i ~/.ssh/nomad_key -o StrictHostKeyChecking=no root@45.153.191.91 '
+          set -e
+          CADDYFILE=/etc/caddy/Caddyfile
+
+          echo "=== Current system-school.ru block ==="
+          grep -A 10 "^system-school.ru" "$CADDYFILE"
+
+          # Check if /iwe handle already exists
+          if grep -q "handle /iwe" "$CADDYFILE"; then
+            echo "handle /iwe already present, skipping patch"
           else
-            echo 'No container on port 9002'
+            echo "=== Adding handle /iwe before reverse_proxy in system-school.ru ==="
+            # Insert handle /iwe block before the reverse_proxy line in system-school.ru block
+            python3 - <<EOF
+import re
+
+with open("/etc/caddy/Caddyfile", "r") as f:
+    content = f.read()
+
+# Find system-school.ru block and insert handle /iwe before reverse_proxy
+handle_block = """\thandle /iwe {
+\t\treverse_proxy http://10.10.0.1:9002
+\t}\n\n"""
+
+# Insert before the reverse_proxy line inside system-school.ru block
+# Match the pattern: "system-school.ru {" followed eventually by "\treverse_proxy http://10.10.0.1:8080"
+new_content = content.replace(
+    "\treverse_proxy http://10.10.0.1:8080 {",
+    handle_block + "\treverse_proxy http://10.10.0.1:8080 {"
+)
+
+if new_content == content:
+    # Try without braces (simple reverse_proxy without options)
+    new_content = content.replace(
+        "\treverse_proxy http://10.10.0.1:8080\n",
+        handle_block + "\treverse_proxy http://10.10.0.1:8080\n"
+    )
+
+if new_content == content:
+    print("ERROR: Could not find insertion point")
+    exit(1)
+
+with open("/etc/caddy/Caddyfile", "w") as f:
+    f.write(new_content)
+
+print("Patched successfully")
+EOF
           fi
-          echo ''
-          echo '=== /aisystant/app/static/iwe.html ==='
-          ls -la /aisystant/app/static/iwe.html* 2>/dev/null || echo 'No such files'
-          head -c 100 /aisystant/app/static/iwe.html 2>/dev/null || echo 'Cannot read'
-          echo ''
-          echo '=== Caddy config ==='
-          cat /etc/caddy/Caddyfile 2>/dev/null || cat /etc/caddy/caddy_config 2>/dev/null || find /etc -name 'Caddyfile' 2>/dev/null | head -3
-          echo ''
-          echo '=== curl localhost:9002/iwe ==='
-          curl -sI http://localhost:9002/iwe | head -5
-          curl -s http://localhost:9002/iwe | wc -c
-        "
+
+          echo "=== Validating new config ==="
+          caddy validate --config "$CADDYFILE"
+
+          echo "=== Reloading Caddy ==="
+          caddy reload --config "$CADDYFILE"
+
+          echo "=== Testing /iwe from server ==="
+          curl -sI http://10.10.0.1:9002/iwe | head -5
+          curl -s http://10.10.0.1:9002/iwe | wc -c
+        '
