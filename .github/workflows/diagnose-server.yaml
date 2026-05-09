@@ -17,7 +17,8 @@ jobs:
       run: |
         ssh -i ~/.ssh/nomad_key -o StrictHostKeyChecking=no root@45.153.191.91 bash << 'SSHEOF'
         set -e
-        CADDYFILE=/etc/caddy/Caddyfile
+        CADDYFILE=$(ls /etc/caddy/Caddyfile /etc/caddy/caddy_config 2>/dev/null | head -1)
+        echo "Using Caddyfile: $CADDYFILE"
 
         echo "=== Current system-school.ru block ==="
         grep -A 8 "^system-school.ru" "$CADDYFILE"
