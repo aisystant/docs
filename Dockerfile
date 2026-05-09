@@ -34,9 +34,9 @@ COPY --from=builder --chown=nginx-user:nginx-user /app/.vitepress/dist /usr/shar
 # Copy nginx configuration
 COPY --chown=nginx-user:nginx-user nginx/nginx.conf /etc/nginx/nginx.conf
 
-# Copy include configurations
-#COPY --chown=nginx-user:nginx-user nginx/conf.d/ /etc/nginx/conf.d/
-#COPY --chown=nginx-user:nginx-user nginx/includes.d/ /etc/nginx/includes.d/
+# Remove default nginx conf (listen 80 fails as non-root) and create includes.d dir
+RUN rm -f /etc/nginx/conf.d/default.conf && \
+    mkdir -p /etc/nginx/conf.d /etc/nginx/includes.d
 
 # Create necessary directories and set permissions
 RUN mkdir -p /var/cache/nginx /var/log/nginx /tmp && \
