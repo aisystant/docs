@@ -11,7 +11,7 @@ jobs:
         SSH_PRIVATE_KEY: ${{ secrets.NOMAD_SSH_PRIVATE_KEY }}
       run: |
         mkdir -p ~/.ssh
-        printf '%s' "$SSH_PRIVATE_KEY" > ~/.ssh/nomad_key
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/nomad_key
         chmod 600 ~/.ssh/nomad_key
     - name: Check server state
       run: |
