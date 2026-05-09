@@ -5,17 +5,19 @@ FROM node:18-alpine AS builder
 # Set working directory
 WORKDIR /app
 
-# Install dependencies first (better caching)
-COPY ./docs/package*.json ./
-RUN npm ci
-
-# Copy source and build
+# Copy all source (VitePress root is the docs/ subdir of the repo)
 COPY ./docs .
+
+# VitePress config lives in docs/, not repo root
+WORKDIR /app/docs
+
+# Install dependencies and build
+RUN npm ci
 RUN npm run docs:build
 
 # Compress built files in place to save space
 RUN apk add --no-cache gzip && \
-    cd /app/.vitepress/dist && \
+    cd /app/docs/.vitepress/dist && \
     find . -type f \( -name "*.html" -o -name "*.css" -o -name "*.js" -o -name "*.json" -o -name "*.xml" -o -name "*.svg" -o -name "*.txt" \) -exec gzip -9 -v {} \;
 
 # Production stage with nginx
@@ -29,7 +31,7 @@ RUN addgroup -g 1001 -S nginx-user && \
     adduser -S -D -H -u 1001 -h /var/cache/nginx -s /sbin/nologin -G nginx-user -g nginx-user nginx-user
 
 # Copy built site with compressed files
-COPY --from=builder --chown=nginx-user:nginx-user /app/.vitepress/dist /usr/share/nginx/html
+COPY --from=builder --chown=nginx-user:nginx-user /app/docs/.vitepress/dist /usr/share/nginx/html
 
 # Copy nginx configuration
 COPY --chown=nginx-user:nginx-user nginx/nginx.conf /etc/nginx/nginx.conf
