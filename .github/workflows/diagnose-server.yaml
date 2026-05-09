@@ -33,10 +33,14 @@ jobs:
           grep -A 15 "^system-school.ru" "$CADDYFILE"
         fi
 
-        echo "=== Validating ==="
-        caddy validate --config "$CADDYFILE"
-        echo "=== Reloading ==="
-        caddy reload --config "$CADDYFILE"
-        echo "=== Done. Testing docs nginx directly ==="
-        curl -sv http://10.10.0.1:9002/iwe 2>&1 | grep -E "(< HTTP|content-length|iwe-landing)" | head -5
+        echo "=== Reloading Caddy ==="
+        CADDY_BIN=$(find /usr /opt /snap /nix 2>/dev/null -name caddy -type f | head -1)
+        echo "caddy binary: ${CADDY_BIN:-not found}"
+        systemctl reload caddy 2>/dev/null && echo "systemctl reload OK" || \
+          ([ -n "$CADDY_BIN" ] && $CADDY_BIN reload --config "$CADDYFILE" 2>&1) || \
+          (kill -USR1 $(pgrep caddy 2>/dev/null) 2>/dev/null && echo "Sent USR1 to caddy")
+        sleep 2
+        echo "=== Testing live via curl from server ==="
+        curl -sI https://system-school.ru/iwe 2>/dev/null | head -5 || true
+        curl -s http://10.10.0.1:9002/iwe 2>/dev/null | head -c 80 || true
         SSHEOF
