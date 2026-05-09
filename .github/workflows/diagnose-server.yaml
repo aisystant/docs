@@ -1,0 +1,42 @@
+name: Diagnose Server State
+on:
+  workflow_dispatch:
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup SSH
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.NOMAD_SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        printf '%s' "$SSH_PRIVATE_KEY" > ~/.ssh/nomad_key
+        chmod 600 ~/.ssh/nomad_key
+    - name: Check server state
+      run: |
+        ssh -i ~/.ssh/nomad_key -o StrictHostKeyChecking=no root@45.153.191.91 "
+          echo '=== Docker containers ==='
+          docker ps --format 'table {{.Image}}\t{{.Status}}\t{{.Names}}\t{{.Ports}}'
+          echo ''
+          echo '=== iwe.html.gz in running container ==='
+          CONTAINER_ID=\$(docker ps -q --filter 'publish=9002' | head -1)
+          if [ -n \"\$CONTAINER_ID\" ]; then
+            docker exec \$CONTAINER_ID ls -la /usr/share/nginx/html/iwe.html* 2>/dev/null || echo 'No iwe.html files found'
+            docker exec \$CONTAINER_ID head -c 100 /usr/share/nginx/html/iwe.html 2>/dev/null || \
+            docker exec \$CONTAINER_ID zcat /usr/share/nginx/html/iwe.html.gz 2>/dev/null | head -c 100 || echo 'Cannot read content'
+          else
+            echo 'No container on port 9002'
+          fi
+          echo ''
+          echo '=== /aisystant/app/static/iwe.html ==='
+          ls -la /aisystant/app/static/iwe.html* 2>/dev/null || echo 'No such files'
+          head -c 100 /aisystant/app/static/iwe.html 2>/dev/null || echo 'Cannot read'
+          echo ''
+          echo '=== Caddy config ==='
+          cat /etc/caddy/Caddyfile 2>/dev/null || cat /etc/caddy/caddy_config 2>/dev/null || find /etc -name 'Caddyfile' 2>/dev/null | head -3
+          echo ''
+          echo '=== curl localhost:9002/iwe ==='
+          curl -sI http://localhost:9002/iwe | head -5
+          curl -s http://localhost:9002/iwe | wc -c
+        "
