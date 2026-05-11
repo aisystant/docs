@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Условия использования — IWE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --a:#5B4FE8;--al:#EEF2FF;
+  --t:#0A0A0A;--ts:#6B7280;--tb:#9CA3AF;
+  --b:#E5E7EB;--bg:#FFFFFF;--bgs:#F9FAFB;
+}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--t);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--b);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.fl{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-1px}
+.nav-back{font-size:14px;color:var(--ts);text-decoration:none;transition:color .15s}
+.nav-back:hover{color:var(--t)}
+main{max-width:720px;margin:0 auto;padding:96px 40px 80px}
+h1{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
+.meta{font-size:14px;color:var(--tb);margin-bottom:48px}
+h2{font-size:18px;font-weight:700;margin:40px 0 16px;padding-top:8px;border-top:1px solid var(--b)}
+h2:first-of-type{margin-top:0;border-top:none}
+p{font-size:16px;color:var(--ts);margin-bottom:14px}
+p strong{color:var(--t)}
+ul{margin:8px 0 14px 24px;display:flex;flex-direction:column;gap:6px}
+li{font-size:16px;color:var(--ts)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{text-align:left;padding:10px 12px;background:var(--bgs);color:var(--ts);font-weight:600;border-bottom:2px solid var(--b)}
+td{padding:10px 12px;color:var(--ts);border-bottom:1px solid var(--b)}
+footer{border-top:1px solid var(--b);padding:32px 40px;text-align:center}
+.footer-legal{display:flex;gap:20px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.footer-legal a,.footer-copy{font-size:13px;color:var(--tb);text-decoration:none}
+.footer-legal a:hover{color:var(--ts)}
+@media(max-width:640px){main{padding:80px 24px 60px}nav{padding:0 20px}h1{font-size:28px}footer{padding:24px 20px}.footer-legal{flex-direction:column;align-items:center;gap:12px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/iwe" class="fl">IWE</a>
+  <a href="/iwe" class="nav-back">← На главную</a>
+</nav>
+
+<main>
+  <h1>Условия использования</h1>
+  <p class="meta">Версия 1.0 · 11 мая 2026 г.</p>
+
+  <h2>1. Общие положения</h2>
+  <p>Настоящие Условия регулируют отношения между пользователем и ИП Церенов Цырен Иванович (далее — «Оператор») при использовании сервиса IWE (Intellectual Work Environment) и связанных продуктов: Telegram-бот @aist_me_bot, Knowledge Gateway, MCP-серверы.</p>
+  <p>Используя сервис, пользователь подтверждает согласие с настоящими Условиями. При несогласии — прекратить использование.</p>
+  <p>Условия могут изменяться. О существенных изменениях Оператор уведомляет за 14 дней через бот.</p>
+
+  <h2>2. Описание сервиса</h2>
+  <p>IWE — программная среда для интеллектуального труда, включающая:</p>
+  <ul>
+    <li>Персональное руководство по саморазвитию</li>
+    <li>Цифровой двойник (агрегированный профиль)</li>
+    <li>Интеграции с базами знаний (GitHub, Google Calendar, WakaTime)</li>
+    <li>Доступ к курсам и контенту через подписку</li>
+  </ul>
+  <p>Сервис предоставляется «как есть» (as-is) без гарантий бесперебойной работы.</p>
+
+  <h2>3. Регистрация и идентификация</h2>
+  <p>Регистрация — через Telegram или OAuth-провайдеров (Ory, Google, GitHub). Пользователь обязан предоставлять достоверные данные. Один пользователь — один аккаунт.</p>
+
+  <h2>4. Подписка и платежи</h2>
+  <p>Доступ к платным функциям — через подписку. Платежи через ЮKassa (РФ) или Stripe (международные, в разработке). Оператор не хранит данные банковских карт.</p>
+  <p>Возврат средств — по запросу в течение 14 дней с момента списания (Закон РФ «О защите прав потребителей», ст. 26.1). Запрос — через бот /support или email.</p>
+  <p>Подписка автопродлевается. Отмена — через бот /subscription.</p>
+
+  <h2>5. Допустимое использование</h2>
+  <p><strong>Запрещено:</strong></p>
+  <ul>
+    <li>Использовать сервис для незаконных целей</li>
+    <li>Пытаться получить доступ к данным других пользователей</li>
+    <li>Реверс-инжиниринг, попытки обхода систем безопасности</li>
+    <li>Использовать AI-ответы для введения третьих лиц в заблуждение</li>
+    <li>Спам, флуд (&gt;20 сообщений/мин активирует rate limiting)</li>
+  </ul>
+  <p>Оператор вправе заблокировать аккаунт при нарушении без возврата средств.</p>
+
+  <h2>6. Интеллектуальная собственность</h2>
+  <p>Контент сервиса (методики, курсы, программы развития) — собственность Оператора.</p>
+  <p>Контент пользователя (документы, заметки, репозитории) — собственность пользователя. Оператор использует их только для предоставления сервиса.</p>
+
+  <h2>7. Ограничение ответственности</h2>
+  <p>Оператор не несёт ответственности за решения, принятые на основе AI-ответов, утрату данных при сбоях третьих сторон, косвенные убытки.</p>
+  <p>Совокупная ответственность Оператора ограничена суммой подписки за последние 6 месяцев.</p>
+  <p><strong>AI-ответы сервиса — не медицинские, юридические или финансовые консультации.</strong></p>
+
+  <h2>8. Прекращение</h2>
+  <p>Пользователь может прекратить использование через /unsubscribe + /mydata-delete. Оператор может прекратить сервис с уведомлением за 30 дней и возможностью экспорта данных.</p>
+
+  <h2>9. Применимое право</h2>
+  <p>Договор регулируется правом Российской Федерации. Досудебный порядок разрешения споров — обязательный (претензия по email с ответом в 30 дней).</p>
+
+  <h2>10. Контакты</h2>
+  <p>Email: <a href="mailto:info@system-school.ru" style="color:var(--a)">info@system-school.ru</a><br>
+  Telegram: <a href="https://t.me/tserentserenov" style="color:var(--a)">@tserentserenov</a></p>
+</main>
+
+<footer>
+  <span class="footer-copy">© ИП Церенов Цырен Иванович, 2026</span>
+  <div class="footer-legal">
+    <a href="/iwe/tos">Условия использования</a>
+    <a href="/iwe/privacy">Политика конфиденциальности</a>
+    <a href="/policy">Политика обработки персональных данных</a>
+  </div>
+</footer>
+
+</body>
+</html>

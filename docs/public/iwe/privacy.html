@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Политика конфиденциальности — IWE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --a:#5B4FE8;--al:#EEF2FF;
+  --t:#0A0A0A;--ts:#6B7280;--tb:#9CA3AF;
+  --b:#E5E7EB;--bg:#FFFFFF;--bgs:#F9FAFB;
+}
+body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;color:var(--t);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.7}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--b);padding:0 40px;height:56px;display:flex;align-items:center;justify-content:space-between}
+.fl{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-1px}
+.nav-back{font-size:14px;color:var(--ts);text-decoration:none;transition:color .15s}
+.nav-back:hover{color:var(--t)}
+main{max-width:720px;margin:0 auto;padding:96px 40px 80px}
+h1{font-family:'Syne',sans-serif;font-size:36px;font-weight:800;letter-spacing:-1px;margin-bottom:8px}
+.meta{font-size:14px;color:var(--tb);margin-bottom:48px}
+h2{font-size:18px;font-weight:700;margin:40px 0 16px;padding-top:8px;border-top:1px solid var(--b)}
+h2:first-of-type{margin-top:0;border-top:none}
+h3{font-size:15px;font-weight:600;color:var(--ts);margin:20px 0 10px}
+p{font-size:16px;color:var(--ts);margin-bottom:14px}
+p strong{color:var(--t)}
+ul{margin:8px 0 14px 24px;display:flex;flex-direction:column;gap:6px}
+li{font-size:16px;color:var(--ts)}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+th{text-align:left;padding:10px 12px;background:var(--bgs);color:var(--ts);font-weight:600;border-bottom:2px solid var(--b)}
+td{padding:10px 12px;color:var(--ts);border-bottom:1px solid var(--b)}
+footer{border-top:1px solid var(--b);padding:32px 40px;text-align:center}
+.footer-legal{display:flex;gap:20px;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.footer-legal a,.footer-copy{font-size:13px;color:var(--tb);text-decoration:none}
+.footer-legal a:hover{color:var(--ts)}
+@media(max-width:640px){main{padding:80px 24px 60px}nav{padding:0 20px}h1{font-size:28px}footer{padding:24px 20px}.footer-legal{flex-direction:column;align-items:center;gap:12px}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/iwe" class="fl">IWE</a>
+  <a href="/iwe" class="nav-back">← На главную</a>
+</nav>
+
+<main>
+  <h1>Политика конфиденциальности</h1>
+  <p class="meta">Версия 1.0 · 11 мая 2026 г.</p>
+
+  <h2>1. Кто обрабатывает данные</h2>
+  <p><strong>Оператор:</strong> ИП Церенов Цырен Иванович.<br>
+  <strong>Контакт по защите данных (DPO):</strong> <a href="mailto:info@system-school.ru" style="color:var(--a)">info@system-school.ru</a><br>
+  <strong>Юрисдикция:</strong> Россия (152-ФЗ). Для пользователей ЕС — стремимся к соответствию GDPR baseline.</p>
+
+  <h2>2. Какие данные мы собираем</h2>
+
+  <h3>2.1. Идентификаторы (обязательно для работы сервиса)</h3>
+  <table>
+    <tr><th>Данные</th><th>Источник</th><th>Назначение</th></tr>
+    <tr><td><code style="font-family:monospace;font-size:13px;background:var(--al);padding:2px 6px;border-radius:4px">telegram_id</code>, имя</td><td>Telegram</td><td>Идентификация в боте</td></tr>
+    <tr><td><code style="font-family:monospace;font-size:13px;background:var(--al);padding:2px 6px;border-radius:4px">ory_id</code> (UUID)</td><td>Ory OAuth</td><td>Кросс-платформенная идентификация</td></tr>
+    <tr><td>Email (опционально)</td><td>Регистрация подписки</td><td>Чеки, связь по подписке</td></tr>
+  </table>
+
+  <h3>2.2. Данные интеграций (только с явного согласия — OAuth)</h3>
+  <table>
+    <tr><th>Интеграция</th><th>Что собираем</th><th>Хранение</th></tr>
+    <tr><td>GitHub OAuth</td><td>username, выбранные репозитории</td><td>До отзыва (/disconnect)</td></tr>
+    <tr><td>Google Calendar</td><td>События календаря (для Day Open)</td><td>До отзыва</td></tr>
+    <tr><td>WakaTime</td><td>Время кодирования по проектам</td><td>До отзыва</td></tr>
+    <tr><td>Активность в IWE</td><td>Что и когда делал</td><td>90 дней</td></tr>
+  </table>
+
+  <h3>2.3. Контент пользователя</h3>
+  <table>
+    <tr><th>Данные</th><th>Назначение</th><th>Хранение</th></tr>
+    <tr><td>Сообщения боту</td><td>Q&amp;A с консультантом</td><td>30 дней</td></tr>
+    <tr><td>Загруженные документы</td><td>Индексация для поиска</td><td>До удаления</td></tr>
+    <tr><td>Личные репозитории</td><td>База знаний для руководства</td><td>До отзыва доступа</td></tr>
+  </table>
+
+  <h3>2.4. Платёжные данные</h3>
+  <p>Реквизиты карт <strong>не хранятся</strong> у нас — платежи через ЮKassa (PCI DSS у них). Мы храним: номер транзакции, сумму, статус — 7 лет (требование НК РФ).</p>
+
+  <h2>3. Согласие на обработку через AI</h2>
+  <p><strong>Claude Anthropic:</strong> сообщения обрабатываются через Claude API. Anthropic работает с нами по DPA и не использует данные для обучения моделей.</p>
+  <p><strong>OpenAI Embeddings:</strong> при загрузке личных документов через /scaffold — только с явного согласия при первом использовании. Без согласия /scaffold недоступен.</p>
+
+  <h2>4. Где данные хранятся</h2>
+  <table>
+    <tr><th>Слой</th><th>Сервис</th><th>Регион</th><th>Шифрование</th></tr>
+    <tr><td>PostgreSQL</td><td>Neon</td><td>EU</td><td>AES-256 at-rest</td></tr>
+    <tr><td>MCP-серверы</td><td>Cloudflare Workers</td><td>Edge global</td><td>TLS in-transit</td></tr>
+    <tr><td>Бот</td><td>Railway</td><td>EU</td><td>TLS in-transit</td></tr>
+    <tr><td>Платежи</td><td>ЮKassa</td><td>RU</td><td>PCI DSS у ЮKassa</td></tr>
+  </table>
+
+  <h2>5. Кому передаём данные</h2>
+  <p><strong>Передаём:</strong> Anthropic (Claude API, с DPA), OpenAI (эмбеддинги, только с согласия), ЮKassa (платежи), налоговые органы РФ (по требованию).</p>
+  <p><strong>Не передаём</strong> третьим лицам в рекламных или маркетинговых целях.</p>
+
+  <h2>6. Ваши права</h2>
+  <ul>
+    <li><strong>/mydata</strong> — посмотреть свои данные (JSON)</li>
+    <li><strong>/profile-edit</strong> — исправить данные</li>
+    <li><strong>/mydata-delete</strong> — удалить аккаунт (до 30 дней)</li>
+    <li><strong>/integrations</strong> — отозвать согласие на интеграции</li>
+    <li><strong>/unsubscribe</strong> — отменить подписку</li>
+  </ul>
+  <p>Жалобы: <a href="mailto:info@system-school.ru" style="color:var(--a)">info@system-school.ru</a> или Роскомнадзор (для РФ).</p>
+
+  <h2>7. Сроки хранения</h2>
+  <table>
+    <tr><th>Категория</th><th>Срок</th></tr>
+    <tr><td>Идентификаторы (telegram_id, ory_id)</td><td>До удаления аккаунта</td></tr>
+    <tr><td>История сессий</td><td>30 дней</td></tr>
+    <tr><td>Активность пользователя</td><td>90 дней</td></tr>
+    <tr><td>OAuth токены</td><td>До отзыва</td></tr>
+    <tr><td>Платежи</td><td>7 лет (НК РФ ст. 23)</td></tr>
+    <tr><td>Логи безопасности</td><td>18 месяцев</td></tr>
+  </table>
+
+  <h2>8. Безопасность</h2>
+  <p>TLS in-transit (HTTPS), AES-256 at-rest (Neon), Row-Level Security в БД, JWT-верификация на каждом запросе, rate limiting, ежедневный аудит безопасности.</p>
+
+  <h2>9. Несовершеннолетние</h2>
+  <p>Сервис не предназначен для лиц младше 16 лет. При обнаружении — напишите нам, мы удалим данные.</p>
+
+  <h2>10. Изменения политики</h2>
+  <p>При существенных изменениях — уведомление в боте за 14 дней.</p>
+
+  <h2>11. Контакты</h2>
+  <p>Email: <a href="mailto:info@system-school.ru" style="color:var(--a)">info@system-school.ru</a><br>
+  Telegram: <a href="https://t.me/tserentserenov" style="color:var(--a)">@tserentserenov</a></p>
+</main>
+
+<footer>
+  <span class="footer-copy">© ИП Церенов Цырен Иванович, 2026</span>
+  <div class="footer-legal">
+    <a href="/iwe/tos">Условия использования</a>
+    <a href="/iwe/privacy">Политика конфиденциальности</a>
+    <a href="/policy">Политика обработки персональных данных</a>
+  </div>
+</footer>
+
+</body>
+</html>
