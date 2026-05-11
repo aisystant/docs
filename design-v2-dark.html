@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IWE — Вариант 2: Dark Tech</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#08081A;--bg2:#0F0F2A;--bg3:#13132E;
+  --glass:rgba(255,255,255,.05);--gline:rgba(255,255,255,.09);
+  --t:#F1F0FF;--ts:rgba(241,240,255,.6);--tb:rgba(241,240,255,.35);
+  --a1:#7C3AED;--a2:#2563EB;--ag:linear-gradient(135deg,#7C3AED,#2563EB);
+  --green:#10B981;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--t);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+
+/* MESH BG */
+body::before{
+  content:'';position:fixed;top:0;left:0;right:0;bottom:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 80% 50% at 20% -10%,rgba(124,58,237,.18) 0%,transparent 60%),
+             radial-gradient(ellipse 60% 40% at 80% 100%,rgba(37,99,235,.15) 0%,transparent 60%);
+}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;padding:0 48px;display:flex;align-items:center;justify-content:space-between;background:rgba(8,8,26,.85);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom:1px solid var(--gline)}
+.nav-logo{font-size:20px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-.5px;background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:14px;color:var(--ts);text-decoration:none;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--t)}
+.nav-cta{background:var(--ag);color:#fff;padding:9px 22px;border-radius:10px;font-size:14px;font-weight:600;text-decoration:none;position:relative;overflow:hidden;transition:opacity .2s}
+.nav-cta:hover{opacity:.88}
+
+/* HERO */
+.hero{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:100px 48px 80px}
+.hero-inner{max-width:820px;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--gline);background:var(--glass);backdrop-filter:blur(12px);padding:7px 18px;border-radius:100px;font-size:13px;font-weight:500;color:var(--ts);margin-bottom:36px}
+.hero-badge span{width:7px;height:7px;background:var(--green);border-radius:50%;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.4)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+.hero h1{font-size:clamp(42px,7vw,84px);font-weight:800;line-height:1.03;letter-spacing:-3px;margin-bottom:28px}
+.hero h1 .grad{background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{font-size:20px;color:var(--ts);max-width:540px;margin:0 auto 44px;line-height:1.65}
+.btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-grad{background:var(--ag);color:#fff;padding:15px 32px;border-radius:12px;font-size:16px;font-weight:600;text-decoration:none;box-shadow:0 4px 24px rgba(124,58,237,.4);transition:transform .2s,box-shadow .2s}
+.btn-grad:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(124,58,237,.55)}
+.btn-ghost{background:var(--glass);color:var(--t);padding:15px 32px;border-radius:12px;font-size:16px;font-weight:600;text-decoration:none;border:1px solid var(--gline);backdrop-filter:blur(8px);transition:border-color .2s,background .2s}
+.btn-ghost:hover{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.08)}
+
+/* SECTION */
+section{position:relative;z-index:1;padding:96px 48px}
+.ctr{max-width:1100px;margin:0 auto}
+.lbl{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1.2px;color:var(--a1);margin-bottom:14px;-webkit-background-clip:unset}
+.stitle{font-size:clamp(28px,4vw,48px);font-weight:800;letter-spacing:-2px;line-height:1.1;margin-bottom:16px}
+.sdesc{font-size:18px;color:var(--ts);max-width:520px;line-height:1.65;margin-bottom:56px}
+
+/* MODES */
+.modes{background:var(--bg2)}
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.mcard{padding:32px;border-radius:20px;background:var(--glass);border:1px solid var(--gline);backdrop-filter:blur(16px);transition:transform .25s,border-color .25s,background .25s;position:relative;overflow:hidden}
+.mcard::before{content:'';position:absolute;inset:0;background:var(--ag);opacity:0;transition:opacity .25s;z-index:0}
+.mcard:hover{transform:translateY(-4px);border-color:rgba(124,58,237,.5);background:rgba(124,58,237,.08)}
+.mcard > *{position:relative;z-index:1}
+.micon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:24px;margin-bottom:20px;border:1px solid var(--gline);background:rgba(255,255,255,.04)}
+.mplatform{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ts);margin-bottom:8px}
+.mcard h3{font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:16px;color:var(--t)}
+.mfeats{list-style:none;display:flex;flex-direction:column;gap:9px}
+.mfeats li{font-size:14px;color:var(--ts);display:flex;align-items:flex-start;gap:8px}
+.mfeats li::before{content:'✓';background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:800;flex-shrink:0}
+.mbadge{display:inline-block;margin-top:24px;font-size:12px;font-weight:600;padding:5px 14px;border-radius:100px;border:1px solid var(--gline);color:var(--ts)}
+.mbadge.hot{background:var(--ag);border:none;color:#fff}
+
+/* TERMINAL / STEPS */
+.steps-bg{background:var(--bg3)}
+.terminal{background:#0D0D1F;border:1px solid var(--gline);border-radius:16px;overflow:hidden;margin-top:48px}
+.term-bar{padding:14px 20px;background:rgba(255,255,255,.04);border-bottom:1px solid var(--gline);display:flex;align-items:center;gap:8px}
+.dot{width:12px;height:12px;border-radius:50%}
+.dot.r{background:#FF5F57}.dot.y{background:#FEBC2E}.dot.g{background:#28C840}
+.term-body{padding:28px 32px;display:flex;flex-direction:column;gap:20px}
+.cmd-block{display:flex;flex-direction:column;gap:6px}
+.cmd-label{font-size:12px;color:var(--tb);font-weight:600;text-transform:uppercase;letter-spacing:.8px}
+.cmd-line{font-family:'JetBrains Mono',monospace;font-size:15px;display:flex;align-items:center;gap:12px}
+.prompt{color:var(--a1);font-weight:500}
+.cmd{color:#E2E8F0}
+.cmd .kw{color:#7C3AED}
+.cmd .str{color:var(--green)}
+.cmd .arg{color:#60A5FA}
+.cmd-out{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--ts);margin-left:28px;border-left:2px solid var(--gline);padding-left:16px}
+
+/* SGRID */
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px}
+.snum{font-size:12px;font-weight:700;background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+.step h3{font-size:20px;font-weight:700;letter-spacing:-.5px;margin-bottom:10px}
+.step p{font-size:15px;color:var(--ts);line-height:1.65}
+code{font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,.06);border:1px solid var(--gline);padding:2px 8px;border-radius:6px;font-size:13px;color:#A78BFA}
+
+/* FORMATS */
+.fmts{background:var(--bg2)}
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fcard{padding:44px;border-radius:24px;border:1px solid var(--gline);background:var(--glass);backdrop-filter:blur(16px)}
+.fcard.group{background:rgba(124,58,237,.15);border-color:rgba(124,58,237,.4)}
+.fcard h3{font-size:26px;font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+.fcard p{font-size:16px;color:var(--ts);line-height:1.65;margin-bottom:28px}
+.fprice{font-size:36px;font-weight:800;letter-spacing:-1.5px;margin-bottom:28px}
+.fcard.group .fprice{background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.btn-g{display:inline-block;background:var(--ag);color:#fff;padding:13px 26px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:opacity .2s;box-shadow:0 4px 16px rgba(124,58,237,.35)}
+.btn-g:hover{opacity:.88}
+.btn-ol{display:inline-block;border:1px solid var(--gline);color:var(--t);padding:13px 26px;border-radius:10px;font-size:15px;font-weight:600;text-decoration:none;transition:border-color .2s,background .2s}
+.btn-ol:hover{border-color:rgba(255,255,255,.3);background:var(--glass)}
+
+/* FOOTER */
+footer{position:relative;z-index:1;padding:40px 48px;border-top:1px solid var(--gline);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.flogo{font-size:18px;font-weight:800;text-decoration:none;background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.flinks{display:flex;gap:24px}
+.flinks a{font-size:14px;color:var(--ts);text-decoration:none;transition:color .2s}
+.flinks a:hover{color:var(--t)}
+.fcopy{font-size:13px;color:var(--tb)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">IWE</a>
+  <ul class="nav-links">
+    <li><a href="#">О продукте</a></li>
+    <li><a href="#">Как начать</a></li>
+    <li><a href="#">Форматы</a></li>
+    <li><a href="#">Сообщество</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Попробовать →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span></span> Работает прямо сейчас — 1 200+ участников
+    </div>
+    <h1>AI для каждого,<br>у кого есть <span class="grad">дело</span></h1>
+    <p>Не просто чатбот — экзоскелет для ума. Помнит ваши проекты, формализует знания и помогает думать яснее.</p>
+    <div class="btns">
+      <a href="#" class="btn-grad">Начать бесплатно</a>
+      <a href="#" class="btn-ghost">Посмотреть демо</a>
+    </div>
+  </div>
+</section>
+
+<section class="modes">
+  <div class="ctr">
+    <div class="lbl">Три способа доступа</div>
+    <h2 class="stitle">Выберите свой формат</h2>
+    <p class="sdesc">От быстрого старта в Telegram до полного рабочего окружения в VS Code.</p>
+    <div class="mgrid">
+      <div class="mcard">
+        <div class="micon">💬</div>
+        <div class="mplatform">Telegram</div>
+        <h3>Бот</h3>
+        <ul class="mfeats">
+          <li>Чат с ИИ-наставником</li>
+          <li>База знаний МИМ</li>
+          <li>Быстрый старт за 1 минуту</li>
+          <li>Мобильный доступ</li>
+        </ul>
+        <span class="mbadge">Бесплатно</span>
+      </div>
+      <div class="mcard">
+        <div class="micon">🌐</div>
+        <div class="mplatform">Браузер</div>
+        <h3>Claude.ai</h3>
+        <ul class="mfeats">
+          <li>Всё из бота</li>
+          <li>Частичная память сессий</li>
+          <li>Работа с проектами</li>
+          <li>Без установки ПО</li>
+        </ul>
+        <span class="mbadge">Подписка Claude.ai</span>
+      </div>
+      <div class="mcard">
+        <div class="micon">⚡</div>
+        <div class="mplatform">VS Code</div>
+        <h3>Полный IWE</h3>
+        <ul class="mfeats">
+          <li>Полный функционал</li>
+          <li>Автономный агент</li>
+          <li>Локальная установка</li>
+          <li>Максимальная приватность</li>
+        </ul>
+        <span class="mbadge hot">Рекомендуем</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steps-bg">
+  <div class="ctr">
+    <div class="lbl">Быстрый старт</div>
+    <h2 class="stitle">Начните за 5 минут</h2>
+    <p class="sdesc">Найдите бот, привяжите аккаунт, начните работу.</p>
+    <div class="sgrid">
+      <div class="step">
+        <div class="snum">Шаг 01</div>
+        <h3>Найдите бот</h3>
+        <p>Откройте Telegram, найдите <code>@aist_me_bot</code> и нажмите /start. Аккаунт создаётся автоматически.</p>
+      </div>
+      <div class="step">
+        <div class="snum">Шаг 02</div>
+        <h3>Привяжите аккаунт</h3>
+        <p>Введите <code>/link</code> — откроется полный доступ к памяти и персональному руководству.</p>
+      </div>
+      <div class="step">
+        <div class="snum">Шаг 03</div>
+        <h3>Начните работу</h3>
+        <p>Команда <code>/learn</code> — и вы в марафоне. IWE запомнит всё с первого дня.</p>
+      </div>
+    </div>
+    <div class="terminal">
+      <div class="term-bar">
+        <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+        <span style="font-size:13px;color:var(--tb);margin-left:8px;font-family:'JetBrains Mono',monospace">Telegram — @aist_me_bot</span>
+      </div>
+      <div class="term-body">
+        <div class="cmd-block">
+          <div class="cmd-label">Шаг 1 — Старт</div>
+          <div class="cmd-line"><span class="prompt">you@telegram:~$</span><span class="cmd"><span class="kw">/start</span></span></div>
+          <div class="cmd-out">Добро пожаловать в IWE — ваш интеллектуальный экзоскелет.<br>Введите /link для привязки аккаунта.</div>
+        </div>
+        <div class="cmd-block">
+          <div class="cmd-label">Шаг 2 — Привязка</div>
+          <div class="cmd-line"><span class="prompt">you@telegram:~$</span><span class="cmd"><span class="kw">/link</span></span></div>
+          <div class="cmd-out">✅ Аккаунт привязан. Доступ к памяти активирован.</div>
+        </div>
+        <div class="cmd-block">
+          <div class="cmd-label">Шаг 3 — Начало</div>
+          <div class="cmd-line"><span class="prompt">you@telegram:~$</span><span class="cmd"><span class="kw">/learn</span></span></div>
+          <div class="cmd-out">🚀 Марафон запущен. IWE помнит всё с первого дня.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fmts">
+  <div class="ctr">
+    <div class="lbl">Форматы участия</div>
+    <h2 class="stitle">Как вы хотите развиваться?</h2>
+    <p class="sdesc">Самостоятельно в своём темпе или с группой и наставником.</p>
+    <div class="fgrid">
+      <div class="fcard">
+        <h3>Самостоятельно</h3>
+        <p>Персональное руководство, доступ к базе знаний и видеоматериалам. Учитесь в удобном темпе с поддержкой ИИ-наставника.</p>
+        <div class="fprice">5 000 ₽</div>
+        <a href="#" class="btn-ol">Попробовать →</a>
+      </div>
+      <div class="fcard group">
+        <h3>Группа с наставником</h3>
+        <p>Еженедельные встречи, групповой чат и личная обратная связь. Для тех, кто хочет расти в разы быстрее.</p>
+        <div class="fprice">По запросу</div>
+        <a href="#" class="btn-g">Узнать подробнее →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <a href="#" class="flogo">IWE</a>
+  <div class="flinks">
+    <a href="#">О нас</a>
+    <a href="#">Документация</a>
+    <a href="#">Telegram</a>
+    <a href="#">info@system-school.ru</a>
+  </div>
+  <span class="fcopy">© 2026 Мастерская инженеров-менеджеров</span>
+</footer>
+
+</body>
+</html>

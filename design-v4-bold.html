@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IWE — Вариант 4: Bold Landing</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#FFFFFF;--bg2:#F5F5F5;
+  --t:#0A0A0A;--ts:#525252;--tb:#A3A3A3;
+  --b:#E5E5E5;
+  --a:#5B4FE8;--al:#F0EEFF;
+  --dark:#0A0A0A;--dark2:#141414;
+  --yellow:#FACC15;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,sans-serif;color:var(--t);background:var(--bg);-webkit-font-smoothing:antialiased;line-height:1.5;overflow-x:hidden}
+h1,h2,h3,.syne{font-family:'Syne','Inter',sans-serif}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:60px;padding:0 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,.95);backdrop-filter:blur(20px);border-bottom:1px solid var(--b)}
+.nav-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-1px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{font-size:14px;color:var(--ts);text-decoration:none;font-weight:500;transition:color .15s}
+.nav-links a:hover{color:var(--t)}
+.nav-cta{background:var(--a);color:#fff;padding:9px 20px;border-radius:8px;font-size:14px;font-weight:600;text-decoration:none;transition:background .2s}
+.nav-cta:hover{background:#4B3FD8}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:80px 0 0}
+.hero-left{padding:0 0 60px 48px}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.eyebrow-line{width:32px;height:2px;background:var(--a)}
+.eyebrow-text{font-size:13px;font-weight:600;color:var(--a);text-transform:uppercase;letter-spacing:1px}
+.hero h1{font-size:clamp(48px,6vw,88px);font-weight:800;line-height:.97;letter-spacing:-4px;margin-bottom:36px;word-break:break-word}
+.hero h1 .accent{color:var(--a)}
+.hero h1 .outline{-webkit-text-stroke:2px var(--t);color:transparent}
+.hero-sub{font-size:17px;color:var(--ts);line-height:1.7;max-width:400px;margin-bottom:44px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn-solid{background:var(--t);color:#fff;padding:16px 32px;border-radius:8px;font-size:16px;font-weight:600;text-decoration:none;font-family:'Inter',sans-serif;transition:background .2s;letter-spacing:-.2px}
+.btn-solid:hover{background:#222}
+.btn-link{display:inline-flex;align-items:center;gap:8px;color:var(--ts);font-size:16px;font-weight:500;text-decoration:none;padding:16px 0;transition:color .2s}
+.btn-link:hover{color:var(--t)}
+.btn-link::after{content:'→';transition:transform .2s}
+.btn-link:hover::after{transform:translateX(4px)}
+.hero-right{background:var(--dark);height:100%;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:60px 40px;position:relative;overflow:hidden}
+.hero-right::before{content:'IWE';font-family:'Syne',sans-serif;font-size:280px;font-weight:800;color:rgba(255,255,255,.03);position:absolute;right:-40px;top:50%;transform:translateY(-50%);line-height:1;pointer-events:none;letter-spacing:-10px}
+.stat-list{display:flex;flex-direction:column;gap:0;position:relative;z-index:1}
+.stat-item{padding:28px 0;border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+.stat-item:last-child{border-bottom:none}
+.stat-num{font-family:'Syne',sans-serif;font-size:52px;font-weight:800;color:#fff;line-height:1;letter-spacing:-2px}
+.stat-num .unit{font-size:24px;font-weight:500;color:rgba(255,255,255,.4)}
+.stat-label{font-size:15px;color:rgba(255,255,255,.55);max-width:180px;line-height:1.4;text-align:right}
+
+/* DIVIDER */
+.divider{height:2px;background:var(--t)}
+
+/* SECTION */
+section.light{padding:96px 48px;background:var(--bg)}
+section.dark{padding:96px 48px;background:var(--dark);color:#fff}
+section.gray{padding:96px 48px;background:var(--bg2)}
+.ctr{max-width:1100px;margin:0 auto}
+.lbl{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--a);margin-bottom:16px}
+section.dark .lbl{color:#8B7FFF}
+.stitle{font-family:'Syne',sans-serif;font-size:clamp(28px,4.5vw,52px);font-weight:800;letter-spacing:-2px;line-height:1.05;margin-bottom:16px}
+.sdesc{font-size:18px;color:var(--ts);max-width:520px;line-height:1.65;margin-bottom:56px}
+section.dark .sdesc{color:rgba(255,255,255,.6)}
+
+/* MODES — BIG CARDS */
+.mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--b);border:2px solid var(--b);border-radius:12px;overflow:hidden}
+.mcard{padding:40px;background:var(--bg);transition:background .2s}
+.mcard:hover{background:#F9F8FF}
+.mnum{font-family:'Syne',sans-serif;font-size:64px;font-weight:800;color:var(--bg2);line-height:1;margin-bottom:20px;letter-spacing:-3px}
+.mcard h3{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;letter-spacing:-.5px;margin-bottom:4px}
+.mplatform{font-size:12px;font-weight:600;color:var(--tb);margin-bottom:20px}
+.mfeats{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:28px}
+.mfeats li{font-size:14px;color:var(--ts);display:flex;align-items:flex-start;gap:8px}
+.mfeats li::before{content:'↗';color:var(--a);font-size:12px;flex-shrink:0;margin-top:2px}
+.mbadge{display:inline-block;font-size:12px;font-weight:700;padding:6px 14px;border-radius:6px;letter-spacing:.3px}
+.mbadge.free{background:var(--al);color:var(--a)}
+.mbadge.paid{background:var(--bg2);color:var(--ts)}
+.mbadge.hot{background:var(--a);color:#fff}
+
+/* STEPS  */
+.steps-inner{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.steps-visual{display:flex;flex-direction:column;gap:0}
+.sv-item{display:flex;align-items:flex-start;gap:20px;padding:28px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.sv-item:last-child{border-bottom:none}
+.sv-num{font-family:'Syne',sans-serif;font-size:48px;font-weight:800;color:rgba(255,255,255,.12);line-height:1;flex-shrink:0;width:56px}
+.sv-content h3{font-size:18px;font-weight:700;color:#fff;margin-bottom:6px;letter-spacing:-.3px}
+.sv-content p{font-size:14px;color:rgba(255,255,255,.55);line-height:1.65}
+code{font-family:'JetBrains Mono',monospace;background:rgba(255,255,255,.08);padding:2px 8px;border-radius:4px;font-size:13px;color:#A78BFA}
+.steps-cta{background:#fff;border-radius:16px;padding:40px;display:flex;flex-direction:column;gap:20px;position:sticky;top:80px}
+.steps-cta h3{font-family:'Syne',sans-serif;font-size:26px;font-weight:800;color:var(--t);letter-spacing:-1px}
+.steps-cta p{font-size:15px;color:var(--ts);line-height:1.65}
+.steps-cta .big-btn{display:block;background:var(--a);color:#fff;padding:18px 24px;border-radius:10px;font-size:16px;font-weight:700;text-decoration:none;text-align:center;transition:background .2s;font-family:'Syne',sans-serif;letter-spacing:-.3px}
+.steps-cta .big-btn:hover{background:#4B3FD8}
+.steps-cta .note{font-size:13px;color:var(--tb);text-align:center}
+
+/* FORMATS */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.fcard{padding:48px;border-radius:16px;border:2px solid var(--b);position:relative;overflow:hidden}
+.fcard.group{background:var(--t);border-color:var(--t)}
+.fcard h3{font-family:'Syne',sans-serif;font-size:28px;font-weight:800;letter-spacing:-1px;margin-bottom:12px}
+.fcard.group h3{color:#fff}
+.fcard p{font-size:16px;color:var(--ts);line-height:1.65;margin-bottom:32px}
+.fcard.group p{color:rgba(255,255,255,.6)}
+.fprice{font-family:'Syne',sans-serif;font-size:44px;font-weight:800;letter-spacing:-2px;margin-bottom:32px}
+.fcard.group .fprice{color:var(--yellow)}
+.btn-y{display:inline-block;background:var(--yellow);color:var(--t);padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:opacity .2s;font-family:'Syne',sans-serif}
+.btn-y:hover{opacity:.9}
+.btn-dark{display:inline-block;background:var(--t);color:#fff;padding:14px 28px;border-radius:8px;font-size:15px;font-weight:700;text-decoration:none;transition:background .2s;font-family:'Syne',sans-serif}
+.btn-dark:hover{background:#222}
+.fcard-bg-num{position:absolute;right:-20px;bottom:-20px;font-family:'Syne',sans-serif;font-size:180px;font-weight:800;line-height:1;opacity:.04;letter-spacing:-8px;pointer-events:none;color:var(--a)}
+.fcard.group .fcard-bg-num{color:#fff;opacity:.06}
+
+/* CTA SECTION */
+.cta-section{background:var(--a);padding:96px 48px;text-align:center}
+.cta-section h2{font-family:'Syne',sans-serif;font-size:clamp(36px,5vw,72px);font-weight:800;color:#fff;letter-spacing:-3px;line-height:1.05;margin-bottom:20px}
+.cta-section p{font-size:18px;color:rgba(255,255,255,.75);margin-bottom:44px}
+.btn-cta{display:inline-block;background:#fff;color:var(--a);padding:18px 40px;border-radius:10px;font-size:18px;font-weight:700;text-decoration:none;font-family:'Syne',sans-serif;letter-spacing:-.5px;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.15)}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
+/* FOOTER */
+footer{padding:32px 48px;border-top:2px solid var(--t);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.flogo{font-family:'Syne',sans-serif;font-size:20px;font-weight:800;color:var(--t);text-decoration:none;letter-spacing:-1px}
+.flinks{display:flex;gap:24px}
+.flinks a{font-size:13px;color:var(--ts);text-decoration:none;transition:color .15s;font-weight:500}
+.flinks a:hover{color:var(--t)}
+.fcopy{font-size:13px;color:var(--tb)}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">IWE</a>
+  <ul class="nav-links">
+    <li><a href="#">О продукте</a></li>
+    <li><a href="#">Как начать</a></li>
+    <li><a href="#">Форматы</a></li>
+    <li><a href="#">Сообщество</a></li>
+  </ul>
+  <a href="#" class="nav-cta">Попробовать бесплатно</a>
+</nav>
+
+<section class="hero" style="padding-bottom:0">
+  <div class="hero-left">
+    <div class="hero-eyebrow">
+      <div class="eyebrow-line"></div>
+      <span class="eyebrow-text">Intellectual Work Environment</span>
+    </div>
+    <h1>Экзо-<br>скелет<br>для <span class="outline">ума.</span></h1>
+    <p class="hero-sub">AI для каждого, у кого есть дело. Помнит ваши проекты, формализует знания, помогает думать системно.</p>
+    <div class="btns">
+      <a href="#" class="btn-solid">Начать бесплатно</a>
+      <a href="#" class="btn-link">Как это работает</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-list">
+      <div class="stat-item">
+        <div class="stat-num">1<span class="unit"> мин</span></div>
+        <div class="stat-label">до первого результата в Telegram</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3<span class="unit"> режима</span></div>
+        <div class="stat-label">Telegram · Браузер · VS Code</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">∞<span class="unit"></span></div>
+        <div class="stat-label">память о ваших проектах и знаниях</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5<span class="unit"> 000₽</span></div>
+        <div class="stat-label">самостоятельный формат с ИИ-наставником</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="light">
+  <div class="ctr">
+    <div class="lbl">Три способа доступа</div>
+    <h2 class="stitle">Выберите свой формат</h2>
+    <p class="sdesc">От быстрого старта за 1 минуту до полного рабочего окружения с автономным агентом.</p>
+    <div class="mgrid">
+      <div class="mcard">
+        <div class="mnum">01</div>
+        <h3>Бот</h3>
+        <div class="mplatform">Telegram</div>
+        <ul class="mfeats">
+          <li>Чат с ИИ-наставником</li>
+          <li>База знаний МИМ</li>
+          <li>Мобильный доступ</li>
+          <li>Старт за 1 минуту</li>
+        </ul>
+        <span class="mbadge free">Бесплатно</span>
+      </div>
+      <div class="mcard">
+        <div class="mnum">02</div>
+        <h3>Браузер</h3>
+        <div class="mplatform">Claude.ai</div>
+        <ul class="mfeats">
+          <li>Всё из бота</li>
+          <li>Частичная память</li>
+          <li>Работа с проектами</li>
+          <li>Без установки ПО</li>
+        </ul>
+        <span class="mbadge paid">Подписка Claude.ai</span>
+      </div>
+      <div class="mcard">
+        <div class="mnum">03</div>
+        <h3>VS Code</h3>
+        <div class="mplatform">Полный IWE</div>
+        <ul class="mfeats">
+          <li>Полный функционал</li>
+          <li>Автономный агент</li>
+          <li>Локальная установка</li>
+          <li>Максимальная приватность</li>
+        </ul>
+        <span class="mbadge hot">Рекомендуем</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dark">
+  <div class="ctr">
+    <div class="steps-inner">
+      <div>
+        <div class="lbl">Быстрый старт</div>
+        <h2 class="stitle">Начните за 5 минут</h2>
+        <p class="sdesc">Самый простой путь — через Telegram-бота.</p>
+        <div class="steps-visual">
+          <div class="sv-item">
+            <div class="sv-num">1</div>
+            <div class="sv-content">
+              <h3>Найдите бот</h3>
+              <p>Откройте Telegram и найдите <code>@aist_me_bot</code>. Нажмите /start.</p>
+            </div>
+          </div>
+          <div class="sv-item">
+            <div class="sv-num">2</div>
+            <div class="sv-content">
+              <h3>Привяжите аккаунт</h3>
+              <p>Команда <code>/link</code> — откроется полный доступ к памяти и персональному руководству.</p>
+            </div>
+          </div>
+          <div class="sv-item">
+            <div class="sv-num">3</div>
+            <div class="sv-content">
+              <h3>Начните марафон</h3>
+              <p>Команда <code>/learn</code> — IWE запомнит всё с первого дня.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="steps-cta">
+          <h3>Начните прямо сейчас</h3>
+          <p>Зайдите в Telegram и напишите боту. Первый результат — через 5 минут.</p>
+          <a href="#" class="big-btn">Открыть @aist_me_bot →</a>
+          <p class="note">Или подключите через браузер и VS Code</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="gray">
+  <div class="ctr">
+    <div class="lbl">Форматы участия</div>
+    <h2 class="stitle">Как вы хотите развиваться?</h2>
+    <p class="sdesc">Самостоятельно в своём темпе или с группой и наставником.</p>
+    <div class="fgrid">
+      <div class="fcard">
+        <span class="fcard-bg-num">01</span>
+        <h3>Самостоятельно</h3>
+        <p>Персональное руководство, доступ к базе знаний и видео. Учитесь в удобном темпе с поддержкой ИИ-наставника.</p>
+        <div class="fprice">5 000 ₽</div>
+        <a href="#" class="btn-dark">Попробовать →</a>
+      </div>
+      <div class="fcard group">
+        <span class="fcard-bg-num">02</span>
+        <h3>С наставником</h3>
+        <p>Еженедельные встречи, групповой чат и личная обратная связь. Для тех, кто хочет расти в разы быстрее.</p>
+        <div class="fprice">По запросу</div>
+        <a href="#" class="btn-y">Узнать подробнее →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-section">
+  <h2>Готовы начать?</h2>
+  <p>Присоединяйтесь к тем, кто уже думает эффективнее с IWE.</p>
+  <a href="#" class="btn-cta">Начать бесплатно →</a>
+</div>
+
+<footer>
+  <a href="#" class="flogo">IWE</a>
+  <div class="flinks">
+    <a href="#">О нас</a>
+    <a href="#">Документация</a>
+    <a href="#">Telegram</a>
+    <a href="#">info@system-school.ru</a>
+  </div>
+  <span class="fcopy">© 2026 Мастерская инженеров-менеджеров</span>
+</footer>
+
+</body>
+</html>
