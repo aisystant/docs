@@ -1,0 +1,64 @@
+name: Patch Caddy iwe* routes
+on:
+  workflow_dispatch:
+
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Setup SSH
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.NOMAD_SSH_PRIVATE_KEY }}
+      run: |
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/nomad_key
+        chmod 600 ~/.ssh/nomad_key
+
+    - name: Patch handle /iwe → handle /iwe* in Caddyfile
+      run: |
+        ssh -i ~/.ssh/nomad_key -o StrictHostKeyChecking=no root@45.153.191.91 '
+          set -e
+          CADDYFILE=$(find /etc/caddy /etc /opt -name "Caddyfile" 2>/dev/null | head -1)
+          echo "=== Caddyfile: $CADDYFILE ==="
+
+          echo "=== Current iwe block ==="
+          grep -A 4 "handle /iwe" "$CADDYFILE" || echo "(not found)"
+
+          if grep -q "handle /iwe\b[^*]" "$CADDYFILE"; then
+            echo "=== Patching handle /iwe → handle /iwe* ==="
+            python3 - <<EOF
+import re
+
+with open("$CADDYFILE", "r") as f:
+    content = f.read()
+
+patched = re.sub(r"handle /iwe\b(?!\*)", "handle /iwe*", content)
+
+if patched == content:
+    print("ERROR: pattern not found, check manually")
+    exit(1)
+
+with open("$CADDYFILE", "w") as f:
+    f.write(patched)
+
+print("Patched OK")
+EOF
+          else
+            echo "handle /iwe* already present or pattern not found"
+            grep -A 4 "handle /iwe" "$CADDYFILE" || true
+          fi
+
+          echo "=== Resulting iwe block ==="
+          grep -A 4 "handle /iwe" "$CADDYFILE"
+
+          echo "=== Reloading Caddy ==="
+          systemctl reload caddy 2>/dev/null && echo "systemctl reload OK" || \
+            (CADDY_BIN=$(find /usr /opt /snap 2>/dev/null -name caddy -type f | head -1); \
+             [ -n "$CADDY_BIN" ] && $CADDY_BIN reload --config "$CADDYFILE" 2>&1) || \
+            (kill -USR1 $(pgrep caddy 2>/dev/null) && echo "Sent USR1 to caddy")
+
+          sleep 2
+          echo "=== Smoke test ==="
+          curl -sI https://system-school.ru/iwe/privacy 2>/dev/null | head -3 || \
+            curl -s http://10.10.0.1:9002/iwe/privacy 2>/dev/null | head -c 100 || true
+        '
