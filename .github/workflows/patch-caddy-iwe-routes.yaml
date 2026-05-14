@@ -14,24 +14,31 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/nomad_key
         chmod 600 ~/.ssh/nomad_key
 
-    - name: Find Caddy config and patch
+    - name: Patch caddy_config and reload
       run: |
         ssh -i ~/.ssh/nomad_key -o StrictHostKeyChecking=no root@45.153.191.91 << 'SSHEOF'
           set -e
+          CADDYFILE=/etc/caddy/caddy_config
 
-          echo "=== Caddy process info ==="
-          ps aux | grep caddy | grep -v grep || echo "caddy not in ps"
-          systemctl status caddy --no-pager 2>/dev/null | head -10 || echo "no systemctl status"
+          echo "=== Before ==="
+          grep "handle /iwe" "$CADDYFILE" || echo "(not found)"
 
-          echo "=== Finding Caddyfile ==="
-          find / -name "Caddyfile" 2>/dev/null | grep -v proc || echo "no Caddyfile found"
-          find / -name "*.caddy" 2>/dev/null | grep -v proc | head -5 || true
+          if grep -qE "handle /iwe[^*]" "$CADDYFILE"; then
+            cp "$CADDYFILE" "${CADDYFILE}.bak2"
+            sed -i 's|handle /iwe {|handle /iwe* {|g' "$CADDYFILE"
+            echo "=== After ==="
+            grep "handle /iwe" "$CADDYFILE"
+          else
+            echo "Already patched or pattern not found — showing full iwe section:"
+            grep -B2 -A8 "handle /iwe" "$CADDYFILE" || true
+          fi
 
-          echo "=== Caddy config dir ==="
-          ls /etc/caddy/ 2>/dev/null || echo "/etc/caddy not found"
-          ls /var/lib/caddy/ 2>/dev/null || echo "/var/lib/caddy not found"
-          ls /home/caddy/ 2>/dev/null || echo "/home/caddy not found"
+          echo "=== Reloading Caddy ==="
+          systemctl reload caddy && echo "reload OK"
 
-          echo "=== Caddy API config ==="
-          curl -s http://localhost:2019/config/ 2>/dev/null | python3 -m json.tool 2>/dev/null | grep -A5 "system-school" | head -30 || echo "no caddy API"
+          sleep 2
+          echo "=== Smoke test: /iwe/privacy ==="
+          curl -sI https://system-school.ru/iwe/privacy 2>/dev/null | head -4 || true
+          echo "=== Smoke test: /iwe (must still work) ==="
+          curl -sI https://system-school.ru/iwe 2>/dev/null | head -2 || true
         SSHEOF
