@@ -14,32 +14,24 @@ jobs:
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/nomad_key
         chmod 600 ~/.ssh/nomad_key
 
-    - name: Patch Caddyfile and reload
+    - name: Find Caddy config and patch
       run: |
         ssh -i ~/.ssh/nomad_key -o StrictHostKeyChecking=no root@45.153.191.91 << 'SSHEOF'
           set -e
-          CADDYFILE=$(find /etc/caddy /etc /opt -name "Caddyfile" 2>/dev/null | head -1)
-          echo "Caddyfile: $CADDYFILE"
 
-          echo "=== Before ==="
-          grep "handle /iwe" "$CADDYFILE" || echo "(not found)"
+          echo "=== Caddy process info ==="
+          ps aux | grep caddy | grep -v grep || echo "caddy not in ps"
+          systemctl status caddy --no-pager 2>/dev/null | head -10 || echo "no systemctl status"
 
-          if grep -qE "handle /iwe[^*]" "$CADDYFILE"; then
-            sed -i 's|handle /iwe {|handle /iwe* {|g' "$CADDYFILE"
-            echo "=== After ==="
-            grep "handle /iwe" "$CADDYFILE"
-          else
-            echo "Already patched or pattern not found — showing full block:"
-            grep -A 5 "system-school.ru" "$CADDYFILE" || true
-          fi
+          echo "=== Finding Caddyfile ==="
+          find / -name "Caddyfile" 2>/dev/null | grep -v proc || echo "no Caddyfile found"
+          find / -name "*.caddy" 2>/dev/null | grep -v proc | head -5 || true
 
-          echo "=== Reloading Caddy ==="
-          CADDY_BIN=$(find /usr /opt /snap 2>/dev/null -name caddy -type f | head -1)
-          systemctl reload caddy 2>/dev/null && echo "systemctl reload OK" || \
-            ([ -n "$CADDY_BIN" ] && "$CADDY_BIN" reload --config "$CADDYFILE" 2>&1) || \
-            (kill -USR1 $(pgrep caddy 2>/dev/null) && echo "Sent USR1 to caddy")
+          echo "=== Caddy config dir ==="
+          ls /etc/caddy/ 2>/dev/null || echo "/etc/caddy not found"
+          ls /var/lib/caddy/ 2>/dev/null || echo "/var/lib/caddy not found"
+          ls /home/caddy/ 2>/dev/null || echo "/home/caddy not found"
 
-          sleep 2
-          echo "=== Smoke test ==="
-          curl -sI https://system-school.ru/iwe/privacy 2>/dev/null | head -3 || true
+          echo "=== Caddy API config ==="
+          curl -s http://localhost:2019/config/ 2>/dev/null | python3 -m json.tool 2>/dev/null | grep -A5 "system-school" | head -30 || echo "no caddy API"
         SSHEOF
