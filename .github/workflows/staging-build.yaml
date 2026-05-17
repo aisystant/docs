@@ -9,9 +9,13 @@ on:
     branches: [staging-v4]
   pull_request:
     branches: [main]
+    # Subagent-review FIX (В2): добавлены .vitepress/** и package*.json,
+    # чтобы изменения конфига билда тоже триггерили проверку и не падали скрытно.
     paths:
       - 'docs/ru/personal-new-staging/**'
       - 'docs/ru/personal-new/**'
+      - 'docs/.vitepress/**'
+      - 'docs/package*.json'
       - '.github/workflows/staging-build.yaml'
   workflow_dispatch:
 
@@ -65,7 +69,17 @@ jobs:
             });
 
   check-pilot-approved:
-    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    # Subagent-review FIX (Б2): gate применяется ТОЛЬКО к PR `staging-v4 → main`
+    # И не падает на `[hotfix]` коммитах (см. правило в README staging).
+    # Без этого фикса gate блокировал любой PR в main, даже не из staging-v4.
+    if: >
+      github.event_name == 'pull_request' &&
+      github.base_ref == 'main' &&
+      github.head_ref == 'staging-v4' &&
+      !contains(github.event.pull_request.title, '[hotfix]')
+    # Subagent-review FIX (В6): зависим от build-staging — если билд упал,
+    # label сам по себе не должен пускать broken-PR в main.
+    needs: build-staging
     runs-on: ubuntu-latest
     steps:
       - name: Require pilot-approved label
@@ -77,7 +91,10 @@ jobs:
               core.setFailed(
                 'PR не имеет label `pilot-approved`. ' +
                 'Gate: merge staging-v4 → main только после пилотного approval. ' +
-                'См. docs/ru/personal-new-staging/README.md.'
+                'См. docs/ru/personal-new-staging/README.md.\n\n' +
+                'ВАЖНО: без настроенной branch protection в GitHub Settings ' +
+                'этот check можно проигнорировать. Sprint 2 = архитектурный фундамент, ' +
+                'полное enforcement требует branch protection rule.'
               );
             } else {
               core.info('✅ pilot-approved label present — merge разрешён.');
