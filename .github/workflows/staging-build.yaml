@@ -1,0 +1,84 @@
+name: Staging Build (WP-322 Ф2)
+
+# Сборка VitePress на push в ветку staging-v4 или при PR в main из staging-v4.
+# Не деплоит — артефакт upload для скачивания и локального preview.
+# Производственный deploy включается отдельно (см. docs/ru/personal-new-staging/README.md).
+
+on:
+  push:
+    branches: [staging-v4]
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/ru/personal-new-staging/**'
+      - 'docs/ru/personal-new/**'
+      - '.github/workflows/staging-build.yaml'
+  workflow_dispatch:
+
+jobs:
+  build-staging:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        working-directory: docs
+        run: npm install
+
+      - name: Build VitePress
+        working-directory: docs
+        run: npm run docs:build
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitepress-build-${{ github.sha }}
+          path: docs/.vitepress/dist
+          retention-days: 14
+
+      - name: Comment on PR (if PR)
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const sha = context.sha.substring(0, 7);
+            const artifactName = `vitepress-build-${context.sha}`;
+            const body = `## 📦 Staging build PASS\n\n` +
+              `**Commit:** \`${sha}\`\n` +
+              `**Артефакт:** [${artifactName}](${context.payload.pull_request.html_url}/checks)\n\n` +
+              `Скачайте артефакт, распакуйте, запустите \`npx serve dist\` для локального preview.\n\n` +
+              `**Gate merge → main:** требуется label \`pilot-approved\` (см. \`docs/ru/personal-new-staging/README.md\`).`;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              body: body,
+            });
+
+  check-pilot-approved:
+    if: github.event_name == 'pull_request' && github.base_ref == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Require pilot-approved label
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const labels = context.payload.pull_request.labels.map(l => l.name);
+            if (!labels.includes('pilot-approved')) {
+              core.setFailed(
+                'PR не имеет label `pilot-approved`. ' +
+                'Gate: merge staging-v4 → main только после пилотного approval. ' +
+                'См. docs/ru/personal-new-staging/README.md.'
+              );
+            } else {
+              core.info('✅ pilot-approved label present — merge разрешён.');
+            }
