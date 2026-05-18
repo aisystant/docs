@@ -100,12 +100,82 @@ def parse_ontology_table(path: Path) -> Dict[str, Dict]:
     return terms
 
 
+# Синонимы: guide-имя → ontology-имя
+SYNONYMS = {
+    "Степени мастерства": "Степень мастерства",
+    "Эшелонированная оборона": "Эшелонированный досуг",
+    "Шкала состояния": "Шкала состояний 0–5",
+    "Характеристика личности": "Характеристика созидателя",
+    "Киберхарактеристики": "Киберхарактеристика",
+    "6 результатов": "6 результатов программы ЛР",
+    "4 природы среды": "4 природы IWE",
+    "Фаза мировоззрения": "Фаза мировоззренческой дуги",
+    "Узкое место метода": "Узкое место",
+    "Уровень охвата (калибр личности)": "Калибр личности",
+    "Три потока созидателя": "Три потока личной жизни",
+    "Три потока": "Три потока личной жизни",
+    "Активный досуг": "Активное восстановление",
+    "Активное восстановление": "Активное восстановление",
+    "Неудовлетворенность": "Неудовлетворённость",
+    "Неудовлетворённость": "Неудовлетворённость",
+    "Ценность": "Ценность как принцип",
+    "Ценность как принцип": "Ценность как принцип",
+    "Чтение для информации": "Чтение для информации",
+    "Роль Ученик": "Ученик",
+    "Роль Интеллектуал": "Интеллектуал",
+    "Роль Профессионал": "Профессионал",
+    "Роль Исследователь": "Исследователь",
+    "Роль Просветитель": "Просветитель",
+    "4 природы интеллектуальной среды": "4 природы IWE",
+    "4 природы среды": "4 природы IWE",
+    "Быстрое и медленное мышление": "Спектр формальности",
+    "Столп восстановления": "Гигиенический минимум",
+    "Стиль жизни": "Стиль жизни ученика",
+    "Терминальный профиль": "6 результатов программы ЛР",
+    "Траектория развития": "Траектория",
+    "Современный уровень области (SoTA)": "SoTA (как статус)",
+    "Сверхзадача": "Сверхцель",
+    "Роль": "Роль в деятельности",
+    "Узкое место": "Bottleneck",
+    "Bottleneck": "Bottleneck",
+    "Спектр формальности мышления": "Спектр формальности",
+    "Медленное мышление": "Медленное мышление (S2)",
+    "Быстрое мышление": "Быстрое мышление (S1)",
+    "Мемы": "Мем",
+    "Киберчеловек": "Киберличность",
+    "Застревание на ступени": "Застревание",
+    "Жизненная стратегия": "Стратегия",
+    "Допуск к методам": "Допуск к сложности",
+    "Двойная проверка": "Двойной gate",
+    "SoTA": "SoTA (как статус)",
+    "4 характеристики личности": "Сбалансированность личности",
+    "4 характеристики": "Сбалансированность личности",
+    "Все пять ролей": "Пять ролей",
+    "Неудовлетворённости": "Неудовлетворённость",
+    "Неудовлетворенности": "Неудовлетворённость",
+    "Пассивный досуг": "Пассивный отдых",
+    "Пассивный отдых": "Пассивный отдых",
+    "PD.METHOD.021": "",
+    "Красная зона": "Красная зона",
+    "Материальный объект ≠ описание (4D-онтология)": "Материальный объект ≠ описание",
+    "Вопрос-якорь «описание чего?»": "Вопрос-якорь",
+}
+
+
+def normalize_concept(raw: str) -> str:
+    """Убирает cross-reference суффиксы: ' — см. §...', ' — Guide ...', ' — PD....', ' — §...'"""
+    clean = re.sub(r"\s*—\s*(см\.|Guide|PD\.|§).*$", "", raw).strip()
+    # Also strip parenthetical refs
+    clean = re.sub(r"\s*\(см\.[^)]*\)$", "", clean).strip()
+    return SYNONYMS.get(clean, clean)
+
+
 def _parse_yaml_list(val) -> List[str]:
     """Парсит YAML-список или строку в список строк."""
     if isinstance(val, list):
-        return [str(v).strip() for v in val if v]
+        return [normalize_concept(str(v)) for v in val if v]
     elif isinstance(val, str):
-        return [val.strip()]
+        return [normalize_concept(val)]
     return []
 
 
@@ -121,30 +191,36 @@ def extract_frontmatter_concepts(text: str) -> Set[str]:
         return concepts
     fm = m.group(1)
 
+    def _add(raw: str):
+        raw = raw.strip().strip('"').strip("'")
+        if raw:
+            concepts.add(normalize_concept(raw))
+
     # introduces
     intro = re.search(r"^introduces:\s*(.+)$", fm, re.M)
     if intro:
         raw = intro.group(1).strip()
         if raw.startswith("[") and raw.endswith("]"):
-            items = [x.strip().strip('"').strip("'") for x in raw[1:-1].split(",")]
-            concepts.update(i for i in items if i)
+            for x in raw[1:-1].split(","):
+                _add(x)
         else:
-            concepts.add(raw)
+            _add(raw)
 
     # uses
     uses = re.search(r"^uses:\s*(.+)$", fm, re.M)
     if uses:
         raw = uses.group(1).strip()
         if raw.startswith("[") and raw.endswith("]"):
-            items = [x.strip().strip('"').strip("'") for x in raw[1:-1].split(",")]
-            concepts.update(i for i in items if i)
+            for x in raw[1:-1].split(","):
+                _add(x)
         elif raw:
             # Многострочный список с -
             if re.search(r"^\s*- ", raw, re.M):
                 items = re.findall(r"^\s*- (.+)$", raw, re.M)
-                concepts.update(i.strip() for i in items if i.strip())
+                for i in items:
+                    _add(i)
             else:
-                concepts.add(raw)
+                _add(raw)
 
     # pack_refs
     pack_match = re.search(r"^pack_refs:\s*\n((?:\s+- .+\n?)+)", fm, re.M)
@@ -153,7 +229,7 @@ def extract_frontmatter_concepts(text: str) -> Set[str]:
         for line in block.splitlines():
             concept_m = re.search(r"concept:\s*(.+)", line)
             if concept_m:
-                concepts.add(concept_m.group(1).strip().strip('"').strip("'"))
+                _add(concept_m.group(1))
 
     return concepts
 
@@ -286,8 +362,12 @@ def main():
 
         all_guide_concepts.update(concepts)
 
+        ontology_keys_normalized = {k.lower().replace("ё", "е"): k for k in ontology}
         for c in concepts:
-            if c not in ontology:
+            if not c:
+                continue
+            c_norm = c.lower().replace("ё", "е")
+            if c_norm not in ontology_keys_normalized:
                 drift.append((guide_path, c))
 
         # Обновить pack_refs только если frontmatter распарсился
