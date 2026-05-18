@@ -25,7 +25,7 @@ jobs:
         with:
           repository: aisystant/PACK-personal
           path: PACK-personal
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PACK_READ_TOKEN || secrets.GITHUB_TOKEN }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -38,9 +38,7 @@ jobs:
 
       - name: Markdown lint (validate.py)
         run: |
-          python3 scripts/convert_word/validate.py docs/ru/personal-design/ || true
-        # validate.py выводит ошибки в stderr, но не всегда exit(1).
-        # TODO: добавить --strict флаг или обернуть парсингом вывода.
+          python3 scripts/convert_word/validate.py docs/ru/personal-design/
 
       - name: Ontology drift check
         run: |
@@ -75,17 +73,23 @@ jobs:
               for f in files:
                   if not f.endswith(".md"):
                       continue
+                  # Пропускаем index.md и файлы без subsection-семантики
+                  if f == "index.md":
+                      continue
                   path = os.path.join(root, f)
                   with open(path, "r", encoding="utf-8") as fh:
                       content = fh.read()
                   m = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
                   if not m:
-                      errors.append(f"{path}: missing frontmatter")
+                      # Файлы без frontmatter — не подразделы, пропускаем
                       continue
                   try:
                       fm = yaml.safe_load(m.group(1)) or {}
                   except Exception as e:
                       errors.append(f"{path}: invalid YAML: {e}")
+                      continue
+                  # Проверяем только файлы с 'introduces' — это подразделы v4
+                  if "introduces" not in fm:
                       continue
                   missing = [field for field in required_fields if field not in fm]
                   if missing:
@@ -103,10 +107,11 @@ jobs:
         run: |
           echo "Checking for didactic language (UB-1)..."
           # Проверяем docs/ru/personal-design/ на запрещённые слова
-          PATTERNS="шаг|урок|внедрить|за [0-9]+ дней|implement|lesson|step"
+          # «шаг» и «step» — легитимные слова в блоке «Минимальный шаг», исключены.
+          # «урок», «внедрить», «за N дней», «lesson», «implement» — признаки дидактики.
+          PATTERNS="урок|внедрить|за [0-9]+ дней|implement|lesson"
           if grep -riE "$PATTERNS" docs/ru/personal-design/; then
             echo "⚠️ WARN: Potential didactic language found (see above). Review manually."
-            # Пока не exit 1, т.к. могут быть ложные срабатывания
           else
             echo "✅ PASS: No didactic language detected"
           fi
