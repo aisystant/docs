@@ -48,21 +48,25 @@ fi
 echo "[2/4] Checking ontology drift..."
 STAGED_GUIDES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^docs/ru/personal-design/.+\.md$' || true)
 if [[ -n "$STAGED_GUIDES" && -f "${PACK_PERSONAL}" ]]; then
-    TMPDIR=$(mktemp -d)
-    echo "$STAGED_GUIDES" | while IFS= read -r f; do
-        mkdir -p "$TMPDIR/$(dirname "$f")"
-        cp "$REPO_ROOT/$f" "$TMPDIR/$f"
-    done
-    if python3 "${REPO_ROOT}/scripts/sync-guide-to-ontology.py" \
-        --check \
-        --ontology "${PACK_PERSONAL}" \
-        --guides-dir "$TMPDIR/docs/ru/personal-design" 2>/dev/null; then
-        echo "✅ PASS: No ontology drift in staged files"
+    if ! python3 -c "import frontmatter" 2>/dev/null; then
+        echo "⚠️ SKIP: python-frontmatter не установлен — запустите: pip install python-frontmatter"
     else
-        echo "❌ FAIL: Ontology drift detected in staged files"
-        HAS_ERROR=1
+        STAGE_DIR=$(mktemp -d)
+        echo "$STAGED_GUIDES" | while IFS= read -r f; do
+            mkdir -p "$STAGE_DIR/$(dirname "$f")"
+            cp "$REPO_ROOT/$f" "$STAGE_DIR/$f"
+        done
+        if python3 "${REPO_ROOT}/scripts/sync-guide-to-ontology.py" \
+            --check \
+            --ontology "${PACK_PERSONAL}" \
+            --guides-dir "$STAGE_DIR/docs/ru/personal-design" 2>/dev/null; then
+            echo "✅ PASS: No ontology drift in staged files"
+        else
+            echo "❌ FAIL: Ontology drift detected in staged files"
+            HAS_ERROR=1
+        fi
+        rm -rf "$STAGE_DIR"
     fi
-    rm -rf "$TMPDIR"
 elif [[ ! -f "${PACK_PERSONAL}" ]]; then
     echo "⚠️ SKIP: PACK-personal/ontology.md not found at ${PACK_PERSONAL}"
     echo "    (drift check skipped — run manually if needed)"
