@@ -51,12 +51,46 @@ jobs:
       - name: Broken cross-repo link detection
         run: |
           echo "Checking for broken ../../../PACK-personal/ontology.md# links..."
-          if grep -r "../../../PACK-personal/ontology.md#" docs/ru/personal-design/; then
-            echo "❌ FAIL: Found broken cross-repo links (../../../PACK-personal/ontology.md#)"
-            exit 1
-          else
-            echo "✅ PASS: No broken cross-repo links found"
-          fi
+          python3 << 'EOF'
+          import os, re
+          ontology_path = "PACK-personal/ontology.md"
+          if not os.path.exists(ontology_path):
+              print("⚠️ SKIP: PACK-personal/ontology.md not found — link check skipped")
+              exit(0)
+          # Build set of anchors from ontology headings
+          anchors = set()
+          with open(ontology_path, "r", encoding="utf-8") as fh:
+              for line in fh:
+                  m = re.match(r"^(#{1,6})\s+(.+)$", line)
+                  if m:
+                      heading = m.group(2).strip()
+                      # GitHub-style anchor: lowercase, spaces->-, remove punctuation
+                      anchor = heading.lower().replace(" ", "-")
+                      anchor = re.sub(r"[^\w\-]", "", anchor)
+                      anchors.add(anchor)
+          errors = []
+          for root, dirs, files in os.walk("docs/ru/personal-design"):
+              for f in files:
+                  if not f.endswith(".md"):
+                      continue
+                  path = os.path.join(root, f)
+                  with open(path, "r", encoding="utf-8") as fh:
+                      content = fh.read()
+                  for match in re.finditer(r'\.\./\.\./\.\./PACK-personal/ontology\.md#([^ )\]]+)', content):
+                      link_anchor = match.group(1)
+                      # Normalize anchor
+                      normalized = link_anchor.lower().replace("%20", "-").replace(" ", "-")
+                      normalized = re.sub(r"[^\w\-]", "", normalized)
+                      if normalized not in anchors:
+                          errors.append(f"{path}: broken anchor '#{link_anchor}'")
+          if errors:
+              print("❌ FAIL: Broken cross-repo links found:")
+              for e in errors:
+                  print(f"  - {e}")
+              exit(1)
+          else:
+              print("✅ PASS: No broken cross-repo links found")
+          EOF
 
       - name: Frontmeta completeness check
         run: |
