@@ -95,7 +95,7 @@ fi
 
 # --- 4. v4-lint porter on staged subsection files ---
 echo "[4/4] Checking v4-lint porter..."
-STAGED_SUBSECTIONS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^docs/ru/personal-design/.+\.md$' | grep -v 'index\.md$' || true)
+STAGED_SUBSECTIONS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^docs/ru/personal-design/.+\.md$' | grep -v -E '(index|README|SUMMARY|CHANGELOG)\.md$' || true)
 
 if [[ -n "$STAGED_SUBSECTIONS" && -f "$V4_LINT" ]]; then
     echo "v4-lint: проверяю staged подразделы..."
