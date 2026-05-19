@@ -5,7 +5,7 @@
 #   ln -sf ../../scripts/pre-commit-docs.sh .git/hooks/pre-commit
 #
 # Проверяет:
-#   1. Битые cross-repo ссылки (../../../PACK-personal/ontology.md#)
+#   1. Битые cross-repo ссылки (../../../PACK-personal/ontology.md#) — только staged .md
 #   2. Ontology drift (если PACK-personal доступен рядом)
 #   3. Didactic language (UB-1) — warning only
 #   4. v4-lint porter — frontmatter подразделов (через DS-principles-curriculum/tools/v4-lint.py)
@@ -21,30 +21,53 @@ HAS_ERROR=0
 
 echo "=== Docs pre-commit validation ==="
 
-# --- 1. Broken cross-repo links ---
+# --- 1. Broken cross-repo links (только staged .md файлы) ---
 echo "[1/4] Checking broken cross-repo links..."
-if grep -r "../../../PACK-personal/ontology.md#" "${DOCS_DIR}" 2>/dev/null; then
-    echo "❌ FAIL: Found broken cross-repo links (../../../PACK-personal/ontology.md#)"
-    HAS_ERROR=1
+STAGED_MD=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
+
+if [ -n "$STAGED_MD" ]; then
+    BAD_LINKS=""
+    while IFS= read -r f; do
+        if grep -q "../../../PACK-personal/ontology.md#" "$f" 2>/dev/null; then
+            BAD_LINKS="${BAD_LINKS}${f}\n"
+        fi
+    done <<< "$STAGED_MD"
+
+    if [ -n "$BAD_LINKS" ]; then
+        echo "❌ FAIL: Found broken cross-repo links in staged files:"
+        printf '%b' "$BAD_LINKS"
+        HAS_ERROR=1
+    else
+        echo "✅ PASS: No broken cross-repo links in staged files"
+    fi
 else
-    echo "✅ PASS: No broken cross-repo links"
+    echo "✅ PASS: No staged markdown files to check"
 fi
 
-# --- 2. Ontology drift (if PACK-personal is available) ---
+# --- 2. Ontology drift (only staged guide files) ---
 echo "[2/4] Checking ontology drift..."
-if [[ -f "${PACK_PERSONAL}" ]]; then
+STAGED_GUIDES=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^docs/ru/personal-design/.+\.md$' || true)
+if [[ -n "$STAGED_GUIDES" && -f "${PACK_PERSONAL}" ]]; then
+    TMPDIR=$(mktemp -d)
+    echo "$STAGED_GUIDES" | while IFS= read -r f; do
+        mkdir -p "$TMPDIR/$(dirname "$f")"
+        cp "$REPO_ROOT/$f" "$TMPDIR/$f"
+    done
     if python3 "${REPO_ROOT}/scripts/sync-guide-to-ontology.py" \
         --check \
         --ontology "${PACK_PERSONAL}" \
-        --guides "${DOCS_DIR}" 2>/dev/null; then
-        echo "✅ PASS: No ontology drift"
+        --guides-dir "$TMPDIR/docs/ru/personal-design" 2>/dev/null; then
+        echo "✅ PASS: No ontology drift in staged files"
     else
-        echo "❌ FAIL: Ontology drift detected"
+        echo "❌ FAIL: Ontology drift detected in staged files"
         HAS_ERROR=1
     fi
-else
+    rm -rf "$TMPDIR"
+elif [[ ! -f "${PACK_PERSONAL}" ]]; then
     echo "⚠️ SKIP: PACK-personal/ontology.md not found at ${PACK_PERSONAL}"
     echo "    (drift check skipped — run manually if needed)"
+else
+    echo "✅ PASS: No staged guide files to check"
 fi
 
 # --- 3. Didactic language (warning only) ---
