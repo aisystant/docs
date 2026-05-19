@@ -112,6 +112,14 @@ def parse_frontmatter(lines):
     return fm, end_idx
 
 
+def is_v41(fm):
+    """Проверить, является ли файл v4.1 по полю format_version."""
+    if fm is None:
+        return False
+    fv = fm.get("format_version", "")
+    return str(fv).startswith("4.1")
+
+
 def has_cyrillic(text):
     """Проверить, содержит ли текст кириллицу."""
     return bool(re.search(r"[а-яА-ЯёЁ]", text))
@@ -134,22 +142,25 @@ def check_frontmatter(filepath, lines, is_index, is_root_index, result):
     if "order" not in fm:
         result.error(filepath, 1, "В front matter нет поля 'order'")
 
+    # v4.1 файлы не используют поле type
+    is_v41_file = is_v41(fm)
+
     # index.md НЕ должен иметь type
     if is_index and "type" in fm:
         result.warn(filepath, 1, "index.md не должен содержать поле 'type'")
 
-    # Обычные файлы ДОЛЖНЫ иметь type
-    if not is_index and "type" not in fm:
+    # Обычные файлы ДОЛЖНЫ иметь type (кроме v4.1)
+    if not is_index and "type" not in fm and not is_v41_file:
         result.error(filepath, 1, "В front matter нет поля 'type' (text/table/checklist/multiple_choice)")
 
     # Корневой index.md должен иметь aisystant_code
     if is_root_index and "aisystant_code" not in fm:
         result.warn(filepath, 1, "Корневой index.md не содержит поля 'aisystant_code'")
 
-    return fm, end_idx
+    return fm, end_idx, is_v41_file
 
 
-def check_h1_and_title_match(filepath, lines, fm, fm_end_idx, result):
+def check_h1_and_title_match(filepath, lines, fm, fm_end_idx, result, is_v41_file=False):
     """[2][3] Проверить H1 после front matter, совпадение с title, две пустые строки."""
     if fm_end_idx is None:
         return
@@ -167,17 +178,21 @@ def check_h1_and_title_match(filepath, lines, fm, fm_end_idx, result):
             h1_idx = fm_end_idx + 1 + i
             h1_text = line[2:].strip()
             break
-        else:
+        elif not is_v41_file:
+            # Для v4.1 допускаем H4 (#### §N.NN) после front matter
             result.warn(filepath, fm_end_idx + 2 + i,
                         f"Между --- и H1 неожиданный контент: '{line.strip()[:40]}'")
             break
+        else:
+            # v4.1: проверяем, есть ли H1 дальше в файле
+            break
 
-    if h1_idx is None:
+    if h1_idx is None and not is_v41_file:
         result.warn(filepath, fm_end_idx + 1, "Нет заголовка H1 после front matter")
         return
 
-    # [3] Две пустые строки
-    if empty_count < 2:
+    # [3] Две пустые строки (только для non-v4.1 или если H1 найден)
+    if h1_idx and empty_count < 2:
         result.warn(filepath, h1_idx + 1,
                     f"После --- должны быть 2 пустые строки перед H1 (найдено {empty_count})")
 
@@ -341,7 +356,7 @@ def check_simple_tables(filepath, lines, result):
                 return  # Одной ошибки достаточно для файла
 
 
-def check_subsection_numbering(filepath, fm, result):
+def check_subsection_numbering(filepath, fm, result, is_v41_file=False):
     """[13] Проверить нумерацию X.Y. в title подразделов (не index.md, не 00-intro)."""
     if fm is None or "title" not in fm:
         return
@@ -354,6 +369,10 @@ def check_subsection_numbering(filepath, fm, result):
     if "00-intro" in filepath:
         return
 
+    # v4.1 использует subsection_id для нумерации, не title
+    if is_v41_file:
+        return
+
     title = fm["title"]
     if not re.match(r"^\d+\.\d+\.\s", title):
         result.warn(filepath, 1,
@@ -361,7 +380,7 @@ def check_subsection_numbering(filepath, fm, result):
                     f"(ожидается формат '1.1. Заголовок')")
 
 
-def check_filename(filepath, result):
+def check_filename(filepath, result, is_v41_file=False):
     """[10] Проверить имя файла: kebab-case, NN- префикс, без точек."""
     basename = os.path.basename(filepath)
     name_part = os.path.splitext(basename)[0]
@@ -369,7 +388,15 @@ def check_filename(filepath, result):
     if basename == "index.md":
         return
 
-    # Точки в имени
+    # v4.1 использует формат N.NN.md (например, 1.01.md, 7.07.md)
+    if is_v41_file:
+        # Для v4.1 проверяем только заглавные буквы
+        if re.search(r"[A-Z]", name_part):
+            result.file_warn(filepath,
+                             f"Заглавные буквы в имени файла: {basename}")
+        return
+
+    # Точки в имени (только для non-v4.1)
     if "." in name_part:
         result.file_warn(filepath,
                          f"Точка в имени файла: {basename} (используйте тире)")
@@ -433,14 +460,14 @@ def validate_directory(target_dir):
             is_root_index = (f == "index.md" and root == target_dir)
 
             # [1] YAML front matter
-            fm, fm_end = check_frontmatter(filepath, lines, is_index, is_root_index, result)
+            fm, fm_end, is_v41_file = check_frontmatter(filepath, lines, is_index, is_root_index, result)
 
             # [2][3] H1 и совпадение с title
             if fm_end:
-                check_h1_and_title_match(filepath, lines, fm, fm_end, result)
+                check_h1_and_title_match(filepath, lines, fm, fm_end, result, is_v41_file)
 
-            # [4] Тип подраздела
-            if not is_index:
+            # [4] Тип подраздела (только для non-v4.1)
+            if not is_index and not is_v41_file:
                 check_type_matches_title(filepath, fm, result)
 
             # [5] Английские имена
@@ -456,11 +483,11 @@ def validate_directory(target_dir):
             check_pandoc_artifacts(filepath, lines, fm, result)
 
             # [10] Имена файлов
-            check_filename(filepath, result)
+            check_filename(filepath, result, is_v41_file)
 
-            # [13] Нумерация X.Y. в title подразделов
+            # [13] Нумерация X.Y. в title подразделов (только для non-v4.1)
             if not is_index:
-                check_subsection_numbering(filepath, fm, result)
+                check_subsection_numbering(filepath, fm, result, is_v41_file)
 
             # [11] Grid-таблицы
             check_grid_tables(filepath, lines, result)

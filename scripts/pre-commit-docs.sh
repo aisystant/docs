@@ -25,12 +25,22 @@ echo "=== Docs pre-commit validation ==="
 echo "[1/4] Checking broken cross-repo links..."
 STAGED_MD=$(git diff --cached --name-only --diff-filter=ACM | grep '\.md$' || true)
 
-if [ -n "$STAGED_MD" ]; then
+if [ ! -f "${PACK_PERSONAL}" ]; then
+    echo "⚠️ SKIP: PACK-personal/ontology.md not found — cross-repo link check skipped"
+elif [ -n "$STAGED_MD" ]; then
     BAD_LINKS=""
     while IFS= read -r f; do
-        if grep -q "../../../PACK-personal/ontology.md#" "$f" 2>/dev/null; then
-            BAD_LINKS="${BAD_LINKS}${f}\n"
-        fi
+        # Extract anchors and check if they exist in ontology
+        while IFS= read -r anchor; do
+            # anchor is like "../../../PACK-personal/ontology.md#something"
+            # Extract the part after #
+            tag="${anchor##*#}"
+            # Convert URL-encoded/space to match markdown heading anchors
+            # Simple check: grep for the anchor in ontology file
+            if ! grep -q "^#*.*${tag}" "${PACK_PERSONAL}" 2>/dev/null; then
+                BAD_LINKS="${BAD_LINKS}${f} -> ${tag}\n"
+            fi
+        done < <(grep -oE '\.\./\.\./\.\./PACK-personal/ontology\.md#[^ )\]]+' "$f" 2>/dev/null || true)
     done <<< "$STAGED_MD"
 
     if [ -n "$BAD_LINKS" ]; then
@@ -85,7 +95,7 @@ fi
 
 # --- 4. v4-lint porter on staged subsection files ---
 echo "[4/4] Checking v4-lint porter..."
-STAGED_SUBSECTIONS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^docs/ru/personal-design/.+\.md$' || true)
+STAGED_SUBSECTIONS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^docs/ru/personal-design/.+\.md$' | grep -v 'index\.md$' || true)
 
 if [[ -n "$STAGED_SUBSECTIONS" && -f "$V4_LINT" ]]; then
     echo "v4-lint: проверяю staged подразделы..."
