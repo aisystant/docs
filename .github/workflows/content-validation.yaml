@@ -1,0 +1,151 @@
+name: Content Validation
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'scripts/**'
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+
+      - name: Checkout PACK-personal repo
+        uses: actions/checkout@v4
+        with:
+          repository: aisystant/PACK-personal
+          path: PACK-personal
+          token: ${{ secrets.PACK_READ_TOKEN || secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          pip install pyyaml python-frontmatter
+
+      - name: Markdown lint (validate.py)
+        run: |
+          python3 scripts/convert_word/validate.py docs/ru/personal-design/
+
+      - name: Ontology drift check
+        run: |
+          python3 scripts/sync-guide-to-ontology.py --check \
+            --ontology PACK-personal/ontology.md \
+            --guides docs/ru/personal-design/
+        env:
+          PYTHONPATH: ${{ github.workspace }}
+
+      - name: Broken cross-repo link detection
+        run: |
+          echo "Checking for broken ../../../PACK-personal/ontology.md# links..."
+          python3 << 'EOF'
+          import os, re
+          ontology_path = "PACK-personal/ontology.md"
+          if not os.path.exists(ontology_path):
+              print("⚠️ SKIP: PACK-personal/ontology.md not found — link check skipped")
+              exit(0)
+          # Build set of anchors from ontology headings
+          anchors = set()
+          with open(ontology_path, "r", encoding="utf-8") as fh:
+              for line in fh:
+                  m = re.match(r"^(#{1,6})\s+(.+)$", line)
+                  if m:
+                      heading = m.group(2).strip()
+                      # GitHub-style anchor: lowercase, spaces->-, remove punctuation
+                      anchor = heading.lower().replace(" ", "-")
+                      anchor = re.sub(r"[^\w\-]", "", anchor)
+                      anchors.add(anchor)
+          errors = []
+          for root, dirs, files in os.walk("docs/ru/personal-design"):
+              for f in files:
+                  if not f.endswith(".md"):
+                      continue
+                  path = os.path.join(root, f)
+                  with open(path, "r", encoding="utf-8") as fh:
+                      content = fh.read()
+                  for match in re.finditer(r'\.\./\.\./\.\./PACK-personal/ontology\.md#([^ )\]]+)', content):
+                      link_anchor = match.group(1)
+                      # Normalize anchor
+                      normalized = link_anchor.lower().replace("%20", "-").replace(" ", "-")
+                      normalized = re.sub(r"[^\w\-]", "", normalized)
+                      if normalized not in anchors:
+                          errors.append(f"{path}: broken anchor '#{link_anchor}'")
+          if errors:
+              print("❌ FAIL: Broken cross-repo links found:")
+              for e in errors:
+                  print(f"  - {e}")
+              exit(1)
+          else:
+              print("✅ PASS: No broken cross-repo links found")
+          EOF
+
+      - name: Frontmeta completeness check
+        run: |
+          python3 << 'EOF'
+          import os, re, yaml
+          errors = []
+          required_fields = [
+              "title", "order", "introduces", "uses", "prerequisites",
+              "can_do", "cp_check", "bh_check", "format_version",
+              "pack_refs", "time_reading", "time_practice",
+              "word_count_target", "status"
+          ]
+          for root, dirs, files in os.walk("docs/ru/personal-design"):
+              for f in files:
+                  if not f.endswith(".md"):
+                      continue
+                  # Пропускаем index.md и файлы без subsection-семантики
+                  if f == "index.md":
+                      continue
+                  path = os.path.join(root, f)
+                  with open(path, "r", encoding="utf-8") as fh:
+                      content = fh.read()
+                  m = re.match(r"^---\s*\n(.*?)\n---\s*\n", content, re.DOTALL)
+                  if not m:
+                      # Файлы без frontmatter — не подразделы, пропускаем
+                      continue
+                  try:
+                      fm = yaml.safe_load(m.group(1)) or {}
+                  except Exception as e:
+                      errors.append(f"{path}: invalid YAML: {e}")
+                      continue
+                  # Проверяем только файлы с 'introduces' — это подразделы v4
+                  if "introduces" not in fm:
+                      continue
+                  missing = [field for field in required_fields if field not in fm]
+                  if missing:
+                      errors.append(f"{path}: missing fields: {', '.join(missing)}")
+          if errors:
+              print("❌ Frontmatter completeness FAIL:")
+              for e in errors:
+                  print(f"  - {e}")
+              exit(1)
+          else:
+              print("✅ Frontmatter completeness PASS")
+          EOF
+
+      - name: Didactic language check (UB-1)
+        run: |
+          echo "Checking for didactic language (UB-1)..."
+          # Проверяем docs/ru/personal-design/ на запрещённые слова
+          # «шаг» и «step» — легитимные слова в блоке «Минимальный шаг», исключены.
+          # «урок», «внедрить», «за N дней», «lesson», «implement» — признаки дидактики.
+          PATTERNS="урок|внедрить|за [0-9]+ дней|implement|lesson"
+          if grep -riE "$PATTERNS" docs/ru/personal-design/; then
+            echo "⚠️ WARN: Potential didactic language found (see above). Review manually."
+          else
+            echo "✅ PASS: No didactic language detected"
+          fi
