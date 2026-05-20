@@ -17,13 +17,9 @@ features:
     link: /ru/personal-design/1-2-self-development-methods/
     linkText: Открыть руководство
   - title: Руководство 3 — Работа и развитие с IWE
-    details: "ОРЗ, Pack, агенты, MCP, протоколы. Ступени 2–5. Превью."
-    link: /ru/personal-design/1-3-iwe-work-and-development/
-    linkText: Посмотреть превью
+    details: "ОРЗ, Pack, агенты, MCP, протоколы. Ступени 2–5. В разработке, появится в этой программе."
   - title: Руководство 4 — Введение в системное мышление
-    details: "Различения, роли, границы, эмерджентность, системный разбор. Ступени 3–5. Превью."
-    link: /ru/personal-design/1-4-systems-thinking-introduction/
-    linkText: Посмотреть превью
+    details: "Различения, роли, границы, эмерджентность, системный разбор. Ступени 3–5. В разработке."
 ---
 
 ## О программе
