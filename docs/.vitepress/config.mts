@@ -45,8 +45,6 @@ export default defineConfig({
   srcExclude: [
     '**/Archive/**',
     '**/personal-new/**',
-    '**/personal-design/1-3-iwe-work-and-development/**',
-    '**/personal-design/1-4-systems-thinking-introduction/**',
   ],
   markdown: {
     config: (md) => {
