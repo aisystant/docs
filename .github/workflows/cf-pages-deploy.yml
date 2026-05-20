@@ -35,7 +35,18 @@ jobs:
         working-directory: docs
         run: npm run docs:build
 
+      - name: Check CF token
+        id: cf-check
+        run: |
+          if [[ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]]; then
+            echo "has_token=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::CLOUDFLARE_API_TOKEN не установлен — деплой пропущен. Добавьте секрет в Settings → Secrets: CF API Token с permission Cloudflare Pages:Edit."
+          else
+            echo "has_token=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Deploy to Cloudflare Pages
+        if: steps.cf-check.outputs.has_token == 'true'
         uses: cloudflare/wrangler-action@v3
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
@@ -46,10 +57,19 @@ jobs:
 
       - name: Summary
         run: |
-          {
-            echo "## ✅ Deployed to https://iwe-staging-docs.pages.dev/"
-            echo ""
-            echo "После DNS-provisioning будет доступно по: https://staging.docs.aisystant.ai/"
-            echo ""
-            echo "Auth: basic auth (iwe-pilot / <token у Дмитрия>)"
-          } >> "$GITHUB_STEP_SUMMARY"
+          if [[ "${{ steps.cf-check.outputs.has_token }}" == "true" ]]; then
+            {
+              echo "## ✅ Deployed to https://iwe-staging-docs.pages.dev/"
+              echo ""
+              echo "После DNS-provisioning будет доступно по: https://staging.docs.aisystant.ai/"
+              echo ""
+              echo "Auth: basic auth (iwe-pilot / \<token у Дмитрия\>)"
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "## ⚠️ Деплой пропущен — нет CLOUDFLARE_API_TOKEN"
+              echo ""
+              echo "Добавьте секрет: Settings → Secrets → \`CLOUDFLARE_API_TOKEN\`"
+              echo "CF dashboard → My Profile → API Tokens → Create Token (permission: Cloudflare Pages:Edit)"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
