@@ -11,7 +11,7 @@ const ruCourseNav = generateCourseNav(ruDir, '/ru').filter(
 )
 const ruNav = [
   ...ruCourseNav,
-  { text: 'Войти в IWE', link: 'https://app.aisystant.com' },
+  { text: 'Войти в IWE', link: 'https://aisystant.system-school.ru/lk/#/auth/ory' },
 ]
 const ruSidebar: Record<string, unknown> = {}
 ruCourseNav.forEach((course: { link: string }) => {
