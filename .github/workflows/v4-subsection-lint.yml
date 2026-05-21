@@ -1,0 +1,55 @@
+name: v4 Subsection Lint
+
+on:
+  push:
+    branches: [main, staging-v4]
+    paths:
+      - 'docs/ru/personal-design/**'
+  pull_request:
+    branches: [main, staging-v4]
+    paths:
+      - 'docs/ru/personal-design/**'
+  workflow_dispatch:
+
+jobs:
+  subsection-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout docs repo
+        uses: actions/checkout@v4
+
+      - name: Checkout DS-principles-curriculum
+        uses: actions/checkout@v4
+        with:
+          repository: aisystant/DS-principles-curriculum
+          path: DS-principles-curriculum
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout PACK-personal
+        uses: actions/checkout@v4
+        with:
+          repository: aisystant/PACK-personal
+          path: PACK-personal
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install pyyaml
+
+      - name: v4-lint subsection
+        run: |
+          python3 DS-principles-curriculum/tools/v4-lint.py subsection \
+            docs/ru/personal-design/ \
+            --ontology PACK-personal/ontology.md
+
+      - name: Step summary
+        if: always()
+        run: |
+          echo "### v4-lint subsection" >> $GITHUB_STEP_SUMMARY
+          echo "- Repository: aisystant/docs" >> $GITHUB_STEP_SUMMARY
+          echo "- Checked: docs/ru/personal-design/" >> $GITHUB_STEP_SUMMARY
+          echo "- Ontology: PACK-personal/ontology.md" >> $GITHUB_STEP_SUMMARY
