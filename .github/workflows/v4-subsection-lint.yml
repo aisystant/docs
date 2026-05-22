@@ -38,7 +38,7 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        run: pip install pyyaml
+        run: pip install pyyaml python-frontmatter
 
       - name: v4-lint subsection
         run: |
