@@ -1,0 +1,158 @@
+name: Deploy Guide v4 (Staging + Production)
+
+# WP-355 Ф18.2 — CD-pipeline для руководств v4
+# Staging: Cloudflare Pages (существующий)
+# Production: dash.pwapps.com (новый)
+
+on:
+  push:
+    branches: [main, staging-v4]
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (no actual deploy)'
+        required: false
+        default: 'false'
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  # ------------------------------------------------------------------
+  # Stage 1: Build
+  # ------------------------------------------------------------------
+  build:
+    runs-on: ubuntu-latest
+    name: Build VitePress
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: docs/package-lock.json
+
+      - name: Install dependencies
+        working-directory: docs
+        run: npm ci || npm install
+
+      - name: Build
+        working-directory: docs
+        run: npm run docs:build
+
+      - name: Upload dist artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vitepress-dist
+          path: docs/.vitepress/dist
+          retention-days: 1
+
+  # ------------------------------------------------------------------
+  # Stage 2a: Deploy to Staging (Cloudflare Pages)
+  # ------------------------------------------------------------------
+  deploy-staging:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Deploy to Staging (CF Pages)
+    if: github.ref == 'refs/heads/staging-v4' || github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vitepress-dist
+          path: docs/.vitepress/dist
+
+      - name: Check CF token
+        id: cf-check
+        run: |
+          if [[ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]]; then
+            echo "has_token=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::CLOUDFLARE_API_TOKEN не установлен — деплой пропущен."
+          else
+            echo "has_token=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.cf-check.outputs.has_token == 'true'
+        uses: cloudflare/wrangler-action@v3
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: b6ea9a991319d14c2e78590526c5fb4f
+          command: pages deploy docs/.vitepress/dist --project-name=iwe-staging-docs --branch=staging-v4 --commit-dirty=true
+
+      - name: Smoke test 3a (Staging)
+        if: steps.cf-check.outputs.has_token == 'true'
+        run: |
+          sleep 10
+          curl -sf "https://iwe-staging-docs.pages.dev/ru/personal/1-1-self-development/" \
+            | grep -q '<title>' && echo "Smoke test 3a passed" || (echo "Smoke test 3a failed"; exit 1)
+
+  # ------------------------------------------------------------------
+  # Stage 2b: Check production readiness
+  # ------------------------------------------------------------------
+  check-production-ready:
+    needs: build
+    runs-on: ubuntu-latest
+    name: Check production readiness
+    outputs:
+      ready: ${{ steps.check.outputs.ready }}
+    steps:
+      - id: check
+        run: |
+          TOKEN="${{ secrets.DASH_API_TOKEN }}"
+          ENDPOINT="${{ vars.DASH_ENDPOINT }}"
+          if [[ -n "$TOKEN" && -n "$ENDPOINT" ]]; then
+            echo "ready=true" >> "$GITHUB_OUTPUT"
+            echo "::notice::Production deploy ready (DASH_API_TOKEN + DASH_ENDPOINT configured)"
+          else
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            echo "::notice::Production deploy skipped — DASH_API_TOKEN or DASH_ENDPOINT not configured"
+          fi
+
+  # ------------------------------------------------------------------
+  # Stage 3: Deploy to Production (dash.pwapps.com)
+  # ------------------------------------------------------------------
+  deploy-production:
+    needs: [build, check-production-ready]
+    runs-on: ubuntu-latest
+    name: Deploy to Production (dash.pwapps.com)
+    if: needs.check-production-ready.outputs.ready == 'true' && github.ref == 'refs/heads/main'
+    env:
+      DASH_DEPLOY_MODE: ${{ vars.DASH_DEPLOY_MODE || 'content_url' }}
+      DASH_ENDPOINT: ${{ vars.DASH_ENDPOINT }}
+      DASH_API_TOKEN: ${{ secrets.DASH_API_TOKEN }}
+      STAGING_URL: https://iwe-staging-docs.pages.dev
+      VERSION: ${{ github.sha }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download dist artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: vitepress-dist
+          path: docs/.vitepress/dist
+
+      - name: Deploy to dash.pwapps.com
+        run: |
+          if [[ "${{ github.event.inputs.dry_run }}" == "true" ]]; then
+            ./scripts/deploy-to-dash.sh --dry-run
+          else
+            ./scripts/deploy-to-dash.sh
+          fi
+
+      - name: Smoke test 3b (Production)
+        run: |
+          sleep 10
+          curl -sf "${DASH_ENDPOINT%/deploy}/personal-design/guide-1" \
+            -H "Authorization: Bearer ${DASH_API_TOKEN}" \
+            | grep -q '<title>' && echo "Smoke test 3b passed" || (echo "Smoke test 3b failed"; exit 1)
