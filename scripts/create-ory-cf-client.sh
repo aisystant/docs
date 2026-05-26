@@ -11,7 +11,9 @@ set -euo pipefail
 
 ORY_ADMIN_URL="${ORY_ADMIN_URL:-https://auth.system-school.ru/hydra}"
 ORY_ADMIN_TOKEN="${ORY_ADMIN_TOKEN:-}"
-CF_ACCESS_CALLBACK="${CF_ACCESS_CALLBACK:-https://<your-team>.cloudflareaccess.com/cdn-cgi/access/callback}"
+# WP-355: Team name confirmed — odd-dew-3a42
+# Pasha already created the ORY client with this redirect_uri.
+CF_ACCESS_CALLBACK="${CF_ACCESS_CALLBACK:-https://odd-dew-3a42.cloudflareaccess.com/cdn-cgi/access/callback}"
 CLIENT_NAME="cf-access-dash-pwapps"
 
 if [[ -z "$ORY_ADMIN_TOKEN" ]]; then
@@ -53,4 +55,4 @@ echo "1. Save CLIENT_ID and CLIENT_SECRET as GitHub secrets in aisystant/docs:"
 echo "   gh secret set ORY_CLIENT_ID -R aisystant/docs --body '$CLIENT_ID'"
 echo "   gh secret set ORY_CLIENT_SECRET -R aisystant/docs --body '$CLIENT_SECRET'"
 echo "2. Configure CF Access Identity Provider (see docs/cf-access-setup.md)"
-echo "3. Update CF_ACCESS_CALLBACK in this script if team name changes"
+echo "3. CF Access team: odd-dew-3a42 (odd-dew-3a42.cloudflareaccess.com)"
