@@ -94,7 +94,7 @@ else
 fi
 
 # --- 4. v4-lint porter on staged subsection files ---
-echo "[4/4] Checking v4-lint porter..."
+echo "[4/5] Checking v4-lint porter..."
 STAGED_SUBSECTIONS=$(git diff --cached --name-only --diff-filter=ACM | grep -E '^docs/ru/personal-design/.+\.md$' | grep -v -E '(index|README|SUMMARY|CHANGELOG)\.md$' || true)
 
 if [[ -n "$STAGED_SUBSECTIONS" && -f "$V4_LINT" ]]; then
@@ -109,6 +109,26 @@ if [[ -n "$STAGED_SUBSECTIONS" && -f "$V4_LINT" ]]; then
     fi
 elif [[ ! -f "$V4_LINT" ]]; then
     echo "⚠️ SKIP: v4-lint.py not found at ${V4_LINT}"
+else
+    echo "✅ PASS: No staged subsections to check"
+fi
+
+# --- 5. v4-lint subsection on staged subsection files (WP-322 Ф20) ---
+echo "[5/5] Checking v4-lint subsection (pack_refs, ontology, degrees, typography)..."
+if [[ -n "$STAGED_SUBSECTIONS" && -f "$V4_LINT" && -f "$PACK_PERSONAL" ]]; then
+    echo "v4-lint subsection: проверяю staged подразделы..."
+    echo "$STAGED_SUBSECTIONS" | sed 's/^/  /'
+    echo ""
+    if ! python3 "$V4_LINT" subsection $STAGED_SUBSECTIONS --ontology "$PACK_PERSONAL"; then
+        echo "❌ FAIL: v4-lint subsection detected errors"
+        HAS_ERROR=1
+    else
+        echo "✅ PASS: v4-lint subsection passed"
+    fi
+elif [[ ! -f "$V4_LINT" ]]; then
+    echo "⚠️ SKIP: v4-lint.py not found at ${V4_LINT}"
+elif [[ ! -f "$PACK_PERSONAL" ]]; then
+    echo "⚠️ SKIP: ontology.md not found at ${PACK_PERSONAL}"
 else
     echo "✅ PASS: No staged subsections to check"
 fi

@@ -3,13 +3,29 @@
 layout: home
 
 hero:
-  name: "Aisystant Docs"
-  text: " "
-  tagline: " "
+  name: "Программа личного развития"
+  text: "4 универсальных руководства"
+  tagline: "Ступени Ученика: от случайного — до проактивного. От пользователя чата с ИИ — до разработчика собственной Интеллектуальной рабочей среды (IWE)."
 
 features:
-  - title: Introduction to Systems Thinking
-    details: "Author: Tseren Tserenov"
-    link: /en/personal/systems-thinking-introduction/preface/
+  - title: Руководство 1 — Системное саморазвитие
+    details: "Культура ученика, мировоззрение, 10 разделов."
+    link: /ru/personal-design/1-1-systemic-self-development/
+    linkText: Открыть руководство
+  - title: Руководство 2 — Методы саморазвития
+    details: "M001–M008: защищённый слот, учёт времени, чтение, мышление письмом, досуг, окружение, стратегирование, планирование."
+    link: /ru/personal-design/1-2-self-development-methods/
+    linkText: Открыть руководство
+  - title: Руководство 3 — Работа и развитие с IWE
+    details: "ОРЗ, Pack, агенты, MCP, протоколы. В разработке."
+  - title: Руководство 4 — Введение в системное мышление
+    details: "Различения, роли, границы, эмерджентность, системный разбор. В разработке."
 ---
 
+## О программе
+
+**Программа личного развития** — это последовательность из четырёх универсальных руководств, которые ведут от первых шагов (ступень 1) до проактивного уровня (ступень 5).
+
+Руководства 1 и 2 — завершены и готовы к чтению. Руководства 3 и 4 — в разработке, доступны превью-версии.
+
+**Обратная связь:** через issue в [github.com/aisystant/DS-principles-curriculum](https://github.com/aisystant/DS-principles-curriculum/issues/new) с шаблоном «Pilot Feedback».

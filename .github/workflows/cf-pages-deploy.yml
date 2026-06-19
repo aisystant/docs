@@ -1,0 +1,75 @@
+name: Deploy v4 staging to Cloudflare Pages
+
+# WP-322 Ф17.1 — auto-deploy VitePress в Cloudflare Pages при push в staging-v4.
+# Контролируемая сборка (NBR #1 в ArchGate): build через GHA, не auto-build CF Pages.
+
+on:
+  push:
+    branches: [staging-v4]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  deployments: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    name: Build and deploy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: docs/package-lock.json
+
+      - name: Install dependencies
+        working-directory: docs
+        run: npm ci || npm install
+
+      - name: Build VitePress
+        working-directory: docs
+        run: npm run docs:build
+
+      - name: Check CF token
+        id: cf-check
+        run: |
+          if [[ -z "${{ secrets.CLOUDFLARE_API_TOKEN }}" ]]; then
+            echo "has_token=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::CLOUDFLARE_API_TOKEN не установлен — деплой пропущен. Добавьте секрет в Settings → Secrets: CF API Token с permission Cloudflare Pages:Edit."
+          else
+            echo "has_token=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Deploy to Cloudflare Pages
+        if: steps.cf-check.outputs.has_token == 'true'
+        uses: cloudflare/wrangler-action@v3
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: b6ea9a991319d14c2e78590526c5fb4f
+          command: pages deploy docs/.vitepress/dist --project-name=iwe-staging-docs --branch=staging-v4 --commit-dirty=true
+
+      - name: Summary
+        run: |
+          if [[ "${{ steps.cf-check.outputs.has_token }}" == "true" ]]; then
+            {
+              echo "## ✅ Deployed to https://iwe-staging-docs.pages.dev/"
+              echo ""
+              echo "После DNS-provisioning будет доступно по: https://staging.docs.aisystant.ai/"
+              echo ""
+              echo "Auth: basic auth (iwe-pilot / \<token у Дмитрия\>)"
+            } >> "$GITHUB_STEP_SUMMARY"
+          else
+            {
+              echo "## ⚠️ Деплой пропущен — нет CLOUDFLARE_API_TOKEN"
+              echo ""
+              echo "Добавьте секрет: Settings → Secrets → \`CLOUDFLARE_API_TOKEN\`"
+              echo "CF dashboard → My Profile → API Tokens → Create Token (permission: Cloudflare Pages:Edit)"
+            } >> "$GITHUB_STEP_SUMMARY"
+          fi
