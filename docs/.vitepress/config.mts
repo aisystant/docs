@@ -40,6 +40,9 @@ export default defineConfig({
   srcExclude: [
     '**/Archive/**',
     '**/personal-new/**',
+    '**/personal-new-staging/**',
+    '**/personal-design/**',
+    '**/professional-design/**',
   ],
   markdown: {
     config: (md) => {
