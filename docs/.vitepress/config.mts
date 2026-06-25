@@ -4,19 +4,14 @@ import { generateCourseSidebar } from './utils/generateSidebar.js'
 import { generateCourseNav } from './utils/generateNav.js'
 import footnote from 'markdown-it-footnote' // Import the footnotes plugin
 
-// Russian version configuration — staging: only personal-design
+// Russian version configuration
 const ruDir = path.resolve(__dirname, '../ru')
-const ruCourseNav = generateCourseNav(ruDir, '/ru').filter(
-  (course: { link: string }) => course.link.includes('/personal-design/')
-)
-const ruNav = [
-  ...ruCourseNav,
-  { text: 'Войти в IWE', link: 'https://aisystant.system-school.ru/lk/#/auth/ory' },
-]
-const ruSidebar: Record<string, unknown> = {}
-ruCourseNav.forEach((course: { link: string }) => {
+const ruCourseNav = generateCourseNav(ruDir, '/ru')
+const ruSidebar = {}
+ruCourseNav.forEach(course => {
+  // Extract the course folder name from course.link (e.g., "course1" from "/ru/course1/")
   const parts = course.link.split('/').filter(Boolean)
-  const courseName = parts[1]
+  const courseName = parts[1]  // parts[0] is "ru", parts[1] is the course name
   ruSidebar[`/ru/${courseName}/`] = generateCourseSidebar(
     path.join(ruDir, courseName),
     `ru/${courseName}`
@@ -69,8 +64,8 @@ export default defineConfig({
       lang: 'ru-RU',
       link: '/ru/',
       themeConfig: {
-        nav: ruNav,
-        sidebar: ruSidebar,
+        nav: ruCourseNav,      // Dynamically generated navigation for Russian courses
+        sidebar: ruSidebar,    // Dynamically generated sidebar with collapsible section items
         socialLinks: [
           { icon: 'github', link: 'https://github.com/aisystant/docs' }
         ]
