@@ -6,7 +6,13 @@ import footnote from 'markdown-it-footnote' // Import the footnotes plugin
 
 // Russian version configuration
 const ruDir = path.resolve(__dirname, '../ru')
-const ruCourseNav = generateCourseNav(ruDir, '/ru')
+const ALLOWED_RU_DIRS = new Set(['personal', 'professional', 'research'])
+const ruCourseNav = generateCourseNav(ruDir, '/ru').filter(
+  (course: { link: string }) => {
+    const dir = course.link.split('/').filter(Boolean)[1]
+    return ALLOWED_RU_DIRS.has(dir)
+  }
+)
 const ruSidebar = {}
 ruCourseNav.forEach(course => {
   // Extract the course folder name from course.link (e.g., "course1" from "/ru/course1/")
