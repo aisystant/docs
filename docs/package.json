@@ -2,7 +2,7 @@
   "devDependencies": {
     "gray-matter": "^4.0.3",
     "markdown-it-footnote": "^4.0.0",
-    "vitepress": "^1.6.3"
+    "vitepress": "^1.6.4"
   },
   "scripts": {
     "docs:dev": "vitepress dev",
