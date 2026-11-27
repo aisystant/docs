@@ -90,13 +90,17 @@ def parse_ontology_table(path: Path) -> Dict[str, Dict]:
         source = cells[3] if len(cells) > 3 else ""
         status = cells[4] if len(cells) > 4 else ""
         anchor = slugify(term)
-        terms[term] = {
+        entry = {
             "definition": definition,
             "parent": parent,
             "source": source,
             "status": status,
             "anchor": anchor,
         }
+        terms[term] = entry
+        # A synonym declared in the definition ("Синоним: X") names the same concept
+        for synonym in re.findall(r"Синоним:\s*([^.|]+?)\s*(?:[.|]|$)", definition):
+            terms.setdefault(synonym.strip(), entry)
     return terms
 
 
@@ -158,13 +162,18 @@ SYNONYMS = {
     "PD.METHOD.021": "",
     "Красная зона": "Красная зона",
     "Материальный объект ≠ описание (4D-онтология)": "Материальный объект ≠ описание",
+    "Степени мастерства": "Степень мастерства",
+    "Степени мастерства: от объяснения до мастерства": "Степень мастерства",
+    "Экономика внимания: внимание дороже времени": "Экономика внимания",
+    "Намерения": "Намерение",
+    "Рабочие продукты как следы": "Рабочие продукты как следы мышления",
     "Вопрос-якорь «описание чего?»": "Вопрос-якорь",
 }
 
 
 def normalize_concept(raw: str) -> str:
     """Убирает cross-reference суффиксы: ' — см. §...', ' — Guide ...', ' — PD....', ' — §...'"""
-    clean = re.sub(r"\s*—\s*(см\.|Guide|PD\.|§).*$", "", raw).strip()
+    clean = re.sub(r"(\s*—\s*|\s+-\s+)(см\.|Guide|PD\.|§).*$", "", raw).strip()
     # Also strip parenthetical refs
     clean = re.sub(r"\s*\(см\.[^)]*\)$", "", clean).strip()
     return SYNONYMS.get(clean, clean)
@@ -245,7 +254,7 @@ def get_concepts_from_frontmatter(post) -> Set[str]:
     if isinstance(pack_refs, list):
         for ref in pack_refs:
             if isinstance(ref, dict) and "concept" in ref:
-                concepts.add(ref["concept"].strip())
+                concepts.add(normalize_concept(ref["concept"].strip()))
     return concepts
 
 
@@ -359,6 +368,15 @@ def main():
             # Fallback для невалидного YAML
             concepts = fallback_concepts
             post = None
+
+        # Auxiliary subsections (.08-.11) summarise the section and introduce no
+        # concepts (CHECKLIST-subsection-v1 §Auxiliary); recognised by
+        # format_version 4.1-aux or by the subsection id, as v4-lint does
+        if post is not None and (
+            str(post.get("format_version", "")) == "4.1-aux"
+            or re.search(r"\.SS(0?8|0?9|10|11)$", str(post.get("subsection_id", "")))
+        ):
+            continue
 
         all_guide_concepts.update(concepts)
 
