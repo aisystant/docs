@@ -66,4 +66,4 @@ _Связанные issue / PR:_
 ```
 
 ---
-_См. [VALIDATION_MATRIX.md](https://github.com/aisystant/DS-principles-curriculum/blob/main/specs/v4-reference/VALIDATION_MATRIX.md) для полной спецификации._
+_См. [VALIDATION_MATRIX.md](https://github.com/MimEcoSys/DS-principles-curriculum/blob/main/specs/v4-reference/VALIDATION_MATRIX.md) для полной спецификации._
