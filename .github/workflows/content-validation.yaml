@@ -23,7 +23,7 @@ jobs:
       - name: Checkout PACK-personal repo
         uses: actions/checkout@v4
         with:
-          repository: aisystant/PACK-personal
+          repository: MimEcoSys/PACK-personal
           path: PACK-personal
           token: ${{ secrets.PACK_READ_TOKEN || secrets.GITHUB_TOKEN }}
 
@@ -57,17 +57,24 @@ jobs:
           if not os.path.exists(ontology_path):
               print("⚠️ SKIP: PACK-personal/ontology.md not found — link check skipped")
               exit(0)
-          # Build set of anchors from ontology headings
+          def slug(name):
+              # One key for both sides: lowercase, ё->е, separators dropped
+              # (spaces, hyphens, ≠, dashes, slashes, %20) — guides spell anchors
+              # of the same term with or without them.
+              name = name.replace("%20", " ").lower().replace("ё", "е")
+              return re.sub(r"[\W_]+", "", name)
+          # Valid anchors: ontology headings, glossary terms (bold first column)
+          # and synonyms declared in a definition ("Синоним: X").
           anchors = set()
           with open(ontology_path, "r", encoding="utf-8") as fh:
               for line in fh:
                   m = re.match(r"^(#{1,6})\s+(.+)$", line)
                   if m:
-                      heading = m.group(2).strip()
-                      # GitHub-style anchor: lowercase, spaces->-, remove punctuation
-                      anchor = heading.lower().replace(" ", "-")
-                      anchor = re.sub(r"[^\w\-]", "", anchor)
-                      anchors.add(anchor)
+                      anchors.add(slug(m.group(2)))
+                  term = re.match(r"^\|\s*\*\*([^*|]+)\*\*", line)
+                  if term:
+                      anchors.add(slug(term.group(1)))
+                      anchors.update(slug(s) for s in re.findall(r"Синоним:\s*([^.|]+?)\s*(?:[.|]|$)", line))
           errors = []
           for root, dirs, files in os.walk("docs/ru/personal-design"):
               for f in files:
@@ -76,12 +83,9 @@ jobs:
                   path = os.path.join(root, f)
                   with open(path, "r", encoding="utf-8") as fh:
                       content = fh.read()
-                  for match in re.finditer(r'\.\./\.\./\.\./PACK-personal/ontology\.md#([^ )\]]+)', content):
+                  for match in re.finditer(r'\.\./\.\./\.\./PACK-personal/ontology\.md#([^\s)\]]+)', content):
                       link_anchor = match.group(1)
-                      # Normalize anchor
-                      normalized = link_anchor.lower().replace("%20", "-").replace(" ", "-")
-                      normalized = re.sub(r"[^\w\-]", "", normalized)
-                      if normalized not in anchors:
+                      if slug(link_anchor) not in anchors:
                           errors.append(f"{path}: broken anchor '#{link_anchor}'")
           if errors:
               print("❌ FAIL: Broken cross-repo links found:")
@@ -124,6 +128,10 @@ jobs:
                       continue
                   # Проверяем только файлы с 'introduces' — это подразделы v4
                   if "introduces" not in fm:
+                      continue
+                  # Auxiliary-подразделы (.08–.11) имеют минимальный frontmatter
+                  # (CHECKLIST-subsection-v1 §Auxiliary) — полный набор к ним не применяется
+                  if str(fm.get("format_version", "")) == "4.1-aux":
                       continue
                   missing = [field for field in required_fields if field not in fm]
                   if missing:
