@@ -21,14 +21,14 @@ jobs:
       - name: Checkout DS-principles-curriculum
         uses: actions/checkout@v4
         with:
-          repository: aisystant/DS-principles-curriculum
+          repository: MimEcoSys/DS-principles-curriculum
           path: DS-principles-curriculum
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Checkout PACK-personal
         uses: actions/checkout@v4
         with:
-          repository: aisystant/PACK-personal
+          repository: MimEcoSys/PACK-personal
           path: PACK-personal
           token: ${{ secrets.GITHUB_TOKEN }}
 

@@ -120,6 +120,15 @@ def is_v41(fm):
     return str(fv).startswith("4.1")
 
 
+def is_guide_level(fm):
+    """Guide-level file of a v4 guide: README/index carry guide_id, the
+    structure spec carries id PD.GUIDE.N.STRUCTURE. They are not lessons and
+    have no order/type."""
+    if fm is None:
+        return False
+    return "guide_id" in fm or str(fm.get("id", "")).endswith(".STRUCTURE")
+
+
 def has_cyrillic(text):
     """Проверить, содержит ли текст кириллицу."""
     return bool(re.search(r"[а-яА-ЯёЁ]", text))
@@ -139,18 +148,20 @@ def check_frontmatter(filepath, lines, is_index, is_root_index, result):
 
     if "title" not in fm:
         result.error(filepath, 1, "В front matter нет поля 'title'")
-    if "order" not in fm:
-        result.error(filepath, 1, "В front matter нет поля 'order'")
 
-    # v4.1 файлы не используют поле type
+    # v4.1 файлы не используют поле type; файлы уровня руководства — ни order, ни type
     is_v41_file = is_v41(fm)
+    guide_level = is_guide_level(fm)
+
+    if "order" not in fm and not guide_level:
+        result.error(filepath, 1, "В front matter нет поля 'order'")
 
     # index.md НЕ должен иметь type
     if is_index and "type" in fm:
         result.warn(filepath, 1, "index.md не должен содержать поле 'type'")
 
     # Обычные файлы ДОЛЖНЫ иметь type (кроме v4.1)
-    if not is_index and "type" not in fm and not is_v41_file:
+    if not is_index and "type" not in fm and not is_v41_file and not guide_level:
         result.error(filepath, 1, "В front matter нет поля 'type' (text/table/checklist/multiple_choice)")
 
     # Корневой index.md должен иметь aisystant_code
